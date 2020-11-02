@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSComm", "SSComm\SSComm.csproj", "{D9F40A00-08CA-4B51-91AC-FEE25FA6410D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSControls", "SSControl\SSControls.csproj", "{A65F336E-822E-4F58-882C-371139985C67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniSolder", "UniSolder\UniSolder.csproj", "{CC166091-0117-4211-BEF3-DA4665245901}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9F40A00-08CA-4B51-91AC-FEE25FA6410D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9F40A00-08CA-4B51-91AC-FEE25FA6410D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9F40A00-08CA-4B51-91AC-FEE25FA6410D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9F40A00-08CA-4B51-91AC-FEE25FA6410D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A65F336E-822E-4F58-882C-371139985C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65F336E-822E-4F58-882C-371139985C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A65F336E-822E-4F58-882C-371139985C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A65F336E-822E-4F58-882C-371139985C67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC166091-0117-4211-BEF3-DA4665245901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC166091-0117-4211-BEF3-DA4665245901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC166091-0117-4211-BEF3-DA4665245901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC166091-0117-4211-BEF3-DA4665245901}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

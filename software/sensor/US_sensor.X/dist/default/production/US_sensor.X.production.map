@@ -1,0 +1,272 @@
+Microchip MPLAB XC8 Compiler V1.30 ()
+
+Linker command line:
+
+--edf=C:\Program Files (x86)\Microchip\xc8\v1.30\dat\en_msgs.txt -cs \
+  -h+dist/default/production\US_sensor.X.production.sym \
+  --cmf=dist/default/production\US_sensor.X.production.cmf -z -Q12F615 \
+  -oC:\Users\Sparky\AppData\Local\Temp\s608.6 \
+  -Mdist/default/production/US_sensor.X.production.map -E1 -ver=XC8 \
+  -ASTACK=040h-06fh -pstack=STACK -ACONST=00h-0FFhx4 -ACODE=00h-03FFh \
+  -ASTRCODE=00h-03FFh -AENTRY=00h-0FFhx4 -ASTRING=00h-0FFhx4 \
+  -ACOMMON=070h-07Fh -ABANK0=040h-06Fh -ARAM=040h-06Fh -AABS1=040h-07Fh \
+  -ASFR0=00h-03Fh -ASFR1=080h-0EFh -preset_vec=00h,intentry,init,end_init \
+  -ppowerup=CODE -pcinit=CODE -pfunctab=CODE -ACONFIG=02007h-02007h \
+  -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 \
+  -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
+  C:\Users\Sparky\AppData\Local\Temp\s608.obj \
+  dist/default/production\US_sensor.X.production.obj 
+
+Object code version is 3.11
+
+Machine type is 12F615
+
+
+
+                Name                               Link     Load   Length Selector   Space Scale
+C:\Users\Sparky\AppData\Local\Temp\s608.obj
+                end_init                              0        0        1        0       0
+                config                             2007     2007        1     400E       0
+dist/default/production\US_sensor.X.production.obj
+                cinit                               3FE      3FE        2      7FC       0
+                maintext                            378      378       86      6F0       0
+                cstackCOMMON                         70       70        9       70       1
+                nvCOMMON                             79       79        4       70       1
+
+TOTAL           Name                               Link     Load   Length     Space
+        CLASS   STACK          
+
+        CLASS   CONST          
+
+        CLASS   CODE           
+                end_init                              0        0        1         0
+                cinit                               3FE      3FE        2         0
+                maintext                            378      378       86         0
+
+        CLASS   STRCODE        
+
+        CLASS   ENTRY          
+
+        CLASS   STRING         
+
+        CLASS   COMMON         
+                cstackCOMMON                         70       70        9         1
+                nvCOMMON                             79       79        4         1
+
+        CLASS   BANK0          
+
+        CLASS   RAM            
+
+        CLASS   ABS1           
+                abs_s1                               7E       7E        2         1
+
+        CLASS   SFR0           
+
+        CLASS   SFR1           
+
+        CLASS   CONFIG         
+                config                             2007     2007        1         0
+
+        CLASS   IDLOC          
+
+        CLASS   BANK1          
+
+        CLASS   EEDATA         
+
+
+
+SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
+
+                reset_vec                      000000  000001  000001         0       0  CODE        2
+                cstackCOMMON                   000070  00000D  00007D        70       1  COMMON      1
+                maintext                       000378  000086  0003FE       6F0       0  CODE        2
+                cinit                          0003FE  000002  000400       7FC       0  CODE        2
+                config                         002007  000001  002008      400E       0  CONFIG      2
+
+
+UNUSED ADDRESS RANGES
+
+        Name                Unused          Largest block    Delta
+        BANK0            0040-006F             30           1
+        CODE             0001-0377            377           2
+        COMMON           007D-007D              1           1
+        CONST            0001-0377            100           2
+        ENTRY            0001-0377            100           2
+        IDLOC            2000-2003              4           2
+        RAM              0040-006F             30           1
+        SFR0             0000-003F             40           1
+        SFR1             0080-00EF             70           1
+        STACK            0040-006F             30           1
+        STRCODE          0001-0377            377           2
+        STRING           0001-0377            100           2
+
+                                  Symbol Table
+
+_ANSEL                   (abs)        009F
+_CCP1CON                 (abs)        0015
+_CCPR1L                  (abs)        0013
+_GP1                     (abs)        0029
+_GP4                     (abs)        002C
+_GP5                     (abs)        002D
+_PORTA                   (abs)        0005
+_PR2                     (abs)        0092
+_T2CON                   (abs)        0012
+_TRISA                   (abs)        0085
+_WPU                     (abs)        0095
+__CFG_BOREN$OFF          (abs)        0000
+__CFG_CP$OFF             (abs)        0000
+__CFG_FOSC$INTOSCIO      (abs)        0000
+__CFG_IOSCFS$8MHZ        (abs)        0000
+__CFG_MCLRE$ON           (abs)        0000
+__CFG_PWRTE$ON           (abs)        0000
+__CFG_WDTE$OFF           (abs)        0000
+__Habs1                  abs1         0000
+__Hbank0                 bank0        0000
+__Hbank1                 bank1        0000
+__Hcinit                 cinit        0400
+__Hclrtext               clrtext      0000
+__Hcode                  code         0000
+__Hcommon                common       0000
+__Hconfig                config       2008
+__HcstackCOMMON          cstackCOMMON 0000
+__Heeprom_data           eeprom_data  0000
+__Hend_init              end_init     0001
+__Hfunctab               functab      0000
+__Hidloc                 idloc        0000
+__Hinit                  init         0000
+__Hintentry              intentry     0000
+__Hmaintext              maintext     0000
+__HnvCOMMON              nvCOMMON     0000
+__Hpa_nodes              pa_nodes     0000
+__Hpowerup               powerup      0000
+__Hram                   ram          0000
+__Hreset_vec             reset_vec    0000
+__Hsfr0                  sfr0         0000
+__Hsfr1                  sfr1         0000
+__Hstack                 stack        0000
+__Hstrings               strings      0000
+__Htext                  text         0000
+__Labs1                  abs1         0000
+__Lbank0                 bank0        0000
+__Lbank1                 bank1        0000
+__Lcinit                 cinit        03FE
+__Lclrtext               clrtext      0000
+__Lcode                  code         0000
+__Lcommon                common       0000
+__Lconfig                config       2007
+__LcstackCOMMON          cstackCOMMON 0000
+__Leeprom_data           eeprom_data  0000
+__Lend_init              end_init     0000
+__Lfunctab               functab      0000
+__Lidloc                 idloc        0000
+__Linit                  init         0000
+__Lintentry              intentry     0000
+__Lmaintext              maintext     0000
+__LnvCOMMON              nvCOMMON     0000
+__Lpa_nodes              pa_nodes     0000
+__Lpowerup               powerup      0000
+__Lram                   ram          0000
+__Lreset_vec             reset_vec    0000
+__Lsfr0                  sfr0         0000
+__Lsfr1                  sfr1         0000
+__Lstack                 stack        0000
+__Lstrings               strings      0000
+__Ltext                  text         0000
+__S0                     (abs)        2008
+__S1                     (abs)        007D
+__S2                     (abs)        0000
+___int_sp                stack        0000
+___latbits               (abs)        0000
+___sp                    stack        0000
+__end_of__initialization cinit        03FE
+__end_of_main            maintext     03FE
+__initialization         cinit        03FE
+__pcstackCOMMON          cstackCOMMON 0070
+__pmaintext              maintext     0378
+__pnvCOMMON              nvCOMMON     0079
+__size_of_main           (abs)        0000
+_main                    maintext     0378
+_pwd                     nvCOMMON     0079
+btemp                    (abs)        007E
+end_of_initialization    cinit        03FE
+intlevel0                functab      0000
+intlevel1                functab      0000
+intlevel2                functab      0000
+intlevel3                functab      0000
+intlevel4                functab      0000
+intlevel5                functab      0000
+ltemp                    (abs)        007E
+ltemp0                   (abs)        007E
+ltemp1                   (abs)        0082
+ltemp2                   (abs)        0086
+ltemp3                   (abs)        0080
+main@RXTX                cstackCOMMON 0075
+main@i                   cstackCOMMON 0073
+main@inCnt               cstackCOMMON 0074
+reset_vec                reset_vec    0000
+stackhi                  (abs)        0000
+stacklo                  (abs)        0000
+start                    init         0000
+start_initialization     cinit        03FE
+ttemp                    (abs)        007E
+ttemp0                   (abs)        007E
+ttemp1                   (abs)        0081
+ttemp2                   (abs)        0084
+ttemp3                   (abs)        0087
+ttemp4                   (abs)        007F
+wtemp                    (abs)        007E
+wtemp0                   (abs)        007E
+wtemp1                   (abs)        0080
+wtemp2                   (abs)        0082
+wtemp3                   (abs)        0084
+wtemp4                   (abs)        0086
+wtemp5                   (abs)        0088
+wtemp6                   (abs)        007F
+
+
+FUNCTION INFORMATION:
+
+ *************** function _main *****************
+ Defined at:
+		line 26 in file "main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  RXTX            4    5[COMMON] struct .
+  inCnt           1    4[COMMON] unsigned char 
+  i               1    3[COMMON] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMMON   BANK0
+      Params:         0       0
+      Locals:         6       0
+      Temps:          3       0
+      Totals:         9       0
+Total ram usage:        9 bytes
+ This function calls:
+		Nothing
+ This function is called by:
+		Startup code after reset
+ This function uses a non-reentrant model
+
+
+
+MODULE INFORMATION
+
+Module		Function		Class		Link	Load	Size
+shared
+		__initializatio		CODE           	03FE	0000	0
+
+shared estimated size: 0
+
+main.c
+		_main          		CODE           	0378	0000	134
+
+main.c estimated size: 134
+

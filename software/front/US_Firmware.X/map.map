@@ -1,0 +1,42 @@
+MPLINK 4.46, Linker
+Linker Error Map File - Created Tue Feb 05 20:12:02 2013
+
+*Warning* - This is only a partial map file due to a link time error.
+   Only sections which were allocated prior to the error are shown below.
+
+CODEPAGES:
+    Memory      Start        End              Section    Address Size(Bytes)
+ ---------  ---------  ---------            ---------  ---------  ---------
+      page     0x0000     0x3fff                                           
+
+    idlocs     0x0000     0x0007                                           
+
+    config     0x0000     0x000d                                           
+
+     devid     0xfffe     0xffff                                           
+
+    eedata     0x0000     0x00ff                                           
+
+
+SHAREBANKS:
+
+DATABANKS:
+    Memory      Start        End              Section    Address Size(Bytes)
+ ---------  ---------  ---------            ---------  ---------  ---------
+      gpr0     0x0060     0x00ff                                           
+
+      gpr1     0x0100     0x01ff                                           
+
+      gpr2     0x0200     0x02ff                                           
+
+     sfr15     0x0f38     0x0f5f                                           
+
+
+ACCESSBANKS:
+    Memory      Start        End              Section    Address Size(Bytes)
+ ---------  ---------  ---------            ---------  ---------  ---------
+ accessram     0x0000     0x005f                                           
+
+ accesssfr     0x0f60     0x0fff                                           
+
+

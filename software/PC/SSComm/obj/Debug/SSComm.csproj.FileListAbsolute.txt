@@ -1,0 +1,13 @@
+C:\Users\Sparky\Desktop\MyProjects\Electronics\Lib\DOTNET\SSComm\bin\Debug\SSComm.dll
+C:\Users\Sparky\Desktop\MyProjects\Electronics\Lib\DOTNET\SSComm\bin\Debug\SSComm.pdb
+C:\Users\Sparky\Desktop\MyProjects\Electronics\Lib\DOTNET\SSComm\bin\Debug\LibUsbDotNet.dll
+C:\Users\Sparky\Desktop\MyProjects\Electronics\Lib\DOTNET\SSComm\obj\Debug\SSComm.dll
+C:\Users\Sparky\Desktop\MyProjects\Electronics\Lib\DOTNET\SSComm\obj\Debug\SSComm.pdb
+C:\Users\Sparky\Desktop\MyProjects\Electronics\Lib\DOTNET\SSComm\obj\Debug\SSComm.csprojResolveAssemblyReference.cache
+C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\bin\Debug\SSComm.dll
+C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\bin\Debug\SSComm.pdb
+C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\bin\Debug\LibUsbDotNet.dll
+C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Debug\SSComm.dll
+C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Debug\SSComm.pdb
+C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Debug\SSComm.csprojAssemblyReference.cache
+C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Debug\SSComm.csproj.CopyComplete
