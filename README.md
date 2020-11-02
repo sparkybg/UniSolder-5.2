@@ -1,8 +1,7 @@
 # UniSolder - The universal soldering controller  ![License CC-BY-4.0](https://img.shields.io/badge/License-CC--BY--4.0-green.svg)
 Control almost any low voltage soldering instrument
 
-
-<img align="center" src="/img/UniSolder52_small.jpg"/>
+<img width=500 align="center" src="/img/UniSolder52_small.jpg"/>
 
 My intention was to build the most universal soldering controller I can think of. It can drive any low voltage (upto 24V) iron with thermocouple or resistive sensor, in series with the heater, or separate.
 
@@ -44,11 +43,8 @@ My intention was to build the most universal soldering controller I can think of
 - Weller WMRT: https://www.youtube.com/watch?v=eHNJuQEw6XU&feature=youtu.be
 
 ### Additional resources
-- Valerio made a great git repo with plenty ot usefull information and notes here:
-https://github.com/valerionew/unisolder-notes
-
-- There are really big thread for this project, where this all started:
-http://dangerousprototypes.com/forum/index.php?topic=7218.0
+- Valerio made a great git repo with plenty ot usefull information and notes here: https://github.com/valerionew/unisolder-notes
+- There are really big thread for this project, where this all started: http://dangerousprototypes.com/forum/index.php?topic=7218.0
 
 ## The calibration precedure
 - Connect a resistor with well known resistance (0.1%) of around 10ohm between SENSEA and Vout1-
@@ -56,8 +52,7 @@ http://dangerousprototypes.com/forum/index.php?topic=7218.0
 - Adjust the calibration trimmer until you get value of "R" as close as possible to the resistance of the resistor, multiplied by 100 (1000 for 10ohm resistor).
 
 ## My connection layout and the calibration connection in real world:
-
-<img align="center" src="/img/UniSolder52_Cal_Con-1.jpg"/>
+<img width=500 align="left" src="/img/UniSolder52_Cal_Con-1.jpg"/>
 
 ## Connections to different tips/irons:
 
