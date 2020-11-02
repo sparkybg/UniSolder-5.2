@@ -2,7 +2,7 @@
 Control almost any low voltage soldering instrument
 
 
-<img align="center" src="/renders/UniSolder52_small.jpg"/>
+<img align="center" src="/img/UniSolder52_small.jpg"/>
 
 My intention was to build the most universal soldering controller I can think of. It can drive any low voltage (upto 24V) iron with thermocouple or resistive sensor, in series with the heater, or separate.
 
@@ -57,7 +57,7 @@ http://dangerousprototypes.com/forum/index.php?topic=7218.0
 
 ## My connection layout and the calibration connection in real world:
 
-<img align="center" src="/renders/UniSolder52_Cal_Con-1.jpg"/>
+<img align="center" src="/img/UniSolder52_Cal_Con-1.jpg"/>
 
 ## Connections to different tips/irons:
 
