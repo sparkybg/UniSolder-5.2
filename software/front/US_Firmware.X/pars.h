@@ -26,10 +26,11 @@ typedef union {
         UINT8 Bri;                                  //display brightness (1-16)
         UINT8 Buttons;                              //Buttons swap (0 - +/-, 1 - -/+)
         UINT8 WakeUp;                               //Wake up from standby (0-off, 1-long key press, 2-holder sensor, 3-key or sensor)
-        UINT8 DispRot;                              //Dosplay rotation (0 - 0deg, 1 - 180deg)
+        UINT8 DispRot;                              //Display rotation (0 - 0deg, 1 - 180deg)
+        UINT8 NapFilterTicks;                       //Holder/stand sensor filter ticks
         UINT8 Cal;
     };
-    UINT8 b[14];
+    UINT8 b[15];
 }pars_t;
 
 typedef struct {
@@ -43,7 +44,7 @@ typedef struct {
 }t_ParDef;
 
 #ifndef _PARS_C
-extern const t_ParDef ParDef[14];
+extern const t_ParDef ParDef[15];
 #endif
 
 #ifdef	__cplusplus

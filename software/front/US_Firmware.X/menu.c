@@ -34,7 +34,9 @@ static int ModeTicks;
 static int DoExit;
 static int DispTemp;
 static int CalRes;
-static int OldNAP;
+static UINT8 OldNAP;
+static int NapTicks;
+static UINT8 FNAP;
 
 static union {
     UINT32 DW;
@@ -65,23 +67,26 @@ static struct{
 
 void MenuInit(){
     int i,p;
-    CRstTemp=1;
-    CPar=0;
-    TopPar=0;
-    CTicks=0;
-    BeepTicks=0;
-    InvertTicks=0;
+    CRstTemp = 1;
+    CPar = 0;
+    TopPar = 0;
+    CTicks = 0;
+    BeepTicks = 0;
+    InvertTicks = 0;
     for(i=0;i<3;i++){
-        BTicks[i].o=0;
-        BTicks[i].n=0;
-        BTicks[i].d=0;
+        BTicks[i].o = 0;
+        BTicks[i].n = 0;
+        BTicks[i].d = 0;
     }
-    CTTemp=TTemp;
+    CTTemp = TTemp;
     mainFlags.HolderPresent=0;
-    TempBeep=1;
-    DispTemp=0;
-    CMode=1;
-    ModeTicks=20;
+    TempBeep = 1;
+    DispTemp = 0;
+    CMode = 1;
+    ModeTicks = 20;
+    FNAP = 1;
+    OldNAP = 1;
+    NapTicks = pars.NapFilterTicks + 1;
 }
 
 void OLEDTasks(){
@@ -105,7 +110,7 @@ void OLEDTasks(){
                 case 0: //default mode - display temperature and do nothing
                     if(CTTemp < 75){                        
                         CMode = 0xFF;
-                        OldNAP = NAP;
+                        OldNAP = FNAP;
                         ModeTicks = 255;
                         DoExit = 0;
                         break;
@@ -270,7 +275,7 @@ void OLEDTasks(){
                         CMode=0;
                         BeepTicks=2;
                     }
-                    if(pars.WakeUp & 2 && mainFlags.HolderPresent && NAP && OldNAP != NAP){ //exit from standby if iron was in holder end brought out of it
+                    if(pars.WakeUp & 2 && mainFlags.HolderPresent && FNAP && OldNAP != FNAP){ //exit from standby if iron was in holder end brought out of it
                         CTTemp=TTemp;
                         CTicks = 0;
                         CSeconds = 0;
@@ -279,7 +284,7 @@ void OLEDTasks(){
                         CMode=0;
                         BeepTicks=2;
                     }
-                    OldNAP = NAP;
+                    OldNAP = FNAP;
                     OLEDFlags.f.Message=1;
                     OLEDMsg1="       ZZZ.. .  .";
                     OLEDMsg2="";
@@ -457,6 +462,19 @@ void MenuTasks(){
                 else{
                     CMode = 0;
                 }
+                
+                if (!NAP){
+                    NapTicks = 0;
+                    FNAP = 0;
+                }
+                else{
+                    if (NapTicks <= pars.NapFilterTicks){
+                        NapTicks++;
+                    }
+                    else{
+                        FNAP = 1;
+                    }
+                }
 
                 if(CMode == 0xFF){
                     ModeTicks = 255;
@@ -471,7 +489,7 @@ void MenuTasks(){
                             if(CMinutes < 255)CMinutes++;
                         }
                     }
-                    if(B1 || B2 || B3 || (((pars.Holder == 1) || ((pars.Holder == 2) && mainFlags.HolderPresent)) && NAP)){
+                    if(B1 || B2 || B3 || (((pars.Holder == 1) || ((pars.Holder == 2) && mainFlags.HolderPresent)) && FNAP)){
                         CTicks = 0;
                         CSeconds = 0;
                         CMSeconds = 0;
@@ -479,7 +497,7 @@ void MenuTasks(){
                     }
 
                     i = TTemp;
-                    if(!NAP){
+                    if(!FNAP){
                         mainFlags.HolderPresent = 1;
                         if(i > pars.HTemp) i = pars.HTemp;
                     }

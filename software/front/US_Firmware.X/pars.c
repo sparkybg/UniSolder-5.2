@@ -16,7 +16,7 @@ const char * StrResume[]    = {"OFF ", "KEY ", "HOLD", "BOTH"};
 const char * StrButtons[]   = {"+/- ", "-/+ "};
 const char * StrOnOffAuto[] = {"OFF ", "ON  ", "AUTO"};
 
-const t_ParDef ParDef[14] = {
+const t_ParDef ParDef[15] = {
     {"        T1 ", 125,  75, 225, 0, 0,            &ParDispTemp},
     {"        T2 ", 150,  75, 225, 0, 0,            &ParDispTemp},
     {"        T3 ", 175,  75, 225, 0, 0,            &ParDispTemp},
@@ -30,6 +30,7 @@ const t_ParDef ParDef[14] = {
     {"   BUTTONS ",   0,   0,   1, 0, StrButtons,   &ParDispStr},    
     {"   WAKE UP ",   0,   0,   3, 0, StrResume,    &ParDispStr},    
     {"DISPL. ROT ",   0,   0,   1, 1, StrDispRot,   &ParDispStr},
+    {"SELSOR FLT ",   0,   0, 255, 0, 0,            &ParDispNumOff},
     {" CALIBRATE ",  15,   1,  15, 0, 0, 0}
 };
 
