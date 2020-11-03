@@ -12,6 +12,28 @@
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <asminc-extensions/>
             <make-dep-projects/>
+            <sourceRootList>
+                <sourceRootElem>usb</sourceRootElem>
+                <sourceRootElem>../../../PDF</sourceRootElem>
+                <sourceRootElem>usb_new</sourceRootElem>
+            </sourceRootList>
+            <confList>
+                <confElem>
+                    <name>PIC32_Standalone</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>PIC32_with_bootloader</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>PIC32_NoOptimization</name>
+                    <type>2</type>
+                </confElem>
+            </confList>
+            <formatting>
+                <project-formatting-style>false</project-formatting-style>
+            </formatting>
         </data>
     </configuration>
 </project>

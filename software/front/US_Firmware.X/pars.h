@@ -24,22 +24,26 @@ typedef union {
         UINT8 Holder;                               //Holder sensor (0(off), 1(on), 2(auto)
         UINT8 Deg;                                  //Celsius/Farenheit (0-Celsous), 1-Farenheit))
         UINT8 Bri;                                  //display brightness (1-16)
+        UINT8 Buttons;                              //Buttons swap (0 - +/-, 1 - -/+)
+        UINT8 WakeUp;                               //Wake up from standby (0-off, 1-long key press, 2-holder sensor, 3-key or sensor)
+        UINT8 DispRot;                              //Dosplay rotation (0 - 0deg, 1 - 180deg)
         UINT8 Cal;
     };
-    UINT8 b[11];
+    UINT8 b[14];
 }pars_t;
 
 typedef struct {
     const char * Name;
-    const char ShortName[3];
     UINT8 Default;
     UINT8 Min;
     UINT8 Max;
-    void (*OLEDDispFunc)(int,int,int);
+    UINT8 Immediate;
+    const char ** Strings;
+    void (*OLEDDispFunc)(int, int, int, int);
 }t_ParDef;
 
 #ifndef _PARS_C
-extern const t_ParDef ParDef[11];
+extern const t_ParDef ParDef[14];
 #endif
 
 #ifdef	__cplusplus

@@ -47,13 +47,19 @@ void OLEDInit(){
 }
 
 void OLEDUpdate(){
+    OLED_DC = 0;
+    OLED_CS = 0;
+    mcuSPISendByte(pars.DispRot ? 0xA1 : 0xA0);
+    mcuSPISendByte(pars.DispRot ? 0xC8 : 0xC0);
+    mcuSPISendByte(0x81);
+    mcuSPISendByte((pars.Bri << 4) - 15);
+    mcuSPIWait();
     OLED_DC = 1;
     OLED_CS = 0;
     mcuSPISendBytes((unsigned int *) OLEDBUFF.B[0], 128*8);
     mcuSPIWait();
     OLED_CS = 1;
 }
-
 
 void OLEDFill(int col, int colnum, int row, int rownum, UINT8 b){
     int cc;

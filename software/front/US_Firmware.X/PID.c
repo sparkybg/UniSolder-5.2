@@ -381,7 +381,7 @@ void PID(int PIDStep) {
     PV->TSlope -= intshr(PV->TSlope, 2);
     PV->TSlope += PV->SlopeBuff[(PV->SBPos - 1) & ((1 << AVG) - 1)];
     PV->TSlope -= PV->SlopeBuff[PV->SBPos];
-
+    
     dw = ((INT32)IC->PID_DGain) * intshr(PV->TSlope, 2);
     dw = intshr(dw, AVG + 2);
     
@@ -402,6 +402,7 @@ void PID(int PIDStep) {
                 PV->DestinationReached = 1;
             }
         }
+        
         if(PV->DestinationReached == 0){
             w = PV->TAvgF[0] >> AVG;
             w -= PV->WSTemp;
@@ -411,6 +412,8 @@ void PID(int PIDStep) {
                 PV->KeepOff = WSL + 1; //(1 << AVG) + 1;
             }            
         }
+        
+        if(PV->KeepOff && (PV->NoHeater || PV->ShortCircuit || PV->NoSensor)) PV->KeepOff = 0;
     }
     
     

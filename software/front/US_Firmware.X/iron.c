@@ -51,7 +51,7 @@ const t_IronPars NoIronPars = {
     }
 };
 
-const t_IronPars Irons[11] = {
+const t_IronPars Irons[12] = {
     {
         0, 
         0x1011,
@@ -83,10 +83,51 @@ const t_IronPars Irons[11] = {
                     0                       //c9
                 },
                 -1,                         //WSLength
-                3,                          //PID_DGain
-                (UINT16)(0.06 * 32768),     //PID_KP
+                4,                          //PID_DGain
+                (UINT16)(0.07 * 32768),     //PID_KP
                 (UINT16)(0.001 * 32768),    //PID_KI
-                3,                          //PID_OVSGain
+                4,                          //PID_OVSGain
+                120,                        //PID_PMax
+                120                         //PID_PNom
+            },
+            {0}
+        }
+    },
+    {
+        0, 
+        0x0F11,
+        "PACE TD-200 BLUE        ",
+        {
+            {
+                1,                          //Type
+                {
+                    0,                      //HChannel
+                    5,                      //SChannel
+                    1,                      //CBandA
+                    1,                      //CBandB
+                },
+                0,                          //CurrentA
+                10,                         //CurrentB
+                10,                         //HRCompCurrent
+                53,                         //Gain
+                0,                          //Offset
+                {                           //TPoly
+                    0,                      //c0
+                    27.7,                   //c1
+                    0,                      //c2
+                    0,                      //c3
+                    0,                      //c4
+                    0,                      //c5
+                    0,                      //c6
+                    0,                      //c7
+                    0,                      //c8
+                    0                       //c9
+                },
+                -1,                         //WSLength
+                3,                          //PID_DGain
+                (UINT16)(0.2 * 32768),      //PID_KP
+                (UINT16)(0.005 * 32768),    //PID_KI
+                6,                          //PID_OVSGain
                 120,                        //PID_PMax
                 120                         //PID_PNom
             },

@@ -29,10 +29,12 @@ static int OldMode;
 static int CRstTemp;
 static int TopPar;
 static int CPar;
+static UINT8 CParVal;
 static int ModeTicks;
 static int DoExit;
 static int DispTemp;
 static int CalRes;
+static int OldNAP;
 
 static union {
     UINT32 DW;
@@ -101,8 +103,9 @@ void OLEDTasks(){
             DoExit=1;
             switch(CMode){
                 case 0: //default mode - display temperature and do nothing
-                    if(CTTemp < 75){
+                    if(CTTemp < 75){                        
                         CMode = 0xFF;
+                        OldNAP = NAP;
                         ModeTicks = 255;
                         DoExit = 0;
                         break;
@@ -127,19 +130,24 @@ void OLEDTasks(){
                         OLEDMsg1="       HEATER";
                         OLEDMsg2="    SHORTCIRCUIT";
                     }
-                    else if(PV1->NoHeater || PV2->NoHeater){
-                        OLEDFlags.f.Message=1;
-                        OLEDMsg1="       HEATER";
-                        OLEDMsg2="        OPEN";
-                    }
                     else if(PV1->NoSensor || PV2->NoSensor){
                         OLEDFlags.f.Message = 1;
                         OLEDMsg1="       SENSOR";
                         OLEDMsg2="        OPEN";
                     }
+                    else if(PV1->NoHeater || PV2->NoHeater){
+                        OLEDFlags.f.Message=1;
+                        OLEDMsg1="       HEATER";
+                        OLEDMsg2="        OPEN";
+                    }
                     else{
                         OLEDFlags.f.BigTemp = 1;
-                        if((LISRTicks & 15) == 1)OLEDTemp = DispTemp >> 3;
+                        if((LISRTicks & 15) == 1){
+                            OLEDTemp = DispTemp >> 3;
+                            //i = CTTemp << 2;
+                            //i -= OLEDTemp;
+                            //if(i >= -8 && i <= 8) OLEDTemp = CTTemp << 2;
+                        }
                     }
                     break;
                 case 1: //set temperature mode
@@ -197,7 +205,7 @@ void OLEDTasks(){
                     OLEDFlags.f.Set = 1;
                     OLEDTemp = TTemp << 2;
                     break;
-                case 3:
+                case 3: //menu mode
                     if(BTicks[0].n | BTicks[1].n | BTicks[2].n){
                         if((BTicks[1].o <= 100) && (BTicks[1].n > 100)){
                             CMode = 0;
@@ -206,24 +214,35 @@ void OLEDTasks(){
                         ModeTicks = 250;
                         if(BTicks[0].n == 1)CPar++;
                         if(BTicks[2].n == 1)CPar--;
-                        if(CPar < 0)CPar = 0;
-                        if(CPar > ((sizeof(ParDef) / sizeof(ParDef[0])) - 1))CPar = (sizeof(ParDef) / sizeof(ParDef[0])) - 1;
+                        if(CPar < 0)CPar = (sizeof(ParDef) / sizeof(ParDef[0])) - 1;
+                        if(CPar > ((sizeof(ParDef) / sizeof(ParDef[0])) - 1))CPar = 0;
                         if(TopPar > CPar)TopPar = CPar;
                         if((CPar - TopPar) > 3)TopPar = CPar - 3;
                     }
                     if(BTicks[1].o &&(BTicks[1].o < 100) && (BTicks[1].n == 0)){
                         CMode = (CPar == ((sizeof(ParDef) / sizeof(ParDef[0])) - 1)) ? 5 : 4;
-                        //CMode=4;
+                        if(CMode == 4) CParVal = pars.b[CPar];
                     }
                     OLEDFlags.f.Pars = 1;
                     //DisplayData(parText[CPar]);
                     break;
-                case 4:
+                case 4: //menu set parameter mode
                     if(BTicks[0].n | BTicks[1].n | BTicks[2].n) ModeTicks = 250;
-                    if(BTicks[1].o && (BTicks[1].n == 0))CMode = 3;
+                    if(BTicks[1].o && (BTicks[1].n == 0)){
+                        pars.b[CPar] = CParVal;
+                        CMode = 3;
+                        break;
+                    }
                     OLEDFlags.f.Pars = 1;
-                    if(BTicks[0].d && (pars.b[CPar] < ParDef[CPar].Max))pars.b[CPar] += 1;
-                    if(BTicks[2].d && (pars.b[CPar] > ParDef[CPar].Min))pars.b[CPar] -= 1;
+                    if(BTicks[0].d)CParVal++;
+                    if(BTicks[2].d)CParVal--;
+                    if((CParVal < ParDef[CPar].Min))CParVal = ParDef[CPar].Max;
+                    if((CParVal > ParDef[CPar].Max))CParVal = ParDef[CPar].Min;
+                    if(ParDef[CPar].Immediate)pars.b[CPar] = CParVal;
+                    //if(BTicks[0].d && (CParVal < ParDef[CPar].Max))CParVal += 1;
+                    //if(BTicks[2].d && (CParVal > ParDef[CPar].Min))CParVal -= 1;
+                    //if(BTicks[0].d && (pars.b[CPar] < ParDef[CPar].Max))pars.b[CPar] += 1;
+                    //if(BTicks[2].d && (pars.b[CPar] > ParDef[CPar].Min))pars.b[CPar] -= 1;
                     break;
                 case 5: //Calibration
                     ModeTicks = 250;
@@ -242,7 +261,25 @@ void OLEDTasks(){
                     //OLEDFlags.f.Footer = 1;
                     //OLEDFlags.f.BigTemp = 1;
                     //if((LISRTicks & 15) == 1)OLEDTemp = DispTemp >> 3;
-                    
+                    if((pars.WakeUp & 1)!=0 && (BTicks[1].o <= 50) && (BTicks[1].n > 50)){ //exit from stand-by if long press on center button
+                        CTTemp=TTemp;
+                        CTicks = 0;
+                        CSeconds = 0;
+                        CMSeconds = 0;
+                        CMinutes = 0;
+                        CMode=0;
+                        BeepTicks=2;
+                    }
+                    if(pars.WakeUp & 2 && mainFlags.HolderPresent && NAP && OldNAP != NAP){ //exit from standby if iron was in holder end brought out of it
+                        CTTemp=TTemp;
+                        CTicks = 0;
+                        CSeconds = 0;
+                        CMSeconds = 0;
+                        CMinutes = 0;                        
+                        CMode=0;
+                        BeepTicks=2;
+                    }
+                    OldNAP = NAP;
                     OLEDFlags.f.Message=1;
                     OLEDMsg1="       ZZZ.. .  .";
                     OLEDMsg2="";
@@ -323,12 +360,14 @@ void OLEDTasks(){
         i = 4;
         while(i--){
             OLEDPrint816(0, i * 2, ParDef[TopPar + i].Name, 11);
-            if(ParDef[TopPar + i].OLEDDispFunc)(*ParDef[TopPar + i].OLEDDispFunc)(88, i * 2, pars.b[TopPar + i]);
+            if(ParDef[TopPar + i].OLEDDispFunc)(*ParDef[TopPar + i].OLEDDispFunc)(TopPar + i, 88, i * 2, pars.b[TopPar + i]);
             if((TopPar + i) == CPar){
                 if(CMode == 3){
+                    if(ParDef[TopPar + i].OLEDDispFunc)(*ParDef[TopPar + i].OLEDDispFunc)(TopPar + i, 88, i * 2, pars.b[TopPar + i]);
                     OLEDInvert(0, 128 - 44, i * 2, 2);
                 }
                 if(CMode == 4){
+                    if(ParDef[TopPar + i].OLEDDispFunc)(*ParDef[TopPar + i].OLEDDispFunc)(TopPar + i, 88, i * 2, CParVal);
                     OLEDInvert(128 - 44, 44, i * 2, 2);
                 }
             }
@@ -386,9 +425,9 @@ void MenuTasks(){
                     if(BTicks[i].n < 240)BTicks[i].n++;
                     BTicks[i].d = (BTicks[i].n == 1) || ((BTicks[i].n > 25) && ((LISRTicks & 3) == 1));
                 }
-                if(!B1){BTicks[0].n = 0;BTicks[0].d = 0;}
+                if(!(pars.Buttons?B3:B1)){BTicks[0].n = 0;BTicks[0].d = 0;}
                 if(!B2){BTicks[1].n = 0;BTicks[1].d = 0;}
-                if(!B3){BTicks[2].n = 0;BTicks[2].d = 0;}
+                if(!(pars.Buttons?B1:B3)){BTicks[2].n = 0;BTicks[2].d = 0;}
 
                 DispTemp -= DispTemp >> 3;
                 i = PIDVars[0].CTemp[0];
