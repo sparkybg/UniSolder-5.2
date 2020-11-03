@@ -9,7 +9,7 @@
 #include "OLED.h"
 
 //const unsigned char OLEDInitBuff[31]={0xAE, 0xD5,0xF0,0xA8,0x3F,0xD3,0x00,0x40,0x8D,0x10,0xA0,0xC0,0xDA,0x12,0x81,0xFF,0xD9,0x22,0xDB,0x40,0xA4,0xA6,0xAF,0x20,0x00,0x21,0,127,0x22,0,7};
-const unsigned char OLEDInitBuff[31]={
+const unsigned char OLEDInitBuff[]={
     0xAE,       //display off
     0xD5,0x80,  //set clock & divide ratio
     0xA8,0x3F,  //set MUX ratio
@@ -26,8 +26,12 @@ const unsigned char OLEDInitBuff[31]={
     0xA6,       //set normal display
     0xAF,       //display on
     0x20,0x00,  //set horizontal addressing mode
-    0x21,0,127, //start/end column
-    0x22,0,7    //start/end row
+};
+
+const unsigned char OLEDPreUpdateBuff[]={
+    0x21,0,127,  //start/end column
+    0x22,0,7,    //start/end row
+    0x81         //contrast
 };
 
 void OLEDInit(){
@@ -40,25 +44,24 @@ void OLEDInit(){
     OLED_DC = 0;
     OLED_CS = 0;
     _delay_ms(100);
-    mcuSPISendBytes((int*)OLEDInitBuff, 31);
-    mcuSPIWait();
+    mcuSPISendBytes((int*)OLEDInitBuff, sizeof(OLEDInitBuff));
     OLEDFill(0, 128, 0, 8, 0);
     OLEDUpdate();
 }
 
 void OLEDUpdate(){
+    mcuSPIWait();
+    mcuSPIStop();
     OLED_DC = 0;
     OLED_CS = 0;
-    mcuSPISendByte(pars.DispRot ? 0xA1 : 0xA0);
-    mcuSPISendByte(pars.DispRot ? 0xC8 : 0xC0);
-    mcuSPISendByte(0x81);
-    mcuSPISendByte((pars.Bri << 4) - 15);
+    mcuSPISendBytes((int*)OLEDPreUpdateBuff, sizeof(OLEDPreUpdateBuff));
+    mcuSPISendByte((pars.Bri << 4) - 15);           //brightness
+    mcuSPISendByte(pars.DispRot ? 0xC8 : 0xC0);     //rotation H
+    mcuSPISendByte(pars.DispRot ? 0xA1 : 0xA0);     //rotation V
     mcuSPIWait();
+    
     OLED_DC = 1;
-    OLED_CS = 0;
-    mcuSPISendBytes((unsigned int *) OLEDBUFF.B[0], 128*8);
-    mcuSPIWait();
-    OLED_CS = 1;
+    mcuSPISendAuto(OLEDBUFF.B[0],128*8);
 }
 
 void OLEDFill(int col, int colnum, int row, int rownum, UINT8 b){

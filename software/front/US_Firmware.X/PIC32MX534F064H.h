@@ -137,12 +137,14 @@ P32_EXTERN void mcuADCStartManual();
 P32_EXTERN void mcuADCRead(int ADCCH, int num);
 P32_EXTERN int mcuADCReadWait(int ADCCH, int num);
 
-#define mcuSPIOpen() SpiChnOpen(SPI_CHANNEL3,SPI_OPEN_MSTEN | SPI_OPEN_MODE8 | SPI_OPEN_CKP_HIGH, 4)
+#define mcuSPIOpen() SpiChnOpen(SPI_CHANNEL3,SPI_OPEN_MSTEN | SPI_OPEN_MODE8 | SPI_OPEN_CKP_HIGH, 8)
 #define mcuSPIClose() SpiChnClose(SPI_CHANNEL3)
 #define mcuSPISendByte(b) SpiChnPutC(SPI_CHANNEL3, b)
 #define mcuSPISendBytes(b,n) SpiChnPutS(SPI_CHANNEL3,b,n)
 #define mcuSPIIsBusy() SpiChnIsBusy(SPI_CHANNEL3)
 P32_EXTERN void mcuSPIWait();
+P32_EXTERN void mcuSPIStop();
+P32_EXTERN void mcuSPIStartAuto(void * buff, int len);
 
 #define mcuI2CStart() {int i=INTDisableInterrupts(); I2CStart(I2C4); INTRestoreInterrupts(i); }
 #define mcuI2CStop() {int i=INTDisableInterrupts(); I2CStop(I2C4); INTRestoreInterrupts(i); }

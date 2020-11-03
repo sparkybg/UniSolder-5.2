@@ -89,6 +89,7 @@ void mcuInit1(){
     SPEAKER=1;
 
     mcuADCStop();
+    mcuSPIStop();
 }
 
 void mcuInit2(){
@@ -359,5 +360,58 @@ void __ISR(_I2C_4_VECTOR,IPL6SOFT) I2CISR(void)
 void __ISR(_OUTPUT_COMPARE_2_VECTOR,IPL5SOFT) PIDISR(void){
     INTClearFlag(INT_OC2);
 }
+
+int SPIAuto;
+void mcuSPIStop()
+{
+    DmaChnAbortTxfer(DMA_CHANNEL2);
+    //mcuSPIClose();
+    mSPI3AClearAllIntFlags();
+    mSPI3ATXIntEnable(0);
+    mSPI3ARXIntEnable(0);
+    //mcuSPIOpen()
+    SPIAuto=0;
+};
+
+void mcuSPISendAuto(void * buffer, int len)
+{
+    SPIAuto = 1;
+    mcuSPIStop();
+    //mcuSPIOpen();
+    DmaChnOpen(DMA_CHANNEL2,DMA_CHN_PRI3, DMA_OPEN_DEFAULT);
+    DmaChnSetEventControl(DMA_CHANNEL2, DMA_EV_START_IRQ_EN | DMA_EV_START_IRQ(_SPI3_TX_IRQ));
+	DmaChnSetTxfer(DMA_CHANNEL2,(void*)buffer,(void*)&SPI3BUF, len, 1, 1);
+    DmaChnWriteEvEnableFlags(DMA_CHANNEL2, DMA_EV_CELL_DONE);
+    DmaChnEnable(DMA_CHANNEL2);
+
+	//DmaChnSetEvEnableFlags(dmaTxChn, DMA_EV_BLOCK_DONE);	// enable the transfer done interrupt, when all buffer transferred
+    //INTSetVectorPriority(DMA_CHANNEL3, INT_PRIORITY_LEVEL_5);
+	//INTSetVectorSubPriority(INT_VECTOR_DMA3, INT_SUB_PRIORITY_LEVEL_2);
+	//INTEnable(INT_SOURCE_DMA(dmaTxChn), INT_ENABLED);		// enable the chn interrupt in the INT controller
+	//DmaTxIntFlag=0;			// clear the interrupt flag we're  waiting on
+
+	// wait for the transfer to complete
+	// In a real application you can do some other stuff while the DMA transfer is taking place
+	//while(!DmaTxIntFlag);
+	// ok, we've sent the data in the buffer
+	//return 1;
+}
+
+// handler for the DMA channel 1 interrupt
+//void __ISR(_DMA1_VECTOR, IPL5SOFT) DmaHandler1(void)
+//{
+	//int	evFlags;				// event flags when getting the interrupt
+//
+	//INTClearFlag(INT_SOURCE_DMA(DMA_CHANNEL1));	// acknowledge the INT controller, we're servicing int
+//
+	//evFlags=DmaChnGetEvFlags(DMA_CHANNEL1);	// get the event flags
+//
+//    if(evFlags&DMA_EV_BLOCK_DONE)
+//    { // just a sanity check. we enabled just the DMA_EV_BLOCK_DONE transfer done interrupt
+//    	DmaTxIntFlag=1;
+//        DmaChnClrEvFlags(DMA_CHANNEL1, DMA_EV_BLOCK_DONE);
+//    }
+//}
+
 
 #undef _PIC32MX534F064H_C

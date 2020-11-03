@@ -361,7 +361,7 @@ const t_IronPars Irons[12] = {
                 10,                         //CurrentA
                 0,                          //CurrentB
                 10,                         //HRCompCurrent
-                202,                        //Gain
+                170,                        //Gain
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
@@ -454,7 +454,7 @@ const t_IronPars Irons[12] = {
                 },
                 -1,                         //WSLength
                 1,                          //PID_DGain
-                (UINT16)(0.025 * 32768),    //PID_KP
+                (UINT16)(0.25 * 32768),     //PID_KP
                 (UINT16)(0.004 * 32768),    //PID_KI
                 4,                          //PID_OVSGain
                 40,                         //PID_PMax

@@ -219,12 +219,16 @@ void main(void){
 
     INTClearFlag(INT_OC2);
     INTSetVectorPriority(_OUTPUT_COMPARE_2_VECTOR, INT_PRIORITY_LEVEL_5);
-    INTSetVectorSubPriority(_OUTPUT_COMPARE_2_VECTOR, INT_SUB_PRIORITY_LEVEL_3);
+    INTSetVectorSubPriority(_OUTPUT_COMPARE_2_VECTOR, INT_SUB_PRIORITY_LEVEL_1);
     INTEnable(INT_OC2,INT_ENABLED);
     OLEDPrintNum816(0, 0, 2, 43);
     OLEDUpdate();
 
     mcuInitISRTimer();
+    
+    //INTSetVectorPriority(DMA_CHANNEL3, INT_PRIORITY_LEVEL_5);
+	//INTSetVectorSubPriority(INT_VECTOR_DMA3, INT_SUB_PRIORITY_LEVEL_2);
+
     INTEnableSystemMultiVectoredInt();
     OLEDPrintNum816(0, 0, 2, 44);
     OLEDUpdate();
