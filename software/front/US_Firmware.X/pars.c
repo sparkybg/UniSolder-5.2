@@ -15,23 +15,26 @@ const char * StrDispRot[]   = {"0   ", "180 "};
 const char * StrResume[]    = {"OFF ", "KEY ", "HOLD", "BOTH"};
 const char * StrButtons[]   = {"+/- ", "-/+ "};
 const char * StrOnOffAuto[] = {"OFF ", "ON  ", "AUTO"};
+const char * StrScroll[]    = {"DOWN", "UP  "};
 
-const t_ParDef ParDef[15] = {
-    {"        T1 ", 125,  75, 225, 0, 0,            &ParDispTemp},
-    {"        T2 ", 150,  75, 225, 0, 0,            &ParDispTemp},
-    {"        T3 ", 175,  75, 225, 0, 0,            &ParDispTemp},
-    {" HOL. TEMP ", 150,  75, 225, 0, 0,            &ParDispTemp},
-    {"SLEEP TEMP ", 125,  75, 225, 0, 0,            &ParDispTemp},
-    {"SLEEP TIME ",  20,   0, 255, 0, 0,            &ParDispNumOff},
-    {"  STAND-BY ",  30,   0, 255, 0, 0,            &ParDispNumOff},
-    {"    HOLDER ",   2,   0,   2, 0, StrOnOffAuto, &ParDispStr},
-    {"   DEGREES ",   0,   0,   1, 1, 0,            &ParDispCF},
-    {"BRIGHTNESS ",  15,   1,  15, 1, 0,            &ParDispNum},
-    {"   BUTTONS ",   0,   0,   1, 0, StrButtons,   &ParDispStr},    
-    {"   WAKE UP ",   0,   0,   3, 0, StrResume,    &ParDispStr},    
-    {"DISPL. ROT ",   0,   0,   1, 1, StrDispRot,   &ParDispStr},
-    {"SELSOR FLT ",   0,   0, 255, 0, 0,            &ParDispNumOff},
-    {" CALIBRATE ",  15,   1,  15, 0, 0, 0}
+const t_ParDef ParDef[17] = {
+    {"        T1 ", 125, MINTEMP, MAXTEMP, 0, 0,            &ParDispTemp},
+    {"        T2 ", 150, MINTEMP, MAXTEMP, 0, 0,            &ParDispTemp},
+    {"        T3 ", 175, MINTEMP, MAXTEMP, 0, 0,            &ParDispTemp},
+    {"  HOL.TEMP ", 150, MINTEMP, MAXTEMP, 0, 0,            &ParDispTemp},
+    {"SLEEP TEMP ", 125, MINTEMP, MAXTEMP, 0, 0,            &ParDispTemp},
+    {"SLEEP TIME ",  20,       0,     255, 0, 0,            &ParDispNumOff},
+    {"  STAND-BY ",  30,       0,     255, 0, 0,            &ParDispNumOff},
+    {"    HOLDER ",   2,       0,       2, 0, StrOnOffAuto, &ParDispStr},
+    {"   DEGREES ",   0,       0,       1, 1, 0,            &ParDispCF},
+    {"BRIGHTNESS ",  15,       1,      15, 1, 0,            &ParDispNum},
+    {"   BUTTONS ",   0,       0,       1, 0, StrButtons,   &ParDispStr},    
+    {"   WAKE UP ",   0,       0,       3, 0, StrResume,    &ParDispStr},    
+    {"DISPL. ROT ",   0,       0,       1, 1, StrDispRot,   &ParDispStr},
+    {"SENSOR FLT ",   0,       0,     255, 0, 0,            &ParDispNumOff},
+    {"    SCROLL ",   0,       0,       1, 0, StrScroll,    &ParDispStr},
+    {"  DISP.COL ",   0,       0,      15, 1, 0,            &ParDispNum},
+    {" CALIBRATE ",  15,       1,      15, 0, 0, 0}
 };
 
 

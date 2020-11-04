@@ -51,7 +51,7 @@ const t_IronPars NoIronPars = {
     }
 };
 
-const t_IronPars Irons[12] = {
+const t_IronPars Irons[] = {
     {
         0, 
         0x1011,
@@ -113,7 +113,7 @@ const t_IronPars Irons[12] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    27.7,                   //c1
+                    26.8,                   //c1
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -365,7 +365,7 @@ const t_IronPars Irons[12] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    101.9,                  //c1
+                    116.4,                  //c1
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -462,6 +462,81 @@ const t_IronPars Irons[12] = {
             }
         }
     },
+    {
+        0, 
+        0x1515,
+        "JBC Nanotweezers        ",
+        {
+            {
+                1,                          //Type
+                {
+                    1,                      //HChannel
+                    2,                      //SChannel
+                    1,                      //CBandA
+                    1,                      //CBandB
+//                    3                       //CBand
+                },
+                0,                          //CurrentA
+                10,                         //CurrentB
+                10,                         //HRCompCurrent
+                170,                        //Gain
+                0,                          //Offset
+                {                           //TPoly
+                    0,                      //c0
+                    116.4,                  //c1
+                    0,                      //c2
+                    0,                      //c3
+                    0,                      //c4
+                    0,                      //c5
+                    0,                      //c6
+                    0,                      //c7
+                    0,                      //c8
+                    0                       //c9
+                },
+                -1,                         //WSLength
+                1,                          //PID_DGain
+                (UINT16)(0.25 * 32768),     //PID_KP
+                (UINT16)(0.003 * 32768),    //PID_KI
+                4,                          //PID_OVSGain
+                14,                         //PID_PMax
+                14                          //PID_PNom
+            },
+            {
+                1,                          //Type
+                {
+                    0,                      //HChannel
+                    5,                      //SChannel
+                    1,                      //CBandA
+                    1,                      //CBandB
+                },
+                10,                         //CurrentA
+                0,                          //CurrentB
+                10,                         //HRCompCurrent
+                170,                        //Gain
+                0,                          //Offset
+                {                           //TPoly
+                    0,                      //c0
+                    116.4,                  //c1
+                    0,                      //c2
+                    0,                      //c3
+                    0,                      //c4
+                    0,                      //c5
+                    0,                      //c6
+                    0,                      //c7
+                    0,                      //c8
+                    0                       //c9
+                },
+                -1,                         //WSLength
+                1,                          //PID_DGain
+                (UINT16)(0.25 * 32768),     //PID_KP
+                (UINT16)(0.003 * 32768),    //PID_KI
+                4,                          //PID_OVSGain
+                14,                         //PID_PMax
+                14                          //PID_PNom
+            }
+        }
+    },
+
     {
         0, 
         0x1111,

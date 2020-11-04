@@ -58,6 +58,7 @@ void OLEDUpdate(){
     mcuSPISendByte((pars.Bri << 4) - 15);           //brightness
     mcuSPISendByte(pars.DispRot ? 0xC8 : 0xC0);     //rotation H
     mcuSPISendByte(pars.DispRot ? 0xA1 : 0xA0);     //rotation V
+    mcuSPISendByte(0x10 + pars.DispCol);
     mcuSPIWait();
     
     OLED_DC = 1;

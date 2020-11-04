@@ -11,6 +11,9 @@
 #include "typedefs.h"
 #include "pars.h"
 
+#define MINTEMP 50
+#define MAXTEMP 225
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
