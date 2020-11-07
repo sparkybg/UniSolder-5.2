@@ -50,6 +50,8 @@ volatile unsigned int   C_PER;                      //Character display period
 
 volatile mainflags_t mainFlags = {1, 1, 1, 0};
 
+volatile int CalCh;
+
 /****** PARAMETERS SAVED IN EEPROM WHEN POWER IS LOST**************************/
 volatile unsigned int   TTemp;                      //target temperature/2
 volatile pars_t         pars;
@@ -108,25 +110,15 @@ void SavePars(void)
 
 void main(void){
     int i;
-
+    SPEAKER=1;
     mcuInit1();
+    SPEAKER=0;
 
-    OLED_CS=1;
-    OLED_DC=1;
-    OLED_RES=0;
-    _delay_ms(100);
-    SDI_OUT=0;
-    SDO_OUT=0;
-    SDISDO_OO;
-    OLED_RES=1;
-    mcuSPIOpen();
     OLEDInit();        
     OLEDPrintNum816(0, 0, 2, 0);
     OLEDUpdate();
 
     mcuInit2();
-
-    SPEAKER=0;
 
     OLEDPrintNum816(0, 0, 2, 20);
     OLEDUpdate();
@@ -135,7 +127,8 @@ void main(void){
     _delay_ms(100);
     OLEDPrintNum816(0, 0, 2, 21);
     OLEDUpdate();
-
+    
+    CalCh=0;
     mainFlags.ACPower = 0;
     MAINS_PER = 0;
     mcuDCTimerReset();

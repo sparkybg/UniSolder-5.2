@@ -28,11 +28,10 @@ typedef union {
         UINT8 WakeUp;                               //Wake up from standby (0-off, 1-long key press, 2-holder sensor, 3-key or sensor)
         UINT8 DispRot;                              //Display rotation (0 - 0deg, 1 - 180deg)
         UINT8 NapFilterTicks;                       //Holder/stand sensor filter ticks
-        UINT8 MenuScroll;                           //Menu scroll direction (0 - +=down, 1 - +=up)
-        UINT8 DispCol;                              //Display staring coluimn (0 - 15))
+        UINT8 MenuDown;                             //Menu down key (0 - Key+, 1 - Key-)
         UINT8 Cal;
     };
-    UINT8 b[17];
+    UINT8 b[16];
 }pars_t;
 
 typedef struct {
@@ -41,12 +40,13 @@ typedef struct {
     UINT8 Min;
     UINT8 Max;
     UINT8 Immediate;
-    const char ** Strings;
+    const char * Suffix;
+    const char ** Strings;    
     void (*OLEDDispFunc)(int, int, int, int);
 }t_ParDef;
 
 #ifndef _PARS_C
-extern const t_ParDef ParDef[17];
+extern const t_ParDef ParDef[16];
 #endif
 
 #ifdef	__cplusplus

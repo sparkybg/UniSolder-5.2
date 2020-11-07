@@ -55,8 +55,8 @@ void mcuInit1(){
     OpenCoreTimer(0xFFFFFFFF);
     SYSTEMConfigWaitStates(80000000);
 
-    LATB=0b1000000000000000;
-    LATC=0b0110000000000000;
+    LATB=0;
+    LATC=0;
     LATD=0b100001010000;
     LATE=0;
     LATF=0;
@@ -73,9 +73,7 @@ void mcuInit1(){
     ODCE=0;
     ODCF=0;
     ODCG=0;
-
-    TRISBbits.TRISB7=0;
-
+    
     HCH=0;
     ID_3S=0;
     ID_OUT=0;
@@ -85,8 +83,6 @@ void mcuInit1(){
     CHSEL1=0;
     CHSEL2=1;
     CHPOL=0;
-
-    SPEAKER=1;
 
     mcuADCStop();
     mcuSPIStop();

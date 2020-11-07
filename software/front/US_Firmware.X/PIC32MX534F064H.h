@@ -47,7 +47,7 @@ P32_EXTERN unsigned int mcuSqrt(unsigned int);
 #define CHSEL1      LATEbits.LATE5
 #define CHSEL2      LATEbits.LATE4
 #define CHPOL       LATEbits.LATE3
-#define OLED_VDD    LATCbits.LATD11
+#define OLED_VDD    LATDbits.LATD11
 #define OLED_VCC    LATCbits.LATC14
 #define OLED_RES    LATDbits.LATD7
 #define OLED_DC     LATDbits.LATD6
@@ -63,17 +63,32 @@ P32_EXTERN unsigned int mcuSqrt(unsigned int);
 #define B3          PORTDbits.RD10
 #define ID_IN       PORTBbits.RB15
 #define NAP         PORTGbits.RG9
+#define OLED_RES_IN PORTDbits.RD7
+#define OLED_DC_IN  PORTDbits.RD6
+#define OLED_CS_IN  PORTDbits.RD4
+
 #define ID_3S       TRISBbits.TRISB15
+#define OLED_RES_3S TRISDbits.TRISD7
+#define OLED_DC_3S  TRISDbits.TRISD6
+#define OLED_CS_3S  TRISDbits.TRISD4
+
+#define OLED_RES_PU CNPUEbits.CNPUE16
+#define OLED_DC_PU  CNPUEbits.CNPUE15
+#define OLED_CS_PU  CNPUEbits.CNPUE13
 
 #define SPEAKER     OC1CONbits.ON
 #define SPKON       if(!SPEAKER)SPEAKER=1
 #define SPKOFF      if(SPEAKER)SPEAKER=0
 
-#define SDISDO_IO   {TRISDSET=0b100;TRISDCLR=0b1000;}
-#define SDISDO_OI   {TRISDCLR=0b100;TRISDSET=0b1000;}
-#define SDISDO_OO   {TRISDCLR=0b1100;}
+#define SCK_3S      TRISDbits.TRISD1
+#define SCK_IN      PORTDbits.RD1
+#define SCK_OUT     LATDbits.LATD1
+
+#define SDI_3S      TRISDbits.TRISD2
 #define SDI_IN      PORTDbits.RD2
 #define SDI_OUT     LATDbits.LATD2
+
+#define SDO_3S      TRISDbits.TRISD3
 #define SDO_IN      PORTDbits.RD3
 #define SDO_OUT     LATDbits.LATD3
 

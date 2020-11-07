@@ -38,6 +38,8 @@ extern "C" {
     extern volatile unsigned int TTemp;
     extern volatile mainflags_t mainFlags;
     extern volatile pars_t pars;
+    
+    extern volatile int CalCh;
 #endif
 
 #ifdef	__cplusplus

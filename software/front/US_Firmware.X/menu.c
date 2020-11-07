@@ -48,6 +48,7 @@ static union {
         int Set:1;
         int Pars:1;
         int SetPars:1;
+        int StandBy:1;
         int Cal:1;
     }f;
 }OLEDFlags;
@@ -87,16 +88,10 @@ void MenuInit(){
     FNAP = 1;
     OldNAP = 1;
     NapTicks = pars.NapFilterTicks + 1;
+    CalCh = 0;
 }
 
 void OLEDTasks(){
-    int i;
-    //UINT8 b;
-    t_PIDVars * PV1;
-    t_PIDVars * PV2;
-    PV1 = (t_PIDVars *)&PIDVars[0];
-    PV2 = PV1;
-    if(IronPars.Config[1].Type) PV2 = (t_PIDVars *)&PIDVars[1];
     OLEDFlags.DW=0;
     if(mainFlags.PowerLost){
         OLEDFlags.f.Message = 1;
@@ -104,6 +99,8 @@ void OLEDTasks(){
         OLEDMsg2 = "";
     }
     else{
+        t_PIDVars * PV1 = (t_PIDVars *)&PIDVars[0];
+        t_PIDVars * PV2 = PV1;IronPars.Config[1].Type? (t_PIDVars *)&PIDVars[1]: PV1;
         do{
             DoExit=1;
             switch(CMode){
@@ -128,6 +125,8 @@ void OLEDTasks(){
                     }
                     OLEDFlags.f.Header = 1;
                     OLEDFlags.f.Footer = 1;
+                    
+
                     if(IronPars.Config[0].Type == 255){
                     }
                     else if(PV1->ShortCircuit || PV2->ShortCircuit){
@@ -149,11 +148,8 @@ void OLEDTasks(){
                         OLEDFlags.f.BigTemp = 1;
                         if((LISRTicks & 15) == 1){
                             OLEDTemp = DispTemp >> 3;
-                            //i = CTTemp << 2;
-                            //i -= OLEDTemp;
-                            //if(i >= -8 && i <= 8) OLEDTemp = CTTemp << 2;
                         }
-                    }
+                    }                    
                     break;
                 case 1: //set temperature mode
                     if(BTicks[1].n > 100)CMode = 0;
@@ -164,7 +160,7 @@ void OLEDTasks(){
                     }
                     if(BTicks[0].n | BTicks[2].n){ //Temp inc/dec
                         ModeTicks = 100;
-                        i = TTemp;
+                        int i = TTemp;
                         if(BTicks[0].d)TTemp += (BTicks[0].n>>6) + 1;
                         if(BTicks[2].d)TTemp -= (BTicks[2].n>>6) + 1;
                         if(TTemp < MINTEMP)TTemp = MINTEMP;
@@ -185,6 +181,7 @@ void OLEDTasks(){
                         break;
                     }
                     if(BTicks[1].o && (BTicks[1].n == 0)){
+                        int i;
                         ModeTicks = 75;
                         if(OldMode == CMode){
                             CRstTemp++;
@@ -217,8 +214,8 @@ void OLEDTasks(){
                             break;
                         }
                         ModeTicks = 250;
-                        if(BTicks[(pars.MenuScroll ? 2 : 0)].n == 1){CPar++; CRow++;}
-                        if(BTicks[(pars.MenuScroll ? 0 : 2)].n == 1){CPar--; CRow--;}
+                        if(BTicks[(pars.MenuDown ? 2 : 0)].n == 1){CPar++; CRow++;}
+                        if(BTicks[(pars.MenuDown ? 0 : 2)].n == 1){CPar--; CRow--;}
                         if(CRow < 0)CRow = 0;
                         if(CRow > 3)CRow = 3;
                         if(CPar < 0)CPar = (sizeof(ParDef) / sizeof(ParDef[0])) - 1;
@@ -229,65 +226,61 @@ void OLEDTasks(){
                         if(CMode == 4) CParVal = pars.b[CPar];
                     }
                     OLEDFlags.f.Pars = 1;
-                    //DisplayData(parText[CPar]);
                     break;
                 case 4: //menu set parameter mode
                     if(BTicks[0].n | BTicks[1].n | BTicks[2].n) ModeTicks = 250;
                     if(BTicks[1].o && (BTicks[1].n == 0)){
                         pars.b[CPar] = CParVal;
                         CMode = 3;
-                        break;
+                    }
+                    else {
+                        if(BTicks[0].d)CParVal++;
+                        if(BTicks[2].d)CParVal--;
+                        if((CParVal < ParDef[CPar].Min))CParVal = ParDef[CPar].Max;
+                        if((CParVal > ParDef[CPar].Max))CParVal = ParDef[CPar].Min;
+                        if(ParDef[CPar].Immediate)pars.b[CPar] = CParVal;
                     }
                     OLEDFlags.f.Pars = 1;
-                    if(BTicks[0].d)CParVal++;
-                    if(BTicks[2].d)CParVal--;
-                    if((CParVal < ParDef[CPar].Min))CParVal = ParDef[CPar].Max;
-                    if((CParVal > ParDef[CPar].Max))CParVal = ParDef[CPar].Min;
-                    if(ParDef[CPar].Immediate)pars.b[CPar] = CParVal;
-                    //if(BTicks[0].d && (CParVal < ParDef[CPar].Max))CParVal += 1;
-                    //if(BTicks[2].d && (CParVal > ParDef[CPar].Min))CParVal -= 1;
-                    //if(BTicks[0].d && (pars.b[CPar] < ParDef[CPar].Max))pars.b[CPar] += 1;
-                    //if(BTicks[2].d && (pars.b[CPar] > ParDef[CPar].Min))pars.b[CPar] -= 1;
                     break;
                 case 5: //Calibration
                     ModeTicks = 250;
-                    if(BTicks[1].o &&(BTicks[1].o<100) && (BTicks[1].n == 0)){
-                        mainFlags.Calibration = 0;
-                        CMode = 0;
-                        break;
+                    if(BTicks[1].o && !BTicks[1].n){
+                        if((BTicks[1].o<100)){
+                            mainFlags.Calibration = 0;
+                            CMode = 0;
+                            break;
+                        }
+                        else{
+                            CalCh=CalCh?0:1;
+                        }
                     }
-                    mainFlags.Calibration = 1;
+                    else{
+                        UINT16 Current = CalCh ? IronPars.Config[0].CurrentB : IronPars.Config[0].CurrentB;
+                        if(BTicks[0].d && Current < 256) Current++;
+                        if(BTicks[2].d && Current > 0) Current--;
+                        if(CalCh){
+                            IronPars.Config[0].CurrentB = Current;
+                        }
+                        else{
+                            IronPars.Config[0].CurrentA = Current;                            
+                        }
+                    }
                     OLEDFlags.f.Cal = 1;
-                    if(BTicks[0].d && (IronPars.Config[0].CurrentA < 256)) IronPars.Config[0].CurrentA++;
-                    if(BTicks[2].d && (IronPars.Config[0].CurrentA > 0)) IronPars.Config[0].CurrentA--;
+                    mainFlags.Calibration = 1;
                     break;
                 case 0xFF: //stand-by
-                    //OLEDFlags.f.Header = 1;
-                    //OLEDFlags.f.Footer = 1;
-                    //OLEDFlags.f.BigTemp = 1;
-                    //if((LISRTicks & 15) == 1)OLEDTemp = DispTemp >> 3;
-                    if((pars.WakeUp & 1)!=0 && (BTicks[1].o <= 50) && (BTicks[1].n > 50)){ //exit from stand-by if long press on center button
-                        CTTemp=TTemp;
+                    if(((pars.WakeUp & 1)!=0 && BTicks[1].o <= 50 && BTicks[1].n > 50) ||
+                       (pars.WakeUp & 2 && mainFlags.HolderPresent && FNAP && OldNAP != FNAP)){ //exit from stand-by
+                        CTTemp = TTemp;
                         CTicks = 0;
                         CSeconds = 0;
                         CMSeconds = 0;
                         CMinutes = 0;
-                        CMode=0;
-                        BeepTicks=2;
-                    }
-                    if(pars.WakeUp & 2 && mainFlags.HolderPresent && FNAP && OldNAP != FNAP){ //exit from standby if iron was in holder end brought out of it
-                        CTTemp=TTemp;
-                        CTicks = 0;
-                        CSeconds = 0;
-                        CMSeconds = 0;
-                        CMinutes = 0;                        
-                        CMode=0;
-                        BeepTicks=2;
+                        CMode = 0;
+                        BeepTicks = 2;
                     }
                     OldNAP = FNAP;
-                    OLEDFlags.f.Message=1;
-                    OLEDMsg1="       ZZZ.. .  .";
-                    OLEDMsg2="";
+                    OLEDFlags.f.StandBy = 1;
                     break;
             }
         }while(!DoExit);
@@ -298,8 +291,6 @@ void OLEDTasks(){
     if(OLEDFlags.f.BigTemp){
         OLEDPrintNum3248(12, 1, pars.Deg ? ((OLEDTemp * 461) >> 9) + 32 : OLEDTemp >> 1);
         OLEDPrintCF1648(108, 1, pars.Deg ? 1 : 0);
-        //OLEDPrint68(104, 6, "/", 1);
-        //OLEDPrintNum68(110, 6, 3, CTTemp);
     }
 
     if(OLEDFlags.f.Set){
@@ -314,19 +305,13 @@ void OLEDTasks(){
     }
 
     if(OLEDFlags.f.Header){
-        //OLEDPrintNum68(0,0,8,PIDVars[0].CPolyX * 10.0);
-        //OLEDPrintNum68(64,0,8,PIDVars[0].PrbFCTemp1);
         OLEDPrint68(0,0,(const char *)&IronPars.Name, 21);
     }
     if(OLEDFlags.f.Footer){
         UINT8 b;
-        int p, 
+        int i, p, 
             df = PIDVars[0].PIDDutyFull, 
             AVG = ADCAVG;
-        //OLEDPrintNum88(0, 6, 8, PIDVars[0].Stub);
-        //OLEDPrintNum88(0, 7, 5, ((PIDVars[0].HVAvg >> ADCAVG) * 840) >> 10);
-        //OLEDPrintNum88(48, 7, 5, ((PIDVars[0].HIAvg >> ADCAVG) * 241) >> 10);
-        //OLEDPrintNum88(96, 7, 3, PIDVars[0].HPAvg >> ADCAVG);
 
         OLEDPrint68(0, 7, mainFlags.ACPower ? "AC" : "DC", 2);
         OLEDPrint68(12, 7, PIDVars[0].Power ? (PIDVars[0].Power == 1 ? "H": "Q"): "F", 1);
@@ -345,10 +330,10 @@ void OLEDTasks(){
         p >>= 16;
         for(i = 0; i <= 64; i++){
             b = 0;
-            if((i & 1)==0)b += 16;
-            if((i & 15)==0)b += 40;
-            if((i & 31)==0)b += 68;
-            if((i & 63)==0)b += 130;
+            if(!(i & 1))b += 16;
+            if(!(i & 15))b += 40;
+            if(!(i & 31))b += 68;
+            if(!(i & 63))b += 130;
             if(i && df){
                 df--;
                 b =~ b;
@@ -363,18 +348,17 @@ void OLEDTasks(){
     }
     
     if(OLEDFlags.f.Pars){
-        int par = CPar - CRow;
+        int i, par = CPar - CRow;
         if(par < 0) par += sizeof(ParDef) / sizeof(ParDef[0]);
         for(i=0; i < 4; i++){
             OLEDPrint816(0, i * 2, ParDef[par].Name, 11);
-            if(ParDef[par].OLEDDispFunc)(*ParDef[par].OLEDDispFunc)(par, 88, i * 2, pars.b[par]);
+            if(ParDef[par].OLEDDispFunc)(*ParDef[par].OLEDDispFunc)(par, 88, i * 2,  pars.b[par]);
             if(par == CPar){
                 if(CMode == 3){
-                    if(ParDef[par].OLEDDispFunc)(*ParDef[par].OLEDDispFunc)(par, 88, i * 2, pars.b[par]);
                     OLEDInvert(0, 128 - 44, i * 2, 2);
                 }
                 if(CMode == 4){
-                    if(ParDef[par].OLEDDispFunc)(*ParDef[par].OLEDDispFunc)(par, 88, i * 2, CParVal);
+                    if(ParDef[par].OLEDDispFunc)(*ParDef[par].OLEDDispFunc)(par, 88, i * 2,  CParVal);
                     OLEDInvert(128 - 44, 44, i * 2, 2);
                 }
             }
@@ -383,8 +367,19 @@ void OLEDTasks(){
         }        
     }
     
+    if(OLEDFlags.f.StandBy){
+        static int X, Y, DX, DY;
+        if(X <= 0) DX = 1;
+        if(Y <= 0) DY = 1;
+        if(X >= ((128 - 18) * 2)) DX = -1;
+        if(Y >= ((64 - 8) * 2)) DY =- 1;                                    
+        X += DX;
+        Y += DY;        
+        OLEDPrintGr68(X >> 1, Y >> 1, "ZZZ", 3);
+    }
+    
     if(OLEDFlags.f.Cal){
-        UINT32 dw = (INT32)IronPars.Config[0].CurrentA * (INT32)IronPars.Config[0].Gain;
+        UINT32 dw = (INT32)(CalCh?IronPars.Config[0].CurrentA : IronPars.Config[0].CurrentB) * (INT32)IronPars.Config[0].Gain;
         if(dw){                    
             CalRes -= CalRes >> 3;                        
             CalRes += ((INT32)PIDVars[0].ADCTemp[0] * (INT32)33437L) / dw;
@@ -403,13 +398,13 @@ void OLEDTasks(){
         OLEDPrintNum68(64,2,2,IronID >> 8);
         OLEDPrintNum68(80,2,2,IronID & 255);
         if(IronPars.Config[1].Type==0 || (LISRTicks % 200) <100){
-            OLEDPrintNum68(64,3,1,0);
-            OLEDPrintNum68(80,3,3,IronPars.Config[0].CurrentA);
+            OLEDPrintNum68(64,3,1,CalCh);
+            OLEDPrintNum68(80,3,3,CalCh ? IronPars.Config[0].CurrentB : IronPars.Config[0].CurrentA);
             OLEDPrintNum68(32,4,4,PIDVars[0].ADCTemp[0]);
         }
         else{
-            OLEDPrintNum68(64,3,1,1);
-            OLEDPrintNum68(80,3,3,IronPars.Config[1].CurrentB);
+            OLEDPrintNum68(64,3,1,1-CalCh);
+            OLEDPrintNum68(80,3,3,CalCh ? IronPars.Config[1].CurrentA : IronPars.Config[1].CurrentB);
             OLEDPrintNum68(32,4,4,PIDVars[1].ADCTemp[0]);            
         }
         OLEDPrintNum68(16,5,4,CalRes >> 3);
@@ -442,8 +437,6 @@ void MenuTasks(){
                 i = PIDVars[0].CTemp[0];
                 if(IronPars.Config[1].Type) i = (i + PIDVars[1].CTemp[0]) >> 1;
                 DispTemp += i;
-                //i <<= 3;
-                //if(abs(DispTemp-i)>320)DispTemp=i;
 
                 OldMode = CMode;
                 

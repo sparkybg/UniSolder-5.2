@@ -72,7 +72,7 @@ const t_IronPars Irons[] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    61,                     //c1
+                    58.57,                  //c1 *
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -113,7 +113,7 @@ const t_IronPars Irons[] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    26.8,                   //c1
+                    26.17,                  //c1 *
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -155,7 +155,7 @@ const t_IronPars Irons[] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    50.1,                   //c1
+                    47.83,                  //c1 *
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -281,7 +281,7 @@ const t_IronPars Irons[] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    43.5,                   //c1
+                    41.85,                  //c1 *
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -323,7 +323,7 @@ const t_IronPars Irons[] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    126.25,                 //c1
+                    122.94,                 //c1 *
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -365,7 +365,7 @@ const t_IronPars Irons[] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    116.4,                  //c1
+                    117.56,                 //c1
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -409,7 +409,7 @@ const t_IronPars Irons[] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    126.25,                 //c1
+                    116.22,                 //c1 *
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -442,7 +442,7 @@ const t_IronPars Irons[] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    126.25,                 //c1
+                    116.22,                 //c1 *
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -465,7 +465,7 @@ const t_IronPars Irons[] = {
     {
         0, 
         0x1515,
-        "JBC Nanotweezers        ",
+        "JBC Nanotweezers       *",
         {
             {
                 1,                          //Type
@@ -483,7 +483,7 @@ const t_IronPars Irons[] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    116.4,                  //c1
+                    117.56,                 //c1
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4
@@ -516,7 +516,7 @@ const t_IronPars Irons[] = {
                 0,                          //Offset
                 {                           //TPoly
                     0,                      //c0
-                    116.4,                  //c1
+                    117.56,                 //c1
                     0,                      //c2
                     0,                      //c3
                     0,                      //c4

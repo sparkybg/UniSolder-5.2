@@ -165,9 +165,16 @@ void ISRHigh(int src){
             mcuStartISRTimer_us(150);
             mcuADCStartManual();
             mcuADCRefVref();
-            CHSEL1 = IC->InputP;
-            CHSEL2 = IC->InputN;
-            CHPOL = IC->InputInv;
+            if(mainFlags.Calibration){
+                CHSEL1 = CalCh ? 0 : 1;
+                CHSEL2 = CalCh ? 1 : 0;
+                CHPOL = CalCh ? 0 : 1;
+            }
+            else{
+                CHSEL1 = IC->InputP;
+                CHSEL2 = IC->InputN;
+                CHPOL = IC->InputInv;
+            }
             if(ISRComplete){
                 if((dw = VIBuffCnt >> 2) && (VBuff[dw] < 90) && (IBuff[dw] < 16)){ //power lost if <0.5A and <7.4V
                     OnPowerLost();
