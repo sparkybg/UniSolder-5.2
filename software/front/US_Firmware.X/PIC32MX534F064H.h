@@ -152,7 +152,7 @@ P32_EXTERN void mcuADCStartManual();
 P32_EXTERN void mcuADCRead(int ADCCH, int num);
 P32_EXTERN int mcuADCReadWait(int ADCCH, int num);
 
-#define mcuSPIOpen() SpiChnOpen(SPI_CHANNEL3,SPI_OPEN_MSTEN | SPI_OPEN_MODE8 | SPI_OPEN_CKP_HIGH, 8)
+#define mcuSPIOpen() SpiChnOpen(SPI_CHANNEL3,SPI_OPEN_MSTEN | SPI_OPEN_MODE8 | SPI_OPEN_CKP_HIGH, 6)
 #define mcuSPIClose() SpiChnClose(SPI_CHANNEL3)
 #define mcuSPISendByte(b) SpiChnPutC(SPI_CHANNEL3, b)
 #define mcuSPISendBytes(b,n) SpiChnPutS(SPI_CHANNEL3,b,n)

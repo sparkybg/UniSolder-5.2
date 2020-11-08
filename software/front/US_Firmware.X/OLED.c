@@ -86,9 +86,9 @@ void OLEDInit(){
     OLED_DC_PU = 1; //enable internal pull-up on DC in order to check if resistor between OLED_RES and OLED_DC is installed
     _delay_ms(100);
 
-    DisplaySetup.SH1106 = OLED_CS_IN ? 0 : 1; //If CS pull-up resistor is not installed, OLED_CS will be low => display controller is SSH1106    
+    DisplaySetup.SH1106 = !OLED_CS_IN; //If CS pull-up resistor is not installed, OLED_CS will be low => display controller is SH1106    
     DisplaySetup.InternalChargePump = !OLED_DC_IN; //If resistor between OLED-RES is installed, it will dominate and OLED_DC will be low => display uses internal charge pump.
-    OLED_CS_PU = 0; //enable pull-up on CS;
+    
     OLED_DC_PU = 0;//bring all IOs to operational state (outputs, no internal pull-ups)
     OLED_CS_3S = 0;
     OLED_DC_3S = 0;
@@ -114,7 +114,7 @@ void OLEDInit(){
     mcuSPISendBytes((int*)OLEDInitBuff1, sizeof(OLEDInitBuff1));
     mcuSPIWait();
     if(DisplaySetup.SH1106){
-        PreUpdateBuff.PreRowUpdate.Col = 15; //SSH is 131x64 - shift right by 2
+        PreUpdateBuff.PreRowUpdate.Col = 2; //SSH is 131x64 - shift right by 2
         mcuSPISendByte(0x30); //charge pump voltage level [30]-33: 7.4, 8.0, 8.4, 9.0)
         mcuSPISendByte(0x8D); //charge pump control       
         mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x14 : 0x10);        
