@@ -34,46 +34,61 @@ const unsigned char OLEDInitBuff2[]={
     0xA6,       //normal/reversed display ([A6] normal, A7 reversed)
     0xAF,       //display ON
     0x20,0x02,  //set page addressing mode
+    0x10        //set column high = 0;
 };
 
 typedef union {
     struct __PACKED {
-        UINT8 ColHigh;
-        UINT8 ColLow;
-        UINT Row;
-        UINT8 BriCmd;
-        UINT8 Bri;
-        UINT16 Rot;
+        struct __PACKED{
+            UINT8 BriCmd;
+            UINT8 Bri;
+            UINT16 Rot;
+        } PreDisplayUpdate;
+        struct __PACKED{
+            UINT8 Row;
+            UINT8 Col;
+        } PreRowUpdate;
     };
-    UINT8 b[7];
 }preUpdate_t;
 
 preUpdate_t PreUpdateBuff = {
-    0x10,0x0,
+    CmdBri, 225,
+    CmdRot0,
     0xB0,
-    CmdBri,225,
-    CmdRot0
+    0
 };
 
 void OLEDInit(){
+    mcuSPIClose();
     OLED_VCC = 1; //turn off display VCC
     OLED_VDD = 1; //turn off display VDD
     OLED_RES = 0; //Reset display
-    OLED_RES_3S = 0; //Reset = out
-    OLED_DC_3S = 1;  //everything else = 3state
-    OLED_CS_3S = 1;
+    OLED_DC = 0;
+    OLED_CS = 0;
+    OLED_SCK = 0;
+    OLED_SDI = 0;
+    OLED_SDO = 0;
+    OLED_RES_3S = 0;
+    OLED_DC_3S = 0;  
+    OLED_CS_3S = 0;
+    SDI_3S = 0;
+    SDO_3S = 0;
+    SCK_3S = 0;            
+    _delay_ms(100);
+                
+    //DisplaySetup.SH1106 = OLED_CS_IN; //no power, and weak pull-up. If CS pull-up resistor is installed, it will dominate, and OLED_CS will be low => display controller is SSH1106
+    OLED_CS_3S = 1;  //everything but reset - 3state
+    OLED_DC_3S = 1;  
     SDI_3S = 1;
     SDO_3S = 1;
     SCK_3S = 1;        
-    OLED_CS_PU = 1; //enable pull-up on CS;
-    _delay_ms(100);
-    
-    DisplaySetup.SH1106 = OLED_CS_IN; //no power, and weak pull-up. If CS pull-up resistor is installed, it will dominate, and OLED_CS will be low => display controller is SSH1106
-    OLED_VDD = 0;   //Turn on display VDD 
+    OLED_VDD = 0;    //Turn on display VDD 
     OLED_DC_PU = 1; //enable internal pull-up on DC in order to check if resistor between OLED_RES and OLED_DC is installed
     _delay_ms(100);
-    
+
+    DisplaySetup.SH1106 = OLED_CS_IN ? 0 : 1; //If CS pull-up resistor is not installed, OLED_CS will be low => display controller is SSH1106    
     DisplaySetup.InternalChargePump = !OLED_DC_IN; //If resistor between OLED-RES is installed, it will dominate and OLED_DC will be low => display uses internal charge pump.
+    OLED_CS_PU = 0; //enable pull-up on CS;
     OLED_DC_PU = 0;//bring all IOs to operational state (outputs, no internal pull-ups)
     OLED_CS_3S = 0;
     OLED_DC_3S = 0;
@@ -97,15 +112,19 @@ void OLEDInit(){
     _delay_ms(10);
     
     mcuSPISendBytes((int*)OLEDInitBuff1, sizeof(OLEDInitBuff1));
+    mcuSPIWait();
     if(DisplaySetup.SH1106){
+        PreUpdateBuff.PreRowUpdate.Col = 15; //SSH is 131x64 - shift right by 2
         mcuSPISendByte(0x30); //charge pump voltage level [30]-33: 7.4, 8.0, 8.4, 9.0)
         mcuSPISendByte(0x8D); //charge pump control       
-        mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x14 : 0x10);
+        mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x14 : 0x10);        
     }
     else{
+        PreUpdateBuff.PreRowUpdate.Col = 0; //SSH is 131x64 - shift right by 2
         mcuSPISendByte(0xAD); //charge pump control       
         mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x8B : 0x8A);
     }
+    mcuSPIWait();
     mcuSPISendBytes((int*)OLEDInitBuff2, sizeof(OLEDInitBuff2));     
 
     OLEDFill(0, 128, 0, 8, 0);
@@ -115,8 +134,8 @@ void OLEDInit(){
 void OLEDUpdateDMA(){
     mcuSPIWait();
     mcuSPIStop();
-    PreUpdateBuff.Bri = (pars.Bri << 4) - 15;
-    PreUpdateBuff.Rot = pars.DispRot ? CmdRot180 : CmdRot0;
+    PreUpdateBuff.PreDisplayUpdate.Bri = (pars.Bri << 4) - 15;
+    PreUpdateBuff.PreDisplayUpdate.Rot = pars.DispRot ? CmdRot180 : CmdRot0;
     OLED_DC = 0;
     OLED_CS = 0;
     mcuSPISendBytes((int*)&PreUpdateBuff, sizeof(PreUpdateBuff));
@@ -127,15 +146,18 @@ void OLEDUpdateDMA(){
 
 void OLEDUpdate(){
     UINT8 r;
+    mcuSPIWait();
+    OLED_DC = 0;
+    OLED_CS = 0;
+    PreUpdateBuff.PreDisplayUpdate.Bri = (pars.Bri << 4) - 15;
+    PreUpdateBuff.PreDisplayUpdate.Rot = pars.DispRot ? CmdRot180 : CmdRot0;
+    mcuSPISendBytes((int*)&PreUpdateBuff.PreDisplayUpdate, sizeof(PreUpdateBuff.PreDisplayUpdate) );    
     for(r=0;r<=7;r++ ){
-        mcuSPIWait();
-        PreUpdateBuff.Row = 0xB0+r;
-        PreUpdateBuff.ColLow = DisplaySetup.SH1106 ? 2 : 0;
-        PreUpdateBuff.Bri = (pars.Bri << 4) - 15;
-        PreUpdateBuff.Rot = pars.DispRot ? CmdRot180 : CmdRot0;
+        PreUpdateBuff.PreRowUpdate.Row = 0xB0+r;
+        mcuSPIWait();       
         OLED_DC = 0;
         OLED_CS = 0;
-        mcuSPISendBytes((int*)&PreUpdateBuff, sizeof(PreUpdateBuff));
+        mcuSPISendBytes((int*)&PreUpdateBuff.PreRowUpdate, sizeof(PreUpdateBuff.PreRowUpdate));
         mcuSPIWait();
         OLED_DC = 1;    
         mcuSPISendBytes((int*)OLEDBUFF.B[r], 128 );
