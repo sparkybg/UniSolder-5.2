@@ -55,7 +55,7 @@ preUpdate_t PreUpdateBuff = {
     CmdBri, 225,
     CmdRot0,
     0xB0,
-    10,
+    0x10,
     0
 };
 
