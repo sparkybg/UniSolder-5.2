@@ -34,7 +34,6 @@ const unsigned char OLEDInitBuff2[]={
     0xA6,       //normal/reversed display ([A6] normal, A7 reversed)
     0xAF,       //display ON
     0x20,0x02,  //set page addressing mode
-    0x10        //set column high = 0;
 };
 
 typedef union {
@@ -46,7 +45,8 @@ typedef union {
         } PreDisplayUpdate;
         struct __PACKED{
             UINT8 Row;
-            UINT8 Col;
+            UINT8 ColHi;
+            UINT8 ColLow;
         } PreRowUpdate;
     };
 }preUpdate_t;
@@ -55,6 +55,7 @@ preUpdate_t PreUpdateBuff = {
     CmdBri, 225,
     CmdRot0,
     0xB0,
+    10,
     0
 };
 
@@ -114,13 +115,13 @@ void OLEDInit(){
     mcuSPISendBytes((int*)OLEDInitBuff1, sizeof(OLEDInitBuff1));
     mcuSPIWait();
     if(DisplaySetup.SH1106){
-        PreUpdateBuff.PreRowUpdate.Col = 2; //SSH is 131x64 - shift right by 2
+        PreUpdateBuff.PreRowUpdate.ColLow = 2; //SSH1106 is 131x64 - shift right by 2
         mcuSPISendByte(0x30); //charge pump voltage level [30]-33: 7.4, 8.0, 8.4, 9.0)
         mcuSPISendByte(0x8D); //charge pump control       
         mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x14 : 0x10);        
     }
     else{
-        PreUpdateBuff.PreRowUpdate.Col = 0; //SSH is 131x64 - shift right by 2
+        PreUpdateBuff.PreRowUpdate.ColLow = 0; //SSD1306 is 128x64 - no need to shift
         mcuSPISendByte(0xAD); //charge pump control       
         mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x8B : 0x8A);
     }
