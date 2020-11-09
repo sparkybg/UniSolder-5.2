@@ -30,8 +30,9 @@ typedef union {
         UINT8 NapFilterTicks;                       //Holder/stand sensor filter ticks
         UINT8 MenuDown;                             //Menu down key (0 - Key+, 1 - Key-)
         UINT8 Cal;
+        UINT8 Debug;
     };
-    UINT8 b[16];
+    UINT8 b[17];
 }pars_t;
 
 typedef struct {
@@ -46,7 +47,7 @@ typedef struct {
 }t_ParDef;
 
 #ifndef _PARS_C
-extern const t_ParDef ParDef[16];
+extern const t_ParDef ParDef[17];
 #endif
 
 #ifdef	__cplusplus

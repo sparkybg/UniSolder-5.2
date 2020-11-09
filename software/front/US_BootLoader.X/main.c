@@ -23,14 +23,7 @@ void main(void){
         if(mcuValidAppPresent() == 1)mcuJumpToApp();
     }
     NVMDATA = 0xFFFFFFFF;
-
-    SDI_OUT=0;
-    SDO_OUT=0;
-    SDISDO_OO;
-
-    mcuSPIOpen();
-    OLEDInit();
-    
+    OLEDInit();    
     IOInit();
     while(1){
         displayTasts();

@@ -16,7 +16,7 @@ const char * StrButtons[]   = {"+/- ", "-/+ "};
 const char * StrOffOnAuto[] = {"OFF ", "ON  ", "AUTO"};
 const char * StrMenuUp[]    = {"KEY+", "KEY-"};
 
-const t_ParDef ParDef[17] = {
+const t_ParDef ParDef[] = {
 //  NAME            DEF  MIN      MAX      IMMEDIATE SUFFIX STRINGS       DISPFUNC    
 
     {"        T1 ", 125, MINTEMP, MAXTEMP, 0,            0, 0,            &ParDispTemp},
@@ -34,7 +34,8 @@ const t_ParDef ParDef[17] = {
     {"  ROTATION ",   0,       0,       1, 1,            0, StrDispRot,   &ParDispStr},
     {"SENSOR FLT ",   0,       0,     255, 0,            0, 0,            &ParDispNumOff},
     {" MENU DOWN ",   0,       0,       1, 0,            0, StrMenuUp,    &ParDispStr},
-    {" CALIBRATE ",  15,       1,      15, 0,            0, 0,            0}
+    {" CALIBRATE ",   0,       0,       0, 0,            0, 0,            0},
+    {" INST.INFO ",   0,       0,       0, 0,            0, 0,            0},
 };
 
 

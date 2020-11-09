@@ -82,6 +82,7 @@ extern "C" {
         int HRAvg;              //averaged heater resistance /10
         int HP;                 //last heater power
         int HPAvg;              //averaged heater power
+        int HPMax;               //maximum averaged heater power
         int HV;                 //last heater voltage x12.19 ((1/28/3)*1024)
         int HVAvg;              //averaged heater voltage x12.19
         int HI;                 //last heater current x42.55

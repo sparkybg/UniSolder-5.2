@@ -3,6 +3,7 @@
 #include "isr.h"
 #include "mcu.h"
 #include "PID.h"
+#include "main.h"
                //ID       1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25
                //ID(HEX) 01   02   03   04   05   06   07   08   09   0A   0B   0C   0D   0E   0F   10   11   12   13   14   15   16   17   18   19
                //R      100  110  120  130  150  180  200  220  240  270  300  330  390  430  470  560  680  820   1K  1.2K 1.5k  2k   3k  5.6k inf.
@@ -758,6 +759,7 @@ void IronIdentify(){
                 PIDVars[i].HNewData = 0;
                 PIDVars[i].HInitData = 1;
                 PIDVars[i].HP = 0;
+                PIDVars[i].HPMax = 0;                
                 PIDVars[i].HI = 0;
                 PIDVars[i].HV = 0;
                 PIDVars[i].OffDelay = 1600;
@@ -777,6 +779,7 @@ void IronIdentify(){
         for(i = 2; i--; ){
             PIDVars[i].HInitData = 1;
             PIDVars[i].HP = 0;
+            PIDVars[i].HPMax = 0;
             PIDVars[i].HI = 0;
             PIDVars[i].HV = 0;
             PIDVars[i].OffDelay = 1600;
@@ -797,7 +800,7 @@ void IronTasks(){
     int i;
     if(IronTicks != ISRTicks){
         IronTicks = ISRTicks;
-        if((IronTicks & 15) == 15){
+        if(!mainFlags.Calibration && (IronTicks & 15) == 15){
             switch(IronID){
                 case 0x1919:
                     IronIdentify();

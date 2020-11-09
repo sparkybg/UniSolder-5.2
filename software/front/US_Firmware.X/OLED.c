@@ -33,7 +33,7 @@ const unsigned char OLEDInitBuff2[]={
     0xA4,       //entire display on ([A4] normal, A5 entire on)
     0xA6,       //normal/reversed display ([A6] normal, A7 reversed)
     0xAF,       //display ON
-    0x20,0x02,  //set page addressing mode
+    //0x20,0x02,  //set page addressing mode //no need - state after reset
 };
 
 typedef union {
@@ -209,31 +209,31 @@ void OLEDWrite(int col, int colnum, int row, void * buf, int num){
     }
 }
 
-void OLEDWriteGr(int col, int colnum, int row, void * buf, int num){
-    if(!(row & 7)) return OLEDWrite(col, colnum, row >> 3, buf, num );    
-    int row70 = row & 7;
+void OLEDWriteXY(int x, int colnum, int y, void * buf, int num){
+    if(!(y & 7)) return OLEDWrite(x, colnum, y >> 3, buf, num );    
+    int row70 = y & 7;
     int row71 = 8 - row70;
     UINT8 mask0 = 0xFF >> row71;
     UINT8 mask1 = 0xFF << row70;
     while(num){
         int cc = colnum;
-        int buffRow = row >> 3;
+        int buffRow = y >> 3;
         while(num && cc--){
             UINT8 b = (*(UINT8*)buf);
             if(row70){
-                OLEDBUFF.B[buffRow][col] &= mask0;
-                OLEDBUFF.B[buffRow][col] |= b << row70;
-                OLEDBUFF.B[buffRow+1][col] &= mask1;
-                OLEDBUFF.B[buffRow+1][col++] |= b >> row71;
+                OLEDBUFF.B[buffRow][x] &= mask0;
+                OLEDBUFF.B[buffRow][x] |= b << row70;
+                OLEDBUFF.B[buffRow+1][x] &= mask1;
+                OLEDBUFF.B[buffRow+1][x++] |= b >> row71;
             }
             else{
-                OLEDBUFF.B[buffRow][col] = b;
+                OLEDBUFF.B[buffRow][x] = b;
             }
             buf++;
             num--;
         }
-        col -= colnum;
-        row += 8;        
+        x -= colnum;
+        y += 8;        
     }
 }
 
@@ -284,6 +284,27 @@ void OLEDPrintNum(int col, int row, int dec, int num, void* font, int startChar,
         col -= cw;
     }
 }
+void OLEDPrintHex(int col, int row, int dec, unsigned int num, void* font, int startChar, int width, int height, int blank ){    
+    int cb = width * height;
+    int cw = width + blank;
+    unsigned int i, cd;
+    i = dec;
+    dec--;
+    col += cw * dec;
+    if(num<0)num=-num;
+    while(i--){
+        cd = num & 15;
+        num >>= 4;
+        if(num || cd || (i == dec)) {
+            OLEDWrite(col, width, row, (void *)font + cb * (cd + (cd <= 9 ? 0x30 : 0x37) - startChar), cb);
+            OLEDFill(col + width, blank, row, height, 0);
+        }
+        else{
+            OLEDFill(col, cw, row, height, 0);
+        }
+        col -= cw;
+    }
+}
 
 void OLEDPrint(int col, int row, const char * s, int num, void * font, int startChar, int width, int height, int blank){
     int cb = width * height;
@@ -298,15 +319,15 @@ void OLEDPrint(int col, int row, const char * s, int num, void * font, int start
     }
 }
 
-void OLEDPrintGr(int col, int row, const char * s, int num, void * font, int startChar, int width, int height, int blank){
+void OLEDPrintXY(int x, int y, const char * s, int num, void * font, int startChar, int width, int height, int blank){
     int cb = width * height;
     if(num == 0) num = 128;
     while(num--){
         if(s[0] == 0) break;
-        OLEDWriteGr(col, width, row, (void *)font + cb * (s[0] - startChar), cb);
-        col += width;
-        OLEDFillGr(col, blank, row, height, 0);
-        col += blank;
+        OLEDWriteXY(x, width, y, (void *)font + cb * (s[0] - startChar), cb);
+        x += width;
+        OLEDFillGr(x, blank, y, height, 0);
+        x += blank;
         s++;
     }
 }

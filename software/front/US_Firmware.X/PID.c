@@ -20,7 +20,7 @@ void PIDInit(){
         PIDVars[i].PIDDutyFull = 0;
         PIDVars[i].PWM = 0;
         PIDVars[i].OffDelay = 1600;
-        PIDVars[i].Power = 0;
+        PIDVars[i].Power = 2; //1/4 power as a start
     }
 };
 
@@ -80,6 +80,7 @@ void PID(int PIDStep) {
         PV->HIAvg = 0;
         PV->HRAvg = 0x7FFF;
         PV->HPAvg = 0;
+        PV->HPMax = 0;
         PV->OffDelay = 1600;
     }
     else{
@@ -90,6 +91,7 @@ void PID(int PIDStep) {
                 PV->HIAvg = PV->HI << AVG;
                 PV->HRAvg = PV->HR << AVG;
                 PV->HPAvg = PV->HP << AVG;
+                PV->HPMax = PV->HP;
                 PV->HInitData = 0;
             }
             PV->HVAvg -= PV->HVAvg >> AVG;
@@ -100,6 +102,7 @@ void PID(int PIDStep) {
             PV->HRAvg += PV->HR;
             PV->HPAvg -= PV->HPAvg >> AVG;
             PV->HPAvg += PV->HP;
+            if(PV->HPMax < PV->HP) PV->HPMax = PV->HP;
             PV->HNewData=0;
         }
     }
@@ -453,10 +456,16 @@ void PID(int PIDStep) {
     pdt >>= 8;
     if(PV->HP){        
         dw = PV->HPAvg >> AVG;
-        if(PV->Power < 1 && dw >= ((INT32)IC->PID_PMax << 1)) PV->Power = 1;
-        if(PV->Power < 2 && dw >= ((INT32)IC->PID_PMax << 2)) PV->Power = 2;
         pdt *= (INT32)IC->PID_PMax;
         pdt /= dw;
+        
+        dw = PV->HPMax;        
+        if(PV->Power > 0 && dw < (INT32)IC->PID_PMax)PV->Power--; 
+        dw >>= 1;
+        if(PV->Power < 2 && dw >= (INT32)IC->PID_PMax){
+            PV->HPMax = dw;
+            PV->Power++;
+        }
     }
 /******************************************************************************/
 
