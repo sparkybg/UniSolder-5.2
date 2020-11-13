@@ -1,16 +1,22 @@
 /* 
- * File:   ExtFloat.h
+ * File:   sensorMath.h
  * Author: Sparky
  *
  * Created on ??????, 2015, ??? 17, 19:35
  */
 
-#ifndef EXTFLOAT_H
-#define	EXTFLOAT_H
+#ifndef SENSORMATH_H
+#define	SENSORMATH_H
+
+#include <GenericTypeDefs.h>
+#include "typedefs.h"
+#include "iron.h"
+
 
 #ifdef	__cplusplus
 extern "C" {
 #endif
+    
 
 typedef union{
     struct __PACKED
@@ -97,9 +103,19 @@ typedef struct {
         } \
     } \
 }
+
+#ifndef _SENSORMATH_C
+#define SENSORMATH_H_EXTERN extern
+#else
+#define SENSORMATH_H_EXTERN
+#endif
+
+INT32 GetSensorTemperature(UINT16 input, t_SensorConfig * SC);
+
+#undef SENSORMATH_H_EXTERN
+
 #ifdef	__cplusplus
 }
 #endif
 
-#endif	/* EXTFLOAT_H */
-
+#endif	/* SENSORMATH_H */

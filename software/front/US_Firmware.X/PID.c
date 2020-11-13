@@ -4,14 +4,11 @@
 #include "PID.h"
 #include "isr.h"
 #include "iron.h"
-#include "ExtFloat.h"
-
-//volatile int LastOn;
-//volatile unsigned char OffCnt;
-//volatile unsigned char NoHeaterCnt;
+#include "sensorMath.h"
 
 void PIDInit(){
     int i;
+    CJTemp = -273*2;
     for(i = 2; i--;){
         PIDVars[i].Starting = 1;
         PIDVars[i].PIDDuty = 0;
@@ -23,6 +20,35 @@ void PIDInit(){
         PIDVars[i].Power = 2; //1/4 power as a start
     }
 };
+
+void PIDTasks(){
+    t_SensorConfig *CJC = (t_SensorConfig *)IronPars.ColdJunctionSensorConfig;    
+    if(CJC && ADCData.VCJ && ADCData.VCJ<1023){
+        UINT16 current;
+        int cBand;
+        if(CJC->InputInv){
+            current = CJC->CurrentA;         
+            cBand = CJC->CBandA;
+        }
+        else{
+            current = CJC->CurrentB;         
+            cBand = CJC->CBandB;
+        }
+        PGC = 1;
+        INT32 t = GetSensorTemperature(ADCData.VCJ, CJC);
+        PGC = 0;
+        if(t>-273*2 && t<200){
+            CJTemp = t;                
+        }
+        else{
+            CJTemp=-273*2;
+        }
+    }
+    else if(!CJC) {
+        CJTemp=-273*2;
+    }
+    ADCData.VCJ = 0;
+}
 
 #define intshr(a,b) ((a < 0) ? (-((-a) >> b)) : (a >> b))
 
@@ -46,7 +72,7 @@ void PID(int PIDStep) {
     AVG = ADCAVG;
     PV =(t_PIDVars *)&PIDVars[PIDStep];
     IC =(t_IronConfig *)&IronPars.Config[PIDStep];
-    if(IronPars.Config[1].Type){
+    if(IronPars.Config[1].SensorConfig.Type){
         AVG--;
     }
     else{
@@ -54,7 +80,7 @@ void PID(int PIDStep) {
         IC =(t_IronConfig *)&IronPars.Config[0];
     }
     WSL = IC->WSLen;
-    if(WSL < 0) WSL = (IronPars.Config[1].Type ? 4 : 8);
+    if(WSL < 0) WSL = (IronPars.Config[1].SensorConfig.Type ? 4 : 8);
     
     if(PV->NoHeater || PV->NoSensor || PV->Starting || PV->ShortCircuit || PV->LastTTemp != CTTemp)PV->DestinationReached = 0;
     PV->LastTTemp = CTTemp;
@@ -188,156 +214,38 @@ void PID(int PIDStep) {
                     }
                 }
             }
-            //if(IC->WSLen > 0){ 
-                //sample waveshaping
-                //if(PV->OffCnt < IC->WSLen){
-                    //PV->WSCorr = intshr(PV->WSDelta[PV->OffCnt].val, 1);
-                //}
-                //else{
-                    //PV->WSCorr += (intshr(PV->WSDelta[IC->WSLen - 1].val, 1) * (IC->WSLen-1)) / PV->OffCnt;
-                //}
-            //}
             if(PV->OffCnt < 255)PV->OffCnt++;
         }
     }
 /************************************************************************************/
     w = PV->WSCorr *= 1024;
-    w >>= 10;//PV->WSCorr >>= 10
+    w >>= 10;
 /**** GET AND NORMALISE IRON TEMPRATURE *********************************************/
     w += PV->ADCTemp[0];
-    //w = PV->ADCTemp[0] + PV->WSCorr;
     if(w < 0) w = 0;
 
     //heater resistance compensation for series TC
     //compensation = (HRCompCurrent * 19.6 * Gain * HRAvg)/65536
     //compensation = (((HRCompCurrent * Gain * 20070) / 32767) * HRAvg) / 2048;
-    w -= ((((INT32)IC->Gain * (INT32)IC->HRCompCurrent * 20070L) >> 15) * (INT32)(PV->HRAvg >> AVG)) >> 11;
-
-
-/************************************************************************************/
+    w -= ((((INT32)IC->SensorConfig.Gain * (INT32)IC->HRCompCurrent * 20070L) >> 15) * (INT32)(PV->HRAvg >> AVG)) >> 11;
     
     {
-        dw = w + IC->Offset;
-        if(dw < 0)dw = 0;
-        if(dw > 2047)dw = 2047;
-
-/******* INPUT MILLIVOLTS CALCULATION ***********************************************/
-        //ADC = Vin * 750 * (IC->Gain / 256) * (1024 / 3000mV)
-        //mV = (256 * 3000 * ADC) / (750 * 1024 * IC->Gain)) = ADC / IC->Gain
-        ExtFloat x1;
-        if(x1.m = ((UINT32)dw) << 20){
-            x1.e = 138;
-            while (x1.m < 0x80000000){
-                x1.m <<=1;
-                x1.e--;
-            }
+        int current;
+        int cBand;
+        if(IC->SensorConfig.InputInv){
+            current = IC->SensorConfig.CurrentA;         
+            cBand = IC->SensorConfig.CBandA;
         }
-        ExtFloatDivByUInt(x1, IC->Gain);
-
-/******* Resistance calculation if resistive sensor *********************************/
-        //R=mV/Current=mV / ((1.225V * IC->Current) / (1600 * 256))
-        if(IC->Type==2){
-            const ExtFloat rcc = {
-                0xA72F0539,   //1.6*256/1.225 32 bit mantissa
-                127+8        //1.6*256/1.225 exponent
-            };
-            ExtFloatMul(x1, rcc);
-            UINT32 Current;
-            if(IC->InputInv){
-                Current = IC->CurrentA;         //divide by current A if channel A selected as positive input
-                if(!IC->CBandA) x1.e -=4;       //divide by 16 if higher current band on channel A
-            }
-            else{
-                Current = IC->CurrentB;         //divide by current B if channel B selected as positive input
-                if(!IC->CBandB) x1.e =-4;       //divide by 16 if higher current band on channel B
-            }
-            if(Current == 0) Current = 1;
-            ExtFloatDivByUInt(x1, Current);
+        else{
+            current = IC->SensorConfig.CurrentB;         
+            cBand = IC->SensorConfig.CBandB;
         }
-        SFLOAT CX = {
-            {
-                x1.m >> 8,
-                x1.e,
-                0
-            }
-        };
-        PV->CPolyX = CX.f;
         
-// >>> At this point in x1 we have millivolts if thermocouple sensor, or ohms if PTC/NTC sensor. <<<
+        dw = GetSensorTemperature(w, &IC->SensorConfig);
 
-/******* TEMPERATURE POLYNOMIAL CALCULATION *****************************************************/
-        //T = C0 + C1 * X + c2 * X^2 + C3 * X^3 + ... + C9 * X^9
-
-        //LATBbits.LATB7 = 0;
-
-        int n; //current polynomial power
-        ExtFloat xn = x1;
-        ExtFloat PSum;
-        ExtFloat NSum;
-
-        //Load positive or negative sum with the first polynomial coefficient depending on it's sign
-        float2ExtFloat(PSum, IC->TPoly[0]);
-        if(((SFLOAT)IC->TPoly[0]).s){
-            NSum = PSum;
-            PSum.m = 0;
-            PSum.e = 0;
-        }
-
-        for(n = 1; n < 10; n++){
-            ExtFloat CSum, cn;
-
-            float2ExtFloat(cn, IC->TPoly[n]);
-
-            //get positive or negative sum depending on current coefficient sign
-            if(((SFLOAT)IC->TPoly[n]).s){
-                CSum = NSum;
-            }
-            else{
-                CSum = PSum;
-            }
-
-            ExtFloatMul(cn, xn);
-
-            ExtFloatAdd(CSum, cn);
-
-            //store in positive or negative sum depending on current coefficient
-            if(((SFLOAT)IC->TPoly[n]).s){
-                NSum = CSum;
-            }
-            else{
-                PSum = CSum;
-            }
-
-            //don't calculate next argument power if the end is reached
-            if(n >= 9) break;
-
-            //calculate next polynomial argument power
-            ExtFloatMul(xn, x1);
-        }
-
-        //calculate (PSum - NSum) * 2 in order to get integer temperature * 2
-        dw=0;
-        if(PSum.e >= NSum.e){
-            NSum.m >>= min(PSum.e - NSum.e, 32);
-            if(PSum.m > NSum.m){
-                if(PSum.e >= 125 + 32){
-                    dw=1023;
-                }
-                else{
-                    PSum.m -= NSum.m;
-                    dw = ((UINT64)PSum.m << (PSum.e - 125)) >> 32;
-                    if(dw > 1023)dw = 1023;
-                }
-            }
-        }
-
-        //Add room temperature if thermocouple
-        if(IC->Type == 1) dw += CRTemp;
         if(dw > 1023)dw = 1023;
-
-        PV->CTemp[0] = dw;
-        //LATBbits.LATB7 = 1;
-
+        if(dw < 0)dw = 0;
+        PV->CTemp[0] = dw;        
     }
     
 // >>> At this point in CTemp[0] we have temeprature in degrees Celsius, multiplied by 2. <<<    
@@ -446,7 +354,7 @@ void PID(int PIDStep) {
     }
     pdt = PV->PIDDutyP + PV->PIDDutyI;
     if(pdt < 0) pdt = 0;
-    if((IC->Type == 0) || (IC->Type == 255) || PV->NoSensor) pdt = 0;
+    if((IC->SensorConfig.Type == 0) || (IC->SensorConfig.Type == 255) || PV->NoSensor) pdt = 0;
     
     PV->PIDDutyFull = pdt; //normalized duty
 

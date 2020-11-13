@@ -21,6 +21,7 @@ void ISRInit(){
     ISRStep = 0;
     ADCStep = 0;
     ISRTicks = 1;
+    CJTicks = 0;
     PHEATER = 0;
     I2CStep = 0;
     I2CCommands = 0;
@@ -41,7 +42,7 @@ void ISRInit(){
         PIDVars[i].OffDelay = 1600;
     }
     OffDelayOff = 1600;
-    VIBuffCnt = 0;
+    VTIBuffCnt = 0;
     mainFlags.Calibration = 0;
     ISRComplete = 0;
     mainFlags.PowerLost = 0;
@@ -69,7 +70,7 @@ void ISRStart(){
     }
     mcuDCTimerReset();
     mcuCompEnableH2L();
-    VIBuffCnt = 0;
+    VTIBuffCnt = 0;
     ISRStopped = 0;
     mainFlags.PowerLost = 0;
     mcuEnableInterrupts();
@@ -115,7 +116,7 @@ void ISRHigh(int src){
 
     PV = (t_PIDVars *)&PIDVars[1];
     IC = (t_IronConfig *)&IronPars.Config[1];
-    if((ADCStep < 2) || (IC->Type == 0)){
+    if((ADCStep < 2) || (IC->SensorConfig.Type == 0)){
         PV = (t_PIDVars *)&PIDVars[0];
         IC = (t_IronConfig *)&IronPars.Config[0];
     }
@@ -128,7 +129,7 @@ void ISRHigh(int src){
                 if(!(ISRStopped & 2)){
                     ISRStopped |= 2;
                     mcuADCStop();
-                    VIBuffCnt = 0;
+                    VTIBuffCnt = 0;
                 }
             }
             else{
@@ -143,7 +144,7 @@ void ISRHigh(int src){
             }
             break;
         case 1: //AC zero cross
-            LATBbits.LATB7 = 1;
+            PGD = 1;
             mcuReadTime_us(); //zero readtime counter
             if(PV->Power) HEATER = 0; //stop heater if 1/2 or 1/4 power in order for power to be same on odd and even mains half periods.
             if(ADCStep & 1){
@@ -160,6 +161,7 @@ void ISRHigh(int src){
             break;
         case 2: //some time after zero cross - setup inputs and wait some time to start iron temperature reading
                 //calculate RMS power and current in the mean time.
+            PGD = 0;
             mcuStartISRTimer_us(150);
             mcuADCStartManual();
             mcuADCRefVref();
@@ -169,12 +171,12 @@ void ISRHigh(int src){
                 CHPOL = CalCh ? 0 : 1;
             }
             else{
-                CHSEL1 = IC->InputP;
-                CHSEL2 = IC->InputN;
-                CHPOL = IC->InputInv;
+                CHSEL1 = IC->SensorConfig.InputP;
+                CHSEL2 = IC->SensorConfig.InputN;
+                CHPOL = IC->SensorConfig.InputInv;
             }
             if(ISRComplete){
-                if((dw = VIBuffCnt >> 2) && (VBuff[dw] < 90) && (IBuff[dw] < 16)){ //power lost if <0.5A and <7.4V
+                if((dw = VTIBuffCnt >> 2) && (VBuff[dw] < 90) && OldHeater && (TIBuff[dw] < 16)){ //power lost if <0.5A and <7.4V
                     OnPowerLost();
                     ISRStep = 0;
                     return;
@@ -207,11 +209,11 @@ void ISRHigh(int src){
                 else{
                     if(OldHeater){
                         UINT32 i, l;
-                        if((i = l = VIBuffCnt) > 1){
+                        if((i = l = VTIBuffCnt) > 1){
                             UINT32 cv, ci, sv = 0, si = 0, sp = 0, ri = 0, rv = 0, r = 0;
                             for(i--, l--; i--;){
-                                cv = (VBuff[i] + VBuff[i + 1]);
-                                ci = IBuff[i];
+                                cv = VBuff[i] + VBuff[i + 1];
+                                ci = TIBuff[i];
                                 if(ci < 1023 && ri < ci && VBuff[i] < 1023 && VBuff[i + 1] < 1023){
                                     ri = ci;
                                     rv = cv;
@@ -233,7 +235,6 @@ void ISRHigh(int src){
                             BuffEmpty = 0;
 
                             r = (ri ? (((rv * 6738) / ri) + 256) >> 9 : 0x7FFF);
-                            //if(ri)r = ((rv * 6738) / ri) >> 8;
                             // 6738 = 10 * 256 * (((Rs1 * (R48 / R42)) / VRef) * 1024) / (((R51 / (R47 + R51)) / VRef) * 1024)
                             //      = 10 * 256 * (((0.003 * (47K / 1.5K)) / 3.0V) *1024) / (((1K / (27K + 1K)) / 3.0V) * 1024)
                             //      = 6737.92
@@ -247,7 +248,7 @@ void ISRHigh(int src){
                             //     = 391,13549206349206349206349206349
 
                             dw = 1024;
-                            if(IronPars.Config[1].Type) dw >>= 1;
+                            if(IronPars.Config[1].SensorConfig.Type) dw >>= 1;
                             PV->HV = (mcuSqrt(sv * dw) + 32) >> 6;
                             PV->HI = (mcuSqrt(si * dw) + 16) >> 5;
                             PV->HP = ((sp * dw) + 512) >> 10;
@@ -256,9 +257,13 @@ void ISRHigh(int src){
                             PV->HNewData = 1;
                         }
                     }
+                    else{
+                        if(IronPars.ColdJunctionSensorConfig && IC->SensorConfig.HChannel==IronPars.ColdJunctionSensorConfig->HChannel){
+                        }
+                    }
                 }
             }
-            VIBuffCnt = 0;
+            VTIBuffCnt = 0;
             ISRComplete = 0;
             break;
         case 3: //read room temperature
@@ -271,15 +276,20 @@ void ISRHigh(int src){
             else{
                 ADCData.VRT += mcuADCRES;
             }
-            //if(OldHeater && (ADCStep & 1))LATBbits.LATB7= ! LATBbits.LATB7;
+            PGC = 1;
             mcuADCRead(ADCH_TEMP, 4);
             break;
         case 5: //Check for sensor open, heater open, perform PID and wait for 1/2 power point (AC voltage point just between 2 adjacent zero crosses)
-            //if(OldHeater && (ADCStep & 1))LATBbits.LATB7= ! LATBbits.LATB7;
+            dw = MAINS_PER_H_US;
+            dw -= mcuReadTime_us();
+            mcuStartISRTimer_us(dw);
+
             if(!mainFlags.Calibration){
                 CHSEL1 = 0;
                 CHSEL2 = 0;
             }
+            PGC = 0;
+            
             ADCData.HeaterOn = PHEATER;
             ADCData.VTEMP[ADCStep & 1] = mcuADCRES >> 2;
             
@@ -306,24 +316,16 @@ void ISRHigh(int src){
                 if(PV->KeepOff)PV->KeepOff--;
             }
 
-
             ADCStep = (ADCStep + 1) & 3;
             
             PV = (t_PIDVars *)&PIDVars[1];
             IC = (t_IronConfig *)&IronPars.Config[1];
-            if((ADCStep < 2) || (IC->Type == 0)){
+            if((ADCStep < 2) || (IC->SensorConfig.Type == 0)){
                 PV = (t_PIDVars *)&PIDVars[0];
                 IC = (t_IronConfig *)&IronPars.Config[0];
             }
             
-            HCH = IC->HChannel;
-            CBANDA = IC->CBandA;
-            CBANDB = IC->CBandB;
-            I2CData.CurrentA.ui16 = IC->CurrentA;
-            I2CData.CurrentB.ui16 = IC->CurrentB;
-            I2CData.Gain.ui16 = IC->Gain;
-            I2CData.Offset.ui16 = IC->Offset;
-            if(!mainFlags.PowerLost)I2CAddCommands(I2C_SET_CPOT | I2C_SET_GAINPOT | I2C_SET_OFFSET);
+            HCH = IC->SensorConfig.HChannel;
 
             if(!(ADCStep & 1)){
                 PV->PWM += PV->PIDDuty;
@@ -331,21 +333,51 @@ void ISRHigh(int src){
                 PV->PWM &= 0x00FFFFFF;
             }
             
-            if(mainFlags.PowerLost || PV->KeepOff || mainFlags.Calibration || IC->Type == 0 || IC->Type == 255 )PHEATER = 0;
+            if(mainFlags.PowerLost || PV->KeepOff || mainFlags.Calibration || IC->SensorConfig.Type == 0 || IC->SensorConfig.Type == 255 )PHEATER = 0;
             if(!PV->Power) HEATER = PHEATER;  //Turn on heater if on full power
-            mcuADCStartAuto();
-            dw = MAINS_PER_H_US;
-            dw -= mcuReadTime_us();
-            mcuStartISRTimer_us(dw);
+            
+            mcuADCStartAuto(PHEATER?0:1);
+                        
+            if(!PHEATER && !CJTicks && IronPars.ColdJunctionSensorConfig && IronPars.ColdJunctionSensorConfig->HChannel == IC->SensorConfig.HChannel){
+                CHSEL1 = IronPars.ColdJunctionSensorConfig->InputP;
+                CHSEL2 = IronPars.ColdJunctionSensorConfig->InputN;
+                CHPOL = IronPars.ColdJunctionSensorConfig->InputInv;
+                CBANDA = IronPars.ColdJunctionSensorConfig->CBandA;
+                CBANDB = IronPars.ColdJunctionSensorConfig->CBandB;
+                I2CData.CurrentA.ui16 = IronPars.ColdJunctionSensorConfig->CurrentA;
+                I2CData.CurrentB.ui16 = IronPars.ColdJunctionSensorConfig->CurrentB;
+                I2CData.Gain.ui16 = IronPars.ColdJunctionSensorConfig->Gain;
+                I2CData.Offset.ui16 = IronPars.ColdJunctionSensorConfig->Offset;
+                if(!mainFlags.PowerLost)I2CAddCommands(I2C_SET_CPOT | I2C_SET_GAINPOT | I2C_SET_OFFSET);
+            }
             break;
-        case 6:  //AC voltahe highest point - check for power lost and turn on heater if 1/2 power and wait for 1/4 power point
-            LATBbits.LATB7 = 0;
+        case 6:  //AC voltage highest point - check for power lost and turn on heater if 1/2 power and wait for 1/4 power point
             mcuStartISRTimer_us(MAINS_PER_Q_US);
-            if(!MAINS || ((VBuff[dw = (mcuIBuffPos() >> 2) - 1] < 90) && (IBuff[dw] < 16))){ //power lost if <0.5A and <7.4V
+            if(!MAINS || ((VBuff[dw = (mcuTIBuffPos() >> 2) - 1] < 90) && PHEATER && (TIBuff[dw] < 16))){ //power lost if <0.5A and <7.4V
                 OnPowerLost();
                 return;
             }
-            if(PV->Power < 2) HEATER = PHEATER;
+            if(PV->Power < 2) HEATER = PHEATER;    
+            
+            if(!mainFlags.Calibration){
+                CHSEL1 = 0;
+                CHSEL2 = 0;
+            }
+            CBANDA = IC->SensorConfig.CBandA;
+            CBANDB = IC->SensorConfig.CBandB;
+            I2CData.CurrentA.ui16 = IC->SensorConfig.CurrentA;
+            I2CData.CurrentB.ui16 = IC->SensorConfig.CurrentB;
+            I2CData.Gain.ui16 = IC->SensorConfig.Gain;
+            I2CData.Offset.ui16 = IC->SensorConfig.Offset;
+            I2CAddCommands(I2C_SET_CPOT | I2C_SET_GAINPOT | I2C_SET_OFFSET);     
+            if(!PHEATER && !CJTicks && IronPars.ColdJunctionSensorConfig && IronPars.ColdJunctionSensorConfig->HChannel == IC->SensorConfig.HChannel){
+                ADCData.VCJ = TIBuff[(mcuTIBuffPos() >> 2) - 1];
+                CJTicks = CJ_PERIOD;
+            }
+            else{
+                ADCData.VCJ = 0;
+                if(!IronPars.ColdJunctionSensorConfig) CJTicks = 0;
+            }
             break;
         case 7: //1/4 power point - turn on heater
             HEATER = PHEATER;
@@ -354,12 +386,12 @@ void ISRHigh(int src){
         case 8: //enable High-to low comparator event in order to start new cycle.
             mcuCompEnableH2L();
             ISRTicks++;
+            if(CJTicks) CJTicks--;
             ISRComplete = 1;
             break;
     }
     if(ISRStep<255)ISRStep++;    
 }
-
 
 void I2CISRTasks(){
     

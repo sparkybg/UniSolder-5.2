@@ -106,8 +106,8 @@ unsigned char USBTxBuffer[64] TX_DATA_BUFFER_ADDRESS;
 #pragma udata
 #endif
 
-USB_HANDLE USBOutHandle = 0;    //USB handle.  Must be initialized to 0 at startup.
-USB_HANDLE USBInHandle = 0;     //USB handle.  Must be initialized to 0 at startup.
+volatile USB_HANDLE USBOutHandle = 0;    //USB handle.  Must be initialized to 0 at startup.
+volatile USB_HANDLE USBInHandle = 0;     //USB handle.  Must be initialized to 0 at startup.
 
 void USBCBSendResume(void);
 

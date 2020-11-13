@@ -9,6 +9,34 @@
                //R      100  110  120  130  150  180  200  220  240  270  300  330  390  430  470  560  680  820   1K  1.2K 1.5k  2k   3k  5.6k inf.
 const UINT16 IDHash[25] = { 87,  95, 104, 112, 123, 143, 161, 175, 188, 204, 223, 241, 264, 291, 310, 338, 380, 425, 470, 516, 563, 620, 690, 774, 875};
 
+const t_SensorConfig NTC2252_B_1 = { //2252 ohm NTC on SENSEB and Vout1-
+    { 
+        2,                          //Type
+        0,                          //HChannel
+        0,                          //InputP
+        1,                          //InputN
+        0,                          //InputInv
+        1,                          //CBandA
+        1,                          //CBandB
+    },
+    0,                              //CurrentA
+    8,                              //CurrentB
+    8,                              //Gain
+    0,                              //Offset
+    {                               //TPoly        
+         1.2979092150861948e+002,
+        -2.5097860800982363e-001,
+         3.4666249152754547e-004,
+        -2.8852033003098756e-007,
+         1.4543174658214588e-010,
+        -4.5529961497559201e-014,
+         8.8932649360324082e-018,
+        -1.0529530493819297e-021,
+         6.9074971847220621e-026,
+        -1.9252347314948564e-030,         
+    },
+};
+
 
 const t_IronPars NoIronPars = {
     0, 
@@ -16,30 +44,34 @@ const t_IronPars NoIronPars = {
     "NO INSTRUMENT           ",
     {
         {
-            255,                    //Type
             {
-                0,                  //HChannel
-                5,                  //SChannel
-                1,                  //CBandA
-                1,                  //CBandB
+                { //SensorConfig
+                    255,                //Type
+                    0,                  //HChannel
+                    1,                  //InputP
+                    0,                  //InputN
+                    1,                  //InputInv
+                    1,                  //CBandA
+                    1,                  //CBandB
+                },
+                128,                    //CurrentA
+                128,                    //CurrentB
+                128,                    //Gain
+                0,                      //Offset
+                {                       //TPoly
+                    0,                  //c0
+                    0,                  //c1
+                    0,                  //c2
+                    0,                  //c3
+                    0,                  //c4
+                    0,                  //c5
+                    0,                  //c6
+                    0,                  //c7
+                    0,                  //c8
+                    0                   //c9
+                },
             },
-            128,                    //CurrentA
-            128,                    //CurrentB
             0,                      //HRCompCurrent
-            128,                    //Gain
-            0,                      //Offset
-            {                       //TPoly
-                0,                  //c0
-                0,                  //c1
-                0,                  //c2
-                0,                  //c3
-                0,                  //c4
-                0,                  //c5
-                0,                  //c6
-                0,                  //c7
-                0,                  //c8
-                0                   //c9
-            },
             0,                      //WSLength
             0,                      //PID_DGain
             0,                      //PID_KP
@@ -49,7 +81,8 @@ const t_IronPars NoIronPars = {
             0,                      //PID_PNom        
         },
         {0}
-    }
+    },
+    NULL
 };
 
 const t_IronPars Irons[] = {
@@ -59,71 +92,81 @@ const t_IronPars Irons[] = {
         "PACE TD-100 BLACK       ",
         {
             {
-                1,                          //Type
                 {
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                    {
+                        1,                      //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    10,                         //CurrentA
+                    0,                          //CurrentB
+                    110,                        //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        56.8,                   //c1 *
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                0,                          //CurrentA
-                10,                         //CurrentB
                 10,                         //HRCompCurrent
-                120,                        //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    58.57,                  //c1 *
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
                 -1,                         //WSLength
                 4,                          //PID_DGain
                 (UINT16)(0.07 * 32768),     //PID_KP
                 (UINT16)(0.001 * 32768),    //PID_KI
                 4,                          //PID_OVSGain
                 120,                        //PID_PMax
-                120                         //PID_PNom
+                120,                        //PID_PNom
             },
             {0}
-        }
+        },
+        &NTC2252_B_1                        //ColdJunctionSensorConfig
     },
+    
     {
         0, 
         0x0F11,
         "PACE TD-200 BLUE        ",
         {
             {
-                1,                          //Type
                 {
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                    {                    
+                        1,                      //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    10,                         //CurrentA
+                    0,                          //CurrentB
+                    53,                         //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        25.89,                  //c1 *
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                0,                          //CurrentA
-                10,                         //CurrentB
                 10,                         //HRCompCurrent
-                53,                         //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    26.17,                  //c1 *
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
                 -1,                         //WSLength
                 3,                          //PID_DGain
                 (UINT16)(0.2 * 32768),      //PID_KP
@@ -133,7 +176,8 @@ const t_IronPars Irons[] = {
                 120                         //PID_PNom
             },
             {0}
-        }
+        },
+        &NTC2252_B_1                        //ColdJunctionSensorConfig
     },
     
     {
@@ -142,30 +186,34 @@ const t_IronPars Irons[] = {
         "HAKKO T15               ",
         {//--Type----HChannel----SChannel----CBand----CurrentA----CurrentB----HRCompCurrent---Gain----Offset--SoftGain----SoftOffset--WSLength----PID_DGain---PID_KP--------------------PID_KI--------------------PID_OVFGain-PID_PMax
             {
-                1,                          //Type
                 {
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                    {
+                        1,                          //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    10,                         //CurrentA
+                    0,                          //CurrentB
+                    100,                        //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        47.83,                  //c1 *
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                10,                         //CurrentA
-                0,                          //CurrentB
                 10,                         //HRCompCurrent
-                100,                        //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    47.83,                  //c1 *
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
                 -1,                         //WSLength
                 2,                          //PID_DGain
                 (UINT16)(0.08 * 32768),     //PID_KP
@@ -175,7 +223,8 @@ const t_IronPars Irons[] = {
                 60                          //PID_PNom
             },
             {0}
-        }
+        },
+        NULL
     },
 
     {
@@ -184,30 +233,34 @@ const t_IronPars Irons[] = {
         "HAKKO FX8801            ",
         {//-----------------------------------------------------------------------------------------
             {
-                2,                          //Type
                 {
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
-                },                          
-                205,                        //CurrentA
-                0,                          //CurrentB
-                0,                          //HRCompCurrent
-                13,                         //Gain
-                331,                        //Offset
-                {                           //TPoly
-                    -165.5,                 //c0
-                    3.98513793,             //c1
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
+                    {
+                        2,                      //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },                          
+                    205,                        //CurrentA
+                    0,                          //CurrentB
+                    13,                         //Gain
+                    331,                        //Offset
+                    {                           //TPoly
+                        -165.5,                 //c0
+                        3.98513793,             //c1
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
+                0,                          //HRCompCurrent
                 0,                          //WSLength
                 20,                         //PID_DGain
                 (UINT16)(0.4 * 32768),      //PID_KP
@@ -217,7 +270,8 @@ const t_IronPars Irons[] = {
                 65                          //PID_PNom
             },
             {0}
-        }
+        },
+        NULL
     },
 
     {
@@ -226,30 +280,34 @@ const t_IronPars Irons[] = {
         "CHIN. HAKKO 907         ",
         {
             {
-                1,                          //Type
                 {
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                    {
+                        1,                          //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    10,                         //CurrentA
+                    0,                          //CurrentB
+                    49,                         //Gain
+                    0,                          //Offset
+                    {                           //TPoly (TC Type K)
+                        0,                      //c0
+                        2.508355e+1,            //c1
+                        7.860106e-2,            //c2
+                       -2.503131e-1,            //c3
+                        8.315270e-2,            //c4
+                       -1.228034e-2,            //c5
+                        9.804036e-4,            //c6
+                       -4.413030e-5,            //c7
+                        1.057734e-6,            //c8
+                       -1.052755e-8             //c9
+                    },
                 },
-                10,                         //CurrentA
-                0,                          //CurrentB
                 0,                          //HRCompCurrent
-                49,                         //Gain
-                0,                          //Offset
-                {                           //TPoly (TC Type K)
-                    0,                      //c0
-                    2.508355e+1,            //c1
-                    7.860106e-2,            //c2
-                   -2.503131e-1,            //c3
-                    8.315270e-2,            //c4
-                   -1.228034e-2,            //c5
-                    9.804036e-4,            //c6
-                   -4.413030e-5,            //c7
-                    1.057734e-6,            //c8
-                   -1.052755e-8             //c9
-                },
                 0,                          //WSLength
                 11,                         //PID_DGain
                 (UINT16)(0.4 * 32768),      //PID_KP
@@ -259,7 +317,8 @@ const t_IronPars Irons[] = {
                 50                          //PID_PNom
             },
             {0}
-        }
+        },
+        NULL
     },
 
     {
@@ -268,30 +327,34 @@ const t_IronPars Irons[] = {
         "JBC C245                ",
         {
             {
-                1,                          //Type
                 {
-                    0,                      //HChannel
-                    7,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                    {
+                        1,                      //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        1,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    0,                          //CurrentA
+                    10,                         //CurrentB
+                    87,                         //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        41.85,                  //c1 *
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                0,                          //CurrentA
-                10,                         //CurrentB
                 0,                          //HRCompCurrent
-                87,                         //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    41.85,                  //c1 *
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
                 1,                          //WSLength
                 11,                         //PID_DGain
                 (UINT16)(0.3 * 32768),      //PID_KP
@@ -301,7 +364,8 @@ const t_IronPars Irons[] = {
                 130                         //PID_PNom
             },
             {0}
-        }
+        },
+        NULL
     },
 
     {
@@ -310,31 +374,34 @@ const t_IronPars Irons[] = {
         "JBC C210                ",
         {
             {
-                1,                          //Type
                 {
-                    0,                      //HChannel
-                    7,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                    {
+                        1,                          //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        1,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    10,                         //CurrentA
+                    0,                          //CurrentB
+                    202,                        //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        122.94,                 //c1 *
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                10,                         //CurrentA
-                0,                          //CurrentB
                 10,                         //HRCompCurrent
-                202,                        //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    122.94,                 //c1 *
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
-
                 -1,                         //WSLength
                 1,                          //PID_DGain
                 (UINT16)(0.25 * 32768),     //PID_KP
@@ -344,39 +411,44 @@ const t_IronPars Irons[] = {
                 40                          //PID_PNom
             },
             {0}
-        }
+        },
+        NULL
     },
+
     {
         0, 
         0x1317,
         "JBC C105/C115           ",
         {
             {
-                1,                          //Type
                 {
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                    {
+                        1,                          //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    10,                         //CurrentA
+                    0,                          //CurrentB
+                    200,                        //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        119.3,                  //c1
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                10,                         //CurrentA
-                0,                          //CurrentB
                 10,                         //HRCompCurrent
-                170,                        //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    117.56,                 //c1
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
-
                 -1,                         //WSLength
                 1,                          //PID_DGain
                 (UINT16)(0.25 * 32768),     //PID_KP
@@ -386,7 +458,8 @@ const t_IronPars Irons[] = {
                 14                          //PID_PNom
             },
             {0}
-        }
+        },
+        NULL
     },
 
     {
@@ -395,64 +468,71 @@ const t_IronPars Irons[] = {
         "JBC Microtweezers       ",
         {
             {
-                1,                          //Type
                 {
-                    1,                      //HChannel
-                    2,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
-//                    3                       //CBand
+                    {
+                        1,                          //Type
+                        1,                      //HChannel
+                        0,                      //InputP
+                        1,                      //InputN
+                        0,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    0,                          //CurrentA
+                    10,                         //CurrentB
+                    202,                        //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        115.6,                  //c1 *
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                0,                          //CurrentA
-                10,                         //CurrentB
-                10,                         //HRCompCurrent
-                202,                        //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    116.22,                 //c1 *
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
-                -1,                         //WSLength
-                1,                          //PID_DGain
-                (UINT16)(0.25 * 32768),      //PID_KP
-                (UINT16)(0.004 * 32768),    //PID_KI
-                4,                          //PID_OVSGain
-                40,                         //PID_PMax
-                40                          //PID_PNom
+                10,                             //HRCompCurrent                        
+                -1,                             //WSLength
+                1,                              //PID_DGain
+                (UINT16)(0.25 * 32768),         //PID_KP
+                (UINT16)(0.004 * 32768),        //PID_KI
+                4,                              //PID_OVSGain
+                40,                             //PID_PMax
+                40                              //PID_PNom
             },
             {
-                1,                          //Type
                 {
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                    {
+                        1,                          //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    10,                         //CurrentA
+                    0,                          //CurrentB
+                    202,                        //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        115.6,                  //c1 *
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                10,                         //CurrentA
-                0,                          //CurrentB
                 10,                         //HRCompCurrent
-                202,                        //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    116.22,                 //c1 *
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
                 -1,                         //WSLength
                 1,                          //PID_DGain
                 (UINT16)(0.25 * 32768),     //PID_KP
@@ -461,39 +541,44 @@ const t_IronPars Irons[] = {
                 40,                         //PID_PMax
                 40                          //PID_PNom
             }
-        }
+        },
+        NULL
     },
+    
     {
         0, 
         0x1515,
         "JBC Nanotweezers       *",
         {
             {
-                1,                          //Type
                 {
-                    1,                      //HChannel
-                    2,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
-//                    3                       //CBand
+                    {
+                        1,                          //Type
+                        1,                      //HChannel
+                        0,                      //InputP
+                        1,                      //InputN
+                        0,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    0,                          //CurrentA
+                    10,                         //CurrentB
+                    200,                        //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        119.3,                  //c1
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                0,                          //CurrentA
-                10,                         //CurrentB
                 10,                         //HRCompCurrent
-                170,                        //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    117.56,                 //c1
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
                 -1,                         //WSLength
                 1,                          //PID_DGain
                 (UINT16)(0.25 * 32768),     //PID_KP
@@ -503,30 +588,34 @@ const t_IronPars Irons[] = {
                 14                          //PID_PNom
             },
             {
-                1,                          //Type
                 {
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                    {
+                        1,                          //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    10,                         //CurrentA
+                    0,                          //CurrentB
+                    200,                        //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        119.3,                  //c1
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                10,                         //CurrentA
-                0,                          //CurrentB
                 10,                         //HRCompCurrent
-                170,                        //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    117.56,                 //c1
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
                 -1,                         //WSLength
                 1,                          //PID_DGain
                 (UINT16)(0.25 * 32768),     //PID_KP
@@ -535,7 +624,8 @@ const t_IronPars Irons[] = {
                 14,                         //PID_PMax
                 14                          //PID_PNom
             }
-        }
+        },
+        NULL
     },
 
     {
@@ -544,31 +634,34 @@ const t_IronPars Irons[] = {
         "Weller WMRT             ",
         {
             {
-                1,                          //Type
                 {
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
-//                    3                       //CBand
+                    {
+                        1,                      //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    10,                         //CurrentA
+                    0,                          //CurrentB
+                    128,                        //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        67.95,                  //c1
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                0,                          //CurrentA
-                0,                          //CurrentB
-                0,                          //HRCompCurrent
-                128,                        //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    67.95,                 //c1
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
+                0,                          //HRCompCurrent                        
                 0,                          //WSLength
                 1,                          //PID_DGain
                 (UINT16)(0.25 * 32768),     //PID_KP
@@ -578,30 +671,34 @@ const t_IronPars Irons[] = {
                 40                          //PID_PNom
             },
             {
-                1,                          //Type
                 {
-                    1,                      //HChannel
-                    2,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                    {
+                        1,                          //Type
+                        1,                      //HChannel
+                        0,                      //InputP
+                        1,                      //InputN
+                        0,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    0,                          //CurrentA
+                    10,                         //CurrentB
+                    128,                        //Gain
+                    0,                          //Offset
+                    {                           //TPoly
+                        0,                      //c0
+                        67.95,                  //c1
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                0,                          //CurrentA
-                0,                          //CurrentB
                 0,                          //HRCompCurrent
-                128,                        //Gain
-                0,                          //Offset
-                {                           //TPoly
-                    0,                      //c0
-                    67.95,                  //c1
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
                 0,                          //WSLength
                 1,                          //PID_DGain
                 (UINT16)(0.025 * 32768),    //PID_KP
@@ -610,7 +707,8 @@ const t_IronPars Irons[] = {
                 40,                         //PID_PMax
                 40                          //PID_PNom
             }
-        }
+        },
+        NULL
     },
 
     {
@@ -619,31 +717,34 @@ const t_IronPars Irons[] = {
         "WELLER WSP80            ",
         {
             {
-                2,                          //Type
-                {                           
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    1,                      //CBandA
-                    1,                      //CBandB
+                {
+                    {                           
+                        2,                          //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        1,                      //CBandA
+                        1,                      //CBandB
+                    },
+                    195,                        //CurrentA
+                    0,                          //CurrentB
+                    49,                         //Gain
+                    627,                        //Offset
+                    {                           //TPoly
+                        -313.5,                 //c0
+                        14.2881775,             //c1
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
-                195,                        //CurrentA
-                0,                          //CurrentB
                 0,                          //HRCompCurrent
-                49,                         //Gain
-                627,                        //Offset
-                {                           //TPoly
-                    -313.5,                 //c0
-                    14.2881775,             //c1
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
-                },
-
                 0,                          //WSLength
                 30,                         //PID_DGain
                 (UINT16)(0.2 * 32768),      //PID_KP
@@ -653,7 +754,8 @@ const t_IronPars Irons[] = {
                 80                          //PID_PNom
             },
             {0}
-        }
+        },
+        NULL
     },
     
     {
@@ -662,30 +764,34 @@ const t_IronPars Irons[] = {
         "ERSA RT80               ",
         {//-----------------------------------------------------------------------------------------
             {
-                2,                          //Type
                 {
-                    0,                      //HChannel
-                    5,                      //SChannel
-                    0,                      //CBandA
-                    1,                      //CBandB
-                },                          
-                167,                        //CurrentA
-                0,                          //CurrentB
-                0,                          //HRCompCurrent
-                21,                         //Gain
-                284,                        //Offset
-                {                           //TPoly
-                    -145.7299,              //c0
-                    86.2582,                //c1
-                    0,                      //c2
-                    0,                      //c3
-                    0,                      //c4
-                    0,                      //c5
-                    0,                      //c6
-                    0,                      //c7
-                    0,                      //c8
-                    0                       //c9
+                    {
+                        2,                          //Type
+                        0,                      //HChannel
+                        1,                      //InputP
+                        0,                      //InputN
+                        1,                      //InputInv
+                        0,                      //CBandA
+                        1,                      //CBandB
+                    },                          
+                    167,                        //CurrentA
+                    0,                          //CurrentB
+                    21,                         //Gain
+                    284,                        //Offset
+                    {                           //TPoly
+                        -145.7299,              //c0
+                        86.2582,                //c1
+                        0,                      //c2
+                        0,                      //c3
+                        0,                      //c4
+                        0,                      //c5
+                        0,                      //c6
+                        0,                      //c7
+                        0,                      //c8
+                        0                       //c9
+                    },
                 },
+                0,                          //HRCompCurrent                        
                 -1,                        //WSLength
                 0,                         //PID_DGain
                 (UINT16)(0.4 * 32768),     //PID_KP
@@ -695,7 +801,8 @@ const t_IronPars Irons[] = {
                 80                         //PID_PNom
             },
             {0}
-        }
+        },
+        NULL
     }    
 };
 
@@ -807,7 +914,7 @@ void IronTasks(){
                     break;
                 default:
                     for(i = 2; i--;){
-                        if(IronPars.Config[i].Type && (PIDVars[i].NoSensor || PIDVars[i].NoHeater)){
+                        if(IronPars.Config[i].SensorConfig.Type && (PIDVars[i].NoSensor || PIDVars[i].NoHeater)){
                             IronIdentify();
                             break;
                         }

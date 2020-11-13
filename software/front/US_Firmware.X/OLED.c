@@ -84,10 +84,11 @@ void OLEDInit(){
     SDO_3S = 1;
     SCK_3S = 1;        
     OLED_VDD = 0;    //Turn on display VDD 
-    OLED_DC_PU = 1; //enable internal pull-up on DC in order to check if resistor between OLED_RES and OLED_DC is installed
+    OLED_CS_PU = 1; //enable weak internal pull-up on CS in order to check for pull-down resistor on CS
+    OLED_DC_PU = 1; //enable weak internal pull-up on DC in order to check if resistor between OLED_RES and OLED_DC is installed
     _delay_ms(100);
 
-    DisplaySetup.SH1106 = !OLED_CS_IN; //If CS pull-up resistor is not installed, OLED_CS will be low => display controller is SH1106    
+    DisplaySetup.SH1106 = !OLED_CS_IN; //If CS pull-down resistor is installed, OLED_CS will be low => display controller is SH1106    
     DisplaySetup.InternalChargePump = !OLED_DC_IN; //If resistor between OLED-RES is installed, it will dominate and OLED_DC will be low => display uses internal charge pump.
     
     OLED_DC_PU = 0;//bring all IOs to operational state (outputs, no internal pull-ups)
@@ -267,6 +268,11 @@ void OLEDPrintNum(int col, int row, int dec, int num, void* font, int startChar,
     int cb = width * height;
     int cw = width + blank;
     int i, cd;
+    int minus=0;
+    if(num<0){
+        num=-num;
+        minus=1;
+    }
     i = dec;
     dec--;
     col += cw * dec;
@@ -279,7 +285,14 @@ void OLEDPrintNum(int col, int row, int dec, int num, void* font, int startChar,
             OLEDFill(col + width, blank, row, height, 0);
         }
         else{
-            OLEDFill(col, cw, row, height, 0);
+            if(minus){
+                OLEDWrite(col, width, row, (void *)font + cb * ('-' - startChar), cb);
+                OLEDFill(col + width, blank, row, height, 0);
+                minus=0;
+            }
+            else{
+                OLEDFill(col, cw, row, height, 0);
+            }
         }
         col -= cw;
     }
@@ -295,13 +308,13 @@ void OLEDPrintHex(int col, int row, int dec, unsigned int num, void* font, int s
     while(i--){
         cd = num & 15;
         num >>= 4;
-        if(num || cd || (i == dec)) {
+        //if(num || cd || (i == dec)) {
             OLEDWrite(col, width, row, (void *)font + cb * (cd + (cd <= 9 ? 0x30 : 0x37) - startChar), cb);
             OLEDFill(col + width, blank, row, height, 0);
-        }
-        else{
-            OLEDFill(col, cw, row, height, 0);
-        }
+        //}
+        //else{
+            //OLEDFill(col, cw, row, height, 0);
+        //}
         col -= cw;
     }
 }

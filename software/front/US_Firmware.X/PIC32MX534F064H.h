@@ -56,6 +56,8 @@ P32_EXTERN unsigned int mcuSqrt(unsigned int);
 #define OLED_SDI    LATDbits.LATD2
 #define OLED_SDO    LATDbits.LATD3
 #define ID_OUT      LATBbits.LATB15
+#define PGC         LATBbits.LATB6
+#define PGD         LATBbits.LATB7
 
 //inputs
 #define B1          PORTDbits.RD8
@@ -133,22 +135,25 @@ P32_EXTERN int mcuReadTime_us();
 
 //DMA
 #define mcuVBuffPos() DmaChnGetDstPnt(DMA_CHANNEL0)
-#define mcuIBuffPos() DmaChnGetDstPnt(DMA_CHANNEL1)
+#define mcuTIBuffPos() DmaChnGetDstPnt(DMA_CHANNEL1)
 
 //ADC channels
+#define ADCH_VIN ADC_CH0_POS_SAMPLEA_AN3
+#define ADCH_VSHUNT ADC_CH0_POS_SAMPLEA_AN4
+#define ADCH_TEMP ADC_CH0_POS_SAMPLEA_AN5
 #define ADCH_RT ADC_CH0_POS_SAMPLEA_AN14
 #define ADCH_ID ADC_CH0_POS_SAMPLEA_AN15
-#define ADCH_TEMP ADC_CH0_POS_SAMPLEA_AN5
-#define ADCH_VIN ADC_CH0_POS_SAMPLEA_AN3
+
 #define ADCH_VIN_SCAN SKIP_SCAN_AN3
-#define ADCH_VSHUNT ADC_CH0_POS_SAMPLEA_AN4
 #define ADCH_VSHUNT_SCAN SKIP_SCAN_AN4
+#define ADCH_TEMP_SCAN SKIP_SCAN_AN5
 
 #define mcuADCRefVdd() AD1CON2bits.VCFG=0b010
 #define mcuADCRefVref() AD1CON2bits.VCFG=0b011
 P32_EXTERN volatile int mcuADCRES;
 P32_EXTERN void mcuADCStop();
 P32_EXTERN void mcuADCStartManual();
+P32_EXTERN void mcuADCStartAuto(int temp);
 P32_EXTERN void mcuADCRead(int ADCCH, int num);
 P32_EXTERN int mcuADCReadWait(int ADCCH, int num);
 

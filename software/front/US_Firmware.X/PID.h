@@ -9,7 +9,7 @@
 #define	PID_H
 #include <GenericTypeDefs.h>
 #include "typedefs.h"
-#include "ExtFloat.h"
+#include "sensorMath.h"
 
 #ifdef	__cplusplus
 extern "C" {
@@ -94,11 +94,14 @@ extern "C" {
 PID_H_EXTERN volatile unsigned int PIDTicks;
 PID_H_EXTERN volatile int CRTemp;
 PID_H_EXTERN volatile int RTAvg;
+PID_H_EXTERN volatile int CJTemp;
 PID_H_EXTERN volatile int CTTemp;
 
 PID_H_EXTERN volatile t_PIDVars PIDVars[2];
     
 PID_H_EXTERN void PIDInit();
+
+PID_H_EXTERN void PIDTasks();
 
 PID_H_EXTERN void PID(int step);
 

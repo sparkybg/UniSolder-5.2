@@ -16,14 +16,14 @@ extern "C" {
 #include <GenericTypeDefs.h>
 #include "typedefs.h"
 #include "mcu.h"
+    
+#define CJ_PERIOD 500;  //Period in ticks of measurement of cold junction sensor temperature, if present.    
 
-//constants for output current on TC measurement
-#define TC_CURRENT 10
-#define TC_RCOMP ((UINT8)(19.6*TC_CURRENT)) //compensation = (TC_COMP*RHEATER*TCGAIN)/65536
 
 typedef struct {
     int HeaterOn;
     unsigned int VRT;
+    unsigned int VCJ;
     unsigned int VID;
     unsigned int VTEMP[4];
     unsigned int VIN;
@@ -36,11 +36,6 @@ typedef struct {
     SUINT16 Offset;
 }I2CDataS;
 
-typedef struct {
-    int Vin;
-    int Iin;
-} ADCAutoDataS ;
-
 #ifndef _ISR_C
 #define ISRC_EXTERN extern
 #else
@@ -51,14 +46,14 @@ ISRC_EXTERN void IsrHigh(int src);
 
 ISRC_EXTERN volatile int ISRStep;
 ISRC_EXTERN volatile int ISRTicks;
+ISRC_EXTERN volatile unsigned int CJTicks;
 
 ISRC_EXTERN volatile int ISRStopped;
 
 ISRC_EXTERN volatile ADCDataS ADCData;
 ISRC_EXTERN volatile UINT32 VBuff[256];
-ISRC_EXTERN volatile UINT32 IBuff[256];
-ISRC_EXTERN volatile unsigned int VIBuffCnt;
-ISRC_EXTERN volatile ADCAutoDataS ADCAutoData[256];
+ISRC_EXTERN volatile UINT32 TIBuff[256];
+ISRC_EXTERN volatile unsigned int VTIBuffCnt;
 
 ISRC_EXTERN UINT32 OffDelayOff;
 

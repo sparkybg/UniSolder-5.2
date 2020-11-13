@@ -195,7 +195,7 @@ int ADCAuto = 0;
 
 void mcuADCStop(){
     int i;
-    if(ADCAuto && !VIBuffCnt) VIBuffCnt = DmaChnGetDstPnt(DMA_CHANNEL0) >> 2;
+    if(ADCAuto && !VTIBuffCnt) VTIBuffCnt = DmaChnGetDstPnt(DMA_CHANNEL0) >> 2;
     DmaChnAbortTxfer(DMA_CHANNEL0);
     DmaChnAbortTxfer(DMA_CHANNEL1);
     DmaChnDisable(DMA_CHANNEL0);
@@ -235,7 +235,7 @@ void mcuADCStartManual(){
     ADCAuto = 0;
 }
 
-void mcuADCStartAuto(){
+void mcuADCStartAuto(int temp){
     mcuADCStop();
 
     DmaChnOpen(DMA_CHANNEL0,DMA_CHN_PRI1, DMA_OPEN_DEFAULT);
@@ -246,7 +246,7 @@ void mcuADCStartAuto(){
 
     DmaChnOpen(DMA_CHANNEL1,DMA_CHN_PRI0, DMA_OPEN_DEFAULT);
     DmaChnSetEventControl(DMA_CHANNEL1, DMA_EV_START_IRQ_EN | DMA_EV_START_IRQ(_ADC_IRQ));
-    DmaChnSetTxfer(DMA_CHANNEL1,(void*)&ADC1BUF1,(void*)IBuff,4,sizeof(IBuff),4);
+    DmaChnSetTxfer(DMA_CHANNEL1,(void*)&ADC1BUF1,(void*)TIBuff,4,sizeof(TIBuff),4);
     DmaChnWriteEvEnableFlags(DMA_CHANNEL1, 0);
     DmaChnEnable(DMA_CHANNEL1);
 
@@ -255,8 +255,9 @@ void mcuADCStartAuto(){
             ADC_MODULE_ON | ADC_IDLE_STOP | ADC_FORMAT_INTG32 | ADC_CLK_AUTO | ADC_AUTO_SAMPLING_ON | ADC_SAMP_ON , \
             ADC_VREF_EXT_EXT | ADC_OFFSET_CAL_DISABLE | ADC_SCAN_ON | ADC_SAMPLES_PER_INT_2 | ADC_ALT_BUF_OFF | ADC_ALT_INPUT_OFF, \
             ADC_SAMPLE_TIME_31 | ADC_CONV_CLK_PB | ADC_CONV_CLK_35Tcy2, \
+            /*ADC_SAMPLE_TIME_31 | ADC_CONV_CLK_PB | ADC_CONV_CLK_23Tcy2, \*/
             ENABLE_AN0_ANA | ENABLE_AN1_ANA | ENABLE_AN2_ANA | ENABLE_AN3_ANA | ENABLE_AN4_ANA | ENABLE_AN5_ANA | ENABLE_AN14_ANA, \
-            SKIP_SCAN_ALL ^ (ADCH_VIN_SCAN | ADCH_VSHUNT_SCAN));
+            SKIP_SCAN_ALL ^ (ADCH_VIN_SCAN | (temp? ADCH_TEMP_SCAN : ADCH_VSHUNT_SCAN)));
     AD1CON1bits.CLRASAM = 0;
     ADCAuto = 1;
 }
@@ -360,7 +361,7 @@ void __ISR(_OUTPUT_COMPARE_2_VECTOR,IPL5SOFT) PIDISR(void){
 int SPIAuto;
 void mcuSPIStop()
 {
-    DmaChnAbortTxfer(DMA_CHANNEL2);
+    //DmaChnAbortTxfer(DMA_CHANNEL2);
     //mcuSPIClose();
     mSPI3AClearAllIntFlags();
     mSPI3ATXIntEnable(0);
@@ -374,11 +375,11 @@ void mcuSPISendAuto(void * buffer, int len)
     SPIAuto = 1;
     mcuSPIStop();
     //mcuSPIOpen();
-    DmaChnOpen(DMA_CHANNEL2,DMA_CHN_PRI3, DMA_OPEN_DEFAULT);
-    DmaChnSetEventControl(DMA_CHANNEL2, DMA_EV_START_IRQ_EN | DMA_EV_START_IRQ(_SPI3_TX_IRQ));
-	DmaChnSetTxfer(DMA_CHANNEL2,(void*)buffer,(void*)&SPI3BUF, len, 1, 1);
-    DmaChnWriteEvEnableFlags(DMA_CHANNEL2, DMA_EV_CELL_DONE);
-    DmaChnEnable(DMA_CHANNEL2);
+    //DmaChnOpen(DMA_CHANNEL2,DMA_CHN_PRI3, DMA_OPEN_DEFAULT);
+    //DmaChnSetEventControl(DMA_CHANNEL2, DMA_EV_START_IRQ_EN | DMA_EV_START_IRQ(_SPI3_TX_IRQ));
+	//DmaChnSetTxfer(DMA_CHANNEL2,(void*)buffer,(void*)&SPI3BUF, len, 1, 1);
+    //DmaChnWriteEvEnableFlags(DMA_CHANNEL2, DMA_EV_CELL_DONE);
+    //DmaChnEnable(DMA_CHANNEL2);
 
 	//DmaChnSetEvEnableFlags(dmaTxChn, DMA_EV_BLOCK_DONE);	// enable the transfer done interrupt, when all buffer transferred
     //INTSetVectorPriority(DMA_CHANNEL3, INT_PRIORITY_LEVEL_5);

@@ -264,6 +264,7 @@ void main(void){
         MenuTasks();
         IOTasks();
         IronTasks();
+        PIDTasks();
     }
 }
 
