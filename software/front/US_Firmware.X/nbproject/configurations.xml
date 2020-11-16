@@ -36,7 +36,6 @@
       <itemPath>iron.h</itemPath>
       <itemPath>io.h</itemPath>
       <itemPath>menu.h</itemPath>
-      <itemPath>PIC32MX534F064H.h</itemPath>
       <itemPath>mcu.h</itemPath>
       <itemPath>EEP.h</itemPath>
       <itemPath>fonts.h</itemPath>
@@ -47,6 +46,7 @@
       <itemPath>pars.h</itemPath>
       <itemPath>font6x8.h</itemPath>
       <itemPath>sensorMath.h</itemPath>
+      <itemPath>PIC32MX564F128H.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -69,11 +69,11 @@
       <itemPath>PID.c</itemPath>
       <itemPath>io.c</itemPath>
       <itemPath>menu.c</itemPath>
-      <itemPath>PIC32MX534F064H.c</itemPath>
       <itemPath>EEP.c</itemPath>
       <itemPath>OLED.c</itemPath>
       <itemPath>pars.c</itemPath>
       <itemPath>sensorMath.c</itemPath>
+      <itemPath>PIC32MX564F128H.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -91,7 +91,7 @@
     <conf name="PIC32_Standalone" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC32MX534F064H</targetDevice>
+        <targetDevice>PIC32MX564F128H</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
@@ -140,9 +140,9 @@
         <property key="extra-include-directories" value=""/>
         <property key="generate-16-bit-code" value="true"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="isolate-each-function" value="false"/>
+        <property key="isolate-each-function" value="true"/>
         <property key="make-warnings-into-errors" value="false"/>
-        <property key="optimization-level" value="-Os"/>
+        <property key="optimization-level" value="-O2"/>
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
@@ -154,14 +154,14 @@
         <property key="unaligned-access" value=""/>
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
-        <property key="use-indirect-calls" value="true"/>
+        <property key="use-indirect-calls" value="false"/>
       </C32>
       <C32-AR>
         <property key="additional-options-chop-files" value="false"/>
       </C32-AR>
       <C32-AS>
         <property key="assembler-symbols" value=""/>
-        <property key="enable-symbols" value="true"/>
+        <property key="enable-symbols" value="false"/>
         <property key="exclude-floating-point-library" value="false"/>
         <property key="expand-macros" value="false"/>
         <property key="extra-include-directories-for-assembler" value=""/>
@@ -199,7 +199,7 @@
         <property key="fill-flash-options-increment" value=""/>
         <property key="fill-flash-options-seq" value=""/>
         <property key="fill-flash-options-what" value="0"/>
-        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-16-bit-code" value="true"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="heap-size" value=""/>
@@ -211,14 +211,14 @@
         <property key="no-device-startup-code" value="false"/>
         <property key="no-startup-files" value="false"/>
         <property key="oXC32ld-extra-opts" value=""/>
-        <property key="optimization-level" value="-Os"/>
+        <property key="optimization-level" value="-O2"/>
         <property key="preprocessor-macros" value=""/>
         <property key="remove-unused-sections" value="true"/>
         <property key="report-memory-usage" value="false"/>
         <property key="serial-length" value=""/>
         <property key="serial-origin" value=""/>
         <property key="stack-size" value=""/>
-        <property key="symbol-stripping" value=""/>
+        <property key="symbol-stripping" value="-s"/>
         <property key="trace-symbols" value=""/>
         <property key="warn-section-align" value="false"/>
       </C32-LD>
@@ -226,24 +226,25 @@
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
         <property key="check-new" value="false"/>
-        <property key="eh-specs" value="true"/>
+        <property key="eh-specs" value="false"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
-        <property key="enable-symbols" value="true"/>
+        <property key="enable-symbols" value="false"/>
         <property key="enable-unroll-loops" value="false"/>
-        <property key="exceptions" value="true"/>
+        <property key="exceptions" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories" value=""/>
-        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-16-bit-code" value="true"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
         <property key="make-warnings-into-errors" value="false"/>
-        <property key="optimization-level" value="-Os"/>
+        <property key="optimization-level" value="-O2"/>
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
-        <property key="preprocessor-macros" value=""/>
-        <property key="rtti" value="true"/>
+        <property key="preprocessor-macros"
+                  value="_SUPPRESS_PLIB_WARNING;_DISABLE_OPENADC10_CONFIGPORT_WARNING"/>
+        <property key="rtti" value="false"/>
         <property key="strict-ansi" value="false"/>
         <property key="toplevel-reordering" value=""/>
         <property key="unaligned-access" value=""/>
@@ -522,10 +523,10 @@
     <conf name="PIC32_with_bootloader" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC32MX534F064H</targetDevice>
+        <targetDevice>PIC32MX564F128H</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>Simulator</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>2.50</languageToolchainVersion>
         <platform>3</platform>
@@ -565,7 +566,7 @@
         <property key="addresss-attribute-use" value="false"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
-        <property key="enable-symbols" value="true"/>
+        <property key="enable-symbols" value="false"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories" value=""/>
@@ -573,7 +574,7 @@
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
         <property key="make-warnings-into-errors" value="false"/>
-        <property key="optimization-level" value="-Os"/>
+        <property key="optimization-level" value="-O2"/>
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="schedule-insns2"/>
         <property key="pre-instruction-scheduling" value="schedule-insns"/>
@@ -642,7 +643,7 @@
         <property key="no-device-startup-code" value="false"/>
         <property key="no-startup-files" value="false"/>
         <property key="oXC32ld-extra-opts" value=""/>
-        <property key="optimization-level" value="-Os"/>
+        <property key="optimization-level" value="-O2"/>
         <property key="preprocessor-macros" value=""/>
         <property key="remove-unused-sections" value="true"/>
         <property key="report-memory-usage" value="false"/>
@@ -660,27 +661,28 @@
         <property key="eh-specs" value="false"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
-        <property key="enable-symbols" value="true"/>
+        <property key="enable-symbols" value="false"/>
         <property key="enable-unroll-loops" value="false"/>
-        <property key="exceptions" value="true"/>
+        <property key="exceptions" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories" value=""/>
         <property key="generate-16-bit-code" value="true"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
         <property key="make-warnings-into-errors" value="false"/>
-        <property key="optimization-level" value="-Os"/>
+        <property key="optimization-level" value="-O2"/>
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="schedule-insns2"/>
         <property key="pre-instruction-scheduling" value="schedule-insns"/>
-        <property key="preprocessor-macros" value=""/>
-        <property key="rtti" value="true"/>
+        <property key="preprocessor-macros"
+                  value="_SUPPRESS_PLIB_WARNING;_DISABLE_OPENADC10_CONFIGPORT_WARNING"/>
+        <property key="rtti" value="false"/>
         <property key="strict-ansi" value="false"/>
         <property key="toplevel-reordering" value=""/>
         <property key="unaligned-access" value=""/>
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
-        <property key="use-indirect-calls" value="true"/>
+        <property key="use-indirect-calls" value="false"/>
       </C32CPP>
       <C32Global>
         <property key="common-include-directories" value=""/>
@@ -1365,7 +1367,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories" value=""/>
-        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-16-bit-code" value="true"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
         <property key="make-warnings-into-errors" value="false"/>
@@ -1394,7 +1396,7 @@
         <property key="extra-include-directories-for-assembler" value=""/>
         <property key="extra-include-directories-for-preprocessor" value=""/>
         <property key="false-conditionals" value="false"/>
-        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-16-bit-code" value="true"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="keep-locals" value="true"/>
         <property key="list-assembly" value="false"/>
@@ -1426,7 +1428,7 @@
         <property key="fill-flash-options-increment" value=""/>
         <property key="fill-flash-options-seq" value=""/>
         <property key="fill-flash-options-what" value="0"/>
-        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-16-bit-code" value="true"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="heap-size" value=""/>
@@ -1453,12 +1455,12 @@
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
         <property key="check-new" value="false"/>
-        <property key="eh-specs" value="true"/>
+        <property key="eh-specs" value="false"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
-        <property key="exceptions" value="true"/>
+        <property key="exceptions" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories" value=""/>
         <property key="generate-16-bit-code" value="false"/>
@@ -1469,8 +1471,9 @@
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="no-schedule-insns2"/>
         <property key="pre-instruction-scheduling" value="no-schedule-insns"/>
-        <property key="preprocessor-macros" value=""/>
-        <property key="rtti" value="true"/>
+        <property key="preprocessor-macros"
+                  value="_SUPPRESS_PLIB_WARNING;_DISABLE_OPENADC10_CONFIGPORT_WARNING"/>
+        <property key="rtti" value="false"/>
         <property key="strict-ansi" value="false"/>
         <property key="toplevel-reordering" value=""/>
         <property key="unaligned-access" value=""/>

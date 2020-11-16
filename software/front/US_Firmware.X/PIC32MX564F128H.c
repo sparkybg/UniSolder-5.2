@@ -34,7 +34,7 @@
 #pragma config CP = OFF                 // Code Protect (Protection Disabled)
 
 #include <GenericTypeDefs.h>
-#include "PIC32MX534F064H.h"
+#include "PIC32MX564F128H.h"
 #include <peripheral/system.h>
 #include <peripheral/cmp.h>
 #include <peripheral/timer.h>
@@ -227,7 +227,7 @@ void mcuADCStartManual(){
     OpenADC10(\
             ADC_MODULE_ON | ADC_IDLE_STOP | ADC_FORMAT_INTG16 | ADC_CLK_AUTO | ADC_AUTO_SAMPLING_OFF | ADC_SAMP_OFF , \
             ADC_VREF_EXT_EXT | ADC_OFFSET_CAL_DISABLE | ADC_SCAN_OFF | ADC_SAMPLES_PER_INT_1 | ADC_BUF_16 | ADC_ALT_INPUT_OFF, \
-            ADC_SAMPLE_TIME_13 | ADC_CONV_CLK_PB | ADC_CONV_CLK_5Tcy, \
+            ADC_SAMPLE_TIME_12 | ADC_CONV_CLK_PB | ADC_CONV_CLK_5Tcy, \
             ENABLE_AN0_ANA | ENABLE_AN1_ANA | ENABLE_AN2_ANA | ENABLE_AN3_ANA | ENABLE_AN4_ANA | ENABLE_AN5_ANA | ENABLE_AN14_ANA, \
             SKIP_SCAN_ALL);
     AD1CON1bits.CLRASAM = 0;

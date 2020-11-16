@@ -105,12 +105,14 @@ void ISRHigh(int src){
 
     switch(src){
         case CompH2L:
+            PGD=1;
             if(!mainFlags.ACPower) OnPowerLost();
         case DCTimer:
             if(ISRStep != 9)ISRComplete = 0;
             ISRStep = 0;
             break;
         case CompL2H:
+            PGD=0;
             return;
     }
 
@@ -138,13 +140,13 @@ void ISRHigh(int src){
                 dw = OffDelayOff;
                 if(HEATER && dw < PV->OffDelay) dw = PV->OffDelay;
                 dw >>= 4;
-                dw -= ((OffDelayOff >> 4) * 115) >> 8;
+                if(dw >= 235) dw -= 215; 
+                //dw -= ((OffDelayOff >> 4) * 115) >> 8;
                 if(dw > 1000) dw = 1000;
                 mcuStartISRTimer_us(dw); //AC - delay to zero cross
             }
             break;
-        case 1: //AC zero cross
-            PGD = 1;
+        case 1: //215us before AC zero cross
             mcuReadTime_us(); //zero readtime counter
             if(PV->Power) HEATER = 0; //stop heater if 1/2 or 1/4 power in order for power to be same on odd and even mains half periods.
             if(ADCStep & 1){
@@ -159,9 +161,8 @@ void ISRHigh(int src){
                 mcuStartISRTimer_us(450);
             }
             break;
-        case 2: //some time after zero cross - setup inputs and wait some time to start iron temperature reading
+        case 2: //165us before zero cross - setup inputs and wait 150us to read room temperature
                 //calculate RMS power and current in the mean time.
-            PGD = 0;
             mcuStartISRTimer_us(150);
             mcuADCStartManual();
             mcuADCRefVref();
@@ -189,7 +190,7 @@ void ISRHigh(int src){
                         dw += CompLowTime;
 
                         if(OldHeater && PV->Power && CompLowTimeOn && CompLowTimeOff && CompLowTimeOn > CompLowTimeOff){
-                            dw += CompLowTimeOn - CompLowTimeOff; //when heater was on and half power, comp low time is shorter then on full power - compensate for it;
+                            dw += CompLowTimeOn - CompLowTimeOff; //when heater was on 1/2 or 1/4 power, comp low time is shorter then on full power - compensate for it;
                         }
 
                         if(dw < 1600) dw = 1600;
@@ -266,29 +267,26 @@ void ISRHigh(int src){
             VTIBuffCnt = 0;
             ISRComplete = 0;
             break;
-        case 3: //read room temperature
+        case 3: //15us before zero cross - read room temperature
             mcuADCRead(ADCH_RT,1);
             break;
-        case 4: //start reading iron temperature.
+        case 4: //zero cross - start reading iron temperature.
             if(ADCStep == 0){
                 ADCData.VRT = mcuADCRES;
             }
             else{
                 ADCData.VRT += mcuADCRES;
             }
-            PGC = 1;
             mcuADCRead(ADCH_TEMP, 4);
             break;
-        case 5: //Check for sensor open, heater open, perform PID and wait for 1/2 power point (AC voltage point just between 2 adjacent zero crosses)
-            dw = MAINS_PER_H_US;
-            dw -= mcuReadTime_us();
-            mcuStartISRTimer_us(dw);
+        case 5: //60uS after zero cross - check for sensor open, heater open, perform PID and wait to 1/2 power point (AC voltage point just between 2 adjacent zero crosses)
+            dw = MAINS_PER_H_US - 60;
+            mcuStartISRTimer_us(dw); //next step will be at the center of mains half period
 
             if(!mainFlags.Calibration){
                 CHSEL1 = 0;
                 CHSEL2 = 0;
             }
-            PGC = 0;
             
             ADCData.HeaterOn = PHEATER;
             ADCData.VTEMP[ADCStep & 1] = mcuADCRES >> 2;
@@ -351,8 +349,9 @@ void ISRHigh(int src){
                 if(!mainFlags.PowerLost)I2CAddCommands(I2C_SET_CPOT | I2C_SET_GAINPOT | I2C_SET_OFFSET);
             }
             break;
-        case 6:  //AC voltage highest point - check for power lost and turn on heater if 1/2 power and wait for 1/4 power point
-            mcuStartISRTimer_us(MAINS_PER_Q_US);
+        case 6:  //AC voltage highest point (center of half period) - check for power lost and turn on heater if 1/2 power and wait for 1/4 power point
+            PGC=1;
+            mcuStartISRTimer_us(MAINS_PER_Q_US); //Next step will be at 1/4 power point in the mains period
             if(!MAINS || ((VBuff[dw = (mcuTIBuffPos() >> 2) - 1] < 90) && PHEATER && (TIBuff[dw] < 16))){ //power lost if <0.5A and <7.4V
                 OnPowerLost();
                 return;
@@ -380,6 +379,7 @@ void ISRHigh(int src){
             }
             break;
         case 7: //1/4 power point - turn on heater
+            PGC=0;
             HEATER = PHEATER;
             mcuStartISRTimer_us(100);
             break;

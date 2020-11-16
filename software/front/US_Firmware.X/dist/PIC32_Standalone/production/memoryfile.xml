@@ -3,15 +3,15 @@
   <executable name="dist/PIC32_Standalone/production/US_Firmware.X.production.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
-      <length>73216</length>                 
-      <used>46092</used>                     
-      <free>27124</free>                     
+      <length>138752</length>                 
+      <used>47524</used>                     
+      <free>91228</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 
-      <length>16384</length>                 
+      <length>32768</length>                 
       <used>5760</used>                     
-      <free>10624</free>                     
+      <free>27008</free>                     
     </memory>                              
   </executable>                            
 </project>                                 

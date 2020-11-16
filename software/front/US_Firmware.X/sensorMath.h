@@ -110,7 +110,7 @@ typedef struct {
 #define SENSORMATH_H_EXTERN
 #endif
 
-INT32 GetSensorTemperature(UINT16 input, t_SensorConfig * SC);
+INT32 GetSensorTemperature(int input, t_SensorConfig * SC);
 
 #undef SENSORMATH_H_EXTERN
 

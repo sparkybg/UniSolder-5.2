@@ -34,9 +34,7 @@ void PIDTasks(){
             current = CJC->CurrentB;         
             cBand = CJC->CBandB;
         }
-        PGC = 1;
         INT32 t = GetSensorTemperature(ADCData.VCJ, CJC);
-        PGC = 0;
         if(t>-273*2 && t<200){
             CJTemp = t;                
         }

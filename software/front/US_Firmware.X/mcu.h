@@ -19,7 +19,7 @@ extern "C" {
 #endif
 
 #ifdef __32MX564F128H__
-#include "PIC32MX534F064H.h"
+#include "PIC32MX564F128H.h"
 #endif
 
 

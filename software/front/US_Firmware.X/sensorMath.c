@@ -5,7 +5,7 @@
 #include "PID.h"
 #include "main.h"
 
-INT32 GetSensorTemperature(UINT16 input, t_SensorConfig * SC){
+INT32 GetSensorTemperature(int input, t_SensorConfig * SC){
     INT32 dw = input + SC->Offset;
     if(dw < 0)dw = 0;
     if(dw > 2047)dw = 2047;
@@ -136,16 +136,17 @@ INT32 GetSensorTemperature(UINT16 input, t_SensorConfig * SC){
             }
             else{
                 dw = -(INT32)(NSum.m >> s);
-            }            
+            }          
         }
     }
+    if(dw < -273*2) dw = -273*2;
+    if(dw > 2000) dw = 2000;
 
     //Add room temperature if thermocouple
     if(SC->Type == 1){
         int temp = CRTemp;
-        if(CJTemp > -273*2) temp = CJTemp;
-        if(CRTemp > 0 && dw <= (0x7FFFFFFFU - temp)) dw += temp;
-        if(CRTemp < 0 && (UINT32)dw >= (0x80000000U + (-temp))) dw -= temp;
+        if(CJTemp >= -10) temp = CJTemp;
+        dw += temp;
     }
 
     return dw;
