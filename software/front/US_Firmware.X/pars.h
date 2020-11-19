@@ -28,11 +28,13 @@ typedef union {
         UINT8 WakeUp;                               //Wake up from standby (0-off, 1-long key press, 2-holder sensor, 3-key or sensor)
         UINT8 DispRot;                              //Display rotation (0 - 0deg, 1 - 180deg)
         UINT8 NapFilterTicks;                       //Holder/stand sensor filter ticks
-        UINT8 MenuDown;                             //Menu down key (0 - Key+, 1 - Key-)
+        UINT8 MenuDown;                             //Menu down key (0 - key+, 1 - key-)
+        UINT8 Input;                                //Input type (0 - keys, 1 - rotary encoder)
         UINT8 Cal;
         UINT8 Debug;
+        UINT8 TempStep;                             //temperature step - 1=2C, 2=4C... 25=50C
     };
-    UINT8 b[17];
+    UINT8 b[19];
 }pars_t;
 
 typedef struct {
@@ -47,7 +49,10 @@ typedef struct {
 }t_ParDef;
 
 #ifndef _PARS_C
-extern const t_ParDef ParDef[17];
+extern const char MenuOrder[18];
+extern const t_ParDef ParDef[19];
+extern void LoadPars(void);
+extern void SavePars();
 #endif
 
 #ifdef	__cplusplus

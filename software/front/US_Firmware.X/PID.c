@@ -129,6 +129,7 @@ void PID(int PIDStep) {
             if(PV->HPMax < PV->HP) PV->HPMax = PV->HP;
             PV->HNewData=0;
         }
+        if(PV->NoSensor || PV->ShortCircuit) PV->HPMax = 0;
     }
 /************************************************************************************/
     

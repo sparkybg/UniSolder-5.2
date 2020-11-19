@@ -29,7 +29,6 @@ void ProcessIO();
 void IOInit(){
     IO_TICKS = ISRTicks;
     IO_BUSY = 1;
-    BuffEmpty=1;
     USBDriverInit();
     RXP.Command = 0;
 }
@@ -56,7 +55,6 @@ void ProcessIO(){
                 BuffPos++;
                 if(BuffPos>127){
                     BuffPos &= 127;
-                    BuffEmpty=1;                    
                 }
                 TXP.Command=3;
                 TXP.LiveData.Ticks=IO_TICKS;

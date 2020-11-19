@@ -32,12 +32,12 @@ extern "C" {
     extern volatile unsigned int MAINS_PER_US;
     extern volatile unsigned int MAINS_PER_H_US;
     extern volatile unsigned int MAINS_PER_Q_US;
-    extern volatile unsigned int T_PER;
-    extern volatile unsigned int C_PER;
-    
+    extern volatile unsigned int T_PER;    
     extern volatile unsigned int TTemp;
     extern volatile mainflags_t mainFlags;
     extern volatile pars_t pars;
+    
+    extern volatile int Enc;
     
     extern volatile int CalCh;
 #endif

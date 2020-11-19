@@ -57,56 +57,7 @@ volatile unsigned int   TTemp;                      //target temperature/2
 volatile pars_t         pars;
 /******************************************************************************/
 
-void LoadPars(void)
-{
-    int i;
-    UINT8 b,oldb;
-
-    EEPRead(0, (UINT8 *)&pars, sizeof(pars));
-    for(i = 0; i < sizeof(pars); i++){
-        if((pars.b[i] < ParDef[i].Min) || (pars.b[i] > ParDef[i].Max)){
-            for(i = 0; i < sizeof(pars); i++){
-                pars.b[i] = ParDef[i].Default;
-            }
-            break;
-        }
-    }
-
-    TTemp = 150;
-    oldb=EEPRead(63 + 64, 0, 1);
-    for(i = 0; i < 64; i++){
-        b = EEPRead(i + 64, 0, 1);
-        if((oldb == 0xFF) && (b >= MINTEMP) && (b <= MAXTEMP)){
-            TTemp = b;
-            break;
-        }
-        oldb = b;
-    }
-}
-
-
-void SavePars(void)
-{
-    int i;
-    UINT8 b, oldb;
-
-    for(i = 0; i < sizeof(pars); i++){
-        if(EEPRead(i, 0 ,1) != pars.b[i])EEPWriteImm(i, pars.b[i]);
-    }
-    oldb = EEPRead(63 + 64, 0, 1);
-    for(i = 0; i < 64; i++){
-        b = EEPRead(i + 64, 0, 1);
-        if((oldb==0xFF) && (b >= MINTEMP) && (b <= MAXTEMP))break;
-        oldb = b;
-    }
-    i &= 63;
-    b=EEPRead(i + 64, 0, 1);
-    if(b != TTemp){
-        EEPWriteImm(i + 64, 0xFF);
-        EEPWriteImm(((i + 1) & 63) + 64, TTemp);
-    }
-}
-
+volatile int Enc; //Rotary encoder position
 
 void main(void){
     int i;
@@ -119,51 +70,41 @@ void main(void){
     OLEDUpdate();
 
     mcuInit2();
-
-    OLEDPrintNum816(0, 0, 2, 20);
-    OLEDUpdate();
-    OpenTimer1(T1_ON | T1_IDLE_STOP | T1_TMWDIS_OFF | T1_GATE_OFF | T1_PS_1_256 | T1_SYNC_EXT_OFF | T1_SOURCE_INT,0xFFFF);
-    ConfigIntTimer1(T1_INT_OFF | T1_INT_PRIOR_7 | T1_INT_SUB_PRIOR_3);
-    _delay_ms(100);
-    OLEDPrintNum816(0, 0, 2, 21);
-    OLEDUpdate();
-    
-    CalCh=0;
+        
+    CalCh = 0;
     mainFlags.ACPower = 0;
     MAINS_PER = 0;
+    
     mcuDCTimerReset();
-    while(MAINS && (mT1GetIntFlag() == 0));
+    while(MAINS && !mcuDCTimerInterrupt);
     _delay_us(100);
-    while((!MAINS) && (mT1GetIntFlag() ==0));
+    while(!MAINS && !mcuDCTimerInterrupt);
+    
     mcuDCTimerReset();
-    for(i = 0;((i < 8) && (mT1GetIntFlag() == 0));i++){
+    for(i = 0;((i < 8) && !mcuDCTimerInterrupt);i++){
         _delay_us(100);
-        while(MAINS && (mT1GetIntFlag() == 0)){};
+        while(MAINS && !mcuDCTimerInterrupt){};
         _delay_us(100);
-        while((!MAINS) && (mT1GetIntFlag() == 0)){};
-        MAINS_PER = ReadTimer1();
+        while(!MAINS && !mcuDCTimerInterrupt){};
+        MAINS_PER = mcuReadDCTimer();
     }
-    if(mT1GetIntFlag()){ //DC Power
-        MAINS_PER_US = 1000000/110;
-        MAINS_PER_Q_US = MAINS_PER_US>>2;
-        MAINS_PER = (PER_FREQ/256)/110;        //55Hz
+    if(mcuDCTimerInterrupt){ //DC Power
+        MAINS_PER_US = 1000000 / 110;
+        MAINS_PER_Q_US = MAINS_PER_US >> 2;
+        MAINS_PER = (PER_FREQ / 256) / 110;        //55Hz
         T_PER = MAINS_PER;
     }
     else{ //AC Power
-        MAINS_PER_US = MAINS_PER*256/(PER_FREQ*8/1000000);// * 256) / PER_FREQ;
+        MAINS_PER_US = MAINS_PER * 256 /(PER_FREQ * 8 / 1000000);
         MAINS_PER_Q_US = (MAINS_PER_US * 368)/1001;
         MAINS_PER >>= 3;
         T_PER = MAINS_PER + ((PER_FREQ / 256) / 1000);
-        mainFlags.ACPower=1;
+        mainFlags.ACPower = 1;
     }
-    MAINS_PER_H_US = MAINS_PER_US>>1;
-    MAINS_PER_Q_US = MAINS_PER_H_US - MAINS_PER_Q_US;
-    
-    C_PER=(MAINS_PER-(PER_FREQ / 256) / 500) >> 2;
-    CloseTimer1();
-    OpenTimer1(T1_ON | T1_IDLE_STOP | T1_TMWDIS_OFF | T1_GATE_OFF | T1_PS_1_256 | T1_SYNC_EXT_OFF | T1_SOURCE_INT, T_PER);
-    OLEDPrintNum816(0, 0, 2, 22);
-    OLEDUpdate();
+    MAINS_PER_H_US = MAINS_PER_US >> 1;
+    MAINS_PER_Q_US = MAINS_PER_H_US - MAINS_PER_Q_US;    
+
+    mcuInit3();
 
     IronInit();
     OLEDPrintNum816(0, 0, 2, 31);
@@ -189,42 +130,8 @@ void main(void){
     OLEDUpdate();
     
     mcuDCTimerReset();
-
-    CMP2ConfigInt(CMP_INT_PRIOR_7 | CMP_INT_SUB_PRI_3 | CMP_INT_ENABLE);
-    ConfigIntADC10(ADC_INT_PRI_7 | ADC_INT_SUB_PRI_3 | ADC_INT_ON);
-    ConfigIntTimer1(T1_INT_ON | T1_INT_PRIOR_7 | T1_INT_SUB_PRIOR_3);
-    OLEDPrintNum816(0, 0, 2, 41);
-    OLEDUpdate();
-
-
-    INTClearFlag(INT_I2C4B);
-    INTClearFlag(INT_I2C4M);
-    INTClearFlag(INT_I2C4S);
-    INTClearFlag(INT_I2C4);
-    INTSetVectorPriority(INT_I2C_4_VECTOR, INT_PRIORITY_LEVEL_6);
-    INTSetVectorSubPriority(INT_I2C_4_VECTOR, INT_SUB_PRIORITY_LEVEL_3);
-    INTEnable(INT_I2C4B,INT_ENABLED);
-    INTEnable(INT_I2C4M,INT_ENABLED);
-    INTEnable(INT_I2C4S,INT_ENABLED);
-    INTEnable(INT_I2C4,INT_ENABLED);
-    OLEDPrintNum816(0, 0, 2, 42);
-    OLEDUpdate();
-
-    INTClearFlag(INT_OC2);
-    INTSetVectorPriority(_OUTPUT_COMPARE_2_VECTOR, INT_PRIORITY_LEVEL_5);
-    INTSetVectorSubPriority(_OUTPUT_COMPARE_2_VECTOR, INT_SUB_PRIORITY_LEVEL_1);
-    INTEnable(INT_OC2,INT_ENABLED);
-    OLEDPrintNum816(0, 0, 2, 43);
-    OLEDUpdate();
-
-    mcuInitISRTimer();
     
-    //INTSetVectorPriority(DMA_CHANNEL3, INT_PRIORITY_LEVEL_5);
-	//INTSetVectorSubPriority(INT_VECTOR_DMA3, INT_SUB_PRIORITY_LEVEL_2);
-
-    INTEnableSystemMultiVectoredInt();
-    OLEDPrintNum816(0, 0, 2, 44);
-    OLEDUpdate();
+    mcuInit4();
 
     CBANDA=1;
     CBANDB=1;

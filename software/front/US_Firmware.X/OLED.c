@@ -197,6 +197,21 @@ void OLEDInvert(int col,int colnum, int row, int rownum){
     }
 }
 
+void OLEDInvertXY(int x, int dx, int y, int dy){
+    if(!(y & 7) && !(dy & 7)) return OLEDInvert(x, dx, y >> 3, dy >> 3 );    
+    while(dy > 0){
+        int row7 = y & 7;
+        int rowL = 8 - row7;
+        UINT8 mask = 0xFF << row7;
+        if(dy < rowL) mask &= 0xFF >> (rowL - dy);
+        int cx = x;        
+        int cc = dx;
+        while(cc--)OLEDBUFF.B[y >> 3][cx++] ^= mask;
+        dy -= rowL;
+        y += rowL;
+    }
+}
+
 void OLEDWrite(int col, int colnum, int row, void * buf, int num){
     while(num){
         int cc = colnum;

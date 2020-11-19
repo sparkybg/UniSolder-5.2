@@ -111,6 +111,8 @@ P32_EXTERN unsigned int mcuSqrt(unsigned int);
 
 P32_EXTERN void mcuInit1();
 P32_EXTERN void mcuInit2();
+P32_EXTERN void mcuInit3();
+P32_EXTERN void mcuInit4();
 
 P32_EXTERN void mcuJumpToBootLoader();
 
@@ -124,6 +126,8 @@ P32_EXTERN void mcuI2CReset();
 
 #define MAINS CM2CONbits.COUT
 
+#define mcuDCTimerInterrupt mT1GetIntFlag()
+#define mcuReadDCTimer() ReadTimer1()
 P32_EXTERN void mcuDCTimerReset();
 
 P32_EXTERN void mcuInitISRTimer();

@@ -42,8 +42,8 @@
 #include <peripheral/adc10.h>
 #include <peripheral/dma.h>
 #include <peripheral/cvref.h>
-#include <peripheral/cmp.h>
 #include <peripheral/outcompare.h>
+#include <peripheral/incap.h>
 #include <peripheral/int.h>
 
 #include "main.h"
@@ -91,9 +91,11 @@ void mcuInit1(){
 void mcuInit2(){
     OLEDPrintNum816(0, 0, 2, 10);
     OLEDUpdate();
+    
     OpenTimer3(T3_ON | T3_IDLE_STOP | T3_GATE_OFF | T3_PS_1_256 | T3_SOURCE_INT, 40);
     OLEDPrintNum816(0, 0, 2, 11);
     OLEDUpdate();
+    
     OpenOC1(OC_ON | OC_IDLE_STOP | OC_TIMER_MODE16 | OC_TIMER3_SRC | OC_PWM_FAULT_PIN_DISABLE, 0x20, 0);
     OLEDPrintNum816(0, 0, 2, 12);
     OLEDUpdate();
@@ -104,12 +106,15 @@ void mcuInit2(){
     
     I2CEnable(I2C4, FALSE);
     OLEDPrintNum816(0, 0, 2, 14);
+    
     mcuI2CReset();
     OLEDPrintNum816(0, 0, 2, 15);
     OLEDUpdate();
+    
     I2CSetFrequency(I2C4, PER_FREQ, 400000);
     OLEDPrintNum816(0, 0, 2, 16);
     OLEDUpdate();
+    
     I2CEnable(I2C4,TRUE);
     OLEDPrintNum816(0, 0, 2, 17);
     OLEDUpdate();
@@ -122,11 +127,63 @@ void mcuInit2(){
     CMP2Open(CMP_STOP_IN_IDLE | CMP_ENABLE | CMP_OUTPUT_DISABLE | CMP_OUTPUT_INVERT | CMP_EVENT_HIGH_TO_LOW | CMP_POS_INPUT_CVREF | CMP2_NEG_INPUT_C2IN_NEG);
     OLEDPrintNum816(0, 0, 2, 19);
     OLEDUpdate();
+        
+    OLEDPrintNum816(0, 0, 2, 20);
+    OLEDUpdate();
+    
+    OpenTimer1(T1_ON | T1_IDLE_STOP | T1_TMWDIS_OFF | T1_GATE_OFF | T1_PS_1_256 | T1_SYNC_EXT_OFF | T1_SOURCE_INT,0xFFFF);
+    ConfigIntTimer1(T1_INT_OFF | T1_INT_PRIOR_7 | T1_INT_SUB_PRIOR_3);
+    _delay_ms(100);
+    
+    OLEDPrintNum816(0, 0, 2, 21);
+    OLEDUpdate();
+}
+
+void mcuInit3(){
+    CloseTimer1();
+    OpenTimer1(T1_ON | T1_IDLE_STOP | T1_TMWDIS_OFF | T1_GATE_OFF | T1_PS_1_256 | T1_SYNC_EXT_OFF | T1_SOURCE_INT, T_PER);
+    OLEDPrintNum816(0, 0, 2, 22);
+    OLEDUpdate();
+}
+
+void mcuInit4(){
+    CMP2ConfigInt(CMP_INT_ENABLE | CMP_INT_PRIOR_7 | CMP_INT_SUB_PRI_3);
+    ConfigIntADC10(ADC_INT_ON | ADC_INT_PRI_7 | ADC_INT_SUB_PRI_3 );
+    ConfigIntTimer1(T1_INT_ON | T1_INT_PRIOR_7 | T1_INT_SUB_PRIOR_3);
+    INTClearFlag(INT_I2C4B);
+    INTClearFlag(INT_I2C4M);
+    INTClearFlag(INT_I2C4S);
+    INTClearFlag(INT_I2C4);
+    INTSetVectorPriority(INT_I2C_4_VECTOR, INT_PRIORITY_LEVEL_6);
+    INTSetVectorSubPriority(INT_I2C_4_VECTOR, INT_SUB_PRIORITY_LEVEL_3);
+    INTEnable(INT_I2C4B,INT_ENABLED);
+    INTEnable(INT_I2C4M,INT_ENABLED);
+    INTEnable(INT_I2C4S,INT_ENABLED);
+    INTEnable(INT_I2C4,INT_ENABLED);
+    INTClearFlag(INT_OC2);
+    INTSetVectorPriority(_OUTPUT_COMPARE_2_VECTOR, INT_PRIORITY_LEVEL_5);
+    INTSetVectorSubPriority(_OUTPUT_COMPARE_2_VECTOR, INT_SUB_PRIORITY_LEVEL_3);
+    INTEnable(INT_OC2,INT_ENABLED);
+    ConfigIntCapture1(IC_INT_ON | IC_INT_PRIOR_4 | IC_INT_SUB_PRIOR_3);
+    ConfigIntCapture3(IC_INT_ON | IC_INT_PRIOR_4 | IC_INT_SUB_PRIOR_3);    
+    OLEDPrintNum816(0, 0, 2, 41);
+    OLEDUpdate();
+
+    mcuInitISRTimer();
+    
+    OpenCapture1(IC_ON | IC_CAP_32BIT | IC_INT_1CAPTURE | IC_EVERY_EDGE);
+    OpenCapture3(IC_ON | IC_CAP_32BIT | IC_INT_1CAPTURE | IC_EVERY_EDGE);
+    OLEDPrintNum816(0, 0, 2, 42);
+    OLEDUpdate();
+    
+    INTEnableSystemMultiVectoredInt();
+    OLEDPrintNum816(0, 0, 2, 43);
+    OLEDUpdate();
 }
 
 unsigned int mcuSqrt(register unsigned int n){
     register unsigned int r, x;
-    r=0;
+    r = 0;
     for(x = 0x8000L; x; x >>= 1){
         r += x;
         if((UINT32)(r * r) > n)r -= x;
@@ -136,12 +193,12 @@ unsigned int mcuSqrt(register unsigned int n){
 
 void DelayTicks(UINT32 a){
     UINT32 StartTime;
-    StartTime=ReadCoreTimer();
-    while((UINT32)(ReadCoreTimer()-StartTime)<a){};
+    StartTime = ReadCoreTimer();
+    while((UINT32)(ReadCoreTimer()- StartTime) < a){};
 }
 
 void mcuJumpToBootLoader(){
-    NVMDATA=0x6193471A;
+    NVMDATA = 0x6193471A;
     SoftReset();
 }
 
@@ -151,20 +208,20 @@ void mcuSPIWait(){
 
 void mcuI2CReset()
 {
-    SDALAT=0;
-    SCLLAT=0;
-    SCL=1;
-    SDAOUT=1;
+    SDALAT = 0;
+    SCLLAT = 0;
+    SCL = 1;
+    SDAOUT = 1;
     _delay_us(100);
-    while(SDA==0){
-        SCL=0;
+    while(SDA == 0){
+        SCL = 0;
         _delay_us(100);
-        SCL=1;
+        SCL = 1;
         _delay_us(100);
     }
-    SDAOUT=0;
+    SDAOUT = 0;
     _delay_us(100);
-    SDAOUT=1;
+    SDAOUT = 1;
     _delay_us(100);
 }
 
@@ -286,7 +343,7 @@ int mcuADCReadWait(int ADCCH, int num){
 
 volatile UINT32 _MRT_LastCoreTimer;
 int mcuReadTime_us(){ //returns time in us from last call
-    UINT32 dw=_MRT_LastCoreTimer;
+    UINT32 dw = _MRT_LastCoreTimer;
     _MRT_LastCoreTimer = ReadCoreTimer();
     dw = _MRT_LastCoreTimer - dw;
     dw /= (CORETIMER_FREQ/1000000);
@@ -304,7 +361,6 @@ void __ISR(_COMPARATOR_2_VECTOR, IPL7SRS) ComparatorISR(void)
         mcuDCTimerReset();
         oh = HEATER;
         oas = (ADCStep & 1);
-        //if(oh && oas)LATBbits.LATB7 = 1;
         H2LTime = ReadCoreTimer();
         ISRHigh(CompH2L);
     }
@@ -315,7 +371,6 @@ void __ISR(_COMPARATOR_2_VECTOR, IPL7SRS) ComparatorISR(void)
             if(oh) CompLowTimeOn = CompLowTime;
             if(!oh) CompLowTimeOff = CompLowTime;
             H2LTime = 0;
-            //if(oh && oas)LATBbits.LATB7 = 0;
         }
         ISRHigh(CompL2H);
     }
@@ -336,7 +391,7 @@ void __ISR(_TIMER_2_VECTOR, IPL7SRS) Timer2ISR(void)
     ISRHigh(0);
 }
 
-void __ISR(_ADC_VECTOR,IPL7SRS) ADCISR(void)
+void __ISR(_ADC_VECTOR, IPL7SRS) ADCISR(void)
 {
     int n, i=0;
     for(n = AD1CON2bits.SMPI + 1; n--;) i += ReadADC10(n);
@@ -354,8 +409,33 @@ void __ISR(_I2C_4_VECTOR,IPL6SOFT) I2CISR(void)
     I2CISRTasks();
 }
 
-void __ISR(_OUTPUT_COMPARE_2_VECTOR,IPL5SOFT) PIDISR(void){
+void __ISR(_OUTPUT_COMPARE_2_VECTOR,IPL5SOFT) PIDISR(void){    
     INTClearFlag(INT_OC2);
+}
+
+void __ISR(_INPUT_CAPTURE_1_VECTOR, IPL4SOFT) IC1ISR(void){
+    static int AInc[]={0, 4, 2, 2, 1};
+    int inc;
+    if(pars.Input > 4) pars.Input = 4;
+    if(inc = AInc[pars.Input]){    
+        if(pars.Buttons) inc =- inc;
+        if(B1 != B3) inc = -inc;
+        Enc += inc;
+    }
+    while(mIC1CaptureReady()) mIC1ReadCapture();
+    INTClearFlag(INT_IC1);
+}
+void __ISR(_INPUT_CAPTURE_3_VECTOR, IPL4SOFT) IC3ISR(void){
+    static int BInc[]={0, 0, 2, 0, 1};
+    int inc;
+    if(pars.Input > 4) pars.Input = 4;
+    if(inc = BInc[pars.Input]){    
+        if(pars.Buttons) inc =- inc;
+        if(B1 == B3) inc = -inc;
+        Enc += inc;
+    }
+    while(mIC3CaptureReady()) mIC3ReadCapture();    
+    INTClearFlag(INT_IC3);    
 }
 
 int SPIAuto;

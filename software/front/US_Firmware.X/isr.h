@@ -80,8 +80,6 @@ ISRC_EXTERN volatile void * EEPDataW;
 ISRC_EXTERN volatile UINT16 EEPCntR;
 ISRC_EXTERN volatile UINT16 EEPCntW;
 
-ISRC_EXTERN volatile int Buff1[128];
-ISRC_EXTERN volatile int Buff2[128];
 
 enum I2C_FLAGS{
     I2C_SET_CPOT=1,
