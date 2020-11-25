@@ -46,7 +46,7 @@ My intention was to build the most universal soldering controller I can think of
 - Valerio made a great git repo with plenty ot usefull information and notes here: https://github.com/valerionew/unisolder-notes
 - There are really big thread for this project, where this all started: http://dangerousprototypes.com/forum/index.php?topic=7218.0
 
-## The calibration precedure
+## The calibration procedure
 - Connect a resistor with well known resistance (0.1%) of around 10ohm between SENSEA and Vout1-
 - Go to "CALIBRATION" submenu
 - Adjust the calibration trimmer until you get value of "R" as close as possible to the resistance of the resistor, multiplied by 100 (1000 for 10ohm resistor).
