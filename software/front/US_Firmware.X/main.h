@@ -26,6 +26,7 @@ extern "C" {
     }mainflags_t;
 
 #ifndef _MAIN_C
+    extern volatile unsigned int BoardVersion;
     extern volatile unsigned int BeepTicks;
     extern volatile unsigned int InvertTicks;
     extern volatile unsigned int MAINS_PER;

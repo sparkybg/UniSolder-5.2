@@ -82,9 +82,9 @@ void LoadPars(void)
     UINT8 b,oldb;
 
     EEPRead(0, (UINT8 *)&pars, sizeof(pars));
-    for(i = 0; i < sizeof(pars); i++){
+    for(i = 0; i < sizeof(pars.b); i++){
         if((pars.b[i] < ParDef[i].Min) || (pars.b[i] > ParDef[i].Max)){
-            for(i = 0; i < sizeof(pars); i++){
+            for(i = 0; i < sizeof(pars.b); i++){
                 pars.b[i] = ParDef[i].Default;
             }
             break;
@@ -92,7 +92,7 @@ void LoadPars(void)
     }
 
     TTemp = 150;
-    oldb=EEPRead(63 + 64, 0, 1);
+    oldb = EEPRead(64 + 63, 0, 1);
     for(i = 0; i < 64; i++){
         b = EEPRead(i + 64, 0, 1);
         if((oldb == 0xFF) && (b >= MINTEMP) && (b <= MAXTEMP)){
@@ -108,17 +108,18 @@ void SavePars(void)
     int i;
     UINT8 b, oldb;
 
-    for(i = 0; i < sizeof(pars); i++){
-        if(EEPRead(i, 0 ,1) != pars.b[i])EEPWriteImm(i, pars.b[i]);
+    for(i = 0; i < sizeof(pars.b); i++){
+        if(EEPRead(i, 0 ,1) != pars.b[i]) EEPWriteImm(i, pars.b[i]);
     }
-    oldb = EEPRead(63 + 64, 0, 1);
+    
+    oldb = EEPRead(64 + 63, 0, 1);
     for(i = 0; i < 64; i++){
-        b = EEPRead(i + 64, 0, 1);
-        if((oldb==0xFF) && (b >= MINTEMP) && (b <= MAXTEMP))break;
+        b = EEPRead(64 + i, 0, 1);
+        if((oldb == 0xFF) && (b >= MINTEMP) && (b <= MAXTEMP)) break;
         oldb = b;
     }
     i &= 63;
-    b=EEPRead(i + 64, 0, 1);
+    b = EEPRead(64 + i, 0, 1);
     if(b != TTemp){
         EEPWriteImm(i + 64, 0xFF);
         EEPWriteImm(((i + 1) & 63) + 64, TTemp);

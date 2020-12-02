@@ -16,15 +16,21 @@
 void displayTasts(void);
 
 void main(void){
-    int i;
     mcuInit();
-
-    if(((B1 == 0) || (B3 == 0)) && (NVMDATA != 0x6193471A)){
-        if(mcuValidAppPresent() == 1)mcuJumpToApp();
+    if(mcuValidAppPresent() && NVMDATA != 0x6193471A){
+        if(!B2){
+            mcuJumpToApp();
+        }
+        else{
+            WriteCoreTimer(0);
+            while(B2 && ReadCoreTimer() < 80000000){}
+            if(B2 || ReadCoreTimer() >= 80000000) mcuJumpToApp();
+        }
     }
     NVMDATA = 0xFFFFFFFF;
     OLEDInit();    
     IOInit();
+    int OldB2 = B2;
     while(1){
         displayTasts();
         IOTasks();

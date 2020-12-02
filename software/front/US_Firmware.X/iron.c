@@ -379,7 +379,7 @@ const t_IronPars Irons[] = {
                         1,                          //Type
                         0,                      //HChannel
                         1,                      //InputP
-                        1,                      //InputN
+                        0,                      //InputN
                         1,                      //InputInv
                         1,                      //CBandA
                         1,                      //CBandB
@@ -828,8 +828,7 @@ void IronIdentify(){
     HCH = 0;
     ID_3S = 1;
     ID_OUT = 1;
-    mcuADCStartManual();
-    mcuADCRefVdd();
+    mcuADCStartManualAVdd();
 
     _delay_us(1000);
     w = mcuADCReadWait(ADCH_ID, 16) >> 4;
@@ -843,8 +842,6 @@ void IronIdentify(){
     for(i = 0; i <= 24; i++)if(w < IDHash[i])break;
     CID.v[1] = i;
     
-    mcuADCRefVref();
-
     NewIronID.Val = 0x1919;
     if(CID.Val == OID.Val){
         if(IDCnt < 255)IDCnt++;

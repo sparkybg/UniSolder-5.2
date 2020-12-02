@@ -116,6 +116,12 @@ extern const void _RESET_ADDR;
 #define SDO_IN      PORTDbits.RD3
 #define SDO_OUT     LATDbits.LATD3
 
+#define REV_BC_3S   TRISDbits.TRISD5
+#define REV_BC_IN   PORTDbits.RD5
+#define REV_BC_OUT  LATDbits.LATD5
+#define REV_BC_PU   CNPUEbits.CNPUE14
+
+
 #define mcuDisableInterrupts() INTDisableInterrupts()
 
 //USB Stack definitions
@@ -132,7 +138,7 @@ P32_EXTERN UINT mcuValidAppPresent();
 
 #define mcuReset() Reset()
 
-#define mcuSPIOpen() SpiChnOpen(SPI_CHANNEL3,SPI_OPEN_MSTEN | SPI_OPEN_MODE8 | SPI_OPEN_CKP_HIGH, 4)
+#define mcuSPIOpen() SpiChnOpen(SPI_CHANNEL3,SPI_OPEN_MSTEN | SPI_OPEN_MODE8 | SPI_OPEN_CKP_HIGH, 6)
 #define mcuSPIClose() SpiChnClose(SPI_CHANNEL3)
 #define mcuSPISendByte(b) SpiChnPutC(SPI_CHANNEL3, b)
 #define mcuSPISendBytes(b,n) SpiChnPutS(SPI_CHANNEL3,b,n)

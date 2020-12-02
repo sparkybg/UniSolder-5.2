@@ -53,9 +53,9 @@ preUpdate_t PreUpdateBuff = {
 
 void OLEDInit(){
     mcuSPIClose();
-    OLED_VCC = 1; //turn off display VCC
-    OLED_VDD = 1; //turn off display VDD
-    OLED_RES = 0; //Reset display
+    OLED_VCC = 1;   //Turn off display VCC
+    OLED_VDD = 1;   //Turn off display VDD
+    OLED_RES = 0;   //Reset display
     OLED_DC = 0;
     OLED_CS = 0;
     OLED_SCK = 0;
@@ -69,19 +69,21 @@ void OLEDInit(){
     SCK_3S = 0;            
     _delay_ms(100);
                 
-    OLED_CS_3S = 1;  //everything but reset - 3state
+    OLED_CS_3S = 1; //Everything but reset - 3state
     OLED_DC_3S = 1;  
     SDI_3S = 1;
     SDO_3S = 1;
     SCK_3S = 1;        
-    OLED_VDD = 0;    //Turn on display VDD 
-    OLED_DC_PU = 1;  //enable internal pull-up on D/C in order to check if resistor between OLED_RES and OLED_DC is installed
+    OLED_VDD = 0;   //Turn on display VDD 
+    OLED_CS_PU = 1; //Enable internal pull-up on CS in order to check if resistor between CS and GND is installed
+    OLED_DC_PU = 1; //Enable internal pull-up on D/C in order to check if resistor between OLED_RES and OLED_DC is installed
     _delay_ms(100);
 
-    DisplaySetup.SH1106 = !OLED_CS_IN; //If CS pull-up resistor is not installed, OLED_CS will be low => display controller is SH1106    
-    DisplaySetup.InternalChargePump = !OLED_DC_IN; //If resistor between OLED-RES is installed, it will dominate and OLED_DC will be low => display uses internal charge pump.
+    DisplaySetup.SH1106 = !OLED_CS_IN;              //If CS pull-down resistor is installed, OLED_CS will be low => display controller is SH1106    
+    DisplaySetup.InternalChargePump = !OLED_DC_IN;  //If resistor between OLED_DC and OLED-RES is installed, it will dominate and OLED_DC will be low => display uses internal charge pump.
     
-    OLED_DC_PU = 0;//bring all IOs to operational state (outputs, no internal pull-ups)
+    OLED_CS_PU = 0; //Bring all IOs to operational state (outputs, no internal pull-ups)
+    OLED_DC_PU = 0;
     OLED_CS_3S = 0;
     OLED_DC_3S = 0;
     SCK_3S = 0;
@@ -122,7 +124,7 @@ void OLEDInit(){
 void OLEDUpdate(){
     UINT8 r;
     for(r=0;r<=7;r++ ){
-        PreUpdateBuff.PreRowUpdate.Row = 0xB0+r;
+        PreUpdateBuff.PreRowUpdate.Row = 0xB0 + r;
         mcuSPIWait();       
         OLED_DC = 0;
         OLED_CS = 0;

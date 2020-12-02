@@ -59,35 +59,39 @@ void mcuInit(void)
     INTDisableInterrupts();
     OpenCoreTimer(0xFFFFFFFF);
     SYSTEMConfigWaitStates(80000000);
+    
+    CNPUE = 0;
 
-    LATB=0b1000000000000000;
-    LATC=0b0110000000000000;
-    LATD=0b100001010000;
-    LATE=0;
-    LATF=0;
-    LATG=0;
-    TRISB=0b1100000000111111;
-    TRISC=0b1001000000000000;
-    TRISD=0;
-    TRISE=0;
-    TRISF=0;
-    TRISG=0b1000111111;
-    ODCB=0;
-    ODCC=0;
-    ODCD=0;
-    ODCE=0;
-    ODCF=0;
-    ODCG=0;
+    TRISB = 0b1110000000111111;
+    TRISC = 0b1001000000000000;
+    TRISD = 0b0000000000100000;
+    TRISE = 0;
+    TRISF = 0;
+    TRISG = 0b1000111111;
 
-    HCH=0;
-    ID_3S=0;
-    ID_OUT=0;
-    HEATER=0;
-    CBANDA=1;
-    CBANDB=1;
-    CHSEL1=0;
-    CHSEL2=1;
-    CHPOL=0;
+    ODCB = 0;
+    ODCC = 0;
+    ODCD = 0;
+    ODCE = 0;
+    ODCF = 0;
+    ODCG = 0;
+
+    LATB = 0b1000000000000000;
+    LATC = 0;
+    LATD = 0b0000100001010000;
+    LATE = 0;
+    LATF = 0;
+    LATG = 0;
+
+    HCH = 0;
+    ID_3S = 0;
+    ID_OUT = 0;
+    HEATER = 0;
+    CBANDA = 1;
+    CBANDB = 1;
+    CHSEL1 = 0;
+    CHSEL2 = 1;
+    CHPOL = 0;
 
     OpenTimer3(T3_ON | T3_IDLE_STOP | T3_GATE_OFF | T3_PS_1_256 | T3_SOURCE_INT, 40);
     OpenOC1(OC_ON | OC_IDLE_STOP | OC_TIMER_MODE16 | OC_TIMER3_SRC | OC_PWM_FAULT_PIN_DISABLE, 0x20, 0);

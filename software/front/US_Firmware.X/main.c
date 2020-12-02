@@ -36,6 +36,7 @@
 #include "OLED.h"
 #include "pars.h"
 
+volatile unsigned int   BoardVersion;               //Front PCB version 0=first version, 1=rev B/C with tip change support
 
 volatile unsigned int   BeepTicks;
 volatile unsigned int   InvertTicks;

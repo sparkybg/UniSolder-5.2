@@ -94,6 +94,11 @@ P32_EXTERN unsigned int mcuSqrt(unsigned int);
 #define SDO_IN      PORTDbits.RD3
 #define SDO_OUT     LATDbits.LATD3
 
+#define REV_BC_3S   TRISDbits.TRISD5
+#define REV_BC_IN   PORTDbits.RD5
+#define REV_BC_OUT  LATDbits.LATD5
+#define REV_BC_PU   CNPUEbits.CNPUE14
+
 
 //I2C devices
 #define CPOT 0b01011110
@@ -156,8 +161,9 @@ P32_EXTERN int mcuReadTime_us();
 #define mcuADCRefVref() AD1CON2bits.VCFG=0b011
 P32_EXTERN volatile int mcuADCRES;
 P32_EXTERN void mcuADCStop();
-P32_EXTERN void mcuADCStartManual();
-P32_EXTERN void mcuADCStartAuto(int temp);
+P32_EXTERN void mcuADCStartManualVRef();
+P32_EXTERN void mcuADCStartManualAVdd();
+P32_EXTERN void mcuADCStartAutoVRef(int temp);
 P32_EXTERN void mcuADCRead(int ADCCH, int num);
 P32_EXTERN int mcuADCReadWait(int ADCCH, int num);
 

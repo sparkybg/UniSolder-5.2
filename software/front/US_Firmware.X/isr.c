@@ -148,8 +148,7 @@ void ISRHigh(int src){
             PGD = 1;
             mcuStartISRTimer_us(50);
             HEATER = 0;
-            mcuADCRefVref();           
-            mcuADCStartManual();
+            mcuADCStartManualVRef();
             break;
         case 2: //210us before AC zero cross - setup channels, calculate voltage, current, power and heater resistance
             if(mainFlags.ACPower){
@@ -323,8 +322,8 @@ void ISRHigh(int src){
             if(!PV->Power) HEATER = PHEATER;  //Turn on heater if on full power    
             PGD = 0;
 
-            mcuADCStartAuto(PHEATER?0:1);                        
-            if(!PHEATER && !CJTicks && IronPars.ColdJunctionSensorConfig && IronPars.ColdJunctionSensorConfig->HChannel == IC->SensorConfig.HChannel){
+            mcuADCStartAutoVRef(PHEATER?0:1);                        
+            if(!mainFlags.Calibration && !PHEATER && !CJTicks && IronPars.ColdJunctionSensorConfig && IronPars.ColdJunctionSensorConfig->HChannel == IC->SensorConfig.HChannel){
                 CHSEL1 = IronPars.ColdJunctionSensorConfig->InputP;
                 CHSEL2 = IronPars.ColdJunctionSensorConfig->InputN;
                 CHPOL = IronPars.ColdJunctionSensorConfig->InputInv;
@@ -346,7 +345,7 @@ void ISRHigh(int src){
             if(PV->Power < 2) HEATER = PHEATER;                
             if(!mainFlags.Calibration){
                 CHSEL1 = 0;
-                CHSEL2 = 0;
+                CHSEL2 = 0;  
             }
             CHPOL = IC->SensorConfig.InputInv;
             CBANDA = IC->SensorConfig.CBandA;
@@ -355,8 +354,9 @@ void ISRHigh(int src){
             I2CData.CurrentB.ui16 = IC->SensorConfig.CurrentB;
             I2CData.Gain.ui16 = IC->SensorConfig.Gain;
             I2CData.Offset.ui16 = IC->SensorConfig.Offset;
-            I2CAddCommands(I2C_SET_CPOT | I2C_SET_GAINPOT | I2C_SET_OFFSET);     
-            if(!PHEATER && !CJTicks && IronPars.ColdJunctionSensorConfig && IronPars.ColdJunctionSensorConfig->HChannel == IC->SensorConfig.HChannel){
+            if(!mainFlags.PowerLost)I2CAddCommands(I2C_SET_CPOT | I2C_SET_GAINPOT | I2C_SET_OFFSET);
+            
+            if(!mainFlags.Calibration && !PHEATER && !CJTicks && IronPars.ColdJunctionSensorConfig && IronPars.ColdJunctionSensorConfig->HChannel == IC->SensorConfig.HChannel){
                 ADCData.VCJ = TIBuff[(mcuTIBuffPos() >> 2) - 1];
                 CJTicks = CJ_PERIOD;
             }

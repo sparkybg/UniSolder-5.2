@@ -356,7 +356,7 @@ void OLEDTasks(){
     }
 
     if(OLEDFlags.f.Header){
-        OLEDPrint68(0,0,(const char *)&IronPars.Name, 21);
+        OLEDPrint68(0, 0, (const char *)&IronPars.Name, 21);
     }
     if(OLEDFlags.f.Footer){
         UINT8 b;
@@ -452,7 +452,7 @@ void OLEDTasks(){
             "ENC-AB-4PPD"
         };
 
-        OLEDPrint68(13,0,"CONTROL SELECTION",0);
+        OLEDPrint68(13, 0, "CONTROL SELECTION", 0);
         int i;
         for(i = 0; i <= 4; i++){
             OLEDPrintXY88(2, i * 10 + 14, StrEncoder[i], 0);
@@ -465,58 +465,59 @@ void OLEDTasks(){
         if(dw){                    
             CalRes -= CalRes >> 3;                        
             CalRes += ((INT32)PIDVars[0].ADCTemp[0] * (INT32)33437L) / dw;  //CalRes = R*800
-            //CalRes += ((INT32)PIDVars[0].ADCTemp[0] * (INT32)42799L) / dw;  //CalRes = R*128
         }
         else{
             CalRes = 0;
         }
         
-        OLEDPrint68(0,0,"CALIBRATION",0);
-        OLEDPrint68(0,1,"ENCODER:",0);
-        OLEDPrint68(0,2,"IRON ID:",0);
-        OLEDPrint68(0,3,"CURRENT:",0);
-        OLEDPrint68(0,4,"ADC:",0);
-        OLEDPrint68(0,5,"R:",0);
-        OLEDPrint68(0,6,"ROOM:",0);
-        OLEDPrint68(0,7,"PERIOD:",0);
-        OLEDPrintNum68(48,1,6,Enc);
-        OLEDPrintHex68(64,2,4,IronID);
-        if(IronPars.Config[1].SensorConfig.Type==0 || (LISRTicks % 200) <100){
-            OLEDPrintNum68(64,3,1,CalCh);
-            OLEDPrintNum68(80,3,3,CalCh ? IronPars.Config[0].SensorConfig.CurrentB : IronPars.Config[0].SensorConfig.CurrentA);
-            OLEDPrintNum68(32,4,4,PIDVars[0].ADCTemp[0]);
+        OLEDPrint68(0, 0, "CALIBRATION        V", 0);
+        OLEDPrintNum68(122, 0, 1, BoardVersion);
+        OLEDPrint68(0, 0, "CALIBRATION", 0);
+        OLEDPrint68(0, 1, "ENCODER:", 0);
+        OLEDPrint68(0, 2, "IRON ID:", 0);
+        OLEDPrint68(0, 3, "CURRENT:", 0);
+        OLEDPrint68(0, 4, "ADC:", 0);
+        OLEDPrint68(0, 5, "R:", 0);
+        OLEDPrint68(0, 6, "ROOM:", 0);
+        OLEDPrint68(0, 7, "PERIOD:", 0);
+        OLEDPrintNum68(48, 1, 6, Enc);
+        OLEDPrintHex68(64, 2, 4, IronID);
+        if(IronPars.Config[1].SensorConfig.Type == 0 || (LISRTicks % 200) < 100){
+            OLEDPrintNum68(64, 3, 1, CalCh);
+            OLEDPrintNum68(80, 3, 3, CalCh ? IronPars.Config[0].SensorConfig.CurrentB : IronPars.Config[0].SensorConfig.CurrentA);
+            OLEDPrintNum68(32, 4, 4, PIDVars[0].ADCTemp[0]);
         }
         else{
-            OLEDPrintNum68(64,3,1,1-CalCh);
-            OLEDPrintNum68(80,3,3,CalCh ? IronPars.Config[1].SensorConfig.CurrentA : IronPars.Config[1].SensorConfig.CurrentB);
-            OLEDPrintNum68(32,4,4,PIDVars[1].ADCTemp[0]);            
+            OLEDPrintNum68(64, 3, 1, 1 - CalCh);
+            OLEDPrintNum68(80, 3, 3, CalCh ? IronPars.Config[1].SensorConfig.CurrentA : IronPars.Config[1].SensorConfig.CurrentB);
+            OLEDPrintNum68(32, 4, 4, PIDVars[1].ADCTemp[0]);            
         }
-        OLEDPrintNum68(16,5,5,CalRes >> 3);
-        OLEDPrintNum68(40,6,3,CRTemp >> 1);
-        OLEDPrintNum68(56,7,9,MAINS_PER_US);
+        OLEDPrintNum68(16, 5, 5, CalRes >> 3);
+        OLEDPrintNum68(40, 6, 3, CRTemp >> 1);
+        OLEDPrintNum68(56, 7, 9, MAINS_PER_US);
     }
     
     if(OLEDFlags.f.Debug){        
         int AVG = ADCAVG;
         if(IronPars.Config[1].SensorConfig.Type) AVG--;
 
-        OLEDPrint68(0,0,"INSTRUMENT INFO",0);
+        OLEDPrint68(0,0,"INSTRUMENT INFO", 0);
         
-        OLEDPrint68(0,2,"    ID:",0);
-        OLEDPrint68(0,3,"  Pmax:",0);
-        OLEDPrint68(0,4," Power:",0);
-        OLEDPrint68(0,5," HPmax:",0);
-        OLEDPrint68(0,6,"CJTemp:",0);
-        OLEDPrint68(0,7,"  Room:",0);
+        OLEDPrint68(0, 2, "    ID:", 0);
+        OLEDPrint68(0, 3, "  Pmax:", 0);
+        OLEDPrint68(0, 4, " Power:", 0);
+        OLEDPrint68(0, 5, " HPmax:", 0);
+        OLEDPrint68(0, 6, "CJTemp:", 0);
+        OLEDPrint68(0, 7, "  Room:", 0);
         
-        OLEDPrintHex68(54,2,4,IronID);
+        OLEDPrintHex68(54, 2, 4, IronID);
         
         int ch;        
-        if(IronPars.Config[1].SensorConfig.Type==0 || (LISRTicks % 200) <100){
-            ch=0;
+        if(IronPars.Config[1].SensorConfig.Type == 0 || (LISRTicks % 200) <100){
+            ch = 0;
         }
         else{
-            ch=1;
+            ch = 1;
         }        
         OLEDPrintNum68(54, 4, 2, ch);
         switch (PIDVars[ch].Power){
@@ -533,12 +534,11 @@ void OLEDTasks(){
         OLEDPrintNum68(54, 3, 3, IronPars.Config[ch].PID_PMax);
         OLEDPrintNum68(54, 5, 3, PIDVars[ch].HPMax);
         OLEDPrintNum68(54, 5, 3, PIDVars[ch].HPMax);
-        OLEDPrintNum68(54, 6, 5, CJTemp>>1);
+        OLEDPrintNum68(54, 6, 5, CJTemp >> 1);
         OLEDPrintNum68(54 ,7, 5, CRTemp >> 1);
 
     }
-    if(InvertTicks) OLEDInvert(0, 128, 0, 8);
-    
+    if(InvertTicks) OLEDInvert(0, 128, 0, 8);    
     OLEDUpdate();
 }
 

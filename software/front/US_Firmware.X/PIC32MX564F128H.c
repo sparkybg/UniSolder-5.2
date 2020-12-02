@@ -50,42 +50,75 @@
 #include "isr.h"
 #include "OLED.h"
 
+void GetBoardVersion(){
+    BoardVersion = 0;
+    OLED_DC_3S = 1;
+    OLED_DC_PU = 1;
+    REV_BC_3S = 0;
+    REV_BC_PU = 0;
+    _delay_ms(10);
+    int i;
+    for(i = 0b10101010; i; i >>= 1){
+        REV_BC_OUT = (i & 1) ? 1 : 0;
+        _delay_ms(1);
+        if(REV_BC_IN != OLED_DC_IN) return;
+    }
+    REV_BC_3S = 1;
+    REV_BC_PU = 1;
+    OLED_DC_PU = 0;
+    OLED_DC_3S = 0;
+    _delay_ms(10);
+    for(i = 0b10101010; i; i >>= 1){
+        OLED_DC = (i & 1) ? 1 : 0;
+        _delay_ms(1);
+        if(REV_BC_IN != OLED_DC_IN) return;
+    }
+    BoardVersion = 1;
+}
+
+
 void mcuInit1(){
     INTDisableInterrupts();
     OpenCoreTimer(0xFFFFFFFF);
     SYSTEMConfigWaitStates(80000000);
 
-    LATB=0;
-    LATC=0;
-    LATD=0b100001010000;
-    LATE=0;
-    LATF=0;
-    LATG=0;
-    TRISB=0b1100000000111111;
-    TRISC=0b1001000000000000;
-    TRISD=0;
-    TRISE=0;
-    TRISF=0;
-    TRISG=0b1000111111;
-    ODCB=0;
-    ODCC=0;
-    ODCD=0;
-    ODCE=0;
-    ODCF=0;
-    ODCG=0;
+    CNPUE = 0;
     
-    HCH=0;
-    ID_3S=0;
-    ID_OUT=0;
-    HEATER=0;
-    CBANDA=1;
-    CBANDB=1;
-    CHSEL1=0;
-    CHSEL2=1;
-    CHPOL=0;
+    TRISB = 0b1110000000111111;
+    TRISC = 0b1001000000000000;
+    TRISD = 0b0000000000100000;
+    TRISE = 0;
+    TRISF = 0;
+    TRISG = 0b1000111111;
+
+    ODCB = 0;
+    ODCC = 0;
+    ODCD = 0;
+    ODCE = 0;
+    ODCF = 0;
+    ODCG = 0;
+
+    LATB = 0b1000000000000000;
+    LATC = 0;
+    LATD = 0b0000100001010000;
+    LATE = 0;
+    LATF = 0;
+    LATG = 0;
+    
+    HCH = 0;
+    ID_3S = 0;
+    ID_OUT = 0;
+    HEATER = 0;
+    CBANDA = 1;
+    CBANDB = 1;
+    CHSEL1 = 0;
+    CHSEL2 = 1;
+    CHPOL = 0;    
 
     mcuADCStop();
     mcuSPIStop();
+    
+    GetBoardVersion();    
 }
 
 void mcuInit2(){
@@ -279,7 +312,7 @@ void mcuADCStop(){
     ADCAuto=0;
 }
 
-void mcuADCStartManual(){
+void mcuADCStartManualVRef(){
     mcuADCStop();
     OpenADC10(\
             ADC_MODULE_ON | ADC_IDLE_STOP | ADC_FORMAT_INTG16 | ADC_CLK_AUTO | ADC_AUTO_SAMPLING_OFF | ADC_SAMP_OFF , \
@@ -291,8 +324,20 @@ void mcuADCStartManual(){
     mAD1IntEnable(1);
     ADCAuto = 0;
 }
+void mcuADCStartManualAVdd(){
+    mcuADCStop();
+    OpenADC10(\
+            ADC_MODULE_ON | ADC_IDLE_STOP | ADC_FORMAT_INTG16 | ADC_CLK_AUTO | ADC_AUTO_SAMPLING_OFF | ADC_SAMP_OFF , \
+            ADC_VREF_AVDD_EXT | ADC_OFFSET_CAL_DISABLE | ADC_SCAN_OFF | ADC_SAMPLES_PER_INT_1 | ADC_BUF_16 | ADC_ALT_INPUT_OFF, \
+            ADC_SAMPLE_TIME_12 | ADC_CONV_CLK_PB | ADC_CONV_CLK_5Tcy, \
+            ENABLE_AN0_ANA | ENABLE_AN1_ANA | ENABLE_AN2_ANA | ENABLE_AN3_ANA | ENABLE_AN4_ANA | ENABLE_AN5_ANA | ENABLE_AN14_ANA, \
+            SKIP_SCAN_ALL);
+    AD1CON1bits.CLRASAM = 0;
+    mAD1IntEnable(1);
+    ADCAuto = 0;
+}
 
-void mcuADCStartAuto(int temp){
+void mcuADCStartAutoVRef(int temp){
     mcuADCStop();
 
     DmaChnOpen(DMA_CHANNEL0,DMA_CHN_PRI1, DMA_OPEN_DEFAULT);
@@ -489,6 +534,5 @@ void mcuSPISendAuto(void * buffer, int len)
 //        DmaChnClrEvFlags(DMA_CHANNEL1, DMA_EV_BLOCK_DONE);
 //    }
 //}
-
 
 #undef _PIC32MX534F064H_C
