@@ -129,7 +129,7 @@ void mcuInit2(){
     OLEDPrintNum816(0, 0, 2, 11);
     OLEDUpdate();
     
-    OpenOC1(OC_ON | OC_IDLE_STOP | OC_TIMER_MODE16 | OC_TIMER3_SRC | OC_PWM_FAULT_PIN_DISABLE, 0x20, 0);
+    OpenOC1(OC_OFF | OC_IDLE_STOP | OC_TIMER_MODE16 | OC_TIMER3_SRC | OC_PWM_FAULT_PIN_DISABLE, 0x20, 0);
     OLEDPrintNum816(0, 0, 2, 12);
     OLEDUpdate();
     

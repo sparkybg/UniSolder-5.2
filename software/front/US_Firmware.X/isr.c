@@ -107,7 +107,7 @@ void ISRHigh(int src){
         case CompH2L:
             if(!mainFlags.ACPower) OnPowerLost();
         case DCTimer:
-            if(ISRStep != 10)ISRComplete = 0;
+            if(ISRStep != 11)ISRComplete = 0;
             ISRStep = 0;
             break;
         case CompL2H:
@@ -138,7 +138,7 @@ void ISRHigh(int src){
                 INT32 d = OffDelayOff;
                 if(HEATER && d < PV->OffDelay) d = PV->OffDelay;
                 d >>= 4;
-                d-=300; //250us before zero cross + 40us to compensate group delay of R46-R43-C60 6367Hz R-C filter (25us) + interrupt latency (around 15us)
+                d-=300; //260us before zero cross + 40us to compensate group delay of R46-R43-C60 6367Hz R-C filter (25us) + interrupt latency (around 15us)
                 if(d < 10) d = 10;
                 if(d > 1000) d = 1000;
                 mcuStartISRTimer_us(d);
@@ -252,19 +252,29 @@ void ISRHigh(int src){
             }
             VTIBuffCnt = 0;
             break;
-        case 3: //10us after zero cross - read room temperature
-            mcuADCRead(ADCH_RT,1);
+        case 3: //40us after zero cross - read room temperature or iron holder voltage level
+            mcuADCRead((ADCStep & 1) ? ADCH_RT : ADCH_HOLDER,1);
             break;
-        case 4: //75us after zero cross - start reading iron temperature.
+        case 4: //65us after zero cross - start reading iron temperature.
             mcuADCRead(ADCH_TEMP, 4);
-            if(ADCStep == 0){
-                ADCData.VRT = mcuADCRES;
+            if(ADCStep <= 1){
+                if(ADCStep & 1){
+                    ADCData.VRT = mcuADCRES;
+                }
+                else{
+                    ADCData.VH = mcuADCRES;
+                }
             }
             else{
-                ADCData.VRT += mcuADCRES;
+                if(ADCStep & 1){
+                    ADCData.VRT += mcuADCRES;
+                }
+                else{
+                    ADCData.VH += mcuADCRES;
+                }
             }
             break;
-        case 5: //135us after zero cross - check for sensor open, heater open, perform PID and wait to 1/2 power point (AC voltage point just between 2 adjacent zero crosses)
+        case 5: //125us after zero cross - check for sensor open, heater open, perform PID and wait to 1/2 power point (AC voltage point just between 2 adjacent zero crosses)
             mcuStartISRTimer_us(125);
             if(ISRComplete && !(ADCStep & 1)) mcuCompEnableL2H();
             ISRComplete = 0;
@@ -310,7 +320,7 @@ void ISRHigh(int src){
             }            
             HCH = IC->SensorConfig.HChannel;
             break;
-        case 6: //260us after zero cross - turn on power if needed, setup channels for handle sensor if present and wait to 1/2 power point at the middle of half period
+        case 6: //250us after zero cross - turn on power if needed, setup channels for handle sensor if present and wait to 1/2 power point at the middle of half period
             dw = MAINS_PER_H_US - 250;
             mcuStartISRTimer_us(dw); //next step will be at the center of mains half period
             if(!(ADCStep & 1)){
@@ -334,6 +344,15 @@ void ISRHigh(int src){
                 I2CData.Gain.ui16 = IronPars.ColdJunctionSensorConfig->Gain;
                 I2CData.Offset.ui16 = IronPars.ColdJunctionSensorConfig->Offset;
                 if(!mainFlags.PowerLost)I2CAddCommands(I2C_SET_CPOT | I2C_SET_GAINPOT | I2C_SET_OFFSET);
+            }
+            
+            if(ADCStep == 0){
+                if(!BoardVersion){
+                    Holder = NAP ? 1023 : 0;
+                }
+                else{
+                    Holder = ADCData.VH >> 1;
+                }
             }
             break;
         case 7:  //1/2 power point, AC voltage highest point (center of half period) - check for power lost and turn on heater if 1/2 power and wait for 1/4 power point
@@ -366,10 +385,14 @@ void ISRHigh(int src){
             }
             break;
         case 8: //1/4 power point - turn on heater if needed
-            mcuStartISRTimer_us(50);
+            mcuStartISRTimer_us(MAINS_PER_E_US); //Next step will be at 1/8 power point in the mains period
+            if(PV->Power < 3) HEATER = PHEATER;                
+            break;
+        case 9: //1/8 power point - turn on heater if needed
+            mcuStartISRTimer_us(100);
             HEATER = PHEATER;
             break;
-        case 9: //at least 50uS after power was turned on - enable high-to-low comparator event in order to start new cycle.
+        case 10: //at least 50uS after power was turned on - enable high-to-low comparator event in order to start new cycle.
             mcuCompEnableH2L();
             ISRTicks++;
             if(CJTicks) CJTicks--;

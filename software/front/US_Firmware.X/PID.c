@@ -17,7 +17,7 @@ void PIDInit(){
         PIDVars[i].PIDDutyFull = 0;
         PIDVars[i].PWM = 0;
         PIDVars[i].OffDelay = 1600;
-        PIDVars[i].Power = 2; //1/4 power as a start
+        PIDVars[i].Power = 3; //1/8 power as a start
     }
 };
 
@@ -85,13 +85,13 @@ void PID(int PIDStep) {
 
 /**** GET ROOM TEMPERATURE **********************************************************/
     if(PIDStep){
-        dw = ADCData.VRT >> 2;
+        dw = ADCData.VRT;
         dw *= 147;
         dw >>= 8;
-        dw -= 100;
+        dw -= 200;
         RTAvg -= intshr(RTAvg, ADCAVG);
         RTAvg += dw;
-        CRTemp = intshr(RTAvg, ADCAVG);
+        CRTemp = intshr(RTAvg, ADCAVG + 1);
     }
 /************************************************************************************/
 
@@ -365,13 +365,18 @@ void PID(int PIDStep) {
         dw = PV->HPAvg >> AVG;
         pdt *= (INT32)IC->PID_PMax;
         pdt /= dw;
-        
-        dw = PV->HPMax;        
-        if(PV->Power > 0 && dw < (INT32)IC->PID_PMax)PV->Power--; 
-        dw >>= 1;
-        if(PV->Power < 2 && dw >= (INT32)IC->PID_PMax){
-            PV->HPMax = dw;
-            PV->Power++;
+        if(PV->NoHeater || PV->NoSensor || PV->ShortCircuit){
+            PV->HPMax = 0;
+            PV->Power = 3;
+        }
+        else{
+            dw = PV->HPMax;        
+            if(PV->Power > 0 && dw < (INT32)IC->PID_PMax)PV->Power--; 
+            dw >>= 1;
+            if(PV->Power < 3 && dw >= (INT32)IC->PID_PMax){
+                PV->HPMax = dw;
+                PV->Power++;
+            }
         }
     }
 /******************************************************************************/

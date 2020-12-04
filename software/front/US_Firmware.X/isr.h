@@ -27,6 +27,7 @@ typedef struct {
     unsigned int VID;
     unsigned int VTEMP[4];
     unsigned int VIN;
+    unsigned int VH;
 }ADCDataS;
 
 typedef struct {
@@ -72,6 +73,8 @@ ISRC_EXTERN volatile int KeepOff;
 ISRC_EXTERN volatile unsigned char NoHeater;
 ISRC_EXTERN volatile unsigned char NoSensor;
 ISRC_EXTERN volatile unsigned char ShortCircuit;
+
+ISRC_EXTERN volatile unsigned int Holder;
 
 ISRC_EXTERN volatile UINT16 EEPAddrR;
 ISRC_EXTERN volatile UINT16 EEPAddrW;

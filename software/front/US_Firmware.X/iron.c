@@ -887,6 +887,7 @@ void IronIdentify(){
             PIDVars[i].HI = 0;
             PIDVars[i].HV = 0;
             PIDVars[i].OffDelay = 1600;
+            PIDVars[i].Power = 3;
         }
     }
     IronID = NewIronID.Val;

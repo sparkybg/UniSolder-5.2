@@ -57,7 +57,7 @@ extern "C" {
         int OffCnt;
         int WSCorr;
         
-        int Power; //0=full power, 1=half power, 2=quarter power
+        int Power; //0=full power, 1=1/2 power, 2=1/4 power, 3=1/8 power
 
         int CTemp[2];
         int CHRes;

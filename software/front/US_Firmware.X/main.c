@@ -43,8 +43,9 @@ volatile unsigned int   InvertTicks;
 
 volatile unsigned int   MAINS_PER;                  //mains voltage period
 volatile unsigned int   MAINS_PER_US;               //mains voltage period in microseconds
-volatile unsigned int   MAINS_PER_H_US;          //mains voltage period for half power
-volatile unsigned int   MAINS_PER_Q_US;       //mains voltage period for half power
+volatile unsigned int   MAINS_PER_H_US;             //mains voltage period for half power
+volatile unsigned int   MAINS_PER_Q_US;             //mains voltage period for 1/4 power
+volatile unsigned int   MAINS_PER_E_US;             //mains voltage period for 1/8 power
 
 volatile unsigned int   T_PER;                      //ISR Timer period for mains frequency/1.2
 volatile unsigned int   C_PER;                      //Character display period
@@ -62,9 +63,8 @@ volatile int Enc; //Rotary encoder position
 
 void main(void){
     int i;
-    SPEAKER=1;
     mcuInit1();
-    SPEAKER=0;
+    SPKOFF;
 
     OLEDInit();        
     OLEDPrintNum816(0, 0, 2, 0);
@@ -78,32 +78,40 @@ void main(void){
     
     mcuDCTimerReset();
     while(MAINS && !mcuDCTimerInterrupt);
-    _delay_us(100);
-    while(!MAINS && !mcuDCTimerInterrupt);
-    
-    mcuDCTimerReset();
-    for(i = 0;((i < 8) && !mcuDCTimerInterrupt);i++){
+
+    if(!mcuDCTimerInterrupt){
         _delay_us(100);
-        while(MAINS && !mcuDCTimerInterrupt){};
-        _delay_us(100);
-        while(!MAINS && !mcuDCTimerInterrupt){};
-        MAINS_PER = mcuReadDCTimer();
+        while(!MAINS && !mcuDCTimerInterrupt);
+
+        mcuDCTimerReset();
+        for(i = 0; (i < 8) && !mcuDCTimerInterrupt; i++){
+            _delay_us(100);
+            while(MAINS && !mcuDCTimerInterrupt){};
+            _delay_us(100);
+            while(!MAINS && !mcuDCTimerInterrupt){};
+            MAINS_PER = mcuReadDCTimer();
+        }
     }
+    
     if(mcuDCTimerInterrupt){ //DC Power
         MAINS_PER_US = 1000000 / 110;
         MAINS_PER_Q_US = MAINS_PER_US >> 2;
+        MAINS_PER_E_US = MAINS_PER_US >> 3;
         MAINS_PER = (PER_FREQ / 256) / 110;        //55Hz
         T_PER = MAINS_PER;
     }
     else{ //AC Power
         MAINS_PER_US = MAINS_PER * 256 /(PER_FREQ * 8 / 1000000);
         MAINS_PER_Q_US = (MAINS_PER_US * 368)/1001;
+        MAINS_PER_E_US = (MAINS_PER_US * 271)/964;
         MAINS_PER >>= 3;
         T_PER = MAINS_PER + ((PER_FREQ / 256) / 1000);
         mainFlags.ACPower = 1;
     }
     MAINS_PER_H_US = MAINS_PER_US >> 1;
-    MAINS_PER_Q_US = MAINS_PER_H_US - MAINS_PER_Q_US;    
+    MAINS_PER_E_US = MAINS_PER_H_US - MAINS_PER_E_US;
+    MAINS_PER_Q_US = MAINS_PER_H_US - MAINS_PER_Q_US;
+    MAINS_PER_E_US -= MAINS_PER_Q_US;
 
     mcuInit3();
 
@@ -160,6 +168,8 @@ void main(void){
     ISRStart();
     OLEDPrintNum816(0, 0, 2, 48);
     OLEDUpdate();
+    
+    BeepTicks = 2;
 
     while(1){
         if(mainFlags.PowerLost){

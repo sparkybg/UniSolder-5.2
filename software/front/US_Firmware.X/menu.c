@@ -36,6 +36,7 @@ static int DispTemp;
 static int CalRes;
 static UINT8 OldNAP;
 static int NapTicks;
+static int TipChangeTicks;
 static UINT8 FNAP;
 
 static union {
@@ -93,6 +94,7 @@ void MenuInit(){
     FNAP = 1;
     OldNAP = 1;
     NapTicks = pars.NapFilterTicks + 1;
+    TipChangeTicks = 0;
     CalCh = 0;
     Enc = LastEnc = 0;
 }
@@ -310,7 +312,7 @@ void OLEDTasks(){
                     }
                     OLEDFlags.f.Debug = 1;
                     break;
-                case 7:
+                case 7: //Set input type mode (keys or encoder type)
                     if(!BTicks[1].o && BTicks[1].n){
                         ModeTicks = 250;
                         EncDiff = 0;
@@ -318,6 +320,20 @@ void OLEDTasks(){
                         if(pars.Input>ParDef[15].Max) pars.Input = 0;
                     }
                     OLEDFlags.f.Input = 1;
+                    break;
+                case 8: //tip change mode
+                    if(IronPars.Config[0].SensorConfig.Type == 255){
+                        CMode = 0;
+                        break;
+                    }
+                    if(PV1->NoHeater || PV1->NoSensor || PV2->NoHeater || PV2->NoSensor){
+                        ModeTicks = 100;
+                        PV1->KeepOff = 100;
+                        PV2->KeepOff = 100;
+                    }                    
+                    OLEDFlags.f.Message = 1;
+                    OLEDMsg1 = "TIP CHANGE";
+                    OLEDMsg2 = "";
                     break;
                 case 0xFF: //stand-by
                     if(((pars.WakeUp & 1) && BTicks[1].o <= 50 && BTicks[1].n > 50) ||
@@ -365,7 +381,7 @@ void OLEDTasks(){
             AVG = ADCAVG;
 
         OLEDPrint68(0, 7, mainFlags.ACPower ? "AC" : "DC", 2);
-        OLEDPrint68(12, 7, PIDVars[0].Power ? (PIDVars[0].Power == 1 ? "H": "Q"): "F", 1);
+        OLEDPrint68(12, 7, &("FHQE")[PIDVars[0].Power], 1);// PIDVars[0].Power ? (PIDVars[0].Power == 1 ? "H": "Q"): "F", 1);
 
         if(IronPars.Config[1].SensorConfig.Type) AVG--;
         p = ((PIDVars[0].PIDDuty + 0x7FL) >> 8) * (PIDVars[0].HPAvg >> AVG);
@@ -530,6 +546,9 @@ void OLEDTasks(){
             case 2: 
                 OLEDPrint68(70, 4, "1/4", 0);
                 break;                    
+            case 3: 
+                OLEDPrint68(70, 4, "1/8", 0);
+                break;                    
         }
         OLEDPrintNum68(54, 3, 3, IronPars.Config[ch].PID_PMax);
         OLEDPrintNum68(54, 5, 3, PIDVars[ch].HPMax);
@@ -602,20 +621,35 @@ void MenuTasks(){
                     CMode = 0;
                 }
                 
-                if (!NAP){
-                    NapTicks = 0;
-                    FNAP = 0;
-                }
-                else{
-                    if (NapTicks <= pars.NapFilterTicks){
-                        NapTicks++;
+                if(CMode != 8){
+                    if (Holder <= 310){ //instrument in holder
+                        NapTicks = 0;
+                        TipChangeTicks = 0;
+                        FNAP = 0;
+                        mainFlags.HolderPresent = 1;
                     }
                     else{
-                        FNAP = 1;
+                        if(Holder > 640){ //instrument out of holder
+                            if (NapTicks <= pars.NapFilterTicks){
+                                NapTicks++;
+                            }
+                            else{
+                                FNAP = 1;
+                                TipChangeTicks = 0;
+                            }
+                        }
+                        else{
+                            if(TipChangeTicks < 10){
+                                TipChangeTicks++;
+                            }
+                            else {
+                                mainFlags.HolderPresent = 1;
+                                CMode = 8;
+                            }                        
+                        }
                     }
                 }
                 
-                if(!FNAP) mainFlags.HolderPresent = 1;
 
                 if(CMode == 0xFF){
                     ModeTicks = 255;
@@ -630,7 +664,7 @@ void MenuTasks(){
                             if(CMinutes < 255)CMinutes++;
                         }
                     }
-                    if(B1 || B2 || B3 || (((pars.Holder == 1) || ((pars.Holder == 2) && mainFlags.HolderPresent)) && FNAP)){
+                    if(B1 || B2 || B3 || (((pars.Holder == 1) || ((pars.Holder == 2) && mainFlags.HolderPresent)) && (FNAP || CMode == 8))){
                         CTicks = 0;
                         CSeconds = 0;
                         CMSeconds = 0;
