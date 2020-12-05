@@ -630,24 +630,32 @@ void MenuTasks(){
                     }
                     else{
                         if(Holder > 640){ //instrument out of holder
+                            TipChangeTicks = 0;
                             if (NapTicks <= pars.NapFilterTicks){
                                 NapTicks++;
                             }
                             else{
                                 FNAP = 1;
-                                TipChangeTicks = 0;
                             }
                         }
-                        else{
-                            if(TipChangeTicks < 10){
-                                TipChangeTicks++;
+                        else{ //instrument in tip-change holder
+                            NapTicks = 0;
+                            FNAP = 0;
+                            mainFlags.HolderPresent = 1;
+                            if(pars.Holder){
+                                if(TipChangeTicks < 10){
+                                    TipChangeTicks++;
+                                }
+                                else {
+                                    CMode = 8;
+                                }               
                             }
-                            else {
-                                mainFlags.HolderPresent = 1;
-                                CMode = 8;
-                            }                        
                         }
                     }
+                }
+                else {
+                    NapTicks = 0;
+                    FNAP = 0;
                 }
                 
 
