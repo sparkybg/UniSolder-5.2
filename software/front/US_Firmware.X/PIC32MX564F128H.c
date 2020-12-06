@@ -81,6 +81,10 @@ void mcuInit1(){
     INTDisableInterrupts();
     OpenCoreTimer(0xFFFFFFFF);
     SYSTEMConfigWaitStates(80000000);
+    
+    DDPCONbits.JTAGEN = 0;
+    DDPCONbits.TDOEN = 0;
+    DDPCONbits.TROEN = 0 ;
 
     CNPUE = 0;
     
