@@ -81,105 +81,105 @@ f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(memset.o)
                               build/PIC32_with_bootloader/production/usb/usb_device.o (memset)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-bootstrap-exception-handler.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o (_bootstrap_exception_handler)
+                              C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o (_bootstrap_exception_handler)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-on-reset.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o (_on_reset)
+                              C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o (_on_reset)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-on-bootstrap.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o (_on_bootstrap)
+                              C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o (_on_bootstrap)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-nmi-handler.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o (_nmi_handler)
+                              C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o (_nmi_handler)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(pic32_data_init.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o (__pic32_data_init)
+                              C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o (__pic32_data_init)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(general-exception.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o (_general_exception_context)
+                              C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o (_general_exception_context)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector0.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_0)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_0)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector1.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_1)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_1)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector2.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_2)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_2)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector3.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_3)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_3)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector6.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_6)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_6)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector7.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_7)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_7)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector9.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_9)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_9)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector11.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_11)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_11)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector12.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_12)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_12)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector14.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_14)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_14)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector15.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_15)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_15)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector16.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_16)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_16)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector17.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_17)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_17)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector18.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_18)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_18)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector19.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_19)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_19)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector20.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_20)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_20)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector21.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_21)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_21)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector22.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_22)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_22)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector23.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_23)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_23)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector24.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_24)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_24)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector25.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_25)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_25)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector26.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_26)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_26)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector28.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_28)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_28)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector29.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_29)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_29)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector32.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_32)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_32)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector33.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_33)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_33)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector34.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_34)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_34)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector35.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_35)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_35)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector36.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_36)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_36)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector37.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_37)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_37)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector38.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_38)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_38)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector39.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_39)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_39)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector40.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_40)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_40)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector41.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_41)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_41)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector42.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_42)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_42)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector43.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_43)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_43)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector44.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_44)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_44)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector45.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_45)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_45)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector46.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_46)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_46)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector47.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_47)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_47)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector48.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_48)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_48)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector49.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_49)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_49)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector50.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_50)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_50)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector51.o)
-                              C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o (__vector_dispatch_51)
+                              C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o (__vector_dispatch_51)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-general-exception-handler.o)
                               f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(general-exception.o) (_general_exception_handler)
 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(defaultinterrupt.o)
@@ -810,19 +810,19 @@ Discarded input sections
  .data          0x00000000        0x0 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX534F064H.a(I2CPrivate.o)
  .bss           0x00000000        0x0 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX534F064H.a(I2CPrivate.o)
  .reginfo       0x00000000       0x18 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX534F064H.a(I2CPrivate.o)
- .text          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o
- .data          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o
- .bss           0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o
- .reginfo       0x00000000       0x18 C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o
- .text          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccAECt9z.o
- .data          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccAECt9z.o
- .bss           0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccAECt9z.o
- .reginfo       0x00000000       0x18 C:\Users\Sparky\AppData\Local\Temp\ccAECt9z.o
- .text          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o
- .data          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o
- .bss           0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o
- .reginfo       0x00000000       0x18 C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o
- .discard       0x00000000       0xd0 C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o
+ .text          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o
+ .data          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o
+ .bss           0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o
+ .reginfo       0x00000000       0x18 C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o
+ .text          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\cc7qFm0C.o
+ .data          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\cc7qFm0C.o
+ .bss           0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\cc7qFm0C.o
+ .reginfo       0x00000000       0x18 C:\Users\Sparky\AppData\Local\Temp\cc7qFm0C.o
+ .text          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o
+ .data          0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o
+ .bss           0x00000000        0x0 C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o
+ .reginfo       0x00000000       0x18 C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o
+ .discard       0x00000000       0xd0 C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o
  .text          0x00000000        0x0 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX564F128H\default_isr_vectors.o
  .data          0x00000000        0x0 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX564F128H\default_isr_vectors.o
  .bss           0x00000000        0x0 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX564F128H\default_isr_vectors.o
@@ -1126,16 +1126,16 @@ END GROUP
 
 .reset          0xbd003000      0x19c
  *(.reset)
- .reset         0xbd003000        0x8 C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o
+ .reset         0xbd003000        0x8 C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o
                 0xbd003000                _reset
  *(.reset.startup)
  .reset.startup
-                0xbd003008      0x194 C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o
+                0xbd003008      0x194 C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o
                 0xbd003008                _startup
 
 .bev_excpt      0xbd003380       0x10
  *(.bev_handler)
- .bev_handler   0xbd003380       0x10 C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o
+ .bev_handler   0xbd003380       0x10 C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o
 
 .dbg_excpt      0xbd003480        0x0
                 0xbd003480                . = (. + DEFINED (_DEBUGGER)?0x8:0x0)
@@ -1145,7 +1145,7 @@ END GROUP
 
 .app_excpt      0x9fc01180       0x10
  *(.gen_handler)
- .gen_handler   0x9fc01180       0x10 C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o
+ .gen_handler   0x9fc01180       0x10 C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o
 
 .vector_0       0x9fc01200        0x8
  *(.vector_0)
@@ -2470,9 +2470,9 @@ END GROUP
                 0x00000390       0x10 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-general-exception-handler.o)
  .gnu.attributes
                 0x000003a0       0x10 f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(defaultinterrupt.o)
-LOAD C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o
-LOAD C:\Users\Sparky\AppData\Local\Temp\ccAECt9z.o
-LOAD C:\Users\Sparky\AppData\Local\Temp\ccq4yrJx.o
+LOAD C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o
+LOAD C:\Users\Sparky\AppData\Local\Temp\cc7qFm0C.o
+LOAD C:\Users\Sparky\AppData\Local\Temp\ccUpjywj.o
 LOAD f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX564F128H\default_isr_vectors.o
 LOAD f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
 LOAD f:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/mips16\libgcc.a
@@ -2927,7 +2927,7 @@ LOAD data_init
 .text.main_entry
                 0x9d00f908       0x54
  .text.main_entry
-                0x9d00f908       0x54 C:\Users\Sparky\AppData\Local\Temp\ccITjHGH.o
+                0x9d00f908       0x54 C:\Users\Sparky\AppData\Local\Temp\cc6gJeW1.o
                 0x9d00f93c                __crt0_exit
 
 .text.PIDInit   0x9d00f95c       0x50

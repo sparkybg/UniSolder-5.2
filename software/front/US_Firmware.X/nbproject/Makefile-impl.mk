@@ -27,7 +27,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=US_Firmware.X
 
 # Active Configuration
-DEFAULTCONF=PIC32_with_bootloader
+DEFAULTCONF=PIC32_Standalone
 CONF=${DEFAULTCONF}
 
 # All Configurations
