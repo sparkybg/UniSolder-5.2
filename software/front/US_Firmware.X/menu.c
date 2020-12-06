@@ -499,15 +499,16 @@ void OLEDTasks(){
         
         OLEDPrint68(0, 0, "CALIBRATION        V", 0);
         OLEDPrintNum68(122, 0, 1, BoardVersion);
-        OLEDPrint68(0, 0, "CALIBRATION", 0);
-        OLEDPrint68(0, 1, "ENCODER:", 0);
+        OLEDPrint68(0, 1, "ENC:", 0);
+        OLEDPrint68(60,1, "HLD:", 0);
         OLEDPrint68(0, 2, "IRON ID:", 0);
         OLEDPrint68(0, 3, "CURRENT:", 0);
         OLEDPrint68(0, 4, "ADC:", 0);
         OLEDPrint68(0, 5, "R:", 0);
         OLEDPrint68(0, 6, "ROOM:", 0);
         OLEDPrint68(0, 7, "PERIOD:", 0);
-        OLEDPrintNum68(48, 1, 6, Enc);
+        OLEDPrintNum68(24, 1, 5, Enc);
+        OLEDPrintNum68(84, 1, 4, Holder);
         OLEDPrintHex68(64, 2, 4, IronID);
         if(IronPars.Config[1].SensorConfig.Type == 0 || (LISRTicks % 200) < 100){
             OLEDPrintNum68(64, 3, 1, CalCh);
@@ -633,16 +634,16 @@ void MenuTasks(){
                 }
                 
                 if(CMode == 8 && IronPars.Config[0].SensorConfig.Type != 255){
-                    mainFlags.TipChange = Holder > 310 && Holder <= 620;
+                    mainFlags.TipChange = Holder > 375 && Holder <= 750;
                     NapTicks = 0;
                     FNAP = 0;
                 }
                 else{
-                    if (Holder <= 620 && IronPars.Config[0].SensorConfig.Type != 255){ //instrument in holder or tip-change holder
+                    if (Holder <= 750 && IronPars.Config[0].SensorConfig.Type != 255){ //instrument in holder or tip-change holder
                         mainFlags.HolderPresent = 1;
                         NapTicks = 0;
                         FNAP = 0;
-                        if(Holder <=310){ //instrument in holder
+                        if(Holder <=375){ //instrument in holder
                             TipChangeTicks = 0;
                             mainFlags.TipChange = 0;
                         }
