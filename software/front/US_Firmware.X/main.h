@@ -23,6 +23,7 @@ extern "C" {
         int PowerLost:1;
         int ACPower:1;
         int Calibration:1;
+        int TipChange;
     }mainflags_t;
 
 #ifndef _MAIN_C

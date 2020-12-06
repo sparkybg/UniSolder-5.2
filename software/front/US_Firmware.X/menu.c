@@ -86,7 +86,8 @@ void MenuInit(){
         BTicks[i].d = 0;
     }
     CTTemp = TTemp;
-    mainFlags.HolderPresent=0;
+    mainFlags.HolderPresent = 0;
+    mainFlags.TipChange = 0;
     TempBeep = 1;
     DispTemp = 0;
     CMode = 1;
@@ -100,8 +101,10 @@ void MenuInit(){
 }
 
 void OLEDTasks(){
+    int dual = IronPars.Config[1].SensorConfig.Type;
     t_PIDVars * PV1 = (t_PIDVars *)&PIDVars[0];
-    t_PIDVars * PV2 = PV1;IronPars.Config[1].SensorConfig.Type ? (t_PIDVars *)&PIDVars[1]: PV1;
+    t_PIDVars * PV2 = (t_PIDVars *)&PIDVars[1];
+    if(!dual) PV2 = PV1;
     OLEDFlags.DW=0;
     if(mainFlags.PowerLost){
         OLEDFlags.f.Message = 1;
@@ -110,7 +113,7 @@ void OLEDTasks(){
     }
     else{
         do{
-            DoExit=1;
+            DoExit = 1;
             switch(CMode){
                 case 0: //default mode - display temperature and do nothing
                     if(CTTemp < MINTEMP){                        
@@ -324,16 +327,17 @@ void OLEDTasks(){
                 case 8: //tip change mode
                     if(IronPars.Config[0].SensorConfig.Type == 255){
                         CMode = 0;
+                        DoExit = 0;
                         break;
                     }
-                    if(PV1->NoHeater || PV1->NoSensor || PV2->NoHeater || PV2->NoSensor){
-                        ModeTicks = 100;
-                        PV1->KeepOff = 100;
-                        PV2->KeepOff = 100;
-                    }                    
+                    if(mainFlags.TipChange || PV1->NoHeater || PV1->NoSensor || PV2->NoHeater || PV2->NoSensor){
+                        ModeTicks = 2;
+                    }
+                    OLEDFlags.f.Header = 1;
+                    OLEDFlags.f.Footer = 1;
                     OLEDFlags.f.Message = 1;
-                    OLEDMsg1 = "TIP CHANGE";
-                    OLEDMsg2 = "";
+                    OLEDMsg1 = "        TIP";
+                    OLEDMsg2 = "       CHANGE";
                     break;
                 case 0xFF: //stand-by
                     if(((pars.WakeUp & 1) && BTicks[1].o <= 50 && BTicks[1].n > 50) ||
@@ -376,23 +380,29 @@ void OLEDTasks(){
     }
     if(OLEDFlags.f.Footer){
         UINT8 b;
-        int i, p, 
-            df = PIDVars[0].PIDDutyFull, 
+        int i, p, df, 
             AVG = ADCAVG;
 
         OLEDPrint68(0, 7, mainFlags.ACPower ? "AC" : "DC", 2);
         OLEDPrint68(12, 7, &("FHQE")[PIDVars[0].Power], 1);// PIDVars[0].Power ? (PIDVars[0].Power == 1 ? "H": "Q"): "F", 1);
 
-        if(IronPars.Config[1].SensorConfig.Type) AVG--;
-        p = ((PIDVars[0].PIDDuty + 0x7FL) >> 8) * (PIDVars[0].HPAvg >> AVG);
-        if(IronPars.Config[1].SensorConfig.Type){
-            df += PIDVars[1].PIDDutyFull;
-            p += ((PIDVars[1].PIDDuty + 0x7FL) >> 8) * (PIDVars[1].HPAvg >> AVG);
+        if(PV1->NoHeater || PV1->NoSensor || PV1->ShortCircuit || PV2->NoHeater || PV2->NoSensor || PV2->ShortCircuit){
+            df = 0;
+            p = 0;
         }
         else{
-            df += df;
+            if(dual) AVG--;
+            df = PV1->PIDDutyFull; 
+            p = ((PV1->PIDDuty + 0x7FL) >> 8) * (PV1->HPAvg >> AVG);
+            if(dual){
+                df += PV2->PIDDutyFull;
+                p += ((PV2->PIDDuty + 0x7FL) >> 8) * (PV2->HPAvg >> AVG);
+            }
+            else{
+                df += df;
+            }
+            df >>= 19;
         }
-        df >>= 19;
         p += 0x7FFFL;
         p >>= 16;
         for(i = 0; i <= 64; i++){
@@ -408,6 +418,7 @@ void OLEDTasks(){
             b &= 254;
             OLEDBUFF.B[7][i + 31] = b;
         }
+        
         if((LISRTicks & 15) == 1)OLEDPower = p;
         OLEDPrintNum68(100, 7, 3, OLEDPower);
         OLEDPrint68(118, 7, "W", 1);
@@ -621,41 +632,43 @@ void MenuTasks(){
                     CMode = 0;
                 }
                 
-                if(CMode != 8){
-                    if (Holder <= 310){ //instrument in holder
-                        NapTicks = 0;
-                        TipChangeTicks = 0;
-                        FNAP = 0;
+                if(CMode == 8 && IronPars.Config[0].SensorConfig.Type != 255){
+                    mainFlags.TipChange = Holder > 310 && Holder <= 620;
+                    NapTicks = 0;
+                    FNAP = 0;
+                }
+                else{
+                    if (Holder <= 620 && IronPars.Config[0].SensorConfig.Type != 255){ //instrument in holder or tip-change holder
                         mainFlags.HolderPresent = 1;
-                    }
-                    else{
-                        if(Holder > 640){ //instrument out of holder
+                        NapTicks = 0;
+                        FNAP = 0;
+                        if(Holder <=310){ //instrument in holder
                             TipChangeTicks = 0;
-                            if (NapTicks <= pars.NapFilterTicks){
-                                NapTicks++;
-                            }
-                            else{
-                                FNAP = 1;
-                            }
+                            mainFlags.TipChange = 0;
                         }
                         else{ //instrument in tip-change holder
-                            NapTicks = 0;
-                            FNAP = 0;
-                            mainFlags.HolderPresent = 1;
                             if(pars.Holder){
-                                if(TipChangeTicks < 10){
+                                if(TipChangeTicks < 15){
                                     TipChangeTicks++;
                                 }
                                 else {
                                     CMode = 8;
+                                    mainFlags.TipChange = 1;
+                                    ModeTicks = 100;
                                 }               
-                            }
+                            }                            
                         }
                     }
-                }
-                else {
-                    NapTicks = 0;
-                    FNAP = 0;
+                    else{ //instrument out of holder or no instrument
+                        TipChangeTicks = 0;
+                        mainFlags.TipChange = 0;
+                        if (NapTicks <= pars.NapFilterTicks){
+                            NapTicks++;
+                        }
+                        else{
+                            FNAP = 1;
+                        }
+                    }
                 }
                 
 

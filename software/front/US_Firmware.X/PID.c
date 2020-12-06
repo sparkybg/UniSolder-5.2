@@ -4,6 +4,7 @@
 #include "PID.h"
 #include "isr.h"
 #include "iron.h"
+#include "main.h"
 #include "sensorMath.h"
 
 void PIDInit(){
@@ -66,11 +67,12 @@ void PID(int PIDStep) {
     t_PIDVars * PV;
     t_IronConfig * IC;
     int WSL;
+    int dual = !!IronPars.Config[1].SensorConfig.Type;
     
     AVG = ADCAVG;
     PV =(t_PIDVars *)&PIDVars[PIDStep];
     IC =(t_IronConfig *)&IronPars.Config[PIDStep];
-    if(IronPars.Config[1].SensorConfig.Type){
+    if(dual){
         AVG--;
     }
     else{
@@ -78,7 +80,7 @@ void PID(int PIDStep) {
         IC =(t_IronConfig *)&IronPars.Config[0];
     }
     WSL = IC->WSLen;
-    if(WSL < 0) WSL = (IronPars.Config[1].SensorConfig.Type ? 4 : 8);
+    if(WSL < 0) WSL = dual ? 4 : 8;
     
     if(PV->NoHeater || PV->NoSensor || PV->Starting || PV->ShortCircuit || PV->LastTTemp != CTTemp)PV->DestinationReached = 0;
     PV->LastTTemp = CTTemp;
@@ -365,7 +367,7 @@ void PID(int PIDStep) {
         dw = PV->HPAvg >> AVG;
         pdt *= (INT32)IC->PID_PMax;
         pdt /= dw;
-        if(PV->NoHeater || PV->NoSensor || PV->ShortCircuit){
+        if(mainFlags.TipChange || PV->NoHeater || PV->NoSensor || PV->ShortCircuit){
             PV->HPMax = 0;
             PV->Power = 3;
         }
@@ -396,11 +398,13 @@ void PID(int PIDStep) {
 /******************************************************************************/
 
     pdt <<= 8;
-    if(PV->NoHeater) pdt=0x28F5C; //PWM = once per 2 seconds in order to detect heater resistance on open heater
-    if(PV->ShortCircuit) pdt=0x10624; //PWM = once per 5 seconds in order to detect heater resistance on short circuit
-
+    if(PV->NoHeater) pdt = dual?0x51EB8:0x28F5C;        //PWM = once per 2 seconds in order to detect heater resistance on open heater
+    if(PV->ShortCircuit) pdt = dual?0x20C48:0x10624;    //PWM = once per 5 seconds in order to detect heater resistance on short circuit
+    if(mainFlags.TipChange){
+        pdt = 0; //Don't turn on power while instrument is in tip-change holder
+        PV->PWM = 0;
+    } 
     PV->PIDDuty = pdt;
-
 }
 
 #undef _PID_C

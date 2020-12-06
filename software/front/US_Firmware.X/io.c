@@ -74,7 +74,7 @@ void ProcessIO(){
                 TXP.LiveData.WSDelta[6] = PIDVars[0].WSDelta[6].val + 2048;   //
                 TXP.LiveData.WSDelta[7] = PIDVars[0].WSDelta[7].val + 2048;   //
                 TXP.LiveData.DestinationReached=PIDVars[0].DestinationReached;         //
-                TXP.LiveData.Duty = (UINT16)(PIDVars[0].PIDDutyFull>>8);                       //
+                TXP.LiveData.Duty = (UINT16)(PIDVars[0].PIDDuty>>8);                       //
                 USBInHandle = HIDTxPacket(HID_EP, (char *)&TXP, 64);
             }
         }        

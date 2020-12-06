@@ -44,8 +44,8 @@ void ISRInit(){
     OffDelayOff = 1600;
     VTIBuffCnt = 0;
     mainFlags.Calibration = 0;
+    mainFlags.PowerLost = 0;    
     ISRComplete = 0;
-    mainFlags.PowerLost = 0;
 }
 
 void ISRStop(){
@@ -242,11 +242,17 @@ void ISRHigh(int src){
                             PV->HV = (mcuSqrt(sv * dw) + 32) >> 6;
                             PV->HI = (mcuSqrt(si * dw) + 16) >> 5;
                             PV->HP = ((sp * dw) + 512) >> 10;
-                            PV->HR = r;
-                             
+                            PV->HR = r;                             
 
                             PV->HNewData = 1;
                         }
+                    }
+                    else if(mainFlags.TipChange){
+                        PV->HI = 0;
+                        PV->HR = 5000;
+                        PV->HP = 0;
+                        PV->HInitData = 1;
+                        PV->HNewData = 1;
                     }
                 }
             }
@@ -314,7 +320,7 @@ void ISRHigh(int src){
             
             PV = (t_PIDVars *)&PIDVars[1];
             IC = (t_IronConfig *)&IronPars.Config[1];
-            if((ADCStep < 2) || (IC->SensorConfig.Type == 0)){
+            if(ADCStep < 2 || IC->SensorConfig.Type == 0){
                 PV = (t_PIDVars *)&PIDVars[0];
                 IC = (t_IronConfig *)&IronPars.Config[0];
             }            
