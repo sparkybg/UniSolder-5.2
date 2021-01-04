@@ -237,11 +237,11 @@ void ISRHigh(int src){
                             //     = (((1K / (27K + 1K)) / 3.0V) * 1024) * (((0.003 * (47K / 1.5K)) /3.0V) * 1024)
                             //     = 391,13549206349206349206349206349
 
-                            dw = 1024;
+                            dw = POWER_DUTY;
                             if(IronPars.Config[1].SensorConfig.Type) dw >>= 1;
-                            PV->HV = (mcuSqrt(sv * dw) + 32) >> 6;
-                            PV->HI = (mcuSqrt(si * dw) + 16) >> 5;
-                            PV->HP = ((sp * dw) + 512) >> 10;
+                            PV->HV = (mcuSqrt(sv * dw) + 31) >> 6;
+                            PV->HI = (mcuSqrt(si * dw) + 15) >> 5;
+                            PV->HP = ((sp * dw) + 511) >> 10;
                             PV->HR = r;                             
 
                             PV->HNewData = 1;
@@ -326,7 +326,7 @@ void ISRHigh(int src){
             }            
             HCH = IC->SensorConfig.HChannel;
             break;
-        case 6: //250us after zero cross - turn on power if needed, setup channels for handle sensor if present and wait to 1/2 power point at the middle of half period
+        case 6: //250us (or 550us on  DC) after zero cross - turn on power if needed, setup channels for handle sensor if present and wait to 1/2 power point at the middle of half period
             dw = MAINS_PER_H_US - 250;
             mcuStartISRTimer_us(dw); //next step will be at the center of mains half period
             if(!(ADCStep & 1)){

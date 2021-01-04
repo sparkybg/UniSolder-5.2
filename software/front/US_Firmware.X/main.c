@@ -41,6 +41,7 @@ volatile unsigned int   BoardVersion;               //Front PCB version 0=first 
 volatile unsigned int   BeepTicks;
 volatile unsigned int   InvertTicks;
 
+volatile unsigned int   POWER_DUTY;                 //max duty for compensation of heater off time
 volatile unsigned int   MAINS_PER;                  //mains voltage period
 volatile unsigned int   MAINS_PER_US;               //mains voltage period in microseconds
 volatile unsigned int   MAINS_PER_H_US;             //mains voltage period for half power
@@ -94,21 +95,24 @@ void main(void){
     }
     
     if(mcuDCTimerInterrupt){ //DC Power
-        MAINS_PER_US = 1000000 / 110;
-        MAINS_PER_Q_US = MAINS_PER_US >> 2;
-        MAINS_PER_E_US = MAINS_PER_US >> 3;
+        MAINS_PER_US = 9091; //110Hz
+        POWER_DUTY = (1060*(9091-810))/9091; //max duty for power-off time (810us on DC)
+        MAINS_PER_H_US = (MAINS_PER_US - 810) >> 1;
+        MAINS_PER_Q_US = (MAINS_PER_US - 810) >> 2;
+        MAINS_PER_E_US = (MAINS_PER_US - 810) >> 3;
         MAINS_PER = (PER_FREQ / 256) / 110;        //55Hz
         T_PER = MAINS_PER;
     }
     else{ //AC Power
         MAINS_PER_US = MAINS_PER * 256 /(PER_FREQ * 8 / 1000000);
+        POWER_DUTY = (1060*(MAINS_PER_US-510))/MAINS_PER_US; //max duty for power-off time (510us on AC)
+        MAINS_PER_H_US = MAINS_PER_US >> 1;
         MAINS_PER_Q_US = (MAINS_PER_US * 368)/1001;
         MAINS_PER_E_US = (MAINS_PER_US * 271)/964;
         MAINS_PER >>= 3;
         T_PER = MAINS_PER + ((PER_FREQ / 256) / 1000);
         mainFlags.ACPower = 1;
     }
-    MAINS_PER_H_US = MAINS_PER_US >> 1;
     MAINS_PER_E_US = MAINS_PER_H_US - MAINS_PER_E_US;
     MAINS_PER_Q_US = MAINS_PER_H_US - MAINS_PER_Q_US;
     MAINS_PER_E_US -= MAINS_PER_Q_US;

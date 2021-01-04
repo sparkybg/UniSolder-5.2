@@ -30,6 +30,7 @@ extern "C" {
     extern volatile unsigned int BoardVersion;
     extern volatile unsigned int BeepTicks;
     extern volatile unsigned int InvertTicks;
+    extern volatile unsigned int POWER_DUTY;
     extern volatile unsigned int MAINS_PER;
     extern volatile unsigned int MAINS_PER_US;
     extern volatile unsigned int MAINS_PER_H_US;

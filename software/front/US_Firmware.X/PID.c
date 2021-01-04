@@ -173,7 +173,7 @@ void PID(int PIDStep) {
             else{
                 if(PV->OffCnt < 8){
                     if(PV->OffCnt > 0){
-                        if(PV->WSDelta[PV->OffCnt].cnt==0){
+                        if(PV->WSDelta[PV->OffCnt].cnt == 0){
                             PV->WSDelta[PV->OffCnt].val = intshr(PV->WSDelta[0].val, 1) - (PV->ADCTemp[0] - PV->LastOn);
                             PV->WSDelta[PV->OffCnt].cnt = 1;
                         }
@@ -186,8 +186,6 @@ void PID(int PIDStep) {
                             //WSMul = multiplier for damping waveshaping
                             if(PV->WSDelta[0].val != 0){
                                 PV->WSMul = (((INT32)PV->WSDelta[1].val) << 16) / ((INT32)PV->WSDelta[0].val);                             
-                                //PV->WSMul *= 1200;
-                                //PV->WSMul >>= 10;
                                 if(PV->WSMul < 0) PV->WSMul = 0;
                                 if(PV->WSMul > 32768) PV->WSMul = 32768;
                             }

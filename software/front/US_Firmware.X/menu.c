@@ -80,7 +80,7 @@ void MenuInit(){
     CTicks = 0;
     BeepTicks = 0;
     InvertTicks = 0;
-    for(i=0;i<3;i++){
+    for(i = 0; i < 2; i++){
         BTicks[i].o = 0;
         BTicks[i].n = 0;
         BTicks[i].d = 0;
@@ -105,7 +105,7 @@ void OLEDTasks(){
     t_PIDVars * PV1 = (t_PIDVars *)&PIDVars[0];
     t_PIDVars * PV2 = (t_PIDVars *)&PIDVars[1];
     if(!dual) PV2 = PV1;
-    OLEDFlags.DW=0;
+    OLEDFlags.DW = 0;
     if(mainFlags.PowerLost){
         OLEDFlags.f.Message = 1;
         OLEDMsg1 = "     POWER LOST";
@@ -123,13 +123,13 @@ void OLEDTasks(){
                         DoExit = 0;
                         break;
                     }
-                    if(BTicks[0].n || BTicks[2].n || EncDiff) CMode = 1;
-                    if(BTicks[1].o && (BTicks[1].o < 100) && (BTicks[1].n==0)) CMode = 2;
+                    if(EncDiff) CMode = 1;
+                    if(BTicks[1].o && BTicks[1].o < 100 && BTicks[1].n == 0) CMode = 2;
                     if(CMode != 0){
                         DoExit = 0;
                         break;
                     }
-                    if((BTicks[1].o <= 100) && (BTicks[1].n > 100)){ //goto set parameters menu
+                    if(BTicks[1].o <= 100 && BTicks[1].n > 100){ //goto set parameters menu
                         CMode=3;
                         ModeTicks=250;
                         BeepTicks=2;
@@ -169,7 +169,7 @@ void OLEDTasks(){
                         DoExit = 0;
                         break;
                     }
-                    if(BTicks[0].n || BTicks[2].n || EncDiff){ //Temp inc/dec
+                    if(EncDiff){ //Temp inc/dec
                         int i = TTemp;
                         ModeTicks = 100;
                         if(EncDiff){
@@ -180,10 +180,6 @@ void OLEDTasks(){
                             if(ctt > MAXTEMP) ctt = MAXTEMP;
                             TTemp = ctt;
                         }
-                        if(BTicks[0].d)TTemp += ((BTicks[0].n >> 6) + 1) * pars.TempStep;
-                        if(BTicks[2].d)TTemp -= ((BTicks[2].n >> 6) + 1) * pars.TempStep;
-                        if(TTemp < MINTEMP)TTemp = MINTEMP;
-                        if(TTemp > MAXTEMP)TTemp = MAXTEMP;
                         if(i != TTemp)TempBeep = 1;
                     }
                     OLEDFlags.f.Header = 1;
@@ -194,7 +190,7 @@ void OLEDTasks(){
                     break;
                 case 2: //reset temperature mode
                     if(BTicks[1].n > 100)CMode = 0;
-                    if(BTicks[0].n || BTicks[2].n || EncDiff) CMode = 1;
+                    if(EncDiff) CMode = 1;
                     if(CMode != 2){
                         DoExit = 0;
                         break;
@@ -232,11 +228,11 @@ void OLEDTasks(){
                         break;
                     }
                     else{
-                        if(BTicks[0].n || BTicks[1].n || BTicks[2].n || EncDiff){
+                        if(BTicks[1].n || EncDiff){
                             ModeTicks = 250;
 
-                            if(BTicks[(pars.MenuDown ? 2 : 0)].n == 1 || EncDiff > 0){CPar++; CRow++;}
-                            if(BTicks[(pars.MenuDown ? 0 : 2)].n == 1 || EncDiff < 0){CPar--; CRow--;}
+                            if((EncDiff > 0 && !pars.MenuDown) || (EncDiff < 0 && pars.MenuDown)){CPar++; CRow++;}
+                            if((EncDiff < 0 && !pars.MenuDown) || (EncDiff > 0 && pars.MenuDown)){CPar--; CRow--;}
                             EncDiff = 0;
                             if(CRow < 0)CRow = 0;
                             if(CRow > 3)CRow = 3;
@@ -244,7 +240,7 @@ void OLEDTasks(){
                             if(CPar >= (sizeof(MenuOrder) / sizeof(MenuOrder[0]))) CPar = 0;
                         }
                         if(BTicks[1].o &&(BTicks[1].o < 100) && (BTicks[1].n == 0)){
-                            int p=MenuOrder[CPar];
+                            int p = MenuOrder[CPar];
                             switch(p) {
                                 case 16: //calibrate
                                     CMode=5;
@@ -264,7 +260,7 @@ void OLEDTasks(){
                 case 4: //menu set parameter mode
                     {
                         int p = MenuOrder[CPar];
-                        if(BTicks[0].n || BTicks[1].n || BTicks[2].n || EncDiff) ModeTicks = 250;
+                        if(BTicks[1].n || EncDiff) ModeTicks = 250;
                         if(BTicks[1].o && (BTicks[1].n == 0)){
                             pars.b[p] = CParVal;
                             CMode = 3;
@@ -273,8 +269,6 @@ void OLEDTasks(){
                             if(EncDiff > 0)CParVal++;
                             if(EncDiff < 0)CParVal--;
                             EncDiff=0;
-                            if(BTicks[0].d)CParVal++;
-                            if(BTicks[2].d)CParVal--;
                             if((CParVal < ParDef[p].Min))CParVal = ParDef[p].Max;
                             if((CParVal > ParDef[p].Max))CParVal = ParDef[p].Min;
                             if(ParDef[p].Immediate)pars.b[p] = CParVal;
@@ -295,8 +289,8 @@ void OLEDTasks(){
                         }
                     }
                     UINT16 Current = CalCh ? IronPars.Config[0].SensorConfig.CurrentB : IronPars.Config[0].SensorConfig.CurrentA;                                        
-                    if((BTicks[0].d || EncDiff > 0) && Current < 256) Current++;
-                    if((BTicks[2].d || EncDiff < 0) && Current > 0) Current--;
+                    if(EncDiff > 0 && Current < 256) Current++;
+                    if(EncDiff < 0 && Current > 0) Current--;
                     EncDiff = 0;                    
                     if(CalCh){
                         IronPars.Config[0].SensorConfig.CurrentB = Current;
@@ -333,6 +327,7 @@ void OLEDTasks(){
                     if(mainFlags.TipChange || PV1->NoHeater || PV1->NoSensor || PV2->NoHeater || PV2->NoSensor){
                         ModeTicks = 2;
                     }
+                    mainFlags.Calibration = 0;
                     OLEDFlags.f.Header = 1;
                     OLEDFlags.f.Footer = 1;
                     OLEDFlags.f.Message = 1;
@@ -590,6 +585,8 @@ void MenuTasks(){
                 if(!pars.Input){
                     if(!(pars.Buttons?B3:B1)){BTicks[0].n = 0;BTicks[0].d = 0;}
                     if(!(pars.Buttons?B1:B3)){BTicks[2].n = 0;BTicks[2].d = 0;}
+                    if(BTicks[0].d) Enc += ((BTicks[0].n >> 6) + 1)<<2;
+                    if(BTicks[2].d) Enc -= ((BTicks[2].n >> 6) + 1)<<2;
                 }
                 else{
                     BTicks[0].o = 0;
@@ -598,6 +595,8 @@ void MenuTasks(){
                     BTicks[2].o = 0;
                     BTicks[2].n = 0;
                     BTicks[2].d = 0;
+                }
+                {
                     int cEnc = Enc;
                     cEnc >>= 2;                    
                     if(LastEnc != cEnc){
@@ -648,7 +647,7 @@ void MenuTasks(){
                             mainFlags.TipChange = 0;
                         }
                         else{ //instrument in tip-change holder
-                            if(pars.Holder){
+                            if(!mainFlags.Calibration && pars.Holder){
                                 if(TipChangeTicks < 15){
                                     TipChangeTicks++;
                                 }
