@@ -161,7 +161,7 @@ void OLEDUpdate(){
         mcuSPISendBytes((int*)&PreUpdateBuff.PreRowUpdate, sizeof(PreUpdateBuff.PreRowUpdate));
         mcuSPIWait();
         OLED_DC = 1;    
-        mcuSPISendBytes((int*)OLEDBUFF.B[r], 128 );
+        mcuSPISendBytes((unsigned int*)OLEDBUFF.B[r], 128 );
     }
 }
 

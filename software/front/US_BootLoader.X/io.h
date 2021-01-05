@@ -16,6 +16,12 @@ extern "C" {
 #include <GenericTypeDefs.h>
 #include "typedefs.h"
 
+#ifndef _IO_C
+#define IOC_EXTERN extern
+#else
+#define IOC_EXTERN
+#endif
+
 typedef union {
     UINT8 RawData[68];
     struct {
@@ -44,14 +50,8 @@ typedef union {
 }USBPacket;
 
 
-#ifndef _IO_C
-#define IOC_EXTERN extern
-extern volatile USBPacket RXP;
-extern volatile USBPacket TXP;
-
-#else
-#define IOC_EXTERN
-#endif
+IOC_EXTERN volatile USBPacket RXP;
+IOC_EXTERN volatile USBPacket TXP;
 
 IOC_EXTERN void IOInit();
 IOC_EXTERN void IOTasks();

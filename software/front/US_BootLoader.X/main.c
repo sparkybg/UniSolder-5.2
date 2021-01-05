@@ -15,9 +15,13 @@
 
 void displayTasts(void);
 
-void main(void){
+int main(void){
+    
     mcuInit();
+    
     if(mcuValidAppPresent() && NVMDATA != 0x6193471A){
+        //B2 is button 2 and has pull down resistor.
+        //If button is pressed stay in bootloader.
         if(!B2){
             mcuJumpToApp();
         }
@@ -27,10 +31,11 @@ void main(void){
             if(B2 || ReadCoreTimer() >= 80000000) mcuJumpToApp();
         }
     }
+    
     NVMDATA = 0xFFFFFFFF;
-    OLEDInit();    
+    OLEDInit();
     IOInit();
-    int OldB2 = B2;
+
     while(1){
         displayTasts();
         IOTasks();

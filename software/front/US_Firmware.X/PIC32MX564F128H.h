@@ -14,12 +14,7 @@ extern "C" {
 
 #include <xc.h>
 #include <GenericTypeDefs.h>
-#include <peripheral/timer.h>
-#include <peripheral/adc10.h>
-#include <peripheral/cmp.h>
-#include <peripheral/i2c.h>
-#include <peripheral/spi.h>
-#include <peripheral/dma.h>
+#include <plib.h>
 
 #ifdef _PIC32MX534F064H_C
 #define P32_EXTERN
@@ -31,6 +26,7 @@ extern "C" {
 #define CORETIMER_FREQ              (SYS_FREQ/2UL)
 #define PER_FREQ                    (SYS_FREQ/2UL)
 #define I2C_CLOCK_FREQ              (400000UL)
+#define PROGRAM_FLASH_END_ADRESS    (0x9D000000+BMXPFMSZ-1)
 
 
 P32_EXTERN void DelayTicks(UINT32 a);

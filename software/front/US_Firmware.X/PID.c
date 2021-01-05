@@ -247,7 +247,7 @@ void PID(int PIDStep) {
         PV->CTemp[0] = dw;        
     }
     
-// >>> At this point in CTemp[0] we have temeprature in degrees Celsius, multiplied by 2. <<<    
+// >>> At this point in CTemp[0] we have temperature in degrees Celsius, multiplied by 2. <<<    
 
     if(PV->Starting || PV->NoHeaterCnt){
         PV->Starting = 0;
@@ -353,7 +353,7 @@ void PID(int PIDStep) {
     }
     pdt = PV->PIDDutyP + PV->PIDDutyI;
     if(pdt < 0) pdt = 0;
-    if((IC->SensorConfig.Type == 0) || (IC->SensorConfig.Type == 255) || PV->NoSensor) pdt = 0;
+    if((IC->SensorConfig.Type == SENSOR_UNDEFINED) || (IC->SensorConfig.Type == SENSOR_NONE) || PV->NoSensor) pdt = 0;
     
     PV->PIDDutyFull = pdt; //normalized duty
 

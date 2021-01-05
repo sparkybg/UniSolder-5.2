@@ -13,8 +13,8 @@
 #include "usb/usb_driver.h"
 #include "usb/usb_function_hid.h"
 
-#define TXP (*((USBPacket *)USBTxBuffer))
-#define RXP (*((USBPacket *)USBRxBuffer))
+//#define TXP (*((USBPacket *)USBTxBuffer))
+//#define RXP (*((USBPacket *)USBRxBuffer))
 
 //#define IO_IDLE 0
 //#define IO_BUSY 1
@@ -41,13 +41,13 @@ void IOTasks(){
 
 void ProcessIO(){
     static UINT16 _IronID=0; 
-    UINT8 i;
+
     if(!IO_BUSY && !HIDTxHandleBusy(USBInHandle)){
         if(_IronID != IronID){
             _IronID = IronID;
             TXP.Command = 1;
             TXP.Data16[0] = IronID;
-            USBInHandle = HIDTxPacket(HID_EP, (char *)&TXP, 64);
+            USBInHandle = HIDTxPacket(HID_EP, (BYTE *)&TXP, 64);
         }
         else if(IO_TICKS != ADCStep && !HIDTxHandleBusy(USBInHandle)){
             IO_TICKS = ADCStep;
@@ -75,7 +75,7 @@ void ProcessIO(){
                 TXP.LiveData.WSDelta[7] = PIDVars[0].WSDelta[7].val + 2048;   //
                 TXP.LiveData.DestinationReached=PIDVars[0].DestinationReached;         //
                 TXP.LiveData.Duty = (UINT16)(PIDVars[0].PIDDuty>>8);                       //
-                USBInHandle = HIDTxPacket(HID_EP, (char *)&TXP, 64);
+                USBInHandle = HIDTxPacket(HID_EP, (BYTE *)&TXP, 64);
             }
         }        
     }
@@ -90,7 +90,7 @@ void ProcessIO(){
                     if(!HIDTxHandleBusy(USBInHandle)){
                         TXP.Command=0x61;
                         TXP.OpMode=1;
-                        USBInHandle = HIDTxPacket(HID_EP, (char *)&TXP, 64);
+                        USBInHandle = HIDTxPacket(HID_EP, (BYTE *)&TXP, 64);
                         IO_BUSY=0;
                     }
                     break;
@@ -99,7 +99,7 @@ void ProcessIO(){
                     if(!HIDTxHandleBusy(USBInHandle)){
                         TXP.Command=2;
                         TXP.QueryDev.PacketDataFieldSize = 64;
-                        USBInHandle = HIDTxPacket(HID_EP, (char *)&TXP, 64);
+                        USBInHandle = HIDTxPacket(HID_EP, (BYTE *)&TXP, 64);
                         BeepTicks=20;
                         InvertTicks=20;
                         IO_BUSY=0;
@@ -123,7 +123,7 @@ void ProcessIO(){
                         TXP.IronPars.PID_KI = IronPars.Config[0].PID_KI;
                         TXP.IronPars.PID_DGain = IronPars.Config[0].PID_DGain;
                         TXP.IronPars.PID_OVSGain = IronPars.Config[0].PID_OVSGain;
-                        USBInHandle = HIDTxPacket(HID_EP, (char *)&TXP, 64);
+                        USBInHandle = HIDTxPacket(HID_EP, (BYTE *)&TXP, 64);
                         IO_BUSY = 0;
                     }
                     break;
@@ -131,7 +131,7 @@ void ProcessIO(){
                     IO_BUSY = 0;
                     break;
             }
-            if(!IO_BUSY) USBOutHandle = HIDRxPacket(HID_EP, (char *)&RXP, 64);
+            if(!IO_BUSY) USBOutHandle = HIDRxPacket(HID_EP, (BYTE *)&RXP, 64);
         }
     }
 }

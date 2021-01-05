@@ -7,7 +7,7 @@
 #include "pars.h"
 #include "main.h"
 #include "isr.h"
-#include "pid.h"
+#include "PID.h"
 #include "OLED.h"
 #include "pars.h"
 #include "iron.h"
@@ -53,6 +53,7 @@ static union {
         int Cal:1;
         int Debug:1;
         int Input:1;
+        int Version:1;
     }f;
 }OLEDFlags;
 
@@ -73,7 +74,8 @@ static int LastEnc;
 static int EncDiff;
 
 void MenuInit(){
-    int i,p;
+    int i;
+    
     CRstTemp = 1;
     CPar = 0;
     CRow = 0;
@@ -138,7 +140,7 @@ void OLEDTasks(){
                     OLEDFlags.f.Footer = 1;
                     
 
-                    if(IronPars.Config[0].SensorConfig.Type == 255){
+                    if(IronPars.Config[0].SensorConfig.Type == SENSOR_NONE){
                     }
                     else if(PV1->ShortCircuit || PV2->ShortCircuit){
                         OLEDFlags.f.Message=1;
@@ -248,6 +250,9 @@ void OLEDTasks(){
                                 case 17: //Instrument info
                                     CMode=6;
                                     break;
+                                case 19: //Version info
+                                    CMode=9;
+                                    break;
                                 default:
                                     CMode=4;
                                     break;
@@ -319,7 +324,7 @@ void OLEDTasks(){
                     OLEDFlags.f.Input = 1;
                     break;
                 case 8: //tip change mode
-                    if(IronPars.Config[0].SensorConfig.Type == 255){
+                    if(IronPars.Config[0].SensorConfig.Type == SENSOR_NONE){
                         CMode = 0;
                         DoExit = 0;
                         break;
@@ -333,6 +338,14 @@ void OLEDTasks(){
                     OLEDFlags.f.Message = 1;
                     OLEDMsg1 = "        TIP";
                     OLEDMsg2 = "       CHANGE";
+                    break;
+                case 9: //Version information
+                    ModeTicks = 250;
+                    if(BTicks[1].o && !BTicks[1].n){
+                        CMode = 0;
+                        break;
+                    }
+                    OLEDFlags.f.Version = 1;
                     break;
                 case 0xFF: //stand-by
                     if(((pars.WakeUp & 1) && BTicks[1].o <= 50 && BTicks[1].n > 50) ||
@@ -422,7 +435,7 @@ void OLEDTasks(){
     
     if(OLEDFlags.f.Pars){
         int i, par = CPar - CRow;
-        if(par < 0) par += sizeof(MenuOrder) / sizeof(MenuOrder[0]);
+        if(par < 0) par += NB_OF_MENU_PARAMS);
         for(i=0; i < 4; i++){
             int p = MenuOrder[par];
             OLEDPrint816(0, i * 2, ParDef[MenuOrder[par]].Name, 11);
@@ -437,7 +450,7 @@ void OLEDTasks(){
                 }
             }
             par++;
-            if(par >= sizeof(MenuOrder) / sizeof(MenuOrder[0])) par -= sizeof(MenuOrder) / sizeof(MenuOrder[0]);
+            if(par >= NB_OF_MENU_PARAMS)) par -= NB_OF_MENU_PARAMS);
         }        
     }
     
@@ -505,7 +518,7 @@ void OLEDTasks(){
         OLEDPrintNum68(24, 1, 5, Enc);
         OLEDPrintNum68(84, 1, 4, Holder);
         OLEDPrintHex68(64, 2, 4, IronID);
-        if(IronPars.Config[1].SensorConfig.Type == 0 || (LISRTicks % 200) < 100){
+        if(IronPars.Config[1].SensorConfig.Type == SENSOR_UNDEFINED || (LISRTicks % 200) < 100){
             OLEDPrintNum68(64, 3, 1, CalCh);
             OLEDPrintNum68(80, 3, 3, CalCh ? IronPars.Config[0].SensorConfig.CurrentB : IronPars.Config[0].SensorConfig.CurrentA);
             OLEDPrintNum68(32, 4, 4, PIDVars[0].ADCTemp[0]);
@@ -536,7 +549,7 @@ void OLEDTasks(){
         OLEDPrintHex68(54, 2, 4, IronID);
         
         int ch;        
-        if(IronPars.Config[1].SensorConfig.Type == 0 || (LISRTicks % 200) <100){
+        if(IronPars.Config[1].SensorConfig.Type == SENSOR_UNDEFINED || (LISRTicks % 200) <100){
             ch = 0;
         }
         else{
@@ -563,6 +576,14 @@ void OLEDTasks(){
         OLEDPrintNum68(54, 6, 5, CJTemp >> 1);
         OLEDPrintNum68(54 ,7, 5, CRTemp >> 1);
 
+    }
+    
+    if(OLEDFlags.f.Version){
+        OLEDPrint68(0,0,"VERSION INFO", 0);
+        OLEDPrint68(0,2,"HW VER:", 0);
+        OLEDPrintHex68(54, 2, 1, BoardVersion);
+        OLEDPrint68(0,3,"FW CRC:", 0);
+        OLEDPrintHex68(54, 3, 4, (*((UINT32 *)KVA0_TO_KVA1(PROGRAM_FLASH_END_ADRESS - 3))));
     }
     if(InvertTicks) OLEDInvert(0, 128, 0, 8);    
     OLEDUpdate();
@@ -632,13 +653,13 @@ void MenuTasks(){
                     CMode = 0;
                 }
                 
-                if(CMode == 8 && IronPars.Config[0].SensorConfig.Type != 255){
+                if(CMode == 8 && IronPars.Config[0].SensorConfig.Type != SENSOR_NONE){
                     mainFlags.TipChange = Holder > 375 && Holder <= 750;
                     NapTicks = 0;
                     FNAP = 0;
                 }
                 else{
-                    if (Holder <= 750 && IronPars.Config[0].SensorConfig.Type != 255){ //instrument in holder or tip-change holder
+                    if (Holder <= 750 && IronPars.Config[0].SensorConfig.Type != SENSOR_NONE){ //instrument in holder or tip-change holder
                         mainFlags.HolderPresent = 1;
                         NapTicks = 0;
                         FNAP = 0;

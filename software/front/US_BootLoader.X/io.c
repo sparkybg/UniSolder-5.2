@@ -9,8 +9,8 @@
 #include "usb/usb_driver.h"
 #include "usb/usb_function_hid.h"
 
-#define TXP (*((USBPacket *)USBTxBuffer))
-#define RXP (*((USBPacket *)USBRxBuffer))
+//#define TXP (*((USBPacket *)USBTxBuffer))
+//#define RXP (*((USBPacket *)USBRxBuffer))
 
 #define IO_IDLE 0
 #define IO_BUSY 1
@@ -42,7 +42,7 @@ void IOInit(){
     USBDriverInit();
     IO_STATUS=IO_IDLE;
     RXP.Command=0;
-    USBOutHandle = HIDRxPacket(HID_EP, (char *)&RXP, 64);
+    USBOutHandle = HIDRxPacket(HID_EP, (BYTE *)&RXP, 64);
 }
 
 void IOTasks(){
@@ -109,10 +109,10 @@ void ProcessIO(){
             RXP.Command = 0;
             if(TXP.Command != 0){
                 memmove(&TXP.RawData[1], &TXP.RawData[4], 63);
-                USBInHandle = HIDTxPacket(HID_EP, (char *)&TXP, 64);
+                USBInHandle = HIDTxPacket(HID_EP, (BYTE *)&TXP, 64);
             }
             IO_STATUS=IO_IDLE;
-            USBOutHandle = HIDRxPacket(HID_EP, (char *)&RXP, 64);
+            USBOutHandle = HIDRxPacket(HID_EP, (BYTE *)&RXP, 64);
         }
     }
 }

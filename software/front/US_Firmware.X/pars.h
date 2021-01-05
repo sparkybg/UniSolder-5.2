@@ -48,9 +48,11 @@ typedef struct {
     void (*OLEDDispFunc)(int, int, int, int);
 }t_ParDef;
 
+#define NB_OF_MENU_PARAMS  (sizeof(MenuOrder) / sizeof(MenuOrder[0])
+
 #ifndef _PARS_C
-extern const char MenuOrder[18];
-extern const t_ParDef ParDef[19];
+extern const char MenuOrder[19];
+extern const t_ParDef ParDef[20];
 extern void LoadPars(void);
 extern void SavePars();
 #endif

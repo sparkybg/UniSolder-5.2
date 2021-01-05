@@ -103,6 +103,15 @@ ISRC_EXTERN volatile int I2CStep;
 ISRC_EXTERN volatile unsigned char I2CIdle;
 
 
+ISRC_EXTERN void ISRInit();
+ISRC_EXTERN void ISRStop();
+ISRC_EXTERN void ISRStart();
+ISRC_EXTERN void I2CAddCommands(int c);
+ISRC_EXTERN void OnPowerLost();
+ISRC_EXTERN void ISRHigh(int src);
+ISRC_EXTERN void I2CISRTasks();
+
+
 #undef ISRC_EXTERN
 
 //#define _I2CStart {I2CStep=0;PIR1bits.SSPIF=1;}
