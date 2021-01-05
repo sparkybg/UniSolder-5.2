@@ -52,6 +52,12 @@ typedef struct __PACKED {
     const t_SensorConfig * ColdJunctionSensorConfig;
 } t_IronPars;
 
+/* Iron temperature sensor types definition */
+#define SENSOR_UNDEFINED  0
+#define SENSOR_TC         1
+#define SENSOR_PTC        2
+#define SENSOR_NONE     255
+
 #ifndef _IRON_C
 #define IRON_H_EXTERN extern
 #else

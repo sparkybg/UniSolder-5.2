@@ -116,7 +116,7 @@ void ISRHigh(int src){
 
     PV = (t_PIDVars *)&PIDVars[1];
     IC = (t_IronConfig *)&IronPars.Config[1];
-    if((ADCStep < 2) || (IC->SensorConfig.Type == 0)){
+    if((ADCStep < 2) || (IC->SensorConfig.Type == SENSOR_UNDEFINED)){
         PV = (t_PIDVars *)&PIDVars[0];
         IC = (t_IronConfig *)&IronPars.Config[0];
     }
@@ -320,7 +320,7 @@ void ISRHigh(int src){
             
             PV = (t_PIDVars *)&PIDVars[1];
             IC = (t_IronConfig *)&IronPars.Config[1];
-            if(ADCStep < 2 || IC->SensorConfig.Type == 0){
+            if(ADCStep < 2 || IC->SensorConfig.Type == SENSOR_UNDEFINED){
                 PV = (t_PIDVars *)&PIDVars[0];
                 IC = (t_IronConfig *)&IronPars.Config[0];
             }            
@@ -334,7 +334,7 @@ void ISRHigh(int src){
                 PHEATER = ((PV->PWM>>24)!=0);
                 PV->PWM &= 0x00FFFFFF;
             }            
-            if(mainFlags.PowerLost || PV->KeepOff || mainFlags.Calibration || IC->SensorConfig.Type == 0 || IC->SensorConfig.Type == 255 )PHEATER = 0;
+            if(mainFlags.PowerLost || PV->KeepOff || mainFlags.Calibration || IC->SensorConfig.Type == SENSOR_UNDEFINED || IC->SensorConfig.Type == SENSOR_NONE ) PHEATER = 0;
             if(!PV->Power) HEATER = PHEATER;  //Turn on heater if on full power    
             PGD = 0;
 

@@ -48,8 +48,8 @@
 #define MAIN_C
 
 /** INCLUDES *******************************************************/
-#include "../mcu.h"
-#include "../typedefs.h"
+#include "mcu.h"
+#include "typedefs.h"
 #include "usb.h"
 #include "usb_function_hid.h"
 

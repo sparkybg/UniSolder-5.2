@@ -25,7 +25,7 @@ INT32 GetSensorTemperature(int input, t_SensorConfig * SC){
 
 ///******* Resistance calculation if resistive sensor *********************************/
     //R=mV/Current=mV / ((1.225V * IC->Current) / (1600 * 256))
-    if(SC->Type == 2){
+    if(SC->Type == SENSOR_PTC){
         const ExtFloat rcc = {
             0xA72F0539,   //1.6*256/1.225 32 bit mantissa
             127+8        //1.6*256/1.225 exponent
@@ -143,7 +143,7 @@ INT32 GetSensorTemperature(int input, t_SensorConfig * SC){
     if(dw > 2000) dw = 2000;
 
     //Add room temperature if thermocouple
-    if(SC->Type == 1){
+    if(SC->Type == SENSOR_TC){
         int temp = CRTemp;
         if(CJTemp >= -10) temp = CJTemp;
         dw += temp;

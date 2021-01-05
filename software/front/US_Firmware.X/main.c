@@ -9,19 +9,6 @@
 
 #include "mcu.h"
 
-#include <stddef.h>
-#include <GenericTypeDefs.h>
-#include <peripheral/int.h>
-#include <peripheral/outcompare.h>
-#include <peripheral/timer.h>
-#include <peripheral/spi.h>
-#include <peripheral/i2c.h>
-#include <peripheral/cvref.h>
-#include <peripheral/cmp.h>
-#include <peripheral/adc10.h>
-#include <peripheral/ports.h>
-#include "typedefs.h"
-
 #include "usb/usb.h"
 #include "usb/usb_function_hid.h"
 
@@ -62,7 +49,7 @@ volatile pars_t         pars;
 
 volatile int Enc; //Rotary encoder position
 
-void main(void){
+int main(void){
     int i;
     mcuInit1();
     SPKOFF;
@@ -117,6 +104,7 @@ void main(void){
     MAINS_PER_Q_US = MAINS_PER_H_US - MAINS_PER_Q_US;
     MAINS_PER_E_US -= MAINS_PER_Q_US;
 
+    //Init timer1 with T_PER
     mcuInit3();
 
     IronInit();
@@ -168,7 +156,7 @@ void main(void){
     OLEDUpdate();
 
     mainFlags.PowerLost = 0;
-
+    
     ISRStart();
     OLEDPrintNum816(0, 0, 2, 48);
     OLEDUpdate();

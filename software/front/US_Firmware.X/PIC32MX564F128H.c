@@ -35,16 +35,7 @@
 
 #include <GenericTypeDefs.h>
 #include "PIC32MX564F128H.h"
-#include <peripheral/system.h>
-#include <peripheral/cmp.h>
-#include <peripheral/timer.h>
-#include <peripheral/ports.h>
-#include <peripheral/adc10.h>
-#include <peripheral/dma.h>
-#include <peripheral/cvref.h>
-#include <peripheral/outcompare.h>
-#include <peripheral/incap.h>
-#include <peripheral/int.h>
+#include <plib.h>
 
 #include "main.h"
 #include "isr.h"

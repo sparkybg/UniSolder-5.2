@@ -11,7 +11,7 @@ const UINT16 IDHash[25] = { 87,  95, 104, 112, 123, 143, 161, 175, 188, 204, 223
 
 const t_SensorConfig NTC2252_B_1 = { //2252 ohm NTC on SENSEB and Vout1-
     { 
-        2,                          //Type
+        SENSOR_PTC,                 //Type
         0,                          //HChannel
         0,                          //InputP
         1,                          //InputN
@@ -43,10 +43,10 @@ const t_IronPars NoIronPars = {
     0x0000,
     "NO INSTRUMENT           ",
     {
-        {
-            {
-                { //SensorConfig
-                    255,                //Type
+        { //t_IronConfig [0]
+            { //t_SensorConfig
+                {
+                    SENSOR_NONE,        //Type
                     0,                  //HChannel
                     1,                  //InputP
                     0,                  //InputN
@@ -80,7 +80,7 @@ const t_IronPars NoIronPars = {
             0,                      //PID_PMax
             0,                      //PID_PNom        
         },
-        {0}
+        {0} //t_IronConfig [1]
     },
     NULL
 };
@@ -94,7 +94,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                      //Type
+                        SENSOR_TC,              //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -141,7 +141,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {                    
-                        1,                      //Type
+                        SENSOR_TC,              //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -188,7 +188,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                          //Type
+                        SENSOR_TC,              //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -235,7 +235,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        2,                      //Type
+                        SENSOR_PTC,             //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -282,7 +282,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                          //Type
+                        SENSOR_TC,              //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -329,7 +329,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                      //Type
+                        SENSOR_TC,              //Type
                         0,                      //HChannel
                         1,                      //InputP
                         1,                      //InputN
@@ -376,7 +376,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                          //Type
+                        SENSOR_TC,              //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -423,7 +423,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                          //Type
+                        SENSOR_TC,              //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -470,7 +470,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                          //Type
+                        SENSOR_TC,              //Type
                         1,                      //HChannel
                         0,                      //InputP
                         1,                      //InputN
@@ -507,7 +507,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                          //Type
+                        SENSOR_TC,              //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -553,7 +553,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                          //Type
+                        SENSOR_TC,              //Type
                         1,                      //HChannel
                         0,                      //InputP
                         1,                      //InputN
@@ -590,7 +590,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                          //Type
+                        SENSOR_TC,              //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -636,7 +636,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                      //Type
+                        SENSOR_TC,              //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -673,7 +673,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        1,                          //Type
+                        SENSOR_TC,              //Type
                         1,                      //HChannel
                         0,                      //InputP
                         1,                      //InputN
@@ -719,7 +719,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {                           
-                        2,                          //Type
+                        SENSOR_PTC,             //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -766,7 +766,7 @@ const t_IronPars Irons[] = {
             {
                 {
                     {
-                        2,                          //Type
+                        SENSOR_PTC,             //Type
                         0,                      //HChannel
                         1,                      //InputP
                         0,                      //InputN
@@ -791,7 +791,7 @@ const t_IronPars Irons[] = {
                         0                       //c9
                     },
                 },
-                0,                          //HRCompCurrent                        
+                0,                         //HRCompCurrent                        
                 -1,                        //WSLength
                 0,                         //PID_DGain
                 (UINT16)(0.4 * 32768),     //PID_KP
