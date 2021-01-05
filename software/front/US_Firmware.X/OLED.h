@@ -44,7 +44,7 @@ OLEDC_EXTERN void OLEDUpdate();
 OLEDC_EXTERN void OLEDInvert(int col,int colnum, int row, int rownum);
 OLEDC_EXTERN void OLEDInvertXY(int x, int dx, int y, int dy);
 OLEDC_EXTERN void OLEDFill(int col, int colnum, int row, int rownum, UINT8 b);
-OLEDC_EXTERN void OLEDWrite(int col, int colnum, int row, void * buf, int num);
+OLEDC_EXTERN void OLEDWrite(int col, int colnum, int row, const void * buf, int num);
 OLEDC_EXTERN void OLEDPrintNum3248(int col, int row, int num);
 OLEDC_EXTERN void OLEDPrintCF1648(int col, int row, int CF);
 OLEDC_EXTERN void OLEDPrintNum(int col, int row, int dec, int num, void* font, int startChar, int width, int height, int blank );

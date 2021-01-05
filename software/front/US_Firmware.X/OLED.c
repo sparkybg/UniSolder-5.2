@@ -211,7 +211,7 @@ void OLEDInvertXY(int x, int dx, int y, int dy){
     }
 }
 
-void OLEDWrite(int col, int colnum, int row, void * buf, int num){
+void OLEDWrite(int col, int colnum, int row, const void * buf, int num){
     while(num){
         int cc = colnum;
         while(num && cc--){
