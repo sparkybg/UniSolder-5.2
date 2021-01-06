@@ -47,6 +47,7 @@ static union {
         int BigTemp :1;
         int Message :1;
         int Set:1;
+        int TReset:1;
         int Pars:1;
         int SetPars:1;
         int StandBy:1;
@@ -221,7 +222,7 @@ void OLEDTasks(){
                     OLEDFlags.f.Header = 1;
                     OLEDFlags.f.Footer = 1;
                     OLEDFlags.f.BigTemp = 1;
-                    OLEDFlags.f.Set = 1;
+                    OLEDFlags.f.TReset = 1;
                     OLEDTemp = TTemp << 2;
                     break;
                 case 3: //menu mode
@@ -257,7 +258,7 @@ void OLEDTasks(){
                                     CMode=4;
                                     break;
                             }
-                            if(CMode == 4) CParVal = pars.b[MenuOrder[CPar]];
+                            if(CMode == 4) CParVal = pars.b[(UINT8)MenuOrder[(UINT8)CPar]];
                         }
                         OLEDFlags.f.Pars = 1;
                     }
@@ -377,6 +378,11 @@ void OLEDTasks(){
         OLEDPrint68(3, 4, "E", 1);
         OLEDPrint68(3, 5, "T", 1);
     }
+
+    if(OLEDFlags.f.TReset){
+        OLEDPrintXY68(2, 24, "T", 1);
+        OLEDPrintNumXY68(2, 32, 1, CRstTemp + 1);
+    }
     
     if(OLEDFlags.f.Message){
         OLEDPrint68(0, 3, OLEDMsg1, 21);
@@ -430,7 +436,7 @@ void OLEDTasks(){
         if((LISRTicks & 15) == 1)OLEDPower = p;
         OLEDPrintNum68(100, 7, 3, OLEDPower);
         OLEDPrint68(118, 7, "W", 1);
-        if(HEATER)OLEDWrite(21, 8, 7, font8x8[4], 8);
+        if(HEATER)OLEDWrite(21, 8, 7, (char*)font8x8[4], 8);
     }
     
     if(OLEDFlags.f.Pars){
@@ -438,7 +444,7 @@ void OLEDTasks(){
         if(par < 0) par += NB_OF_MENU_PARAMS);
         for(i=0; i < 4; i++){
             int p = MenuOrder[par];
-            OLEDPrint816(0, i * 2, ParDef[MenuOrder[par]].Name, 11);
+            OLEDPrint816(0, i * 2, ParDef[(UINT8)MenuOrder[(UINT8)par]].Name, 11);
             if(ParDef[p].OLEDDispFunc)(*ParDef[p].OLEDDispFunc)(p, 88, i * 2,  pars.b[p]);
             if(par == CPar){
                 if(CMode == 3){

@@ -36,7 +36,7 @@ typedef struct {
 #define float2ExtFloat(ef, f) \
 { \
     ef.m = ( ((UINT32)((SFLOAT)f).m) & 0x7FFFFFUL) << 8; \
-    if(ef.e = ((SFLOAT)f).e) ef.m |= 0x80000000; \
+    if((ef.e = ((SFLOAT)f).e)) ef.m |= 0x80000000; \
 }
 
 #define ExtFloatDivByUInt(ef, ui) \
@@ -54,7 +54,7 @@ typedef struct {
 
 #define ExtFloatMul(ef1, ef2) \
 { \
-    if(ef1.m = ((UINT64)ef1.m * (UINT64)ef2.m) >> 32){ \
+    if((ef1.m = ((UINT64)ef1.m * (UINT64)ef2.m) >> 32)){ \
         ef1.e += ef2.e - 126; \
         while(ef1.m < 0x80000000UL){ \
             ef1.m <<= 1; \
@@ -70,7 +70,7 @@ typedef struct {
 {\
     if(ef1.e >= ef2.e){ \
         if((ef1.e - ef2.e) < 31){ \
-            if(ef1.m = (ef1.m >> 1) + (ef2.m >> (ef1.e - ef2.e + 1))){ \
+            if((ef1.m = (ef1.m >> 1) + (ef2.m >> (ef1.e - ef2.e + 1)))){ \
                 if(ef1.m >= 0x80000000UL){ \
                     ef1.e++; \
                 } \
@@ -85,7 +85,7 @@ typedef struct {
     } \
     else { \
         if((ef2.e - ef1.e) < 31){ \
-            if(ef1.m = (ef2.m >> 1) + (ef1.m >> (ef2.e - ef1.e + 1))){ \
+            if((ef1.m = (ef2.m >> 1) + (ef1.m >> (ef2.e - ef1.e + 1)))){ \
                 ef1.e = ef2.e; \
                 if(ef1.m >= 0x80000000UL){ \
                     ef1.e++; \

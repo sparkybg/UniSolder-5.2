@@ -78,8 +78,8 @@ ISRC_EXTERN volatile unsigned int Holder;
 
 ISRC_EXTERN volatile UINT16 EEPAddrR;
 ISRC_EXTERN volatile UINT16 EEPAddrW;
-ISRC_EXTERN volatile void * EEPDataR;
-ISRC_EXTERN volatile void * EEPDataW;
+ISRC_EXTERN volatile UINT8 * EEPDataR;
+ISRC_EXTERN volatile UINT8 * EEPDataW;
 ISRC_EXTERN volatile UINT16 EEPCntR;
 ISRC_EXTERN volatile UINT16 EEPCntW;
 

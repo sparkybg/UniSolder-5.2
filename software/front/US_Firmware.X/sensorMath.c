@@ -13,8 +13,9 @@ INT32 GetSensorTemperature(int input, t_SensorConfig * SC){
 ///******* INPUT MILLIVOLTS CALCULATION ***********************************************/
     //ADC = Vin * 750 * (IC->Gain / 256) * (1024 / 3000mV)
     //mV = (256 * 3000 * ADC) / (750 * 1024 * IC->Gain)) = ADC / IC->Gain
-    ExtFloat x1;
-    if(x1.m = ((UINT32)dw) << 20){
+    ExtFloat x1 = {((UINT32)dw)<<20, 0};
+    //if((x1.m = ((UINT32)dw) << 20)){
+    if(x1.m){
         x1.e = 138;
         while (x1.m < 0x80000000){
             x1.m <<=1;
@@ -50,8 +51,8 @@ INT32 GetSensorTemperature(int input, t_SensorConfig * SC){
 /******* TEMPERATURE POLYNOMIAL CALCULATION *****************************************************/
     //T = C0 + C1 * X + c2 * X^2 + C3 * X^3 + ... + C9 * X^9
     {
-        ExtFloat PSum;
-        ExtFloat NSum;
+        ExtFloat PSum = {0, 0};
+        ExtFloat NSum = {0, 0};
 
         {
             int n; //current polynomial power

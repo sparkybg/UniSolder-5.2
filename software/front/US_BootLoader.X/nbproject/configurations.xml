@@ -72,7 +72,7 @@
         <targetDevice>PIC32MX564F128H</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PICkit3PlatformTool</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>2.50</languageToolchainVersion>
         <platform>3</platform>
@@ -108,7 +108,7 @@
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <C32>
-        <property key="additional-warnings" value="false"/>
+        <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
@@ -201,7 +201,7 @@
         <property key="warn-section-align" value="false"/>
       </C32-LD>
       <C32CPP>
-        <property key="additional-warnings" value="false"/>
+        <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="false"/>

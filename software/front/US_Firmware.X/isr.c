@@ -528,13 +528,13 @@ void I2CISRTasks(){
                     mcuI2CSendAddrW(EEP);
                     break;
                 case 2:
-                    if(CmdOK = mcuI2CIsACK())mcuI2CSendByte(EEPAddrW >> 8);
+                    if((CmdOK = mcuI2CIsACK()))mcuI2CSendByte(EEPAddrW >> 8);
                     break;
                 case 3:
                     mcuI2CSendByte(EEPAddrW & 0xFF);
                     break;
                 case 4:
-                    mcuI2CSendByte(*((UINT8*)EEPDataW));
+                    mcuI2CSendByte(*EEPDataW);
                     break;
                 case 5:
                     EEPCntW--;
@@ -546,7 +546,7 @@ void I2CISRTasks(){
                         }
                         else {
                             I2CStep = 4;
-                            mcuI2CSendByte(*((UINT8*)EEPDataW));
+                            mcuI2CSendByte(*EEPDataW);
                         }
                     }
                     else{
@@ -566,7 +566,7 @@ void I2CISRTasks(){
                     mcuI2CSendAddrW(EEP);
                     break;
                 case 2:
-                    if(CmdOK = mcuI2CIsACK())mcuI2CSendByte(EEPAddrR >> 8);
+                    if((CmdOK = mcuI2CIsACK()))mcuI2CSendByte(EEPAddrR >> 8);
                     break;
                 case 3:
                     mcuI2CSendByte(EEPAddrR & 0xFF);
@@ -581,7 +581,7 @@ void I2CISRTasks(){
                     mcuI2CReceiverEnable();
                     break;
                 case 7:
-                    *((UINT8 *)EEPDataR) = mcuI2CGetByte();
+                    *EEPDataR = mcuI2CGetByte();
                     EEPCntR--;
                     if(EEPCntR){
                         EEPDataR++;

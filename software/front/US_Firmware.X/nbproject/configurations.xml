@@ -130,7 +130,7 @@
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <C32>
-        <property key="additional-warnings" value="false"/>
+        <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
@@ -155,6 +155,7 @@
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
+        <appendMe value="-Wno-missing-braces"/>
       </C32>
       <C32-AR>
         <property key="additional-options-chop-files" value="false"/>
@@ -223,7 +224,7 @@
         <property key="warn-section-align" value="false"/>
       </C32-LD>
       <C32CPP>
-        <property key="additional-warnings" value="false"/>
+        <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="false"/>
@@ -251,6 +252,7 @@
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
+        <appendMe value="-Wno-missing-braces"/>
       </C32CPP>
       <C32Global>
         <property key="common-include-directories" value=".\"/>
@@ -562,11 +564,11 @@
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <C32>
-        <property key="additional-warnings" value="false"/>
+        <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
-        <property key="enable-symbols" value="false"/>
+        <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories" value=""/>
@@ -587,13 +589,14 @@
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
+        <appendMe value="-Wno-missing-braces"/>
       </C32>
       <C32-AR>
         <property key="additional-options-chop-files" value="false"/>
       </C32-AR>
       <C32-AS>
         <property key="assembler-symbols" value=""/>
-        <property key="enable-symbols" value="false"/>
+        <property key="enable-symbols" value="true"/>
         <property key="exclude-floating-point-library" value="false"/>
         <property key="expand-macros" value="false"/>
         <property key="extra-include-directories-for-assembler" value=""/>
@@ -601,7 +604,7 @@
         <property key="false-conditionals" value="false"/>
         <property key="generate-16-bit-code" value="true"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="keep-locals" value="false"/>
+        <property key="keep-locals" value="true"/>
         <property key="list-assembly" value="false"/>
         <property key="list-source" value="false"/>
         <property key="list-symbols" value="false"/>
@@ -655,13 +658,13 @@
         <property key="warn-section-align" value="false"/>
       </C32-LD>
       <C32CPP>
-        <property key="additional-warnings" value="false"/>
+        <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="false"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
-        <property key="enable-symbols" value="false"/>
+        <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="exceptions" value="false"/>
         <property key="exclude-floating-point" value="false"/>
@@ -683,6 +686,7 @@
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
+        <appendMe value="-Wno-missing-braces"/>
       </C32CPP>
       <C32Global>
         <property key="common-include-directories" value=".\"/>

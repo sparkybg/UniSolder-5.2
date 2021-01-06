@@ -46,9 +46,7 @@ typedef union {
 }preUpdate_t;
 
 preUpdate_t PreUpdateBuff = {
-    0xB0,
-    0x10,
-    0
+    {{0xB0,0x10,0}}
 };
 
 void OLEDInit(){
@@ -105,7 +103,7 @@ void OLEDInit(){
     OLED_CS = 0;
     _delay_ms(10);
     
-    mcuSPISendBytes((int*)OLEDInitBuff1, sizeof(OLEDInitBuff1));
+    mcuSPISendBytes((unsigned int*)OLEDInitBuff1, sizeof(OLEDInitBuff1));
     mcuSPIWait();
     if(DisplaySetup.SH1106){
         PreUpdateBuff.PreRowUpdate.ColLow = 2; //SSH1106 is 131x64 - shift right by 2
@@ -118,7 +116,7 @@ void OLEDInit(){
         mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x8B : 0x8A);
     }
     mcuSPIWait();
-    mcuSPISendBytes((int*)OLEDInitBuff2, sizeof(OLEDInitBuff2));     
+    mcuSPISendBytes((unsigned int*)OLEDInitBuff2, sizeof(OLEDInitBuff2));     
 }
 
 void OLEDUpdate(){
@@ -128,10 +126,10 @@ void OLEDUpdate(){
         mcuSPIWait();       
         OLED_DC = 0;
         OLED_CS = 0;
-        mcuSPISendBytes((int*)&PreUpdateBuff.PreRowUpdate, sizeof(PreUpdateBuff.PreRowUpdate));
+        mcuSPISendBytes((unsigned int*)&PreUpdateBuff.PreRowUpdate, sizeof(PreUpdateBuff.PreRowUpdate));
         mcuSPIWait();
         OLED_DC = 1;    
-        mcuSPISendBytes((int*)OLEDBUFF.B[r], 128 );
+        mcuSPISendBytes((unsigned int*)OLEDBUFF.B[r], 128 );
     }
 }
 #undef _OLED_C

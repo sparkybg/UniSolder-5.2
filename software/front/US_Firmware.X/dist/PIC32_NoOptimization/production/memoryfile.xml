@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/PIC32_Standalone/production/US_Firmware.X.production.elf">                 
+  <executable name="dist/PIC32_NoOptimization/production/US_Firmware.X.production.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
       <length>138752</length>                 
-      <used>52556</used>                     
-      <free>86196</free>                     
+      <used>62784</used>                     
+      <free>75968</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 
       <length>32768</length>                 
-      <used>4912</used>                     
-      <free>27856</free>                     
+      <used>4952</used>                     
+      <free>27816</free>                     
     </memory>                              
   </executable>                            
 </project>                                 

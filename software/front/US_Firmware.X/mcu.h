@@ -13,16 +13,7 @@ extern "C" {
 #endif
     
 #include <xc.h>
-
-#ifdef __32MX534F064H__
-#include "PIC32MX534F064H.h"
-#endif
-
-#ifdef __32MX564F128H__
 #include "PIC32MX564F128H.h"
-#endif
-
-
 
 #ifdef	__cplusplus
 }

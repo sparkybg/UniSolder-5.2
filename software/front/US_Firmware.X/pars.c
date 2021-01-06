@@ -4,6 +4,7 @@
 #include "OLED.h"
 #include "pars.h"
 #include "isr.h"
+#include "EEP.h"
 
 void ParDispStr(int par, int col, int row, int num);
 void ParDispNum(int par, int col, int row, int num);
@@ -17,7 +18,7 @@ const char * StrButtons[]   = {"+/- ", "-/+ "};
 const char * StrOffOnAuto[] = {"OFF ", "ON  ", "AUTO"};
 const char * StrMenuUp[]    = {"KEY+", "KEY-"};
 
-const char MenuOrder[] = {18,0,1,2,3,4,5,6,7,11,13,8,10,14,9,12,16,17,19};
+const unsigned char MenuOrder[] = {18,0,1,2,3,4,5,6,7,11,13,8,10,14,9,12,16,17,19};
 
 const t_ParDef ParDef[] = {
 //  NAME            DEF  MIN      MAX      IMMEDIATE SUFFIX STRINGS       DISPFUNC    
@@ -63,7 +64,7 @@ void ParDispNumOff(int par, int col, int row, int num){
 }
 
 void ParDispCF(int par, int col, int row, int num){
-    OLEDWrite(col, 4, row, degrees4x16, 8);
+    OLEDWrite(col, 4, row, (void *)degrees4x16, 8);
     OLEDPrint816(col + 4, row, num ? "F" : "C", 0);
 }
 

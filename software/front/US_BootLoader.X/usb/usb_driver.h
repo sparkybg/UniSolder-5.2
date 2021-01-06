@@ -11,7 +11,7 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-#include "typedefs.h"
+#include "../typedefs.h"
 
 extern void USBDriverInit(void);
 extern unsigned char USBTxBuffer[64];

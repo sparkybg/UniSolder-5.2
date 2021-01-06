@@ -40,7 +40,7 @@ const t_SensorConfig NTC2252_B_1 = { //2252 ohm NTC on SENSEB and Vout1-
 
 const t_IronPars NoIronPars = {
     0, 
-    0x0000,
+    {0x0000},
     "NO INSTRUMENT           ",
     {
         { //t_IronConfig [0]
@@ -80,7 +80,7 @@ const t_IronPars NoIronPars = {
             0,                      //PID_PMax
             0,                      //PID_PNom        
         },
-        {0} //t_IronConfig [1]
+        {{{0}}} //t_IronConfig [1]
     },
     NULL
 };
@@ -88,7 +88,7 @@ const t_IronPars NoIronPars = {
 const t_IronPars Irons[] = {
     {
         0, 
-        0x1011,
+        {0x1011},
         "PACE TD-100 BLACK       ",
         {
             {
@@ -128,14 +128,14 @@ const t_IronPars Irons[] = {
                 120,                        //PID_PMax
                 120,                        //PID_PNom
             },
-            {0}
+            {{{0}}}
         },
         &NTC2252_B_1                        //ColdJunctionSensorConfig
     },
     
     {
         0, 
-        0x0F11,
+        {0x0F11},
         "PACE TD-200 BLUE        ",
         {
             {
@@ -175,14 +175,14 @@ const t_IronPars Irons[] = {
                 120,                        //PID_PMax
                 120                         //PID_PNom
             },
-            {0}
+            {{{0}}}
         },
         &NTC2252_B_1                        //ColdJunctionSensorConfig
     },
     
     {
         0,
-        0x1813,
+        {0x1813},
         "HAKKO T15               ",
         {//--Type----HChannel----SChannel----CBand----CurrentA----CurrentB----HRCompCurrent---Gain----Offset--SoftGain----SoftOffset--WSLength----PID_DGain---PID_KP--------------------PID_KI--------------------PID_OVFGain-PID_PMax
             {
@@ -222,14 +222,14 @@ const t_IronPars Irons[] = {
                 70,                         //PID_PMax
                 60                          //PID_PNom
             },
-            {0}
+            {{{0}}}
         },
         NULL
     },
 
     {
         0, 
-        0x1213,
+        {0x1213},
         "HAKKO FX8801            ",
         {//-----------------------------------------------------------------------------------------
             {
@@ -269,14 +269,14 @@ const t_IronPars Irons[] = {
                 65,                         //PID_PMax
                 65                          //PID_PNom
             },
-            {0}
+            {{{0}}}
         },
         NULL
     },
 
     {
         0,
-        0x0501,
+        {0x0501},
         "CHIN. HAKKO 907         ",
         {
             {
@@ -316,14 +316,14 @@ const t_IronPars Irons[] = {
                 50,                         //PID_PMax
                 50                          //PID_PNom
             },
-            {0}
+            {{{0}}}
         },
         NULL
     },
 
     {
         0, 
-        0x1805,
+        {0x1805},
         "JBC C245                ",
         {
             {
@@ -363,14 +363,14 @@ const t_IronPars Irons[] = {
                 130,                        //PID_PMax
                 130                         //PID_PNom
             },
-            {0}
+            {{{0}}}
         },
         NULL
     },
 
     {
         0, 
-        0x1817,
+        {0x1817},
         "JBC C210                ",
         {
             {
@@ -410,14 +410,14 @@ const t_IronPars Irons[] = {
                 40,                         //PID_PMax
                 40                          //PID_PNom
             },
-            {0}
+            {{{0}}}
         },
         NULL
     },
 
     {
         0, 
-        0x1317,
+        {0x1317},
         "JBC C105/C115           ",
         {
             {
@@ -457,14 +457,14 @@ const t_IronPars Irons[] = {
                 14,                         //PID_PMax
                 14                          //PID_PNom
             },
-            {0}
+            {{{0}}}
         },
         NULL
     },
 
     {
         0, 
-        0x1313,
+        {0x1313},
         "JBC Microtweezers       ",
         {
             {
@@ -547,7 +547,7 @@ const t_IronPars Irons[] = {
     
     {
         0, 
-        0x1515,
+        {0x1515},
         "JBC Nanotweezers       *",
         {
             {
@@ -630,7 +630,7 @@ const t_IronPars Irons[] = {
 
     {
         0, 
-        0x1111,
+        {0x1111},
         "Weller WMRT             ",
         {
             {
@@ -713,7 +713,7 @@ const t_IronPars Irons[] = {
 
     {
         0, 
-        0x1803,
+        {0x1803},
         "WELLER WSP80            ",
         {
             {
@@ -753,14 +753,14 @@ const t_IronPars Irons[] = {
                 80,                         //PID_PMax
                 80                          //PID_PNom
             },
-            {0}
+            {{{0}}}
         },
         NULL
     },
     
     {
         0, 
-        0x020B,
+        {0x020B},
         "ERSA RT80               ",
         {//-----------------------------------------------------------------------------------------
             {
@@ -800,7 +800,7 @@ const t_IronPars Irons[] = {
                 80,                        //PID_PMax
                 80                         //PID_PNom
             },
-            {0}
+            {{{0}}}
         },
         NULL
     }    

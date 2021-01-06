@@ -37,6 +37,7 @@ UINT8 EEPRead(UINT16 a, UINT8 * b, UINT16 c){
         while(EEPAddrR != 0xFFFF);
         return b[c-1];
     }
+    return 0xFF;
 }
 
 #undef __EEP_C

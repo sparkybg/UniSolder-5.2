@@ -280,29 +280,28 @@ void mcuStopISRTimer(){
 int ADCAuto = 0;
 
 void mcuADCStop(){
-    int i;
     if(ADCAuto && !VTIBuffCnt) VTIBuffCnt = DmaChnGetDstPnt(DMA_CHANNEL0) >> 2;
     DmaChnAbortTxfer(DMA_CHANNEL0);
     DmaChnAbortTxfer(DMA_CHANNEL1);
     DmaChnDisable(DMA_CHANNEL0);
     DmaChnDisable(DMA_CHANNEL1);
     CloseADC10();
-    i=ADC1BUF0;
-    i=ADC1BUF1;
-    i=ADC1BUF2;
-    i=ADC1BUF3;
-    i=ADC1BUF4;
-    i=ADC1BUF5;
-    i=ADC1BUF6;
-    i=ADC1BUF7;
-    i=ADC1BUF8;
-    i=ADC1BUF9;
-    i=ADC1BUFA;
-    i=ADC1BUFB;
-    i=ADC1BUFC;
-    i=ADC1BUFD;
-    i=ADC1BUFE;
-    i=ADC1BUFF;
+    ADC1BUF0; //read all buffers in case there's data on them (cannot clear interrupt flag otherwise))
+    ADC1BUF1;
+    ADC1BUF2;
+    ADC1BUF3;
+    ADC1BUF4;
+    ADC1BUF5;
+    ADC1BUF6;
+    ADC1BUF7;
+    ADC1BUF8;
+    ADC1BUF9;
+    ADC1BUFA;
+    ADC1BUFB;
+    ADC1BUFC;
+    ADC1BUFD;
+    ADC1BUFE;
+    ADC1BUFF;
     mAD1ClearIntFlag();
     mAD1IntEnable(0);
     ADCAuto=0;
@@ -395,13 +394,11 @@ static UINT32 H2LTime = 0;
 void __ISR(_COMPARATOR_2_VECTOR, IPL7SRS) ComparatorISR(void)
 {
     static int oh;
-    static int oas;
     UINT32 ccon = CM2CON;
     mcuCompDisable();
     if(ccon & CMP_EVENT_HIGH_TO_LOW){
         mcuDCTimerReset();
         oh = HEATER;
-        oas = (ADCStep & 1);
         H2LTime = ReadCoreTimer();
         ISRHigh(CompH2L);
     }
@@ -458,7 +455,7 @@ void __ISR(_INPUT_CAPTURE_1_VECTOR, IPL4SOFT) IC1ISR(void){
     static int AInc[]={0, 4, 2, 2, 1};
     int inc;
     if(pars.Input > 4) pars.Input = 4;
-    if(inc = AInc[pars.Input]){    
+    if((inc = AInc[pars.Input])){    
         if(pars.Buttons) inc =- inc;
         if(B1 != B3) inc = -inc;
         Enc += inc;
@@ -467,10 +464,10 @@ void __ISR(_INPUT_CAPTURE_1_VECTOR, IPL4SOFT) IC1ISR(void){
     INTClearFlag(INT_IC1);
 }
 void __ISR(_INPUT_CAPTURE_3_VECTOR, IPL4SOFT) IC3ISR(void){
-    static int BInc[]={0, 0, 2, 0, 1};
+    static int BInc[] = {0, 0, 2, 0, 1};
     int inc;
     if(pars.Input > 4) pars.Input = 4;
-    if(inc = BInc[pars.Input]){    
+    if((inc = BInc[pars.Input])){    
         if(pars.Buttons) inc =- inc;
         if(B1 == B3) inc = -inc;
         Enc += inc;
@@ -491,10 +488,10 @@ void mcuSPIStop()
     SPIAuto=0;
 };
 
-void mcuSPISendAuto(void * buffer, int len)
-{
-    SPIAuto = 1;
-    mcuSPIStop();
+//void mcuSPISendAuto(void * buffer, int len)
+//{
+//    SPIAuto = 1;
+//    mcuSPIStop();
     //mcuSPIOpen();
     //DmaChnOpen(DMA_CHANNEL2,DMA_CHN_PRI3, DMA_OPEN_DEFAULT);
     //DmaChnSetEventControl(DMA_CHANNEL2, DMA_EV_START_IRQ_EN | DMA_EV_START_IRQ(_SPI3_TX_IRQ));
@@ -513,7 +510,7 @@ void mcuSPISendAuto(void * buffer, int len)
 	//while(!DmaTxIntFlag);
 	// ok, we've sent the data in the buffer
 	//return 1;
-}
+//}
 
 // handler for the DMA channel 1 interrupt
 //void __ISR(_DMA1_VECTOR, IPL5SOFT) DmaHandler1(void)

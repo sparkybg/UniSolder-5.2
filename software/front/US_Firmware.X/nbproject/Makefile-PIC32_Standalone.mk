@@ -107,198 +107,198 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/usb/usb_descriptors.o: usb/usb_descriptors.c  .generated_files/e6743774705080f0b818f4bbb2e0c02a1183ea3c.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/usb/usb_descriptors.o: usb/usb_descriptors.c  .generated_files/c0f8898eb165922c7e8fe5b51fce3f0b4bfff505.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}/usb" 
 	@${RM} ${OBJECTDIR}/usb/usb_descriptors.o.d 
 	@${RM} ${OBJECTDIR}/usb/usb_descriptors.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/usb/usb_descriptors.o.d" -o ${OBJECTDIR}/usb/usb_descriptors.o usb/usb_descriptors.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/usb/usb_descriptors.o.d" -o ${OBJECTDIR}/usb/usb_descriptors.o usb/usb_descriptors.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/usb/usb_device.o: usb/usb_device.c  .generated_files/d27ab900a5a37f673a0dc1a6529bab2779948620.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/usb/usb_device.o: usb/usb_device.c  .generated_files/d94dd2265a84727b391d4b3838f1ace20e791404.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}/usb" 
 	@${RM} ${OBJECTDIR}/usb/usb_device.o.d 
 	@${RM} ${OBJECTDIR}/usb/usb_device.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/usb/usb_device.o.d" -o ${OBJECTDIR}/usb/usb_device.o usb/usb_device.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/usb/usb_device.o.d" -o ${OBJECTDIR}/usb/usb_device.o usb/usb_device.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/usb/usb_driver.o: usb/usb_driver.c  .generated_files/b24f2cd3e85bb2c457c8ab78c445a309486641a8.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/usb/usb_driver.o: usb/usb_driver.c  .generated_files/c7fe5625fce3abc30cb48318b39421c48579a55.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}/usb" 
 	@${RM} ${OBJECTDIR}/usb/usb_driver.o.d 
 	@${RM} ${OBJECTDIR}/usb/usb_driver.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/usb/usb_driver.o.d" -o ${OBJECTDIR}/usb/usb_driver.o usb/usb_driver.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/usb/usb_driver.o.d" -o ${OBJECTDIR}/usb/usb_driver.o usb/usb_driver.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/usb/usb_function_hid.o: usb/usb_function_hid.c  .generated_files/a91b2ca63ee4034d361051b8842e1fc02a78e3d6.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/usb/usb_function_hid.o: usb/usb_function_hid.c  .generated_files/bfd055442d190452bdca5a3a94b7e073096975be.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}/usb" 
 	@${RM} ${OBJECTDIR}/usb/usb_function_hid.o.d 
 	@${RM} ${OBJECTDIR}/usb/usb_function_hid.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/usb/usb_function_hid.o.d" -o ${OBJECTDIR}/usb/usb_function_hid.o usb/usb_function_hid.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/usb/usb_function_hid.o.d" -o ${OBJECTDIR}/usb/usb_function_hid.o usb/usb_function_hid.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/usb/usb_hal_pic24.o: usb/usb_hal_pic24.c  .generated_files/fb628ff2af584dec225ebeb6a5dce958dc223b3.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/usb/usb_hal_pic24.o: usb/usb_hal_pic24.c  .generated_files/c39de72727c6338332fcd86e05fa9b8fe1d1d2f3.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}/usb" 
 	@${RM} ${OBJECTDIR}/usb/usb_hal_pic24.o.d 
 	@${RM} ${OBJECTDIR}/usb/usb_hal_pic24.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/usb/usb_hal_pic24.o.d" -o ${OBJECTDIR}/usb/usb_hal_pic24.o usb/usb_hal_pic24.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/usb/usb_hal_pic24.o.d" -o ${OBJECTDIR}/usb/usb_hal_pic24.o usb/usb_hal_pic24.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main.o: main.c  .generated_files/c5cb496b2cd98a32c40fabc52b0bdc348c86e034.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/main.o: main.c  .generated_files/293b5cf85caf044642c3fb408c6b88400c3f4334.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/isr.o: isr.c  .generated_files/3d63db63418d3819caafb92d05bdf64ba1d0aab1.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/isr.o: isr.c  .generated_files/f68b732d2c31d5ac79713aac15d36d73b155dbdb.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/isr.o.d 
 	@${RM} ${OBJECTDIR}/isr.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/isr.o.d" -o ${OBJECTDIR}/isr.o isr.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/isr.o.d" -o ${OBJECTDIR}/isr.o isr.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/iron.o: iron.c  .generated_files/66be166b9aadf791ae239a5bc79693de58b93e24.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/iron.o: iron.c  .generated_files/c4e342e8b04506446189f4d334e219211c2ce743.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/iron.o.d 
 	@${RM} ${OBJECTDIR}/iron.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/iron.o.d" -o ${OBJECTDIR}/iron.o iron.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/iron.o.d" -o ${OBJECTDIR}/iron.o iron.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/PID.o: PID.c  .generated_files/a5b881b79a00e383ee2302e7007e1b11e01e9100.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/PID.o: PID.c  .generated_files/32f16d7a721417c87544d93f20d7eb84bc9aef98.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/PID.o.d 
 	@${RM} ${OBJECTDIR}/PID.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/PID.o.d" -o ${OBJECTDIR}/PID.o PID.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/PID.o.d" -o ${OBJECTDIR}/PID.o PID.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/io.o: io.c  .generated_files/bb09feb5b4c1884ed73973ebbce870cd1d1fd15b.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/io.o: io.c  .generated_files/b7887058f24fb6dd8a73a5f28aacf265f95177fd.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/io.o.d 
 	@${RM} ${OBJECTDIR}/io.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/io.o.d" -o ${OBJECTDIR}/io.o io.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/io.o.d" -o ${OBJECTDIR}/io.o io.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/menu.o: menu.c  .generated_files/8d6853c3ec597949964c38c60339841d1166c179.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/menu.o: menu.c  .generated_files/68ba2761b83539ade2e0d48c5af72e7cdf3fe144.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/menu.o.d 
 	@${RM} ${OBJECTDIR}/menu.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/menu.o.d" -o ${OBJECTDIR}/menu.o menu.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/menu.o.d" -o ${OBJECTDIR}/menu.o menu.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/EEP.o: EEP.c  .generated_files/9234a4c95ba85341e15483c4d9fd940c98625ea2.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/EEP.o: EEP.c  .generated_files/15c1cb6fc5de4b03be2ea18fd5bad7ffeb245008.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/EEP.o.d 
 	@${RM} ${OBJECTDIR}/EEP.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/EEP.o.d" -o ${OBJECTDIR}/EEP.o EEP.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/EEP.o.d" -o ${OBJECTDIR}/EEP.o EEP.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/OLED.o: OLED.c  .generated_files/680b73b7a020ddafd4b8f62fa2aab0a9dc464a27.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/OLED.o: OLED.c  .generated_files/4215eb39e35b440a257324518d45c55049867369.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/OLED.o.d 
 	@${RM} ${OBJECTDIR}/OLED.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/OLED.o.d" -o ${OBJECTDIR}/OLED.o OLED.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/OLED.o.d" -o ${OBJECTDIR}/OLED.o OLED.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/pars.o: pars.c  .generated_files/199c6eb6e28d06c4ad371c13f70ecc45fc67be5e.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/pars.o: pars.c  .generated_files/de9b862dd2543d10724c733f29c334ad9b028866.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/pars.o.d 
 	@${RM} ${OBJECTDIR}/pars.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/pars.o.d" -o ${OBJECTDIR}/pars.o pars.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/pars.o.d" -o ${OBJECTDIR}/pars.o pars.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/sensorMath.o: sensorMath.c  .generated_files/bf5242cbd2faae1b2d6d810edc7dea789cbe1a3c.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/sensorMath.o: sensorMath.c  .generated_files/5b7279d304c8fc864d6ac5d6df0fb6f7dffbfe3b.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/sensorMath.o.d 
 	@${RM} ${OBJECTDIR}/sensorMath.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/sensorMath.o.d" -o ${OBJECTDIR}/sensorMath.o sensorMath.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/sensorMath.o.d" -o ${OBJECTDIR}/sensorMath.o sensorMath.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/PIC32MX564F128H.o: PIC32MX564F128H.c  .generated_files/565e921a920200ccd5ac20b76cd9345e620d2222.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/PIC32MX564F128H.o: PIC32MX564F128H.c  .generated_files/d316272635b79bbdbdb687fd2c07d7136889345c.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/PIC32MX564F128H.o.d 
 	@${RM} ${OBJECTDIR}/PIC32MX564F128H.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/PIC32MX564F128H.o.d" -o ${OBJECTDIR}/PIC32MX564F128H.o PIC32MX564F128H.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/PIC32MX564F128H.o.d" -o ${OBJECTDIR}/PIC32MX564F128H.o PIC32MX564F128H.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/usb/usb_descriptors.o: usb/usb_descriptors.c  .generated_files/59bb5127b1c8d63c2c54fd2ddd238a009c51b713.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/usb/usb_descriptors.o: usb/usb_descriptors.c  .generated_files/503666fd4400967e316a35fc12e75844068dbbef.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}/usb" 
 	@${RM} ${OBJECTDIR}/usb/usb_descriptors.o.d 
 	@${RM} ${OBJECTDIR}/usb/usb_descriptors.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/usb/usb_descriptors.o.d" -o ${OBJECTDIR}/usb/usb_descriptors.o usb/usb_descriptors.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/usb/usb_descriptors.o.d" -o ${OBJECTDIR}/usb/usb_descriptors.o usb/usb_descriptors.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/usb/usb_device.o: usb/usb_device.c  .generated_files/862c8d422ae25831c7e8ed13c8789a0a51f9174e.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/usb/usb_device.o: usb/usb_device.c  .generated_files/b695f01f41701488c04d0ec57709b87c6eb26441.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}/usb" 
 	@${RM} ${OBJECTDIR}/usb/usb_device.o.d 
 	@${RM} ${OBJECTDIR}/usb/usb_device.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/usb/usb_device.o.d" -o ${OBJECTDIR}/usb/usb_device.o usb/usb_device.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/usb/usb_device.o.d" -o ${OBJECTDIR}/usb/usb_device.o usb/usb_device.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/usb/usb_driver.o: usb/usb_driver.c  .generated_files/eb9b3528508a34af3034a98527aa49fdda656b90.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/usb/usb_driver.o: usb/usb_driver.c  .generated_files/687a0627950c66058c70b33c5c85bcaa31f16bbb.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}/usb" 
 	@${RM} ${OBJECTDIR}/usb/usb_driver.o.d 
 	@${RM} ${OBJECTDIR}/usb/usb_driver.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/usb/usb_driver.o.d" -o ${OBJECTDIR}/usb/usb_driver.o usb/usb_driver.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/usb/usb_driver.o.d" -o ${OBJECTDIR}/usb/usb_driver.o usb/usb_driver.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/usb/usb_function_hid.o: usb/usb_function_hid.c  .generated_files/edd2556a295da0415a4195fbcc309dd4b23c3eb2.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/usb/usb_function_hid.o: usb/usb_function_hid.c  .generated_files/b39d36dc753ecdb4c3347b3418294e35d082ed80.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}/usb" 
 	@${RM} ${OBJECTDIR}/usb/usb_function_hid.o.d 
 	@${RM} ${OBJECTDIR}/usb/usb_function_hid.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/usb/usb_function_hid.o.d" -o ${OBJECTDIR}/usb/usb_function_hid.o usb/usb_function_hid.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/usb/usb_function_hid.o.d" -o ${OBJECTDIR}/usb/usb_function_hid.o usb/usb_function_hid.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/usb/usb_hal_pic24.o: usb/usb_hal_pic24.c  .generated_files/af587fee7808b39ec3c951c5eeb4a307acce7701.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/usb/usb_hal_pic24.o: usb/usb_hal_pic24.c  .generated_files/4f1e21239551ea15cfe1c7009b821a84eda3ce18.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}/usb" 
 	@${RM} ${OBJECTDIR}/usb/usb_hal_pic24.o.d 
 	@${RM} ${OBJECTDIR}/usb/usb_hal_pic24.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/usb/usb_hal_pic24.o.d" -o ${OBJECTDIR}/usb/usb_hal_pic24.o usb/usb_hal_pic24.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/usb/usb_hal_pic24.o.d" -o ${OBJECTDIR}/usb/usb_hal_pic24.o usb/usb_hal_pic24.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main.o: main.c  .generated_files/64056393a2dfd7889f8658d53a0b00fc4ade837b.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/main.o: main.c  .generated_files/fd25af48f819cc923f0d415ba6c156908ee5ae9a.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/isr.o: isr.c  .generated_files/327f8ac340393fee0f74ed52dd0014fb9a57bf3.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/isr.o: isr.c  .generated_files/17d9cf063cedd1170f69ed0e6c46f4d208bd6f5f.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/isr.o.d 
 	@${RM} ${OBJECTDIR}/isr.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/isr.o.d" -o ${OBJECTDIR}/isr.o isr.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/isr.o.d" -o ${OBJECTDIR}/isr.o isr.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/iron.o: iron.c  .generated_files/de3293e8d5091037daefd5e4c1456960e2361727.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/iron.o: iron.c  .generated_files/16e706674b2e4ead8be1cc160db5ee0ee5669f03.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/iron.o.d 
 	@${RM} ${OBJECTDIR}/iron.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/iron.o.d" -o ${OBJECTDIR}/iron.o iron.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/iron.o.d" -o ${OBJECTDIR}/iron.o iron.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/PID.o: PID.c  .generated_files/7e3eaac052c65ba50f98781c4cf7f2cbb7fb162a.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/PID.o: PID.c  .generated_files/245e8d6a401e276e2ba079fb21571c77b66bd7cb.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/PID.o.d 
 	@${RM} ${OBJECTDIR}/PID.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/PID.o.d" -o ${OBJECTDIR}/PID.o PID.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/PID.o.d" -o ${OBJECTDIR}/PID.o PID.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/io.o: io.c  .generated_files/94296aabb6a50c5c4b284fae9a5b22351c9199b.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/io.o: io.c  .generated_files/a0ea2d7a9df6058ef19f32b8df7dfeef79ef2ad0.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/io.o.d 
 	@${RM} ${OBJECTDIR}/io.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/io.o.d" -o ${OBJECTDIR}/io.o io.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/io.o.d" -o ${OBJECTDIR}/io.o io.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/menu.o: menu.c  .generated_files/ac257d4a48ec186d9688af1d14abb6135e1146c9.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/menu.o: menu.c  .generated_files/2acb7d540d2f6c50a7c88c0ff7d0e7eb01187b71.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/menu.o.d 
 	@${RM} ${OBJECTDIR}/menu.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/menu.o.d" -o ${OBJECTDIR}/menu.o menu.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/menu.o.d" -o ${OBJECTDIR}/menu.o menu.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/EEP.o: EEP.c  .generated_files/edca0764d174884f5b1d02fe20aa539fb9ef5836.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/EEP.o: EEP.c  .generated_files/1cc4cdfb404c667ba769b229f352aba56ab37f4f.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/EEP.o.d 
 	@${RM} ${OBJECTDIR}/EEP.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/EEP.o.d" -o ${OBJECTDIR}/EEP.o EEP.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/EEP.o.d" -o ${OBJECTDIR}/EEP.o EEP.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/OLED.o: OLED.c  .generated_files/cae3611e4e4275b25f41c8b35abe734d5be552c3.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/OLED.o: OLED.c  .generated_files/e0ffea06a0666a24b38ba97a9420a15a2787c593.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/OLED.o.d 
 	@${RM} ${OBJECTDIR}/OLED.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/OLED.o.d" -o ${OBJECTDIR}/OLED.o OLED.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/OLED.o.d" -o ${OBJECTDIR}/OLED.o OLED.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/pars.o: pars.c  .generated_files/c367663bd6db484149df0626b40dd19859fa17ef.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/pars.o: pars.c  .generated_files/f80a261ee85c149d2109ee7dfa2c04cc1b897424.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/pars.o.d 
 	@${RM} ${OBJECTDIR}/pars.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/pars.o.d" -o ${OBJECTDIR}/pars.o pars.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/pars.o.d" -o ${OBJECTDIR}/pars.o pars.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/sensorMath.o: sensorMath.c  .generated_files/fbfa9463455778b0bbc6fba1a63c54ccfe893aa5.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/sensorMath.o: sensorMath.c  .generated_files/b8ffce66c4f15e46c69b79b13f0653aa7c8655bf.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/sensorMath.o.d 
 	@${RM} ${OBJECTDIR}/sensorMath.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/sensorMath.o.d" -o ${OBJECTDIR}/sensorMath.o sensorMath.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/sensorMath.o.d" -o ${OBJECTDIR}/sensorMath.o sensorMath.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/PIC32MX564F128H.o: PIC32MX564F128H.c  .generated_files/8f281fefbede7850bf44b98b792553e84e907547.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
+${OBJECTDIR}/PIC32MX564F128H.o: PIC32MX564F128H.c  .generated_files/7d32605f7e10030a85b63647f4330e47c72641f2.flag .generated_files/1cd795e86e0e1b2131ee7aebeffccbb30c0217ce.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/PIC32MX564F128H.o.d 
 	@${RM} ${OBJECTDIR}/PIC32MX564F128H.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -MP -MMD -MF "${OBJECTDIR}/PIC32MX564F128H.o.d" -o ${OBJECTDIR}/PIC32MX564F128H.o PIC32MX564F128H.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./" -ffunction-sections -mips16 -O2 -D_SUPPRESS_PLIB_WARNING -D_DISABLE_OPENADC10_CONFIGPORT_WARNING -Wall -MP -MMD -MF "${OBJECTDIR}/PIC32MX564F128H.o.d" -o ${OBJECTDIR}/PIC32MX564F128H.o PIC32MX564F128H.c    -DXPRJ_PIC32_Standalone=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -Wno-missing-braces -mdfp="${DFP_DIR}"  
 	
 endif
 

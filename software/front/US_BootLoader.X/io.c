@@ -60,7 +60,7 @@ void ProcessIO(){
     if(IO_STATUS == IO_BUSY){
         if(!HIDTxHandleBusy(USBInHandle)){
             UINT8 Secured;
-            memmove(&RXP.RawData[4], &RXP.RawData[1], 63);
+            memmove((void*)(&RXP.RawData[4]), (void*)(&RXP.RawData[1]), 63);
             Secured = (RXP.Secure.Key == 0x43211234);
             TXP.Command = RXP.Command;
             TXP.Data[0] = 0xFF;
@@ -81,7 +81,7 @@ void ProcessIO(){
                     if(Secured)TXP.Data[0] = mcuEraseFlash();
                     break;
                 case BL_PROGRAM_FLASH:
-                    if(Secured)TXP.Data[0] = mcuWriteFlashRecord(RXP.Secure.Data);
+                    if(Secured)TXP.Data[0] = mcuWriteFlashRecord((void*)RXP.Secure.Data);
                     break;
                 case BL_PROGRAM_COMPLETE:
                     if(Secured)TXP.Data32[0] = mcuProgramComplete();
@@ -108,7 +108,7 @@ void ProcessIO(){
             }
             RXP.Command = 0;
             if(TXP.Command != 0){
-                memmove(&TXP.RawData[1], &TXP.RawData[4], 63);
+                memmove((void*)&TXP.RawData[1], (void*)&TXP.RawData[4], 63);
                 USBInHandle = HIDTxPacket(HID_EP, (BYTE *)&TXP, 64);
             }
             IO_STATUS=IO_IDLE;

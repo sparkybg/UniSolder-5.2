@@ -25,31 +25,21 @@ void PIDInit(){
 void PIDTasks(){
     t_SensorConfig *CJC = (t_SensorConfig *)IronPars.ColdJunctionSensorConfig;    
     if(CJC && ADCData.VCJ && ADCData.VCJ<1023){
-        UINT16 current;
-        int cBand;
-        if(CJC->InputInv){
-            current = CJC->CurrentA;         
-            cBand = CJC->CBandA;
-        }
-        else{
-            current = CJC->CurrentB;         
-            cBand = CJC->CBandB;
-        }
         INT32 t = GetSensorTemperature(ADCData.VCJ, CJC);
-        if(t>-273*2 && t<200){
+        if(t > -273*2 && t < 200){
             CJTemp = t;                
         }
         else{
-            CJTemp=-273*2;
+            CJTemp = -273*2;
         }
     }
     else if(!CJC) {
-        CJTemp=-273*2;
+        CJTemp = -273*2;
     }
     ADCData.VCJ = 0;
 }
 
-#define intshr(a,b) ((a < 0) ? (-((-a) >> b)) : (a >> b))
+#define intshr(a,b) ((a < 0) ? (-((-a) >> (b))) : (a >> (b)))
 
 #define assertin(a,b,c) \
     if(b<c){\
@@ -228,24 +218,13 @@ void PID(int PIDStep) {
     //compensation = (((HRCompCurrent * Gain * 20070) / 32767) * HRAvg) / 2048;
     w -= ((((INT32)IC->SensorConfig.Gain * (INT32)IC->HRCompCurrent * 20070L) >> 15) * (INT32)(PV->HRAvg >> AVG)) >> 11;
     
-    {
-        int current;
-        int cBand;
-        if(IC->SensorConfig.InputInv){
-            current = IC->SensorConfig.CurrentA;         
-            cBand = IC->SensorConfig.CBandA;
-        }
-        else{
-            current = IC->SensorConfig.CurrentB;         
-            cBand = IC->SensorConfig.CBandB;
-        }
-        
-        dw = GetSensorTemperature(w, &IC->SensorConfig);
+    
+    dw = GetSensorTemperature(w, &IC->SensorConfig);
 
-        if(dw > 1023)dw = 1023;
-        if(dw < 0)dw = 0;
-        PV->CTemp[0] = dw;        
-    }
+    if(dw > 1023)dw = 1023;
+    if(dw < 0)dw = 0;
+    PV->CTemp[0] = dw;        
+    
     
 // >>> At this point in CTemp[0] we have temperature in degrees Celsius, multiplied by 2. <<<    
 
