@@ -56,9 +56,9 @@ OLEDC_EXTERN void OLEDPrintXY(int col, int row, const char * s, int num, void * 
 
 
 #define OLEDPrint68(col, row, s, num) OLEDPrint(col, row, s, num, font6x8, 32, 5, 1, 1)
-#define OLEDPrintXY68(x, y, s, num) OLEDPrintXY(x, y, s, num, font6x8, 32, 5, 1, 1)
+#define OLEDPrintXY68(x, y, s, num) OLEDPrintXY(x, y, s, num, font6x8, 32, 5, 1, 0)
 #define OLEDPrintNum68(col, row, dec, num) OLEDPrintNum(col, row, dec, num, font6x8, 32, 5, 1, 1)
-#define OLEDPrintNumXY68(x, y, dec, num) OLEDPrintNumXY(x, y, dec, num, font6x8, 32, 5, 1, 1)
+#define OLEDPrintNumXY68(x, y, dec, num) OLEDPrintNumXY(x, y, dec, num, font6x8, 32, 5, 1, 0)
 #define OLEDPrintHex68(col, row, dec, num) OLEDPrintHex(col, row, dec, num, font6x8, 32, 5, 1, 1)
 #define OLEDPrint88(col, row, s, num) OLEDPrint(col, row, s, num, font8x8, 0, 8, 1, 0)
 #define OLEDPrintXY88(x, y, s, num) OLEDPrintXY(x, y, s, num, font8x8, 0, 8, 1, 0)
