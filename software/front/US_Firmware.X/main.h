@@ -11,23 +11,33 @@
 #include "typedefs.h"
 #include "pars.h"
 
-#define MINTEMP 50
-#define MAXTEMP 225
-
 #ifdef	__cplusplus
 extern "C" {
 #endif
 
-    typedef struct __PACKED{
-        int HolderPresent:1;
-        int PowerLost:1;
-        int ACPower:1;
-        int Calibration:1;
-        int TipChange;
-    }mainflags_t;
+#define MINTEMP 50
+#define MAXTEMP 225
+
+/*This will be visible in version menu*/
+#define VERSION_MAJOR   1
+#define VERSION_MINOR   0
+
+typedef struct __PACKED{
+    int HolderPresent:1;
+    int PowerLost:1;
+    int ACPower:1;
+    int Calibration:1;
+    int TipChange:1;
+}mainflags_t;
+
+/* Front PCB version 0=first version, 1=rev B/C with tip change support */
+typedef enum{
+    BOARD_HW_5_2 = 0,   /* first hw version */
+    BOARD_HW_5_2C = 1   /* rev B/C with tip change support */
+}T_BOARD_VERSION;
 
 #ifndef _MAIN_C
-    extern volatile unsigned int BoardVersion;
+    extern volatile T_BOARD_VERSION BoardVersion;
     extern volatile unsigned int BeepTicks;
     extern volatile unsigned int InvertTicks;
     extern volatile unsigned int POWER_DUTY;

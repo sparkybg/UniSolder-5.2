@@ -27,6 +27,8 @@ extern "C" {
 #define PER_FREQ                    (SYS_FREQ/2UL)
 #define I2C_CLOCK_FREQ              (400000UL)
 #define PROGRAM_FLASH_END_ADRESS    (0x9D000000+BMXPFMSZ-1)
+/* the crc16 is written by the bootloader at the end of the flash*/
+#define APP_CRC_VALUE               (*((UINT32 *)KVA0_TO_KVA1(PROGRAM_FLASH_END_ADRESS - 3)))
 
 
 P32_EXTERN void DelayTicks(UINT32 a);
