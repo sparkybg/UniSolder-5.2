@@ -375,14 +375,13 @@ void OLEDTasks(){
     }
 
     if(OLEDFlags.f.Set){
-        OLEDPrint68(3, 3, "S", 1);
-        OLEDPrint68(3, 4, "E", 1);
-        OLEDPrint68(3, 5, "T", 1);
-    }
+        OLEDPrintXY88(1, 21, "S", 1);
+        OLEDPrintXY88(1, 29, "E", 1);
+        OLEDPrintXY88(1, 37, "T", 1);    }
 
     if(OLEDFlags.f.TReset){
-        OLEDPrintXY68(2, 24, "T", 1);
-        OLEDPrintNumXY68(2, 32, 1, CRstTemp + 1);
+        OLEDPrintXY88(1, 26, "T", 1);
+        OLEDPrintNumXY88(1, 34, 1, CRstTemp + 1);
     }
     
     if(OLEDFlags.f.Message){
@@ -608,6 +607,7 @@ void MenuTasks(){
         if(LISRTicks != ISRTicks){
             LISRTicks = ISRTicks;
             if((LISRTicks & 1) || mainFlags.PowerLost){
+                int userInput=0;
                 for(i = 0; i < 3; i++){
                     BTicks[i].o = BTicks[i].n;
                     if(BTicks[i].n < 65535 )BTicks[i].n++;
@@ -636,6 +636,7 @@ void MenuTasks(){
                         LastEnc = cEnc;
                     }
                 }
+                userInput = B2 | EncDiff;
 
                 DispTemp -= DispTemp >> 3;
                 i = PIDVars[0].CTemp[0];
@@ -717,7 +718,8 @@ void MenuTasks(){
                             if(CMinutes < 255)CMinutes++;
                         }
                     }
-                    if(B1 || B2 || B3 || (((pars.Holder == 1) || ((pars.Holder == 2) && mainFlags.HolderPresent)) && (FNAP || CMode == TIP_CHANGE))){
+                    
+                    if(userInput || (((pars.Holder == 1) || ((pars.Holder == 2) && mainFlags.HolderPresent)) && (FNAP || CMode == TIP_CHANGE))){
                         CTicks = 0;
                         CSeconds = 0;
                         CMSeconds = 0;

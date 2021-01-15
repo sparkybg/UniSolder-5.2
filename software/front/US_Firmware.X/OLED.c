@@ -176,7 +176,7 @@ void OLEDFill(int col, int colnum, int row, int rownum, UINT8 b){
 }
 
 void OLEDFillXY(int x, int dx, int y, int dy, int b){
-    if(!(y & 7) && !(dy & 7)) return OLEDInvert(x, dx, y >> 3, dy >> 3 );    
+    if(!(y & 7) && !(dy & 7)) return OLEDFill(x, dx, y >> 3, dy >> 3,b?255:0 );    
     while(dy > 0){
         int row7 = y & 7;
         int rowL = 8 - row7;
@@ -199,8 +199,7 @@ void OLEDFillXY(int x, int dx, int y, int dy, int b){
 void OLEDInvert(int col,int colnum, int row, int rownum){
     int cc;
     while(rownum--){
-        cc = colnum;
-        while(cc--)OLEDBUFF.B[row][col++] ^= 255;
+        for(cc = colnum; cc--; )OLEDBUFF.B[row][col++] ^= 255;
         col -= colnum;
         row++;
     }
