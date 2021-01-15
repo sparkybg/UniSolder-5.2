@@ -42,7 +42,7 @@
 #include "OLED.h"
 
 void GetBoardVersion(){
-    BoardVersion = 0;
+    BoardVersion = BOARD_HW_5_2;
     OLED_DC_3S = 1;
     OLED_DC_PU = 1;
     REV_BC_3S = 0;
@@ -64,7 +64,7 @@ void GetBoardVersion(){
         _delay_ms(1);
         if(REV_BC_IN != OLED_DC_IN) return;
     }
-    BoardVersion = 1;
+    BoardVersion = BOARD_HW_5_2C;
 }
 
 
@@ -114,7 +114,7 @@ void mcuInit1(){
     mcuSPIStop();
     
     GetBoardVersion();   
-    if(BoardVersion == 1) TRISBbits.TRISB12 = 1;
+    if(BoardVersion == BOARD_HW_5_2C) TRISBbits.TRISB12 = 1;
 }
 
 void mcuInit2(){

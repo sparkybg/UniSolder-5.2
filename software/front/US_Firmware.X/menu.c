@@ -6,6 +6,7 @@
 #include "mcu.h"
 #include "pars.h"
 #include "main.h"
+#include "menu.h"
 #include "isr.h"
 #include "PID.h"
 #include "OLED.h"
@@ -24,8 +25,8 @@ static int CTicks;
 static int CSeconds=0;
 static int CMSeconds=0;
 static int CMinutes=0;
-static int CMode;
-static int OldMode;
+static T_MENU_MODE CMode;
+static T_MENU_MODE OldMode;
 static int CRstTemp;
 static int CPar;
 static int CRow;
@@ -93,7 +94,7 @@ void MenuInit(){
     mainFlags.TipChange = 0;
     TempBeep = 1;
     DispTemp = 0;
-    CMode = 1;
+    CMode = SET_TEMPERATURE;
     ModeTicks = 20;
     FNAP = 1;
     OldNAP = 1;
@@ -118,22 +119,22 @@ void OLEDTasks(){
         do{
             DoExit = 1;
             switch(CMode){
-                case 0: //default mode - display temperature and do nothing
+                case DEFAULT_MENU: //default mode - display temperature and do nothing
                     if(CTTemp < MINTEMP){                        
-                        CMode = 0xFF;
+                        CMode = STANDBY;
                         OldNAP = FNAP;
                         ModeTicks = 255;
                         DoExit = 0;
                         break;
                     }
-                    if(EncDiff) CMode = 1;
-                    if(BTicks[1].o && BTicks[1].o < 100 && BTicks[1].n == 0) CMode = 2;
-                    if(CMode != 0){
+                    if(EncDiff) CMode = SET_TEMPERATURE;
+                    if(BTicks[1].o && BTicks[1].o < 100 && BTicks[1].n == 0) CMode = RESET_TEMPERATURE;
+                    if(CMode != DEFAULT_MENU){
                         DoExit = 0;
                         break;
                     }
                     if(BTicks[1].o <= 100 && BTicks[1].n > 100){ //goto set parameters menu
-                        CMode=3;
+                        CMode=MENU;
                         ModeTicks=250;
                         BeepTicks=2;
                     }
@@ -165,10 +166,10 @@ void OLEDTasks(){
                         }
                     }                    
                     break;
-                case 1: //set temperature mode
-                    if(BTicks[1].n > 100)CMode = 0;
-                    if(BTicks[1].o && (BTicks[1].n == 0))CMode = 2; //goto reset temperature mode
-                    if(CMode != 1){
+                case SET_TEMPERATURE: //set temperature mode
+                    if(BTicks[1].n > 100)CMode = DEFAULT_MENU;
+                    if(BTicks[1].o && (BTicks[1].n == 0))CMode = RESET_TEMPERATURE; //goto reset temperature mode
+                    if(CMode != SET_TEMPERATURE){
                         DoExit = 0;
                         break;
                     }
@@ -191,10 +192,10 @@ void OLEDTasks(){
                     OLEDFlags.f.Set = 1;
                     OLEDTemp = TTemp << 2;
                     break;
-                case 2: //reset temperature mode
-                    if(BTicks[1].n > 100)CMode = 0;
-                    if(EncDiff) CMode = 1;
-                    if(CMode != 2){
+                case RESET_TEMPERATURE: //reset temperature mode
+                    if(BTicks[1].n > 100)CMode = DEFAULT_MENU;
+                    if(EncDiff) CMode = SET_TEMPERATURE;
+                    if(CMode != RESET_TEMPERATURE){
                         DoExit = 0;
                         break;
                     }
@@ -225,9 +226,9 @@ void OLEDTasks(){
                     OLEDFlags.f.TReset = 1;
                     OLEDTemp = TTemp << 2;
                     break;
-                case 3: //menu mode
+                case MENU: //menu mode
                     if((BTicks[1].o <= 250) && (BTicks[1].n > 250)){
-                        CMode = 7;
+                        CMode = SET_INPUT_TYPE;
                         break;
                     }
                     else{
@@ -246,30 +247,30 @@ void OLEDTasks(){
                             int p = MenuOrder[CPar];
                             switch(p) {
                                 case 16: //calibrate
-                                    CMode=5;
+                                    CMode=CALIBRATION;
                                     break;
                                 case 17: //Instrument info
-                                    CMode=6;
+                                    CMode=INSTRUMENT_INFO;
                                     break;
                                 case 19: //Version info
-                                    CMode=9;
+                                    CMode=VERSION_INFO;
                                     break;
                                 default:
-                                    CMode=4;
+                                    CMode=SET_PARAMS;
                                     break;
                             }
-                            if(CMode == 4) CParVal = pars.b[(UINT8)MenuOrder[(UINT8)CPar]];
+                            if(CMode == SET_PARAMS) CParVal = pars.b[(UINT8)MenuOrder[(UINT8)CPar]];
                         }
                         OLEDFlags.f.Pars = 1;
                     }
                     break;
-                case 4: //menu set parameter mode
+                case SET_PARAMS: //menu set parameter mode
                     {
                         int p = MenuOrder[CPar];
                         if(BTicks[1].n || EncDiff) ModeTicks = 250;
                         if(BTicks[1].o && (BTicks[1].n == 0)){
                             pars.b[p] = CParVal;
-                            CMode = 3;
+                            CMode = MENU;
                         }
                         else {
                             if(EncDiff > 0)CParVal++;
@@ -282,12 +283,12 @@ void OLEDTasks(){
                         OLEDFlags.f.Pars = 1;
                     }
                     break;
-                case 5: //Calibration
+                case CALIBRATION: //Calibration
                     ModeTicks = 250;
                     if(BTicks[1].o && !BTicks[1].n){
                         if((BTicks[1].o<100)){
                             mainFlags.Calibration = 0;
-                            CMode = 0;
+                            CMode = DEFAULT_MENU;
                             break;
                         }
                         else{
@@ -307,15 +308,15 @@ void OLEDTasks(){
                     OLEDFlags.f.Cal = 1;
                     mainFlags.Calibration = 1;
                     break;
-                case 6: //Instrument information
+                case INSTRUMENT_INFO: //Instrument information
                     ModeTicks = 250;
                     if(BTicks[1].o && !BTicks[1].n){
-                        CMode = 0;
+                        CMode = DEFAULT_MENU;
                         break;
                     }
                     OLEDFlags.f.Debug = 1;
                     break;
-                case 7: //Set input type mode (keys or encoder type)
+                case SET_INPUT_TYPE: //Set input type mode (keys or encoder type)
                     if(!BTicks[1].o && BTicks[1].n){
                         ModeTicks = 250;
                         EncDiff = 0;
@@ -324,9 +325,9 @@ void OLEDTasks(){
                     }
                     OLEDFlags.f.Input = 1;
                     break;
-                case 8: //tip change mode
+                case TIP_CHANGE: //tip change mode
                     if(IronPars.Config[0].SensorConfig.Type == SENSOR_NONE){
-                        CMode = 0;
+                        CMode = DEFAULT_MENU;
                         DoExit = 0;
                         break;
                     }
@@ -340,15 +341,15 @@ void OLEDTasks(){
                     OLEDMsg1 = "        TIP";
                     OLEDMsg2 = "       CHANGE";
                     break;
-                case 9: //Version information
+                case VERSION_INFO: //Version information
                     ModeTicks = 250;
                     if(BTicks[1].o && !BTicks[1].n){
-                        CMode = 0;
+                        CMode = DEFAULT_MENU;
                         break;
                     }
                     OLEDFlags.f.Version = 1;
                     break;
-                case 0xFF: //stand-by
+                case STANDBY: //stand-by
                     if(((pars.WakeUp & 1) && BTicks[1].o <= 50 && BTicks[1].n > 50) ||
                        ((pars.WakeUp & 2) && mainFlags.HolderPresent && FNAP && OldNAP != FNAP)){ //exit from stand-by
                         CTTemp = TTemp;
@@ -356,7 +357,7 @@ void OLEDTasks(){
                         CSeconds = 0;
                         CMSeconds = 0;
                         CMinutes = 0;
-                        CMode = 0;
+                        CMode = DEFAULT_MENU;
                         BeepTicks = 2;
                     }
                     OldNAP = FNAP;
@@ -447,10 +448,10 @@ void OLEDTasks(){
             OLEDPrint816(0, i * 2, ParDef[(UINT8)MenuOrder[(UINT8)par]].Name, 11);
             if(ParDef[p].OLEDDispFunc)(*ParDef[p].OLEDDispFunc)(p, 88, i * 2,  pars.b[p]);
             if(par == CPar){
-                if(CMode == 3){
+                if(CMode == MENU){
                     OLEDInvert(0, 128 - 44, i * 2, 2);
                 }
-                if(CMode == 4){
+                if(CMode == SET_PARAMS){
                     if(ParDef[p].OLEDDispFunc)(*ParDef[p].OLEDDispFunc)(p, 88, i * 2,  CParVal);
                     OLEDInvert(128 - 44, 44, i * 2, 2);
                 }
@@ -587,11 +588,15 @@ void OLEDTasks(){
     if(OLEDFlags.f.Version){
         OLEDPrint68(0,0,"VERSION INFO", 0);
         OLEDPrint68(0,2,"HW VER:", 0);
-        OLEDPrintHex68(54, 2, 1, BoardVersion);
-        OLEDPrint68(0,3,"FW CRC:", 0);
-        OLEDPrintHex68(54, 3, 4, (*((UINT32 *)KVA0_TO_KVA1(PROGRAM_FLASH_END_ADRESS - 3))));
+        OLEDPrintNum68(50, 2, 1, BoardVersion);
+        OLEDPrint68(0,3,"FW VER:  .", 0);
+        OLEDPrintNum68(50, 3, 1, VERSION_MAJOR);
+        OLEDPrintHex68(60, 3, 2, VERSION_MINOR);/*as hex to display 2 digits*/
+        OLEDPrint68(0,4,"FW CRC:", 0);
+        OLEDPrintHex68(54, 4, 4, APP_CRC_VALUE);
     }
-    if(InvertTicks) OLEDInvert(0, 128, 0, 8);    
+
+    if(InvertTicks) OLEDInvert(0, 128, 0, 8);
     OLEDUpdate();
 }
 
@@ -656,10 +661,10 @@ void MenuTasks(){
                     ModeTicks--;
                 }
                 else{
-                    CMode = 0;
+                    CMode = DEFAULT_MENU;
                 }
                 
-                if(CMode == 8 && IronPars.Config[0].SensorConfig.Type != SENSOR_NONE){
+                if(CMode == TIP_CHANGE && IronPars.Config[0].SensorConfig.Type != SENSOR_NONE){
                     mainFlags.TipChange = Holder > 375 && Holder <= 750;
                     NapTicks = 0;
                     FNAP = 0;
@@ -679,7 +684,7 @@ void MenuTasks(){
                                     TipChangeTicks++;
                                 }
                                 else {
-                                    CMode = 8;
+                                    CMode = TIP_CHANGE;
                                     mainFlags.TipChange = 1;
                                     ModeTicks = 100;
                                 }               
@@ -699,7 +704,7 @@ void MenuTasks(){
                 }
                 
 
-                if(CMode == 0xFF){
+                if(CMode == STANDBY){
                     ModeTicks = 255;
                     CTTemp = 0;
                 }
@@ -712,7 +717,7 @@ void MenuTasks(){
                             if(CMinutes < 255)CMinutes++;
                         }
                     }
-                    if(B1 || B2 || B3 || (((pars.Holder == 1) || ((pars.Holder == 2) && mainFlags.HolderPresent)) && (FNAP || CMode == 8))){
+                    if(B1 || B2 || B3 || (((pars.Holder == 1) || ((pars.Holder == 2) && mainFlags.HolderPresent)) && (FNAP || CMode == TIP_CHANGE))){
                         CTicks = 0;
                         CSeconds = 0;
                         CMSeconds = 0;

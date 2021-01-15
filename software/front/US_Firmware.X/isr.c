@@ -353,7 +353,7 @@ void ISRHigh(int src){
             }
             
             if(ADCStep == 0){
-                if(!BoardVersion){
+                if(BoardVersion == BOARD_HW_5_2){
                     Holder = NAP ? 1023 : 0;
                 }
                 else{
