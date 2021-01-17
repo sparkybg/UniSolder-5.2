@@ -9,36 +9,14 @@
 #include "usb/usb_driver.h"
 #include "usb/usb_function_hid.h"
 
-//#define TXP (*((USBPacket *)USBTxBuffer))
-//#define RXP (*((USBPacket *)USBRxBuffer))
-
 #define IO_IDLE 0
 #define IO_BUSY 1
 
 static UINT8 IO_STATUS;
 
-typedef enum
-{
-    DEV_GET_INFO                = 0x60,
-    DEV_GET_OPERATING_MODE      = 0x61,
-    DEV_RESET                   = 0x62,
-
-    BL_GET_INFO                 = 0xE0,
-    BL_ERASE_FLASH              = 0xE1,
-    BL_PROGRAM_FLASH            = 0xE2,
-    BL_READ_CRC                 = 0xE3,
-    BL_JUMP_TO_APP              = 0xE4,
-    BL_PROGRAM_COMPLETE         = 0xE5
-}T_COMMANDS;
-
-volatile static int Starting;
-
 void ProcessIO();
-UINT16 CalculateCRC(UINT16 scrc, UINT8 *data, UINT32 len);
-
 
 void IOInit(){
-    Starting=1;
     USBDriverInit();
     IO_STATUS=IO_IDLE;
     RXP.Command=0;
@@ -60,6 +38,7 @@ void ProcessIO(){
     if(IO_STATUS == IO_BUSY){
         if(!HIDTxHandleBusy(USBInHandle)){
             UINT8 Secured;
+            /*memory move necessary because the command is on 1 byte, could be avoided by using 4 bytes*/
             memmove((void*)(&RXP.RawData[4]), (void*)(&RXP.RawData[1]), 63);
             Secured = (RXP.Secure.Key == 0x43211234);
             TXP.Command = RXP.Command;
@@ -78,13 +57,13 @@ void ProcessIO(){
                     TXP.Data[1] = BOOTLOADER_MAJOR_VERSION;
                     break;
                 case BL_ERASE_FLASH:
-                    if(Secured)TXP.Data[0] = mcuEraseFlash();
+                    if(Secured) TXP.Data[0] = mcuEraseFlash();
                     break;
                 case BL_PROGRAM_FLASH:
-                    if(Secured)TXP.Data[0] = mcuWriteFlashRecord((void*)RXP.Secure.Data);
+                    if(Secured) TXP.Data[0] = mcuWriteFlashRecord((void*)RXP.Secure.Data);
                     break;
                 case BL_PROGRAM_COMPLETE:
-                    if(Secured)TXP.Data32[0] = mcuProgramComplete();
+                    if(Secured) TXP.Data32[0] = mcuProgramComplete();
                     break;
                 case BL_READ_CRC:
                     TXP.ProgCRC.CRC = CalculateCRC(0, (void *)RXP.ProgCRC.Addr, RXP.ProgCRC.Len);

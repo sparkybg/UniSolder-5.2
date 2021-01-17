@@ -116,22 +116,23 @@ void mcuJumpToApp(void)
 }
 
 UINT mcuEraseFlash(void){
-    UINT Result;
+    UINT Result = 1;
     UINT32 i;
-    void* pFlash;
-    Result = 1;
-    pFlash = (void*)APP_FLASH_BASE_ADDRESS;
+    UINT32 pFlash = APP_FLASH_BASE_ADDRESS;
+
     for( i = 0; i < ((APP_FLASH_END_ADDRESS - APP_FLASH_BASE_ADDRESS + 1)/FLASH_PAGE_SIZE); i++ )
     {
-        Result = NVMErasePage( &((char*)pFlash)[i*FLASH_PAGE_SIZE] );
+        Result = NVMErasePage( (void *)(pFlash + i*FLASH_PAGE_SIZE) );
         if(Result)break;
     }
-    pFlash = (void*)APP_IVT_BASE_ADDRESS;
+    
+    pFlash = APP_IVT_BASE_ADDRESS;
     for( i = 0; i < ((APP_IVT_END_ADDRESS - APP_IVT_BASE_ADDRESS + 1)/FLASH_PAGE_SIZE); i++ )
     {
-        Result = NVMErasePage( &((char*)pFlash)[i*FLASH_PAGE_SIZE] );
+        Result = NVMErasePage( (void *)(pFlash + i*FLASH_PAGE_SIZE) );
         if(Result)break;
     }
+    
     return Result;
 }
 
@@ -141,17 +142,17 @@ UINT mcuWriteFlashRecord(void * RecordData)
     void* ProgAddress;
     void* ProgAddressEnd;
     UINT32 WrData;
-    UINT Result;
+    UINT Result = 0;
+
     lFR.Address = ((UINT32 *)RecordData)[0];
     lFR.RecDataLen = ((UINT32 *)RecordData)[1];
-    lFR.Data = (UINT8*)&((UINT32 *)RecordData)[3];
+    lFR.Data = (UINT8*)&((UINT32 *)RecordData)[2];
 
-    Result=0;
     while(lFR.RecDataLen)
     {
         ProgAddress = PA_TO_KVA0(lFR.Address);
         ProgAddressEnd = &((char*)ProgAddress)[lFR.RecDataLen];
-        if((lFR.RecDataLen>=512)&&((lFR.Address & 511L)==0))
+        if((lFR.RecDataLen>=512) && ((lFR.Address & 511L)==0))
         {
             Result=NVMWriteRow(ProgAddress,lFR.Data);
             lFR.Address+=512;
