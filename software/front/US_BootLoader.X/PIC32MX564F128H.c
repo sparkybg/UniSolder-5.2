@@ -144,14 +144,14 @@ UINT mcuWriteFlashRecord(void * RecordData)
     UINT32 WrData;
     UINT Result = 0;
 
-    lFR.Address = *((UINT32 *)RecordData);
-    lFR.RecDataLen = *((UINT32 *)RecordData + 1);
-    lFR.Data = (UINT8 *)((UINT32 *)RecordData + 2);
+    lFR.Address = ((UINT32 *)RecordData)[0];
+    lFR.RecDataLen = ((UINT32 *)RecordData)[1];
+    lFR.Data = (UINT8*)&((UINT32 *)RecordData)[2];
 
     while(lFR.RecDataLen)
     {
         ProgAddress = PA_TO_KVA0(lFR.Address);
-        ProgAddressEnd = (void *)((UINT8 *)ProgAddress + lFR.RecDataLen);
+        ProgAddressEnd = &((char*)ProgAddress)[lFR.RecDataLen];
         if((lFR.RecDataLen>=512) && ((lFR.Address & 511L)==0))
         {
             Result=NVMWriteRow(ProgAddress,lFR.Data);
