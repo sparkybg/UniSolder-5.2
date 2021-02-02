@@ -107,13 +107,13 @@ void OLEDInit(){
     mcuSPIWait();
     if(DisplaySetup.SH1106){
         PreUpdateBuff.PreRowUpdate.ColLow = 2; //SSH1106 is 131x64 - shift right by 2
-        mcuSPISendByte(0x8D); //charge pump control       
-        mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x14 : 0x10);        
+        mcuSPISendByte(0xAD); //charge pump control       
+        mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x8B : 0x8A);
     }
     else{
         PreUpdateBuff.PreRowUpdate.ColLow = 0; //SSD1306 is 128x64 - no need to shift
-        mcuSPISendByte(0xAD); //charge pump control       
-        mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x8B : 0x8A);
+        mcuSPISendByte(0x8D); //charge pump control       
+        mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x14 : 0x10);
     }
     mcuSPIWait();
     mcuSPISendBytes((unsigned int*)OLEDInitBuff2, sizeof(OLEDInitBuff2));     
