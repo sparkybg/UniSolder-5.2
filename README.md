@@ -10,11 +10,11 @@ My intention was to build the most universal soldering controller I can think of
 - automatic 1/2, 1/4 and 1/8 power selection, so only simple single winding 24V transformer can drive all the instruments, from the smallest JBC Nano, to the largest JBC C245.
 - 2 separate heater control channels
 - 2 independent sensor inputs
-- current source on any sensor input 3uA - 12mA, wuth 2 bands (x1, x16) and 256 steps per band
+- current source on any sensor input 3uA - 12mA, with 2 bands (x1, x16) and 256 steps per band
 - flexible differential amplifier input selection
 - amplifier gain from 0 to 750 in 256 steps
 - negative offset selection in 1024 steps
-- resistive instrument identification (upto 625 different instruments can be identified by 2 resistors on the connector)
+- resistive instrument identification (upto 625 different instruments can be identified by 2 resistors in the connector)
 - polynomial floating point voltage/resistance to temperature calculation
 - wave shaping to filter out the inductive peaks from series sensor signal
 - PID control with power limit
@@ -24,8 +24,9 @@ My intention was to build the most universal soldering controller I can think of
 ### Tested so far with:
 - HAKKO T12/T15 (series TC)
 - HAKKO FX8801 (PTC)
-- PACE TD100 (series TC)
-- JBC C245 (series or separate TC)
+- PACE TD100 (series TC, the controller also uses the cold junction sensor in the iron's handle)
+- PACE TD200 (series TC, the controller also uses the cold junction sensor in the iron handle)
+- JBC C245 (series or separate TC, depends on connection)
 - JBC C210 (series TC)
 - JBC Microtweezers (2 separate heaters, each with series TC)
 - JBC C105 (series TC)
