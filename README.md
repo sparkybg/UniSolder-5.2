@@ -7,7 +7,7 @@ My intention was to build the most universal soldering controller I can think of
 
 ### A short list of features:
 - power: 12-24V, AC or DC (24V 6A toroidal transformer is the best possible power source)
-- automatic 1/2 and 1/4 power selection, so only simple single winding 24V can drive all the instruments, from the smallest JBC Nano, to the largest JBC C245.
+- automatic 1/2, 1/4 and 1/8 power selection, so only simple single winding 24V transformer can drive all the instruments, from the smallest JBC Nano, to the largest JBC C245.
 - 2 separate heater control channels
 - 2 independent sensor inputs
 - current source on any sensor input 3uA - 12mA, wuth 2 bands (x1, x16) and 256 steps per band
