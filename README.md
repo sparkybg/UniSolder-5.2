@@ -52,7 +52,7 @@ My intention was to build the most universal soldering controller I can think of
 - Adjust the calibration trimmer until you get value of "R" as close as possible to the resistance of the resistor, multiplied by 100 (1000 for 10ohm resistor).
 
 ## My connection layout and the calibration connection in real world:
-<img width=500 align="center" src="/img/UniSolder52_Cal_Con-1.jpg"/><br/>
+<img width=500 align="center" src="/img/UniSolder52_Cal_Con-2.jpg"/><br/>
 
 ## Connections to different tips/irons:
 
