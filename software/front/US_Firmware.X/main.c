@@ -166,12 +166,13 @@ int main(void){
     while(1){
         if(mainFlags.PowerLost){
             SavePars();
-            MenuTasks();
+            OLED_VCC = 0; //Turn on OLED's power
+            MenuTasks(1);
             _delay_ms(1000);
             mcuReset();
             while(1);
         }
-        MenuTasks();
+        MenuTasks(0);
         IOTasks();
         IronTasks();
         PIDTasks();

@@ -3,3 +3,9 @@ C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\b
 C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Release\SSControls.csprojResolveAssemblyReference.cache
 C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Release\SSControls.dll
 C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Release\SSControls.pdb
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\bin\Release\SSControls.dll
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\bin\Release\SSControls.pdb
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Release\SSControls.csproj.AssemblyReference.cache
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Release\SSControls.csproj.CoreCompileInputs.cache
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Release\SSControls.dll
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Release\SSControls.pdb

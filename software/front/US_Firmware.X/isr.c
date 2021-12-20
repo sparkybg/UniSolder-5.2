@@ -76,8 +76,7 @@ void ISRStart(){
     mcuEnableInterrupts();
 }
 
-void I2CAddCommands(int c)
-{
+void I2CAddCommands(int c){
     int i;
     i=mcuDisableInterrupts();
     I2CCommands |= c;
@@ -88,6 +87,7 @@ void I2CAddCommands(int c)
 void OnPowerLost(){
     if(!mainFlags.PowerLost){
         mainFlags.PowerLost = 1;
+        OLED_VCC = 1; //turn off OLED's power
         HEATER = 0;
         mcuADCStop();
         mcuStopISRTimer();

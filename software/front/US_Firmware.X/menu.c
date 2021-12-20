@@ -104,13 +104,13 @@ void MenuInit(){
     Enc = LastEnc = 0;
 }
 
-void OLEDTasks(){
+void OLEDTasks(int powerLost){
     int dual = IronPars.Config[1].SensorConfig.Type;
     t_PIDVars * PV1 = (t_PIDVars *)&PIDVars[0];
     t_PIDVars * PV2 = (t_PIDVars *)&PIDVars[1];
     if(!dual) PV2 = PV1;
     OLEDFlags.DW = 0;
-    if(mainFlags.PowerLost){
+    if(powerLost){
         OLEDFlags.f.Message = 1;
         OLEDMsg1 = "     POWER LOST";
         OLEDMsg2 = "";
@@ -145,7 +145,7 @@ void OLEDTasks(){
                     if(IronPars.Config[0].SensorConfig.Type == SENSOR_NONE){
                     }
                     else if(PV1->ShortCircuit || PV2->ShortCircuit){
-                        OLEDFlags.f.Message=1;
+                        OLEDFlags.f.Message = 1;
                         OLEDMsg1="       HEATER";
                         OLEDMsg2="    SHORTCIRCUIT";
                     }
@@ -599,11 +599,12 @@ void OLEDTasks(){
     OLEDUpdate();
 }
 
-void MenuTasks(){
+void MenuTasks(int powerLost){
     int i;
-    if(mainFlags.PowerLost){ 
-        OLEDTasks(); 
-    }else{
+    if(powerLost){ 
+        OLEDTasks(1); 
+    }
+    else{
         if(LISRTicks != ISRTicks){
             LISRTicks = ISRTicks;
             if((LISRTicks & 1) || mainFlags.PowerLost){
@@ -645,7 +646,7 @@ void MenuTasks(){
 
                 OldMode = CMode;
                 
-                OLEDTasks();
+                OLEDTasks(0);
 
                 if(BeepTicks){
                     BeepTicks--;

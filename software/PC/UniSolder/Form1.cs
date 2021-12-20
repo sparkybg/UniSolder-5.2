@@ -171,10 +171,10 @@ namespace UniSolder
 
                             //CTemp
                             SsChart2.Drawings(3).Points[CPoint].Y = b[4] * 0.5F + b[5] * 128.0F;
-                            
+
                             //ADCTemp
                             SsChart2.Drawings(4).Points[CPoint].Y = b[6] * 0.5F + b[7] * 128.0F;
-                            
+
                             //TAvgF
                             SsChart2.Drawings(5).Points[CPoint].Y = b[8] * 0.5F + b[9] * 128.0F;
 
@@ -262,6 +262,11 @@ namespace UniSolder
                                 Thread.Sleep(500);
                             }
                             if (!lUniSolder.Transport.Connected) throw new Exception("Could not connect to UniSolder device.");
+                            for (int i = 0; i < 20 && b != 16; i++)
+                            {
+                                lUniSolder.DevGetOpMode(ref b);
+                            }
+                            if (b != 16) throw new Exception("Could not go into bootloader mode.");
                         }
                         Debug.Print("Erasing Flash...");
                         lUniSolder.BlEraseFlash();

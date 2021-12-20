@@ -4,3 +4,11 @@ C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\bin\
 C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Release\SSComm.csprojResolveAssemblyReference.cache
 C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Release\SSComm.dll
 C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Release\SSComm.pdb
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\bin\Release\SSComm.dll
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\bin\Release\SSComm.pdb
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\bin\Release\LibUsbDotNet.dll
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Release\SSComm.csproj.AssemblyReference.cache
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Release\SSComm.csproj.CoreCompileInputs.cache
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Release\SSComm.csproj.CopyComplete
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Release\SSComm.dll
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSComm\obj\Release\SSComm.pdb

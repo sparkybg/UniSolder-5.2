@@ -116,24 +116,24 @@ void mcuJumpToApp(void)
 }
 
 UINT mcuEraseFlash(void){
-    UINT Result = 1;
+    UINT result = 1;
     UINT32 i;
     UINT32 pFlash = APP_FLASH_BASE_ADDRESS;
 
     for( i = 0; i < ((APP_FLASH_END_ADDRESS - APP_FLASH_BASE_ADDRESS + 1)/FLASH_PAGE_SIZE); i++ )
     {
-        Result = NVMErasePage( (void *)(pFlash + i*FLASH_PAGE_SIZE) );
-        if(Result)break;
+        result = NVMErasePage( (void *)(pFlash + i*FLASH_PAGE_SIZE) );
+        if(result)break;
     }
     
     pFlash = APP_IVT_BASE_ADDRESS;
     for( i = 0; i < ((APP_IVT_END_ADDRESS - APP_IVT_BASE_ADDRESS + 1)/FLASH_PAGE_SIZE); i++ )
     {
-        Result = NVMErasePage( (void *)(pFlash + i*FLASH_PAGE_SIZE) );
-        if(Result)break;
+        result = NVMErasePage( (void *)(pFlash + i*FLASH_PAGE_SIZE) );
+        if(result)break;
     }
     
-    return Result;
+    return result;
 }
 
 UINT mcuWriteFlashRecord(void * RecordData)

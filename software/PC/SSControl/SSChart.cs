@@ -367,7 +367,11 @@ namespace SSControls
                                 }
                                 if (ValVisible)
                                 {
-                                    g.DrawString(s.ToString(ValFormat), ValFont, ValBrush, s1 + vXoff, s2 + vYoff, ValSFormat);
+                                    try
+                                    {
+                                        g.DrawString(s.ToString(ValFormat), ValFont, ValBrush, s1 + vXoff, s2 + vYoff, ValSFormat);
+                                    }
+                                    catch { }
                                 }
                             }
                         }

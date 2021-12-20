@@ -13,3 +13,8 @@ C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\b
 C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Debug\SSControls.dll
 C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Debug\SSControls.pdb
 C:\Users\Sparky\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Debug\SSControls.csprojAssemblyReference.cache
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\bin\Debug\SSControls.dll
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\bin\Debug\SSControls.pdb
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Debug\SSControls.csproj.CoreCompileInputs.cache
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Debug\SSControls.dll
+C:\Users\Spartak\Desktop\MyProjects\Electronics\UniSolder\software\PC\SSControl\obj\Debug\SSControls.pdb

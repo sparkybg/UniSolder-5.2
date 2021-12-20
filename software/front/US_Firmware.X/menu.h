@@ -28,7 +28,7 @@ typedef enum{
 }T_MENU_MODE;
 
 extern void MenuInit();
-extern void MenuTasks();
+extern void MenuTasks(int powerLost);
 
 #ifdef	__cplusplus
 }

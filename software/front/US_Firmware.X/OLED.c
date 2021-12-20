@@ -123,7 +123,7 @@ void OLEDInit(){
     else{
         PreUpdateBuff.PreRowUpdate.ColLow = 0; //SSD1306 is 128x64 - no need to shift
         mcuSPISendByte(0x8D); //charge pump control       
-        mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x14 : 0x10);
+        mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x14 : 0x10);        
     }
     mcuSPIWait();
     mcuSPISendBytes((unsigned int*)OLEDInitBuff2, sizeof(OLEDInitBuff2));     
