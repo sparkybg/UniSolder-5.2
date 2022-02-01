@@ -49,6 +49,7 @@ static union {
         int Message :1;
         int Set:1;
         int TReset:1;
+        int Holder:1;
         int Pars:1;
         int SetPars:1;
         int StandBy:1;
@@ -161,6 +162,7 @@ void OLEDTasks(int powerLost){
                     }
                     else{
                         OLEDFlags.f.BigTemp = 1;
+                        OLEDFlags.f.Holder = !FNAP;
                         if((LISRTicks & 15) == 1){
                             OLEDTemp = DispTemp >> 3;
                         }
@@ -378,6 +380,11 @@ void OLEDTasks(int powerLost){
         OLEDPrintXY88(1, 21, "S", 1);
         OLEDPrintXY88(1, 29, "E", 1);
         OLEDPrintXY88(1, 37, "T", 1);    }
+
+    if(OLEDFlags.f.Holder){
+        OLEDPrintXY88(1, 21, "H", 1);
+        OLEDPrintXY88(1, 29, "L", 1);
+        OLEDPrintXY88(1, 37, "D", 1);    }
 
     if(OLEDFlags.f.TReset){
         OLEDPrintXY88(1, 26, "T", 1);

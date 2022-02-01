@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="65">
   <projectmakefile>Makefile</projectmakefile>
-  <defaultConf>1</defaultConf>
+  <defaultConf>2</defaultConf>
   <confs>
     <conf name="PIC32_Standalone" type="2">
       <platformToolSN>noToolString</platformToolSN>

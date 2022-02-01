@@ -395,10 +395,10 @@ void ISRHigh(int src){
             if(PV->Power < 3) HEATER = PHEATER;                
             break;
         case 9: //1/8 power point - turn on heater if needed
-            mcuStartISRTimer_us(100);
+            mcuStartISRTimer_us(200);
             HEATER = PHEATER;
             break;
-        case 10: //at least 50uS after power was turned on - enable high-to-low comparator event in order to start new cycle.
+        case 10: //at least 200uS after power was turned on - enable high-to-low comparator event in order to start new cycle.
             mcuCompEnableH2L();
             ISRTicks++;
             if(CJTicks) CJTicks--;
