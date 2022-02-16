@@ -28,10 +28,11 @@ My intention was to build the most universal soldering controller I can think of
 - PACE TD200 (series TC, the controller also uses the cold junction sensor in the iron's handle)
 - JBC C245 (series or separate TC, depends on connection)
 - JBC C210 (series TC)
-- JBC Microtweezers (2 separate heaters, each with series TC)
-- JBC C105 (series TC)
+- JBC Microtweezers (PA120/AN120, 2 separate heaters, each with series TC)
+- JBC C105/C115 (series TC)
+- JBC Nanotweezers (NP115/AN115/NP105/NP105-B, 2 separate heaters, each with series TC)
 - WELLER WSP80 (PTC) (This iron was sent to me by a reader of the thread for a previous version of the controller. Thanks, Jaroslaw)
-- WELLER WMRT (separate TC)
+- WELLER WMRT (2 separate heaters, each with separate TC)
 - ERSA RT80 (series PTC/heater resistance)
 - various chinese cheap irons with separate TC
 
