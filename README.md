@@ -25,7 +25,7 @@ My intention was to build the most universal soldering controller I can think of
 - HAKKO T12/T15 (series TC)
 - HAKKO FX8801 (PTC)
 - PACE TD100 (series TC, the controller also uses the cold junction sensor in the iron's handle)
-- PACE TD200 (series TC, the controller also uses the cold junction sensor in the iron handle)
+- PACE TD200 (series TC, the controller also uses the cold junction sensor in the iron's handle)
 - JBC C245 (series or separate TC, depends on connection)
 - JBC C210 (series TC)
 - JBC Microtweezers (2 separate heaters, each with series TC)
@@ -51,6 +51,8 @@ My intention was to build the most universal soldering controller I can think of
 - Connect a resistor with well known resistance (0.1%) of around 10ohm between SENSEA and Vout1-
 - Go to "CALIBRATION" submenu
 - Adjust the calibration trimmer until you get value of "R" as close as possible to the resistance of the resistor, multiplied by 100 (1000 for 10ohm resistor).
+- Optionally, press and hold center button for 3+ seconds an release it - the "currect" parameter should now show "1 128" instead of "0 128" it was showing so far
+- Connect the same resistor to SENSEB and Vout1-. The Value of "R" should be da same or very close to value shown 2 steps above. If there is a significant difference, there is a problem either with current sources or 0.1% resistors they must be made with.
 
 ## My connection layout and the calibration connection in real world:
 <img width=500 align="center" src="/img/UniSolder52_Cal_Con-2.jpg"/><br/>
@@ -91,7 +93,8 @@ My intention was to build the most universal soldering controller I can think of
  - 3.0k between ID and Vout1-
  - 1.0k between ID and Vout2-
 
-### 6. JBC Microtweezers:
+### 6. JBC Microtweezers (PA120/AN120):
+ - There are 2 diodes in the original handle - they must be removed or shorted
  - Outer shell of both tips (green wire) connected to EARTH
  - Heater 1 negative (blue wire) connected to Vout1-
  - Heater 1 positive (red wire) connected to Vout1+ and SENSEA
@@ -99,14 +102,23 @@ My intention was to build the most universal soldering controller I can think of
  - Heater 2 positive (yellow wire) connected to Vout2+ and SENSEB
  - 1.0k between ID and Vout1-
 
-### 7. WELLER WSP80:
+### 7. JBC Nanotweezers (NP115/AN115/NP105/NP105-B):
+ - There are 2 diodes in the instrument - they must be removed or shorted
+ - Outer shell of both tips (green wire) connected to EARTH
+ - Heater 1 negative (blue wire) connected to Vout1-
+ - Heater 1 positive (red wire) connected to Vout1+ and SENSEA
+ - Heater 2 negative (brown wire) connected to Vout2-
+ - Heater 2 positive (yellow wire) connected to Vout2+ and SENSEB
+ - 1.5k between ID and Vout1-
+
+### 8. WELLER WSP80:
 - Outer shell, PTC negative  and heater negative (white, black and brown wires) connected to EARTH, Vout1- and SENSEB
 - Heater positive (blue wire) connected to Vout1+
 - PTC positive (red wire) connected to SENSEA
 - 120ohm between ID and Vout1-
 - 5.6k between ID and Vout2-
 
-### 8. ERSA RT80:
+### 9. ERSA RT80:
 - Outer shell and Heater/PTC negative (pink and white wires) connected to EARTH, Vout1- and SENSEB
 - Heater/PTC positive (black wire) connected to Vout1+ and SENSEA
 - 300ohm between ID and Vout1-
