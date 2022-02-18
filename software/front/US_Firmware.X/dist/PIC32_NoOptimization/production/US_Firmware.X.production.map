@@ -81,105 +81,105 @@ c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(memset.o)
                               build/PIC32_NoOptimization/production/usb/usb_device.o (memset)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-bootstrap-exception-handler.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o (_bootstrap_exception_handler)
+                              C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o (_bootstrap_exception_handler)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-on-reset.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o (_on_reset)
+                              C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o (_on_reset)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-on-bootstrap.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o (_on_bootstrap)
+                              C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o (_on_bootstrap)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-nmi-handler.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o (_nmi_handler)
+                              C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o (_nmi_handler)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(pic32_data_init.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o (__pic32_data_init)
+                              C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o (__pic32_data_init)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(general-exception.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o (_general_exception_context)
+                              C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o (_general_exception_context)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector0.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_0)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_0)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector1.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_1)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_1)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector2.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_2)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_2)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector3.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_3)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_3)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector6.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_6)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_6)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector7.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_7)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_7)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector9.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_9)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_9)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector11.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_11)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_11)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector12.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_12)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_12)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector14.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_14)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_14)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector15.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_15)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_15)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector16.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_16)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_16)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector17.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_17)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_17)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector18.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_18)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_18)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector19.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_19)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_19)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector20.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_20)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_20)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector21.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_21)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_21)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector22.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_22)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_22)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector23.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_23)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_23)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector24.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_24)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_24)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector25.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_25)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_25)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector26.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_26)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_26)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector28.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_28)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_28)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector29.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_29)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_29)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector32.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_32)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_32)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector33.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_33)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_33)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector34.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_34)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_34)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector35.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_35)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_35)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector36.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_36)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_36)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector37.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_37)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_37)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector38.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_38)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_38)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector39.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_39)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_39)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector40.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_40)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_40)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector41.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_41)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_41)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector42.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_42)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_42)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector43.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_43)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_43)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector44.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_44)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_44)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector45.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_45)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_45)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector46.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_46)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_46)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector47.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_47)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_47)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector48.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_48)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_48)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector49.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_49)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_49)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector50.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_50)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_50)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector51.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o (__vector_dispatch_51)
+                              C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o (__vector_dispatch_51)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-general-exception-handler.o)
                               c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(general-exception.o) (_general_exception_handler)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(defaultinterrupt.o)
@@ -530,19 +530,19 @@ Discarded input sections
  .reginfo       0x00000000       0x18 build/PIC32_NoOptimization/production/PIC32MX564F128H.o
  .text.mcuReadTime_us
                 0x00000000       0x38 build/PIC32_NoOptimization/production/PIC32MX564F128H.o
- .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o
- .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o
- .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o
- .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o
- .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccffNUEq.o
- .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccffNUEq.o
- .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccffNUEq.o
- .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\ccffNUEq.o
- .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o
- .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o
- .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o
- .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o
- .discard       0x00000000       0xd0 C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o
+ .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o
+ .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o
+ .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o
+ .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o
+ .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccz7kRs0.o
+ .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccz7kRs0.o
+ .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccz7kRs0.o
+ .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\ccz7kRs0.o
+ .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o
+ .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o
+ .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o
+ .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o
+ .discard       0x00000000       0xd0 C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o
  .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
  .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
  .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
@@ -966,9 +966,9 @@ LOAD build/PIC32_NoOptimization/production/pars.o
 LOAD build/PIC32_NoOptimization/production/sensorMath.o
 LOAD build/PIC32_NoOptimization/production/PIC32MX564F128H.o
                 0x00000001                __MPLAB_BUILD = 0x1
-LOAD C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o
-LOAD C:\Users\Spartak\AppData\Local\Temp\ccffNUEq.o
-LOAD C:\Users\Spartak\AppData\Local\Temp\ccC4KxBk.o
+LOAD C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o
+LOAD C:\Users\Spartak\AppData\Local\Temp\ccz7kRs0.o
+LOAD C:\Users\Spartak\AppData\Local\Temp\ccGE48gK.o
 LOAD c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
                 0x00000400                PROVIDE (_min_stack_size, 0x400)
 START GROUP
@@ -1017,16 +1017,16 @@ END GROUP
 
 .reset          0xbfc00000      0x19c
  *(.reset)
- .reset         0xbfc00000        0x8 C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o
+ .reset         0xbfc00000        0x8 C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o
                 0xbfc00000                _reset
  *(.reset.startup)
  .reset.startup
-                0xbfc00008      0x194 C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o
+                0xbfc00008      0x194 C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o
                 0xbfc00008                _startup
 
 .bev_excpt      0xbfc00380       0x10
  *(.bev_handler)
- .bev_handler   0xbfc00380       0x10 C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o
+ .bev_handler   0xbfc00380       0x10 C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o
 
 .dbg_excpt      0xbfc00480        0x0
                 0xbfc00480                . = (. + DEFINED (_DEBUGGER)?0x8:0x0)
@@ -1036,7 +1036,7 @@ END GROUP
 
 .app_excpt      0x9fc01180       0x10
  *(.gen_handler)
- .gen_handler   0x9fc01180       0x10 C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o
+ .gen_handler   0x9fc01180       0x10 C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o
 
 .vector_0       0x9fc01200        0x8
  *(.vector_0)
@@ -3066,7 +3066,7 @@ LOAD data_init
 .text.main_entry
                 0x9d00e780       0x54
  .text.main_entry
-                0x9d00e780       0x54 C:\Users\Spartak\AppData\Local\Temp\ccarhGSB.o
+                0x9d00e780       0x54 C:\Users\Spartak\AppData\Local\Temp\cckiq5rl.o
                 0x9d00e7b4                __crt0_exit
 
 .text.EEPWriteImm

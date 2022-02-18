@@ -37,7 +37,6 @@ const t_SensorConfig NTC2252_B_1 = { //2252 ohm NTC on SENSEB and Vout1-
     },
 };
 
-
 const t_IronPars NoIronPars = {
     0, 
     {0x0000},
@@ -202,7 +201,7 @@ const t_IronPars Irons[] = {
                     0,                          //Offset
                     {                           //TPoly
                         0,                      //c0
-                        47.83,                  //c1 *
+                        49.65,                     //c1 *
                         0,                      //c2
                         0,                      //c3
                         0,                      //c4
@@ -343,7 +342,7 @@ const t_IronPars Irons[] = {
                     0,                          //Offset
                     {                           //TPoly
                         0,                      //c0
-                        41.85,                  //c1 *
+                        44.25,                  //c1 *
                         0,                      //c2
                         0,                      //c3
                         0,                      //c4
@@ -390,7 +389,7 @@ const t_IronPars Irons[] = {
                     0,                          //Offset
                     {                           //TPoly
                         0,                      //c0
-                        122.94,                 //c1 *
+                        123,                    //c1 *
                         0,                      //c2
                         0,                      //c3
                         0,                      //c4
@@ -437,7 +436,7 @@ const t_IronPars Irons[] = {
                     0,                          //Offset
                     {                           //TPoly
                         0,                      //c0
-                        119.3,                  //c1
+                        129,                    //c1
                         0,                      //c2
                         0,                      //c3
                         0,                      //c4
@@ -484,7 +483,7 @@ const t_IronPars Irons[] = {
                     0,                          //Offset
                     {                           //TPoly
                         0,                      //c0
-                        115.6,                  //c1 *
+                        126,                    //c1 *
                         0,                      //c2
                         0,                      //c3
                         0,                      //c4
@@ -521,7 +520,7 @@ const t_IronPars Irons[] = {
                     0,                          //Offset
                     {                           //TPoly
                         0,                      //c0
-                        115.6,                  //c1 *
+                        126,                    //c1 *
                         0,                      //c2
                         0,                      //c3
                         0,                      //c4
@@ -563,11 +562,11 @@ const t_IronPars Irons[] = {
                     },
                     0,                          //CurrentA
                     10,                         //CurrentB
-                    200,                        //Gain
+                    220,                        //Gain
                     0,                          //Offset
                     {                           //TPoly
                         0,                      //c0
-                        119.3,                  //c1
+                        126,                    //c1
                         0,                      //c2
                         0,                      //c3
                         0,                      //c4
@@ -600,11 +599,11 @@ const t_IronPars Irons[] = {
                     },
                     10,                         //CurrentA
                     0,                          //CurrentB
-                    200,                        //Gain
+                    220,                        //Gain
                     0,                          //Offset
                     {                           //TPoly
                         0,                      //c0
-                        119.3,                  //c1
+                        126,                  //c1
                         0,                      //c2
                         0,                      //c3
                         0,                      //c4
