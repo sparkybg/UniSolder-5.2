@@ -452,9 +452,9 @@ void __ISR(_OUTPUT_COMPARE_2_VECTOR,IPL5SOFT) PIDISR(void){
 }
 
 void __ISR(_INPUT_CAPTURE_1_VECTOR, IPL4SOFT) IC1ISR(void){
-    static int AInc[]={0, 4, 2, 2, 1};
+    static int AInc[]={0, 4, 2, 2, 1, 4};
     int inc;
-    if(pars.Input > 4) pars.Input = 4;
+    if(pars.Input > 5) pars.Input = 5;
     if((inc = AInc[pars.Input])){    
         if(pars.Buttons) inc =- inc;
         if(B1 != B3) inc = -inc;
@@ -464,9 +464,9 @@ void __ISR(_INPUT_CAPTURE_1_VECTOR, IPL4SOFT) IC1ISR(void){
     INTClearFlag(INT_IC1);
 }
 void __ISR(_INPUT_CAPTURE_3_VECTOR, IPL4SOFT) IC3ISR(void){
-    static int BInc[] = {0, 0, 2, 0, 1};
+    static int BInc[] = {0, 0, 2, 0, 1, 4};
     int inc;
-    if(pars.Input > 4) pars.Input = 4;
+    if(pars.Input > 5) pars.Input = 5;
     if((inc = BInc[pars.Input])){    
         if(pars.Buttons) inc =- inc;
         if(B1 == B3) inc = -inc;

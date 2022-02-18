@@ -38,7 +38,7 @@ const t_ParDef ParDef[] = {
     {"  ROTATION ",   0,       0,       1, 1,            0, StrDispRot,   &ParDispStr}, //12
     {"SENSOR FLT ",   0,       0,     255, 0,            0, 0,            &ParDispNumOff}, //13
     {" MENU DOWN ",   0,       0,       1, 0,            0, StrMenuUp,    &ParDispStr}, //14
-    {"     INPUT ",   0,       0,       4, 0,            0, 0,            0}, //15   
+    {"     INPUT ",   0,       0,       5, 0,            0, 0,            0}, //15   
     {" CALIBRATE ",   0,       0,       0, 0,            0, 0,            0}, //16
     {" INST.INFO ",   0,       0,       0, 0,            0, 0,            0}, //17
     {" TEMP.STEP ",   1,       1,      25, 0,            0, 0,            &ParDispTemp}, //18

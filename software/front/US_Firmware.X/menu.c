@@ -497,14 +497,15 @@ void OLEDTasks(int powerLost){
             "ENC-A-1PPD", 
             "ENC-AB-2PPD", 
             "ENC-A-2PPD", 
-            "ENC-AB-4PPD"
+            "ENC-AB-4PPD",
+            "ENC-AB-1PDD"
         };
 
         OLEDPrint68(13, 0, "CONTROL SELECTION", 0);
         int i;
-        for(i = 0; i <= 4; i++){
-            OLEDPrintXY88(2, i * 10 + 14, StrEncoder[i], 0);
-            if(i == pars.Input) OLEDInvertXY(0, 124, i * 10 + 12, 11);
+        for(i = 0; i <= 5; i++){
+            OLEDPrintXY88(2, i * 9 + 12, StrEncoder[i], 0);
+            if(i == pars.Input) OLEDInvertXY(0, 124, i * 9 + 11, 9);
         }
     }
     
