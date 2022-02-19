@@ -22,6 +22,7 @@
 #include "EEP.h"
 #include "OLED.h"
 #include "pars.h"
+#include "logo.h"
 
 volatile T_BOARD_VERSION BoardVersion;
 
@@ -50,14 +51,23 @@ volatile pars_t         pars;
 volatile int Enc; //Rotary encoder position
 
 int main(void){
-    int i;
     mcuInit1();
     SPKOFF;
 
-    OLEDInit();        
-    OLEDPrintNum816(0, 0, 2, 0);
+    OLEDInit();
+    
+    {
+        int i, x, y;          
+        i = 1023;
+        for(x = 0; x < 128; x++){
+            for(y = 0; y < 8; y++){
+                OLEDBUFF.B[y][x] = ~logo[i--];
+            }
+        }
+    }
+    OLEDPrintNum68(0, 0, 1, 0);
     OLEDUpdate();
-
+    
     mcuInit2();
         
     CalCh = 0;
@@ -68,6 +78,8 @@ int main(void){
     while(MAINS && !mcuDCTimerInterrupt);
 
     if(!mcuDCTimerInterrupt){
+        int i;
+        
         _delay_us(100);
         while(!MAINS && !mcuDCTimerInterrupt);
 
@@ -108,26 +120,26 @@ int main(void){
     mcuInit3();
 
     IronInit();
-    OLEDPrintNum816(0, 0, 2, 31);
+    OLEDPrintNum68(0, 0, 2, 31);
     OLEDUpdate();
     ISRInit();
-    OLEDPrintNum816(0, 0, 2, 32);
+    OLEDPrintNum68(0, 0, 2, 32);
     OLEDUpdate();
     PIDInit();
-    OLEDPrintNum816(0, 0, 2, 33);
+    OLEDPrintNum68(0, 0, 2, 33);
     OLEDUpdate();
     IOInit();
-    OLEDPrintNum816(0, 0, 2, 34);
+    OLEDPrintNum68(0, 0, 2, 34);
     OLEDUpdate();
     MenuInit();
-    OLEDPrintNum816(0, 0, 2, 35);
+    OLEDPrintNum68(0, 0, 2, 35);
     OLEDUpdate();
 
     if(mainFlags.ACPower){
         while(MAINS);
         while(!MAINS);
     }
-    OLEDPrintNum816(0, 0, 2, 36);
+    OLEDPrintNum68(0, 0, 2, 36);
     OLEDUpdate();
     
     mcuDCTimerReset();
@@ -144,24 +156,28 @@ int main(void){
     I2CData.Gain.ui16=128;
     I2CData.Offset.ui16=128;
     I2CAddCommands(I2C_SET_CPOT | I2C_SET_GAINPOT | I2C_SET_OFFSET);
-    OLEDPrintNum816(0, 0, 2, 45);
+    OLEDPrintNum68(0, 0, 2, 45);
     OLEDUpdate();
 
     LoadPars();
-    OLEDPrintNum816(0, 0, 2, 46);
+    OLEDPrintNum68(0, 0, 2, 46);
     OLEDUpdate();
 
     ISRStop();
-    OLEDPrintNum816(0, 0, 2, 47);    
+    OLEDPrintNum68(0, 0, 2, 47);    
     OLEDUpdate();
 
     mainFlags.PowerLost = 0;
     
     ISRStart();
-    OLEDPrintNum816(0, 0, 2, 48);
+    OLEDPrintNum68(0, 0, 2, 48);
     OLEDUpdate();
     
     BeepTicks = 2;
+
+    OLEDFill(0, 12, 0, 1, 0);
+    OLEDUpdate();
+    _delay_ms(1000);
 
     while(1){
         if(mainFlags.PowerLost){

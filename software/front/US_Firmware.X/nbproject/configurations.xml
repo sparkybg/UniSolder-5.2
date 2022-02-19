@@ -47,6 +47,7 @@
       <itemPath>font6x8.h</itemPath>
       <itemPath>sensorMath.h</itemPath>
       <itemPath>PIC32MX564F128H.h</itemPath>
+      <itemPath>logo.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

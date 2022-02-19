@@ -81,105 +81,105 @@ c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(memset.o)
                               build/PIC32_Standalone/production/usb/usb_device.o (memset)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-bootstrap-exception-handler.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o (_bootstrap_exception_handler)
+                              C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o (_bootstrap_exception_handler)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-on-reset.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o (_on_reset)
+                              C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o (_on_reset)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-on-bootstrap.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o (_on_bootstrap)
+                              C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o (_on_bootstrap)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-nmi-handler.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o (_nmi_handler)
+                              C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o (_nmi_handler)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(pic32_data_init.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o (__pic32_data_init)
+                              C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o (__pic32_data_init)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(general-exception.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o (_general_exception_context)
+                              C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o (_general_exception_context)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector0.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_0)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_0)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector1.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_1)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_1)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector2.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_2)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_2)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector3.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_3)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_3)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector6.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_6)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_6)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector7.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_7)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_7)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector9.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_9)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_9)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector11.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_11)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_11)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector12.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_12)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_12)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector14.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_14)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_14)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector15.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_15)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_15)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector16.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_16)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_16)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector17.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_17)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_17)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector18.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_18)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_18)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector19.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_19)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_19)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector20.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_20)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_20)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector21.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_21)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_21)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector22.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_22)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_22)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector23.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_23)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_23)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector24.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_24)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_24)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector25.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_25)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_25)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector26.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_26)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_26)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector28.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_28)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_28)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector29.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_29)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_29)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector32.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_32)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_32)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector33.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_33)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_33)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector34.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_34)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_34)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector35.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_35)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_35)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector36.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_36)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_36)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector37.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_37)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_37)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector38.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_38)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_38)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector39.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_39)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_39)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector40.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_40)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_40)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector41.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_41)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_41)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector42.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_42)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_42)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector43.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_43)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_43)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector44.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_44)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_44)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector45.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_45)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_45)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector46.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_46)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_46)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector47.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_47)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_47)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector48.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_48)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_48)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector49.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_49)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_49)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector50.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_50)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_50)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(vector51.o)
-                              C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o (__vector_dispatch_51)
+                              C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o (__vector_dispatch_51)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-general-exception-handler.o)
                               c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(general-exception.o) (_general_exception_handler)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(defaultinterrupt.o)
@@ -196,145 +196,146 @@ section                    address  length [bytes]      (dec)  Description
 .text.ISRHigh           0x9d0040e0          0xde4        3556   
 .text.PID               0x9d004ec4          0xa34        2612   
 .rodata                 0x9d0058f8         0x1134        4404  Read-only const 
-.text.I2CISRTasks       0x9d006a2c          0x548        1352   
-.text.MenuTasks         0x9d006f74          0x4ec        1260   
-.text.main              0x9d007460          0x4dc        1244   
-.text.ProcessIO         0x9d00793c          0x428        1064   
-.text.GetSensorTemperat 0x9d007d64          0x318         792   
-.rodata                 0x9d00807c          0x304         772  Read-only const 
-.text.OLEDInit          0x9d008380          0x2d4         724   
-.text.mcuInit2          0x9d008654          0x2b0         688   
-.text.IronIdentify      0x9d008904          0x294         660   
-.text.mcuInit4          0x9d008b98          0x21c         540   
-.text.OLEDPrintNum      0x9d008db4          0x210         528   
-.rodata                 0x9d008fc4          0x1f4         500  Read-only const 
-.text.IC1ISR            0x9d0091b8          0x1b8         440   
-.text.IC3ISR            0x9d009370          0x1b8         440   
-.text.mcuInit1          0x9d009528          0x1b0         432   
-.text.OLEDPrintNumXY    0x9d0096d8          0x1ac         428   
-.text.USBDeviceInit     0x9d009884          0x194         404   
-.dinit                  0x9d009a18          0x170         368   
-.text                   0x9d009b88          0x168         360  App's exec code 
-.text.OLEDPrintCF1648   0x9d009cf0          0x160         352   
-.text.GetBoardVersion   0x9d009e50          0x144         324   
-.text.ComparatorISR     0x9d009f94          0x140         320   
-.text.I2CISR            0x9d00a0d4          0x130         304   
-.text.PIDISR            0x9d00a204          0x110         272   
-.text.mcuADCStartAutoVR 0x9d00a314          0x100         256   
-.text.OLEDPrintHex      0x9d00a414           0xec         236   
-.text.OLEDPrint         0x9d00a500           0xec         236   
-.text.mcuADCStop        0x9d00a5ec           0xec         236   
-.text.OLEDPrintNum3248  0x9d00a6d8           0xe8         232   
-.text.USBCtrlEPAllowSta 0x9d00a7c0           0xe4         228   
-.text.USBCtrlTrfTxServi 0x9d00a8a4           0xe0         224   
-.text.OLEDFillXY        0x9d00a984           0xe0         224   
-.text.USBCheckHIDReques 0x9d00aa64           0xdc         220   
-.text.general_exception 0x9d00ab40           0xdc         220   
-.rodata                 0x9d00ac1c           0xd4         212  Read-only const 
-.text.USBCtrlEPAllowDat 0x9d00acf0           0xd0         208   
-.text.ISRStart          0x9d00adc0           0xd0         208   
-.text.OLEDWriteXY       0x9d00ae90           0xd0         208   
-.text.USBTransferOnePac 0x9d00af60           0xc8         200   
-.text.mcuADCReadWait    0x9d00b028           0xc4         196   
-.text.OLEDUpdate        0x9d00b0ec           0xc0         192   
-.text.SavePars          0x9d00b1ac           0xb4         180   
-.text.mcuI2CReset       0x9d00b260           0xac         172   
-.text.SpiChnOpen        0x9d00b30c           0xac         172   
-.text.OLEDInvertXY      0x9d00b3b8           0xa8         168   
-.text.LoadPars          0x9d00b460           0xa8         168   
-.text                   0x9d00b508           0xa8         168  App's exec code 
-.text.ISRInit           0x9d00b5b0           0xa0         160   
-.rodata                 0x9d00b650           0xa0         160  Read-only const 
-.text.ADCISR            0x9d00b6f0           0x9c         156   
-.text.MenuInit          0x9d00b78c           0x90         144   
-.text.DmaChnOpen        0x9d00b81c           0x90         144   
-.text.PIDTasks          0x9d00b8ac           0x84         132   
-.text                   0x9d00b930           0x84         132  App's exec code 
-.text.USBEnableEndpoint 0x9d00b9b4           0x7c         124   
-.text.OnPowerLost.part. 0x9d00ba30           0x7c         124   
-.text.mcuADCStartManual 0x9d00baac           0x7c         124   
-.text.mcuADCStartManual 0x9d00bb28           0x7c         124   
-.text.IronTasks         0x9d00bba4           0x78         120   
-.text.Timer2ISR         0x9d00bc1c           0x78         120   
-.text.OLEDPrintXY       0x9d00bc94           0x74         116   
-.text.SpiChnPutS        0x9d00bd08           0x74         116   
-.text.ISRStop           0x9d00bd7c           0x70         112   
-.text.ParDispTemp       0x9d00bdec           0x70         112   
-.text.mcuInit3          0x9d00be5c           0x70         112   
-.text.Timer1ISR         0x9d00becc           0x70         112   
-.text.DmaChnSetTxfer    0x9d00bf3c           0x68         104   
-.text.ParDispNum        0x9d00bfa4           0x64         100   
-.text.SpiChnClose       0x9d00c008           0x64         100   
-.text.SoftReset         0x9d00c06c           0x60          96   
-.text.main_entry        0x9d00c0cc           0x54          84   
-.text.PIDInit           0x9d00c120           0x50          80   
-.text.ParDispCF         0x9d00c170           0x50          80   
-.text.EEPRead           0x9d00c1c0           0x4c          76   
-.text.OLEDFill          0x9d00c20c           0x48          72   
-.rodata                 0x9d00c254           0x48          72  Read-only const 
-.text._bootstrap_except 0x9d00c29c           0x48          72   
-.text._general_exceptio 0x9d00c2e4           0x48          72   
-.vector_default         0x9d00c32c           0x48          72   
-.text.OLEDInvert        0x9d00c374           0x44          68   
-.text.mcuADCRead        0x9d00c3b8           0x44          68   
-.text                   0x9d00c3fc           0x44          68  App's exec code 
-.text.ParDispStr        0x9d00c440           0x40          64   
-.text.EEPWriteImm       0x9d00c480           0x3c          60   
-.text.ParDispNumOff     0x9d00c4bc           0x3c          60   
-.text.OLEDWrite         0x9d00c4f8           0x38          56   
-.text.INTEnableSystemMu 0x9d00c530           0x34          52   
-.text.SpiChnPutC        0x9d00c564           0x34          52   
-.text.DmaChnAbortTxfer  0x9d00c598           0x34          52   
-.text.I2CAddCommands    0x9d00c5cc           0x30          48   
-.text.IOTasks           0x9d00c5fc           0x30          48   
-.rodata                 0x9d00c62c           0x30          48  Read-only const 
-.text.I2CReceiverEnable 0x9d00c65c           0x2c          44   
-.text.I2CSetFrequency   0x9d00c688           0x2c          44   
-.text.IOInit            0x9d00c6b4           0x28          40   
-.text.mcuStartISRTimer  0x9d00c6dc           0x28          40   
-.text.mcuStopISRTimer   0x9d00c704           0x28          40   
-.text.USBCBInitEP       0x9d00c72c           0x24          36   
-.text.USER_USB_CALLBACK 0x9d00c750           0x24          36   
-.text.IronInit          0x9d00c774           0x24          36   
-.text.DmaChnDisable     0x9d00c798           0x24          36   
-.text.I2CAcknowledgeByt 0x9d00c7bc           0x24          36   
-.text.I2CEnable         0x9d00c7e0           0x24          36   
-.text.I2CSendByte       0x9d00c804           0x24          36   
-.text.I2CStart          0x9d00c828           0x24          36   
-.text.INTSetVectorPrior 0x9d00c84c           0x20          32   
-.text.INTSetVectorSubPr 0x9d00c86c           0x20          32   
-.text.DmaChnWriteEvEnab 0x9d00c88c           0x20          32   
-.text.PORTSetPinsDigita 0x9d00c8ac           0x20          32   
-.text.PORTSetPinsDigita 0x9d00c8cc           0x20          32   
-.text.mcuSqrt           0x9d00c8ec           0x1c          28   
-.text.DelayTicks        0x9d00c908           0x1c          28   
-.text.INTRestoreInterru 0x9d00c924           0x1c          28   
-.text.INTEnable         0x9d00c940           0x1c          28   
-.text.DmaChnWriteEventC 0x9d00c95c           0x1c          28   
-.text.I2CByteWasAcknowl 0x9d00c978           0x1c          28   
-.text.USBDriverInit     0x9d00c994           0x18          24   
-.text.mcuDCTimerReset   0x9d00c9ac           0x18          24   
-.text.INTClearFlag      0x9d00c9c4           0x18          24   
-.text.INTSetFlag        0x9d00c9dc           0x18          24   
-.text.SpiChnIsBusy      0x9d00c9f4           0x18          24   
-.text.DmaChnEnable      0x9d00ca0c           0x18          24   
-.text.DmaChnGetDstPnt   0x9d00ca24           0x18          24   
-.text.PORTResetPins     0x9d00ca3c           0x18          24   
-.text                   0x9d00ca54           0x18          24  App's exec code 
-.text.mcuJumpToBootLoad 0x9d00ca6c           0x14          20   
-.rodata                 0x9d00ca80           0x14          20  Read-only const 
-.text.I2CGetByte        0x9d00ca94           0x14          20   
-.text.I2CStop           0x9d00caa8           0x14          20   
-.text.mcuSPIWait        0x9d00cabc           0x10          16   
-.rodata                 0x9d00cacc           0x10          16  Read-only const 
-.text.OpenCoreTimer     0x9d00cadc            0xc          12   
-.text.ReadCoreTimer     0x9d00cae8            0x8           8   
-.text.INTEnableInterrup 0x9d00caf0            0x8           8   
-.text.INTDisableInterru 0x9d00caf8            0x8           8   
-.rodata                 0x9d00cb00            0x4           4  Read-only const 
-.text._on_reset         0x9d00cb04            0x4           4   
-.text._on_bootstrap     0x9d00cb08            0x4           4   
-      Total kseg0_program_mem used  :      0xcb0c       51980  39.7% of 0x20000
+.text.main              0x9d006a2c          0x548        1352   
+.text.I2CISRTasks       0x9d006f74          0x548        1352   
+.text.MenuTasks         0x9d0074bc          0x4ec        1260   
+.text.ProcessIO         0x9d0079a8          0x428        1064   
+.rodata                 0x9d007dd0          0x400        1024  Read-only const 
+.text.GetSensorTemperat 0x9d0081d0          0x318         792   
+.rodata                 0x9d0084e8          0x304         772  Read-only const 
+.text.OLEDInit          0x9d0087ec          0x2d4         724   
+.text.mcuInit2          0x9d008ac0          0x2b8         696   
+.text.IronIdentify      0x9d008d78          0x294         660   
+.text.mcuInit4          0x9d00900c          0x220         544   
+.text.OLEDPrintNum      0x9d00922c          0x210         528   
+.rodata                 0x9d00943c          0x1f4         500  Read-only const 
+.text.IC1ISR            0x9d009630          0x1b8         440   
+.text.IC3ISR            0x9d0097e8          0x1b8         440   
+.text.mcuInit1          0x9d0099a0          0x1b0         432   
+.text.OLEDPrintNumXY    0x9d009b50          0x1ac         428   
+.text.USBDeviceInit     0x9d009cfc          0x194         404   
+.dinit                  0x9d009e90          0x170         368   
+.text                   0x9d00a000          0x168         360  App's exec code 
+.text.OLEDPrintCF1648   0x9d00a168          0x160         352   
+.text.GetBoardVersion   0x9d00a2c8          0x144         324   
+.text.ComparatorISR     0x9d00a40c          0x140         320   
+.text.I2CISR            0x9d00a54c          0x130         304   
+.text.PIDISR            0x9d00a67c          0x110         272   
+.text.mcuADCStartAutoVR 0x9d00a78c          0x100         256   
+.text.OLEDPrintHex      0x9d00a88c           0xec         236   
+.text.OLEDPrint         0x9d00a978           0xec         236   
+.text.mcuADCStop        0x9d00aa64           0xec         236   
+.text.OLEDPrintNum3248  0x9d00ab50           0xe8         232   
+.text.USBCtrlEPAllowSta 0x9d00ac38           0xe4         228   
+.text.USBCtrlTrfTxServi 0x9d00ad1c           0xe0         224   
+.text.OLEDFillXY        0x9d00adfc           0xe0         224   
+.text.USBCheckHIDReques 0x9d00aedc           0xdc         220   
+.text.general_exception 0x9d00afb8           0xdc         220   
+.rodata                 0x9d00b094           0xd4         212  Read-only const 
+.text.USBCtrlEPAllowDat 0x9d00b168           0xd0         208   
+.text.ISRStart          0x9d00b238           0xd0         208   
+.text.OLEDWriteXY       0x9d00b308           0xd0         208   
+.text.USBTransferOnePac 0x9d00b3d8           0xc8         200   
+.text.mcuADCReadWait    0x9d00b4a0           0xc4         196   
+.text.OLEDUpdate        0x9d00b564           0xc0         192   
+.text.SavePars          0x9d00b624           0xb4         180   
+.text.mcuI2CReset       0x9d00b6d8           0xac         172   
+.text.SpiChnOpen        0x9d00b784           0xac         172   
+.text.OLEDInvertXY      0x9d00b830           0xa8         168   
+.text.LoadPars          0x9d00b8d8           0xa8         168   
+.text                   0x9d00b980           0xa8         168  App's exec code 
+.text.ISRInit           0x9d00ba28           0xa0         160   
+.rodata                 0x9d00bac8           0xa0         160  Read-only const 
+.text.ADCISR            0x9d00bb68           0x9c         156   
+.text.MenuInit          0x9d00bc04           0x90         144   
+.text.DmaChnOpen        0x9d00bc94           0x90         144   
+.text.PIDTasks          0x9d00bd24           0x84         132   
+.text                   0x9d00bda8           0x84         132  App's exec code 
+.text.USBEnableEndpoint 0x9d00be2c           0x7c         124   
+.text.OnPowerLost.part. 0x9d00bea8           0x7c         124   
+.text.mcuADCStartManual 0x9d00bf24           0x7c         124   
+.text.mcuADCStartManual 0x9d00bfa0           0x7c         124   
+.text.IronTasks         0x9d00c01c           0x78         120   
+.text.Timer2ISR         0x9d00c094           0x78         120   
+.text.OLEDPrintXY       0x9d00c10c           0x74         116   
+.text.mcuInit3          0x9d00c180           0x74         116   
+.text.SpiChnPutS        0x9d00c1f4           0x74         116   
+.text.ISRStop           0x9d00c268           0x70         112   
+.text.ParDispTemp       0x9d00c2d8           0x70         112   
+.text.Timer1ISR         0x9d00c348           0x70         112   
+.text.DmaChnSetTxfer    0x9d00c3b8           0x68         104   
+.text.ParDispNum        0x9d00c420           0x64         100   
+.text.SpiChnClose       0x9d00c484           0x64         100   
+.text.SoftReset         0x9d00c4e8           0x60          96   
+.text.main_entry        0x9d00c548           0x54          84   
+.text.PIDInit           0x9d00c59c           0x50          80   
+.text.ParDispCF         0x9d00c5ec           0x50          80   
+.text.EEPRead           0x9d00c63c           0x4c          76   
+.text.OLEDFill          0x9d00c688           0x48          72   
+.rodata                 0x9d00c6d0           0x48          72  Read-only const 
+.text._bootstrap_except 0x9d00c718           0x48          72   
+.text._general_exceptio 0x9d00c760           0x48          72   
+.vector_default         0x9d00c7a8           0x48          72   
+.text.OLEDInvert        0x9d00c7f0           0x44          68   
+.text.mcuADCRead        0x9d00c834           0x44          68   
+.text                   0x9d00c878           0x44          68  App's exec code 
+.text.ParDispStr        0x9d00c8bc           0x40          64   
+.text.EEPWriteImm       0x9d00c8fc           0x3c          60   
+.text.ParDispNumOff     0x9d00c938           0x3c          60   
+.text.OLEDWrite         0x9d00c974           0x38          56   
+.text.INTEnableSystemMu 0x9d00c9ac           0x34          52   
+.text.SpiChnPutC        0x9d00c9e0           0x34          52   
+.text.DmaChnAbortTxfer  0x9d00ca14           0x34          52   
+.text.I2CAddCommands    0x9d00ca48           0x30          48   
+.text.IOTasks           0x9d00ca78           0x30          48   
+.rodata                 0x9d00caa8           0x30          48  Read-only const 
+.text.I2CReceiverEnable 0x9d00cad8           0x2c          44   
+.text.I2CSetFrequency   0x9d00cb04           0x2c          44   
+.text.IOInit            0x9d00cb30           0x28          40   
+.text.mcuStartISRTimer  0x9d00cb58           0x28          40   
+.text.mcuStopISRTimer   0x9d00cb80           0x28          40   
+.text.USBCBInitEP       0x9d00cba8           0x24          36   
+.text.USER_USB_CALLBACK 0x9d00cbcc           0x24          36   
+.text.IronInit          0x9d00cbf0           0x24          36   
+.text.DmaChnDisable     0x9d00cc14           0x24          36   
+.text.I2CAcknowledgeByt 0x9d00cc38           0x24          36   
+.text.I2CEnable         0x9d00cc5c           0x24          36   
+.text.I2CSendByte       0x9d00cc80           0x24          36   
+.text.I2CStart          0x9d00cca4           0x24          36   
+.text.INTSetVectorPrior 0x9d00ccc8           0x20          32   
+.text.INTSetVectorSubPr 0x9d00cce8           0x20          32   
+.text.DmaChnWriteEvEnab 0x9d00cd08           0x20          32   
+.text.PORTSetPinsDigita 0x9d00cd28           0x20          32   
+.text.PORTSetPinsDigita 0x9d00cd48           0x20          32   
+.text.mcuSqrt           0x9d00cd68           0x1c          28   
+.text.DelayTicks        0x9d00cd84           0x1c          28   
+.text.INTRestoreInterru 0x9d00cda0           0x1c          28   
+.text.INTEnable         0x9d00cdbc           0x1c          28   
+.text.DmaChnWriteEventC 0x9d00cdd8           0x1c          28   
+.text.I2CByteWasAcknowl 0x9d00cdf4           0x1c          28   
+.text.USBDriverInit     0x9d00ce10           0x18          24   
+.text.mcuDCTimerReset   0x9d00ce28           0x18          24   
+.text.INTClearFlag      0x9d00ce40           0x18          24   
+.text.INTSetFlag        0x9d00ce58           0x18          24   
+.text.SpiChnIsBusy      0x9d00ce70           0x18          24   
+.text.DmaChnEnable      0x9d00ce88           0x18          24   
+.text.DmaChnGetDstPnt   0x9d00cea0           0x18          24   
+.text.PORTResetPins     0x9d00ceb8           0x18          24   
+.text                   0x9d00ced0           0x18          24  App's exec code 
+.text.mcuJumpToBootLoad 0x9d00cee8           0x14          20   
+.rodata                 0x9d00cefc           0x14          20  Read-only const 
+.text.I2CGetByte        0x9d00cf10           0x14          20   
+.text.I2CStop           0x9d00cf24           0x14          20   
+.text.mcuSPIWait        0x9d00cf38           0x10          16   
+.rodata                 0x9d00cf48           0x10          16  Read-only const 
+.text.OpenCoreTimer     0x9d00cf58            0xc          12   
+.text.ReadCoreTimer     0x9d00cf64            0x8           8   
+.text.INTEnableInterrup 0x9d00cf6c            0x8           8   
+.text.INTDisableInterru 0x9d00cf74            0x8           8   
+.rodata                 0x9d00cf7c            0x4           4  Read-only const 
+.text._on_reset         0x9d00cf80            0x4           4   
+.text._on_bootstrap     0x9d00cf84            0x4           4   
+      Total kseg0_program_mem used  :      0xcf88       53128  40.5% of 0x20000
 
 kseg0 Boot-Memory Usage
 section                    address  length [bytes]      (dec)  Description
@@ -406,7 +407,7 @@ section                    address  length [bytes]      (dec)  Description
 .bev_excpt              0xbfc00380           0x10          16  BEV-Exception 
          Total kseg1_boot_mem used  :       0x1ac         428  36.6% of 0x490
         --------------------------------------------------------------------------
-         Total Program Memory used  :      0xce68       52840  38.1% of 0x21e00
+         Total Program Memory used  :      0xd2e4       53988  38.9% of 0x21e00
         --------------------------------------------------------------------------
 
 
@@ -523,19 +524,19 @@ Discarded input sections
                 0x00000000       0x28 build/PIC32_Standalone/production/PIC32MX564F128H.o
  .text.mcuSPIStop
                 0x00000000       0x34 build/PIC32_Standalone/production/PIC32MX564F128H.o
- .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o
- .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o
- .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o
- .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o
- .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccJZCVei.o
- .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccJZCVei.o
- .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccJZCVei.o
- .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\ccJZCVei.o
- .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o
- .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o
- .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o
- .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o
- .discard       0x00000000       0xd0 C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o
+ .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o
+ .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o
+ .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o
+ .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o
+ .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\cclym7Al.o
+ .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\cclym7Al.o
+ .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\cclym7Al.o
+ .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\cclym7Al.o
+ .text          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o
+ .data          0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o
+ .bss           0x00000000        0x0 C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o
+ .reginfo       0x00000000       0x18 C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o
+ .discard       0x00000000       0xd0 C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o
  .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
  .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
  .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
@@ -1275,9 +1276,9 @@ LOAD build/PIC32_Standalone/production/pars.o
 LOAD build/PIC32_Standalone/production/sensorMath.o
 LOAD build/PIC32_Standalone/production/PIC32MX564F128H.o
                 0x00000001                __MPLAB_BUILD = 0x1
-LOAD C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o
-LOAD C:\Users\Spartak\AppData\Local\Temp\ccJZCVei.o
-LOAD C:\Users\Spartak\AppData\Local\Temp\ccARckO9.o
+LOAD C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o
+LOAD C:\Users\Spartak\AppData\Local\Temp\cclym7Al.o
+LOAD C:\Users\Spartak\AppData\Local\Temp\ccjKpBSl.o
 LOAD c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
                 0x00000400                PROVIDE (_min_stack_size, 0x400)
 START GROUP
@@ -1326,16 +1327,16 @@ END GROUP
 
 .reset          0xbfc00000      0x19c
  *(.reset)
- .reset         0xbfc00000        0x8 C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o
+ .reset         0xbfc00000        0x8 C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o
                 0xbfc00000                _reset
  *(.reset.startup)
  .reset.startup
-                0xbfc00008      0x194 C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o
+                0xbfc00008      0x194 C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o
                 0xbfc00008                _startup
 
 .bev_excpt      0xbfc00380       0x10
  *(.bev_handler)
- .bev_handler   0xbfc00380       0x10 C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o
+ .bev_handler   0xbfc00380       0x10 C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o
 
 .dbg_excpt      0xbfc00480        0x0
                 0xbfc00480                . = (. + DEFINED (_DEBUGGER)?0x8:0x0)
@@ -1345,7 +1346,7 @@ END GROUP
 
 .app_excpt      0x9fc01180       0x10
  *(.gen_handler)
- .gen_handler   0x9fc01180       0x10 C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o
+ .gen_handler   0x9fc01180       0x10 C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o
 
 .vector_0       0x9fc01200        0x8
  *(.vector_0)
@@ -2439,762 +2440,766 @@ LOAD data_init
                 0x9d006258                __IntSrcTbl
                 0x9d006774                __IntVectorTbl
 
+.text.main      0x9d006a2c      0x548
+ .text.main     0x9d006a2c      0x548 build/PIC32_Standalone/production/main.o
+                0x9d006a2d                main
+
 .text.I2CISRTasks
-                0x9d006a2c      0x548
+                0x9d006f74      0x548
  .text.I2CISRTasks
-                0x9d006a2c      0x548 build/PIC32_Standalone/production/isr.o
-                0x9d006a2d                I2CISRTasks
+                0x9d006f74      0x548 build/PIC32_Standalone/production/isr.o
+                0x9d006f75                I2CISRTasks
 
 .text.MenuTasks
-                0x9d006f74      0x4ec
+                0x9d0074bc      0x4ec
  .text.MenuTasks
-                0x9d006f74      0x4ec build/PIC32_Standalone/production/menu.o
-                0x9d006f75                MenuTasks
-
-.text.main      0x9d007460      0x4dc
- .text.main     0x9d007460      0x4dc build/PIC32_Standalone/production/main.o
-                0x9d007461                main
+                0x9d0074bc      0x4ec build/PIC32_Standalone/production/menu.o
+                0x9d0074bd                MenuTasks
 
 .text.ProcessIO
-                0x9d00793c      0x428
+                0x9d0079a8      0x428
  .text.ProcessIO
-                0x9d00793c      0x428 build/PIC32_Standalone/production/io.o
-                0x9d00793d                ProcessIO
+                0x9d0079a8      0x428 build/PIC32_Standalone/production/io.o
+                0x9d0079a9                ProcessIO
+
+.rodata         0x9d007dd0      0x400
+ .rodata        0x9d007dd0      0x400 build/PIC32_Standalone/production/main.o
+                0x9d007dd0                logo
 
 .text.GetSensorTemperature
-                0x9d007d64      0x318
+                0x9d0081d0      0x318
  .text.GetSensorTemperature
-                0x9d007d64      0x318 build/PIC32_Standalone/production/sensorMath.o
-                0x9d007d65                GetSensorTemperature
+                0x9d0081d0      0x318 build/PIC32_Standalone/production/sensorMath.o
+                0x9d0081d1                GetSensorTemperature
 
-.rodata         0x9d00807c      0x304
- .rodata        0x9d00807c      0x304 build/PIC32_Standalone/production/pars.o
-                0x9d00817c                ParDef
-                0x9d00830c                MenuOrder
+.rodata         0x9d0084e8      0x304
+ .rodata        0x9d0084e8      0x304 build/PIC32_Standalone/production/pars.o
+                0x9d0085e8                ParDef
+                0x9d008778                MenuOrder
 
-.text.OLEDInit  0x9d008380      0x2d4
+.text.OLEDInit  0x9d0087ec      0x2d4
  .text.OLEDInit
-                0x9d008380      0x2d4 build/PIC32_Standalone/production/OLED.o
-                0x9d008381                OLEDInit
+                0x9d0087ec      0x2d4 build/PIC32_Standalone/production/OLED.o
+                0x9d0087ed                OLEDInit
 
-.text.mcuInit2  0x9d008654      0x2b0
+.text.mcuInit2  0x9d008ac0      0x2b8
  .text.mcuInit2
-                0x9d008654      0x2b0 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d008655                mcuInit2
+                0x9d008ac0      0x2b8 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d008ac1                mcuInit2
 
 .text.IronIdentify
-                0x9d008904      0x294
+                0x9d008d78      0x294
  .text.IronIdentify
-                0x9d008904      0x294 build/PIC32_Standalone/production/iron.o
-                0x9d008905                IronIdentify
+                0x9d008d78      0x294 build/PIC32_Standalone/production/iron.o
+                0x9d008d79                IronIdentify
 
-.text.mcuInit4  0x9d008b98      0x21c
+.text.mcuInit4  0x9d00900c      0x220
  .text.mcuInit4
-                0x9d008b98      0x21c build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d008b99                mcuInit4
+                0x9d00900c      0x220 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00900d                mcuInit4
 
 .text.OLEDPrintNum
-                0x9d008db4      0x210
+                0x9d00922c      0x210
  .text.OLEDPrintNum
-                0x9d008db4      0x210 build/PIC32_Standalone/production/OLED.o
-                0x9d008db5                OLEDPrintNum
+                0x9d00922c      0x210 build/PIC32_Standalone/production/OLED.o
+                0x9d00922d                OLEDPrintNum
 
-.rodata         0x9d008fc4      0x1f4
- .rodata        0x9d008fc4      0x1f4 build/PIC32_Standalone/production/menu.o
+.rodata         0x9d00943c      0x1f4
+ .rodata        0x9d00943c      0x1f4 build/PIC32_Standalone/production/menu.o
 
-.text.IC1ISR    0x9d0091b8      0x1b8
- .text.IC1ISR   0x9d0091b8      0x1b8 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d0091b8                IC1ISR
+.text.IC1ISR    0x9d009630      0x1b8
+ .text.IC1ISR   0x9d009630      0x1b8 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d009630                IC1ISR
 
-.text.IC3ISR    0x9d009370      0x1b8
- .text.IC3ISR   0x9d009370      0x1b8 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d009370                IC3ISR
+.text.IC3ISR    0x9d0097e8      0x1b8
+ .text.IC3ISR   0x9d0097e8      0x1b8 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d0097e8                IC3ISR
 
-.text.mcuInit1  0x9d009528      0x1b0
+.text.mcuInit1  0x9d0099a0      0x1b0
  .text.mcuInit1
-                0x9d009528      0x1b0 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d009529                mcuInit1
+                0x9d0099a0      0x1b0 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d0099a1                mcuInit1
 
 .text.OLEDPrintNumXY
-                0x9d0096d8      0x1ac
+                0x9d009b50      0x1ac
  .text.OLEDPrintNumXY
-                0x9d0096d8      0x1ac build/PIC32_Standalone/production/OLED.o
-                0x9d0096d9                OLEDPrintNumXY
+                0x9d009b50      0x1ac build/PIC32_Standalone/production/OLED.o
+                0x9d009b51                OLEDPrintNumXY
 
 .text.USBDeviceInit
-                0x9d009884      0x194
+                0x9d009cfc      0x194
  .text.USBDeviceInit
-                0x9d009884      0x194 build/PIC32_Standalone/production/usb/usb_device.o
-                0x9d009885                USBDeviceInit
+                0x9d009cfc      0x194 build/PIC32_Standalone/production/usb/usb_device.o
+                0x9d009cfd                USBDeviceInit
 
-.dinit          0x9d009a18      0x170
- .dinit         0x9d009a18      0x170 data_init
+.dinit          0x9d009e90      0x170
+ .dinit         0x9d009e90      0x170 data_init
 
-.text           0x9d009b88      0x168
- .text          0x9d009b88      0x168 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(memcpy.o)
-                0x9d009b88                memcpy
+.text           0x9d00a000      0x168
+ .text          0x9d00a000      0x168 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(memcpy.o)
+                0x9d00a000                memcpy
 
 .text.OLEDPrintCF1648
-                0x9d009cf0      0x160
+                0x9d00a168      0x160
  .text.OLEDPrintCF1648
-                0x9d009cf0      0x160 build/PIC32_Standalone/production/OLED.o
-                0x9d009cf1                OLEDPrintCF1648
+                0x9d00a168      0x160 build/PIC32_Standalone/production/OLED.o
+                0x9d00a169                OLEDPrintCF1648
 
 .text.GetBoardVersion
-                0x9d009e50      0x144
+                0x9d00a2c8      0x144
  .text.GetBoardVersion
-                0x9d009e50      0x144 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d009e51                GetBoardVersion
+                0x9d00a2c8      0x144 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00a2c9                GetBoardVersion
 
 .text.ComparatorISR
-                0x9d009f94      0x140
+                0x9d00a40c      0x140
  .text.ComparatorISR
-                0x9d009f94      0x140 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d009f94                ComparatorISR
+                0x9d00a40c      0x140 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00a40c                ComparatorISR
 
-.text.I2CISR    0x9d00a0d4      0x130
- .text.I2CISR   0x9d00a0d4      0x130 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00a0d4                I2CISR
+.text.I2CISR    0x9d00a54c      0x130
+ .text.I2CISR   0x9d00a54c      0x130 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00a54c                I2CISR
 
-.text.PIDISR    0x9d00a204      0x110
- .text.PIDISR   0x9d00a204      0x110 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00a204                PIDISR
+.text.PIDISR    0x9d00a67c      0x110
+ .text.PIDISR   0x9d00a67c      0x110 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00a67c                PIDISR
 
 .text.mcuADCStartAutoVRef
-                0x9d00a314      0x100
+                0x9d00a78c      0x100
  .text.mcuADCStartAutoVRef
-                0x9d00a314      0x100 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00a315                mcuADCStartAutoVRef
+                0x9d00a78c      0x100 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00a78d                mcuADCStartAutoVRef
 
 .text.OLEDPrintHex
-                0x9d00a414       0xec
+                0x9d00a88c       0xec
  .text.OLEDPrintHex
-                0x9d00a414       0xec build/PIC32_Standalone/production/OLED.o
-                0x9d00a415                OLEDPrintHex
+                0x9d00a88c       0xec build/PIC32_Standalone/production/OLED.o
+                0x9d00a88d                OLEDPrintHex
 
 .text.OLEDPrint
-                0x9d00a500       0xec
+                0x9d00a978       0xec
  .text.OLEDPrint
-                0x9d00a500       0xec build/PIC32_Standalone/production/OLED.o
-                0x9d00a501                OLEDPrint
+                0x9d00a978       0xec build/PIC32_Standalone/production/OLED.o
+                0x9d00a979                OLEDPrint
 
 .text.mcuADCStop
-                0x9d00a5ec       0xec
+                0x9d00aa64       0xec
  .text.mcuADCStop
-                0x9d00a5ec       0xec build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00a5ed                mcuADCStop
+                0x9d00aa64       0xec build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00aa65                mcuADCStop
 
 .text.OLEDPrintNum3248
-                0x9d00a6d8       0xe8
+                0x9d00ab50       0xe8
  .text.OLEDPrintNum3248
-                0x9d00a6d8       0xe8 build/PIC32_Standalone/production/OLED.o
-                0x9d00a6d9                OLEDPrintNum3248
+                0x9d00ab50       0xe8 build/PIC32_Standalone/production/OLED.o
+                0x9d00ab51                OLEDPrintNum3248
 
 .text.USBCtrlEPAllowStatusStage
-                0x9d00a7c0       0xe4
+                0x9d00ac38       0xe4
  .text.USBCtrlEPAllowStatusStage
-                0x9d00a7c0       0xe4 build/PIC32_Standalone/production/usb/usb_device.o
-                0x9d00a7c1                USBCtrlEPAllowStatusStage
+                0x9d00ac38       0xe4 build/PIC32_Standalone/production/usb/usb_device.o
+                0x9d00ac39                USBCtrlEPAllowStatusStage
 
 .text.USBCtrlTrfTxService
-                0x9d00a8a4       0xe0
+                0x9d00ad1c       0xe0
  .text.USBCtrlTrfTxService
-                0x9d00a8a4       0xe0 build/PIC32_Standalone/production/usb/usb_device.o
+                0x9d00ad1c       0xe0 build/PIC32_Standalone/production/usb/usb_device.o
 
 .text.OLEDFillXY
-                0x9d00a984       0xe0
+                0x9d00adfc       0xe0
  .text.OLEDFillXY
-                0x9d00a984       0xe0 build/PIC32_Standalone/production/OLED.o
-                0x9d00a985                OLEDFillXY
+                0x9d00adfc       0xe0 build/PIC32_Standalone/production/OLED.o
+                0x9d00adfd                OLEDFillXY
 
 .text.USBCheckHIDRequest
-                0x9d00aa64       0xdc
+                0x9d00aedc       0xdc
  .text.USBCheckHIDRequest
-                0x9d00aa64       0xdc build/PIC32_Standalone/production/usb/usb_function_hid.o
-                0x9d00aa65                USBCheckHIDRequest
+                0x9d00aedc       0xdc build/PIC32_Standalone/production/usb/usb_function_hid.o
+                0x9d00aedd                USBCheckHIDRequest
 
 .text.general_exception
-                0x9d00ab40       0xdc
+                0x9d00afb8       0xdc
  .text.general_exception
-                0x9d00ab40       0xdc c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(general-exception.o)
-                0x9d00ab40                _general_exception_context
+                0x9d00afb8       0xdc c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(general-exception.o)
+                0x9d00afb8                _general_exception_context
 
-.rodata         0x9d00ac1c       0xd4
- .rodata        0x9d00ac1c       0xd4 build/PIC32_Standalone/production/usb/usb_descriptors.o
-                0x9d00ac1c                USB_SD_Ptr
-                0x9d00ac28                USB_CD_Ptr
-                0x9d00ac2c                hid_rpt01
-                0x9d00ac48                sd002
-                0x9d00ac78                sd001
-                0x9d00acac                sd000
-                0x9d00acb0                configDescriptor1
-                0x9d00acdc                device_dsc
+.rodata         0x9d00b094       0xd4
+ .rodata        0x9d00b094       0xd4 build/PIC32_Standalone/production/usb/usb_descriptors.o
+                0x9d00b094                USB_SD_Ptr
+                0x9d00b0a0                USB_CD_Ptr
+                0x9d00b0a4                hid_rpt01
+                0x9d00b0c0                sd002
+                0x9d00b0f0                sd001
+                0x9d00b124                sd000
+                0x9d00b128                configDescriptor1
+                0x9d00b154                device_dsc
 
 .text.USBCtrlEPAllowDataStage
-                0x9d00acf0       0xd0
+                0x9d00b168       0xd0
  .text.USBCtrlEPAllowDataStage
-                0x9d00acf0       0xd0 build/PIC32_Standalone/production/usb/usb_device.o
-                0x9d00acf1                USBCtrlEPAllowDataStage
+                0x9d00b168       0xd0 build/PIC32_Standalone/production/usb/usb_device.o
+                0x9d00b169                USBCtrlEPAllowDataStage
 
-.text.ISRStart  0x9d00adc0       0xd0
+.text.ISRStart  0x9d00b238       0xd0
  .text.ISRStart
-                0x9d00adc0       0xd0 build/PIC32_Standalone/production/isr.o
-                0x9d00adc1                ISRStart
+                0x9d00b238       0xd0 build/PIC32_Standalone/production/isr.o
+                0x9d00b239                ISRStart
 
 .text.OLEDWriteXY
-                0x9d00ae90       0xd0
+                0x9d00b308       0xd0
  .text.OLEDWriteXY
-                0x9d00ae90       0xd0 build/PIC32_Standalone/production/OLED.o
-                0x9d00ae91                OLEDWriteXY
+                0x9d00b308       0xd0 build/PIC32_Standalone/production/OLED.o
+                0x9d00b309                OLEDWriteXY
 
 .text.USBTransferOnePacket
-                0x9d00af60       0xc8
+                0x9d00b3d8       0xc8
  .text.USBTransferOnePacket
-                0x9d00af60       0xc8 build/PIC32_Standalone/production/usb/usb_device.o
-                0x9d00af61                USBTransferOnePacket
+                0x9d00b3d8       0xc8 build/PIC32_Standalone/production/usb/usb_device.o
+                0x9d00b3d9                USBTransferOnePacket
 
 .text.mcuADCReadWait
-                0x9d00b028       0xc4
+                0x9d00b4a0       0xc4
  .text.mcuADCReadWait
-                0x9d00b028       0xc4 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00b029                mcuADCReadWait
+                0x9d00b4a0       0xc4 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00b4a1                mcuADCReadWait
 
 .text.OLEDUpdate
-                0x9d00b0ec       0xc0
+                0x9d00b564       0xc0
  .text.OLEDUpdate
-                0x9d00b0ec       0xc0 build/PIC32_Standalone/production/OLED.o
-                0x9d00b0ed                OLEDUpdate
+                0x9d00b564       0xc0 build/PIC32_Standalone/production/OLED.o
+                0x9d00b565                OLEDUpdate
 
-.text.SavePars  0x9d00b1ac       0xb4
+.text.SavePars  0x9d00b624       0xb4
  .text.SavePars
-                0x9d00b1ac       0xb4 build/PIC32_Standalone/production/pars.o
-                0x9d00b1ad                SavePars
+                0x9d00b624       0xb4 build/PIC32_Standalone/production/pars.o
+                0x9d00b625                SavePars
 
 .text.mcuI2CReset
-                0x9d00b260       0xac
+                0x9d00b6d8       0xac
  .text.mcuI2CReset
-                0x9d00b260       0xac build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00b261                mcuI2CReset
+                0x9d00b6d8       0xac build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00b6d9                mcuI2CReset
 
 .text.SpiChnOpen
-                0x9d00b30c       0xac
+                0x9d00b784       0xac
  .text.SpiChnOpen
-                0x9d00b30c       0xac c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_chn_open_lib.o)
-                0x9d00b30d                SpiChnOpen
+                0x9d00b784       0xac c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_chn_open_lib.o)
+                0x9d00b785                SpiChnOpen
 
 .text.OLEDInvertXY
-                0x9d00b3b8       0xa8
+                0x9d00b830       0xa8
  .text.OLEDInvertXY
-                0x9d00b3b8       0xa8 build/PIC32_Standalone/production/OLED.o
-                0x9d00b3b9                OLEDInvertXY
+                0x9d00b830       0xa8 build/PIC32_Standalone/production/OLED.o
+                0x9d00b831                OLEDInvertXY
 
-.text.LoadPars  0x9d00b460       0xa8
+.text.LoadPars  0x9d00b8d8       0xa8
  .text.LoadPars
-                0x9d00b460       0xa8 build/PIC32_Standalone/production/pars.o
-                0x9d00b461                LoadPars
+                0x9d00b8d8       0xa8 build/PIC32_Standalone/production/pars.o
+                0x9d00b8d9                LoadPars
 
-.text           0x9d00b508       0xa8
- .text          0x9d00b508       0xa8 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(memset.o)
-                0x9d00b508                memset
+.text           0x9d00b980       0xa8
+ .text          0x9d00b980       0xa8 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(memset.o)
+                0x9d00b980                memset
 
-.text.ISRInit   0x9d00b5b0       0xa0
- .text.ISRInit  0x9d00b5b0       0xa0 build/PIC32_Standalone/production/isr.o
-                0x9d00b5b1                ISRInit
+.text.ISRInit   0x9d00ba28       0xa0
+ .text.ISRInit  0x9d00ba28       0xa0 build/PIC32_Standalone/production/isr.o
+                0x9d00ba29                ISRInit
 
-.rodata         0x9d00b650       0xa0
- .rodata        0x9d00b650       0xa0 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_io_tbl_libp.o)
-                0x9d00b650                _SpiIoTbl
+.rodata         0x9d00bac8       0xa0
+ .rodata        0x9d00bac8       0xa0 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_io_tbl_libp.o)
+                0x9d00bac8                _SpiIoTbl
 
-.text.ADCISR    0x9d00b6f0       0x9c
- .text.ADCISR   0x9d00b6f0       0x9c build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00b6f0                ADCISR
+.text.ADCISR    0x9d00bb68       0x9c
+ .text.ADCISR   0x9d00bb68       0x9c build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00bb68                ADCISR
 
-.text.MenuInit  0x9d00b78c       0x90
+.text.MenuInit  0x9d00bc04       0x90
  .text.MenuInit
-                0x9d00b78c       0x90 build/PIC32_Standalone/production/menu.o
-                0x9d00b78d                MenuInit
+                0x9d00bc04       0x90 build/PIC32_Standalone/production/menu.o
+                0x9d00bc05                MenuInit
 
 .text.DmaChnOpen
-                0x9d00b81c       0x90
+                0x9d00bc94       0x90
  .text.DmaChnOpen
-                0x9d00b81c       0x90 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_open_lib.o)
-                0x9d00b81d                DmaChnOpen
+                0x9d00bc94       0x90 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_open_lib.o)
+                0x9d00bc95                DmaChnOpen
 
-.text.PIDTasks  0x9d00b8ac       0x84
+.text.PIDTasks  0x9d00bd24       0x84
  .text.PIDTasks
-                0x9d00b8ac       0x84 build/PIC32_Standalone/production/PID.o
-                0x9d00b8ad                PIDTasks
+                0x9d00bd24       0x84 build/PIC32_Standalone/production/PID.o
+                0x9d00bd25                PIDTasks
 
-.text           0x9d00b930       0x84
- .text          0x9d00b930       0x84 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(pic32_data_init.o)
-                0x9d00b930                __pic32_data_init
+.text           0x9d00bda8       0x84
+ .text          0x9d00bda8       0x84 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(pic32_data_init.o)
+                0x9d00bda8                __pic32_data_init
 
 .text.USBEnableEndpoint
-                0x9d00b9b4       0x7c
+                0x9d00be2c       0x7c
  .text.USBEnableEndpoint
-                0x9d00b9b4       0x7c build/PIC32_Standalone/production/usb/usb_device.o
-                0x9d00b9b5                USBEnableEndpoint
+                0x9d00be2c       0x7c build/PIC32_Standalone/production/usb/usb_device.o
+                0x9d00be2d                USBEnableEndpoint
 
 .text.OnPowerLost.part.0
-                0x9d00ba30       0x7c
+                0x9d00bea8       0x7c
  .text.OnPowerLost.part.0
-                0x9d00ba30       0x7c build/PIC32_Standalone/production/isr.o
+                0x9d00bea8       0x7c build/PIC32_Standalone/production/isr.o
 
 .text.mcuADCStartManualVRef
-                0x9d00baac       0x7c
+                0x9d00bf24       0x7c
  .text.mcuADCStartManualVRef
-                0x9d00baac       0x7c build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00baad                mcuADCStartManualVRef
+                0x9d00bf24       0x7c build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00bf25                mcuADCStartManualVRef
 
 .text.mcuADCStartManualAVdd
-                0x9d00bb28       0x7c
+                0x9d00bfa0       0x7c
  .text.mcuADCStartManualAVdd
-                0x9d00bb28       0x7c build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00bb29                mcuADCStartManualAVdd
+                0x9d00bfa0       0x7c build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00bfa1                mcuADCStartManualAVdd
 
 .text.IronTasks
-                0x9d00bba4       0x78
+                0x9d00c01c       0x78
  .text.IronTasks
-                0x9d00bba4       0x78 build/PIC32_Standalone/production/iron.o
-                0x9d00bba5                IronTasks
+                0x9d00c01c       0x78 build/PIC32_Standalone/production/iron.o
+                0x9d00c01d                IronTasks
 
 .text.Timer2ISR
-                0x9d00bc1c       0x78
+                0x9d00c094       0x78
  .text.Timer2ISR
-                0x9d00bc1c       0x78 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00bc1c                Timer2ISR
+                0x9d00c094       0x78 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00c094                Timer2ISR
 
 .text.OLEDPrintXY
-                0x9d00bc94       0x74
+                0x9d00c10c       0x74
  .text.OLEDPrintXY
-                0x9d00bc94       0x74 build/PIC32_Standalone/production/OLED.o
-                0x9d00bc95                OLEDPrintXY
+                0x9d00c10c       0x74 build/PIC32_Standalone/production/OLED.o
+                0x9d00c10d                OLEDPrintXY
+
+.text.mcuInit3  0x9d00c180       0x74
+ .text.mcuInit3
+                0x9d00c180       0x74 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00c181                mcuInit3
 
 .text.SpiChnPutS
-                0x9d00bd08       0x74
+                0x9d00c1f4       0x74
  .text.SpiChnPutS
-                0x9d00bd08       0x74 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_chn_puts_lib.o)
-                0x9d00bd09                SpiChnPutS
+                0x9d00c1f4       0x74 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_chn_puts_lib.o)
+                0x9d00c1f5                SpiChnPutS
 
-.text.ISRStop   0x9d00bd7c       0x70
- .text.ISRStop  0x9d00bd7c       0x70 build/PIC32_Standalone/production/isr.o
-                0x9d00bd7d                ISRStop
+.text.ISRStop   0x9d00c268       0x70
+ .text.ISRStop  0x9d00c268       0x70 build/PIC32_Standalone/production/isr.o
+                0x9d00c269                ISRStop
 
 .text.ParDispTemp
-                0x9d00bdec       0x70
+                0x9d00c2d8       0x70
  .text.ParDispTemp
-                0x9d00bdec       0x70 build/PIC32_Standalone/production/pars.o
-                0x9d00bded                ParDispTemp
-
-.text.mcuInit3  0x9d00be5c       0x70
- .text.mcuInit3
-                0x9d00be5c       0x70 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00be5d                mcuInit3
+                0x9d00c2d8       0x70 build/PIC32_Standalone/production/pars.o
+                0x9d00c2d9                ParDispTemp
 
 .text.Timer1ISR
-                0x9d00becc       0x70
+                0x9d00c348       0x70
  .text.Timer1ISR
-                0x9d00becc       0x70 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00becc                Timer1ISR
+                0x9d00c348       0x70 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00c348                Timer1ISR
 
 .text.DmaChnSetTxfer
-                0x9d00bf3c       0x68
+                0x9d00c3b8       0x68
  .text.DmaChnSetTxfer
-                0x9d00bf3c       0x68 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_set_txfer_lib.o)
-                0x9d00bf3d                DmaChnSetTxfer
+                0x9d00c3b8       0x68 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_set_txfer_lib.o)
+                0x9d00c3b9                DmaChnSetTxfer
 
 .text.ParDispNum
-                0x9d00bfa4       0x64
+                0x9d00c420       0x64
  .text.ParDispNum
-                0x9d00bfa4       0x64 build/PIC32_Standalone/production/pars.o
-                0x9d00bfa5                ParDispNum
+                0x9d00c420       0x64 build/PIC32_Standalone/production/pars.o
+                0x9d00c421                ParDispNum
 
 .text.SpiChnClose
-                0x9d00c008       0x64
+                0x9d00c484       0x64
  .text.SpiChnClose
-                0x9d00c008       0x64 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_chn_close_lib.o)
-                0x9d00c009                SpiChnClose
+                0x9d00c484       0x64 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_chn_close_lib.o)
+                0x9d00c485                SpiChnClose
 
 .text.SoftReset
-                0x9d00c06c       0x60
+                0x9d00c4e8       0x60
  .text.SoftReset
-                0x9d00c06c       0x60 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(soft_reset_lib.o)
-                0x9d00c06d                SoftReset
+                0x9d00c4e8       0x60 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(soft_reset_lib.o)
+                0x9d00c4e9                SoftReset
 
 .text.main_entry
-                0x9d00c0cc       0x54
+                0x9d00c548       0x54
  .text.main_entry
-                0x9d00c0cc       0x54 C:\Users\Spartak\AppData\Local\Temp\ccK7O2Dv.o
-                0x9d00c100                __crt0_exit
+                0x9d00c548       0x54 C:\Users\Spartak\AppData\Local\Temp\ccoEiyzf.o
+                0x9d00c57c                __crt0_exit
 
-.text.PIDInit   0x9d00c120       0x50
- .text.PIDInit  0x9d00c120       0x50 build/PIC32_Standalone/production/PID.o
-                0x9d00c121                PIDInit
+.text.PIDInit   0x9d00c59c       0x50
+ .text.PIDInit  0x9d00c59c       0x50 build/PIC32_Standalone/production/PID.o
+                0x9d00c59d                PIDInit
 
 .text.ParDispCF
-                0x9d00c170       0x50
+                0x9d00c5ec       0x50
  .text.ParDispCF
-                0x9d00c170       0x50 build/PIC32_Standalone/production/pars.o
-                0x9d00c171                ParDispCF
+                0x9d00c5ec       0x50 build/PIC32_Standalone/production/pars.o
+                0x9d00c5ed                ParDispCF
 
-.text.EEPRead   0x9d00c1c0       0x4c
- .text.EEPRead  0x9d00c1c0       0x4c build/PIC32_Standalone/production/EEP.o
-                0x9d00c1c1                EEPRead
+.text.EEPRead   0x9d00c63c       0x4c
+ .text.EEPRead  0x9d00c63c       0x4c build/PIC32_Standalone/production/EEP.o
+                0x9d00c63d                EEPRead
 
-.text.OLEDFill  0x9d00c20c       0x48
+.text.OLEDFill  0x9d00c688       0x48
  .text.OLEDFill
-                0x9d00c20c       0x48 build/PIC32_Standalone/production/OLED.o
-                0x9d00c20d                OLEDFill
+                0x9d00c688       0x48 build/PIC32_Standalone/production/OLED.o
+                0x9d00c689                OLEDFill
 
-.rodata         0x9d00c254       0x48
- .rodata        0x9d00c254       0x48 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(_ports_tbl_libp.o)
-                0x9d00c254                PortRegTbl
+.rodata         0x9d00c6d0       0x48
+ .rodata        0x9d00c6d0       0x48 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(_ports_tbl_libp.o)
+                0x9d00c6d0                PortRegTbl
 
 .text._bootstrap_exception_handler
-                0x9d00c29c       0x48
+                0x9d00c718       0x48
  .text._bootstrap_exception_handler
-                0x9d00c29c       0x48 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-bootstrap-exception-handler.o)
-                0x9d00c29c                _bootstrap_exception_handler
+                0x9d00c718       0x48 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-bootstrap-exception-handler.o)
+                0x9d00c718                _bootstrap_exception_handler
 
 .text._general_exception_handler
-                0x9d00c2e4       0x48
+                0x9d00c760       0x48
  .text._general_exception_handler
-                0x9d00c2e4       0x48 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-general-exception-handler.o)
-                0x9d00c2e4                _general_exception_handler
+                0x9d00c760       0x48 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-general-exception-handler.o)
+                0x9d00c760                _general_exception_handler
 
 .vector_default
-                0x9d00c32c       0x48
+                0x9d00c7a8       0x48
  .vector_default
-                0x9d00c32c       0x48 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(defaultinterrupt.o)
-                0x9d00c32c                _DefaultInterrupt
+                0x9d00c7a8       0x48 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(defaultinterrupt.o)
+                0x9d00c7a8                _DefaultInterrupt
 
 .text.OLEDInvert
-                0x9d00c374       0x44
+                0x9d00c7f0       0x44
  .text.OLEDInvert
-                0x9d00c374       0x44 build/PIC32_Standalone/production/OLED.o
-                0x9d00c375                OLEDInvert
+                0x9d00c7f0       0x44 build/PIC32_Standalone/production/OLED.o
+                0x9d00c7f1                OLEDInvert
 
 .text.mcuADCRead
-                0x9d00c3b8       0x44
+                0x9d00c834       0x44
  .text.mcuADCRead
-                0x9d00c3b8       0x44 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00c3b9                mcuADCRead
+                0x9d00c834       0x44 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00c835                mcuADCRead
 
-.text           0x9d00c3fc       0x44
- .text          0x9d00c3fc       0x44 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
-                0x9d00c3fc                __pic32_software_reset
+.text           0x9d00c878       0x44
+ .text          0x9d00c878       0x44 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\pic32_software_reset.o
+                0x9d00c878                __pic32_software_reset
 
 .text.ParDispStr
-                0x9d00c440       0x40
+                0x9d00c8bc       0x40
  .text.ParDispStr
-                0x9d00c440       0x40 build/PIC32_Standalone/production/pars.o
-                0x9d00c441                ParDispStr
+                0x9d00c8bc       0x40 build/PIC32_Standalone/production/pars.o
+                0x9d00c8bd                ParDispStr
 
 .text.EEPWriteImm
-                0x9d00c480       0x3c
+                0x9d00c8fc       0x3c
  .text.EEPWriteImm
-                0x9d00c480       0x3c build/PIC32_Standalone/production/EEP.o
-                0x9d00c481                EEPWriteImm
+                0x9d00c8fc       0x3c build/PIC32_Standalone/production/EEP.o
+                0x9d00c8fd                EEPWriteImm
 
 .text.ParDispNumOff
-                0x9d00c4bc       0x3c
+                0x9d00c938       0x3c
  .text.ParDispNumOff
-                0x9d00c4bc       0x3c build/PIC32_Standalone/production/pars.o
-                0x9d00c4bd                ParDispNumOff
+                0x9d00c938       0x3c build/PIC32_Standalone/production/pars.o
+                0x9d00c939                ParDispNumOff
 
 .text.OLEDWrite
-                0x9d00c4f8       0x38
+                0x9d00c974       0x38
  .text.OLEDWrite
-                0x9d00c4f8       0x38 build/PIC32_Standalone/production/OLED.o
-                0x9d00c4f9                OLEDWrite
+                0x9d00c974       0x38 build/PIC32_Standalone/production/OLED.o
+                0x9d00c975                OLEDWrite
 
 .text.INTEnableSystemMultiVectoredInt
-                0x9d00c530       0x34
+                0x9d00c9ac       0x34
  .text.INTEnableSystemMultiVectoredInt
-                0x9d00c530       0x34 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_enable_mv_int_lib.o)
-                0x9d00c530                INTEnableSystemMultiVectoredInt
+                0x9d00c9ac       0x34 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_enable_mv_int_lib.o)
+                0x9d00c9ac                INTEnableSystemMultiVectoredInt
 
 .text.SpiChnPutC
-                0x9d00c564       0x34
+                0x9d00c9e0       0x34
  .text.SpiChnPutC
-                0x9d00c564       0x34 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_chn_putc_lib.o)
-                0x9d00c565                SpiChnPutC
+                0x9d00c9e0       0x34 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_chn_putc_lib.o)
+                0x9d00c9e1                SpiChnPutC
 
 .text.DmaChnAbortTxfer
-                0x9d00c598       0x34
+                0x9d00ca14       0x34
  .text.DmaChnAbortTxfer
-                0x9d00c598       0x34 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_abort_txfer_lib.o)
-                0x9d00c599                DmaChnAbortTxfer
+                0x9d00ca14       0x34 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_abort_txfer_lib.o)
+                0x9d00ca15                DmaChnAbortTxfer
 
 .text.I2CAddCommands
-                0x9d00c5cc       0x30
+                0x9d00ca48       0x30
  .text.I2CAddCommands
-                0x9d00c5cc       0x30 build/PIC32_Standalone/production/isr.o
-                0x9d00c5cd                I2CAddCommands
+                0x9d00ca48       0x30 build/PIC32_Standalone/production/isr.o
+                0x9d00ca49                I2CAddCommands
 
-.text.IOTasks   0x9d00c5fc       0x30
- .text.IOTasks  0x9d00c5fc       0x30 build/PIC32_Standalone/production/io.o
-                0x9d00c5fd                IOTasks
+.text.IOTasks   0x9d00ca78       0x30
+ .text.IOTasks  0x9d00ca78       0x30 build/PIC32_Standalone/production/io.o
+                0x9d00ca79                IOTasks
 
-.rodata         0x9d00c62c       0x30
- .rodata        0x9d00c62c       0x30 build/PIC32_Standalone/production/PIC32MX564F128H.o
+.rodata         0x9d00caa8       0x30
+ .rodata        0x9d00caa8       0x30 build/PIC32_Standalone/production/PIC32MX564F128H.o
 
 .text.I2CReceiverEnable
-                0x9d00c65c       0x2c
+                0x9d00cad8       0x2c
  .text.I2CReceiverEnable
-                0x9d00c65c       0x2c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CReceiverEnable.o)
-                0x9d00c65d                I2CReceiverEnable
+                0x9d00cad8       0x2c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CReceiverEnable.o)
+                0x9d00cad9                I2CReceiverEnable
 
 .text.I2CSetFrequency
-                0x9d00c688       0x2c
+                0x9d00cb04       0x2c
  .text.I2CSetFrequency
-                0x9d00c688       0x2c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CSetFrequency.o)
-                0x9d00c689                I2CSetFrequency
+                0x9d00cb04       0x2c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CSetFrequency.o)
+                0x9d00cb05                I2CSetFrequency
 
-.text.IOInit    0x9d00c6b4       0x28
- .text.IOInit   0x9d00c6b4       0x28 build/PIC32_Standalone/production/io.o
-                0x9d00c6b5                IOInit
+.text.IOInit    0x9d00cb30       0x28
+ .text.IOInit   0x9d00cb30       0x28 build/PIC32_Standalone/production/io.o
+                0x9d00cb31                IOInit
 
 .text.mcuStartISRTimer
-                0x9d00c6dc       0x28
+                0x9d00cb58       0x28
  .text.mcuStartISRTimer
-                0x9d00c6dc       0x28 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00c6dd                mcuStartISRTimer
+                0x9d00cb58       0x28 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00cb59                mcuStartISRTimer
 
 .text.mcuStopISRTimer
-                0x9d00c704       0x28
+                0x9d00cb80       0x28
  .text.mcuStopISRTimer
-                0x9d00c704       0x28 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00c705                mcuStopISRTimer
+                0x9d00cb80       0x28 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00cb81                mcuStopISRTimer
 
 .text.USBCBInitEP
-                0x9d00c72c       0x24
+                0x9d00cba8       0x24
  .text.USBCBInitEP
-                0x9d00c72c       0x24 build/PIC32_Standalone/production/usb/usb_driver.o
-                0x9d00c72d                USBCBInitEP
+                0x9d00cba8       0x24 build/PIC32_Standalone/production/usb/usb_driver.o
+                0x9d00cba9                USBCBInitEP
 
 .text.USER_USB_CALLBACK_EVENT_HANDLER
-                0x9d00c750       0x24
+                0x9d00cbcc       0x24
  .text.USER_USB_CALLBACK_EVENT_HANDLER
-                0x9d00c750       0x24 build/PIC32_Standalone/production/usb/usb_driver.o
-                0x9d00c751                USER_USB_CALLBACK_EVENT_HANDLER
+                0x9d00cbcc       0x24 build/PIC32_Standalone/production/usb/usb_driver.o
+                0x9d00cbcd                USER_USB_CALLBACK_EVENT_HANDLER
 
-.text.IronInit  0x9d00c774       0x24
+.text.IronInit  0x9d00cbf0       0x24
  .text.IronInit
-                0x9d00c774       0x24 build/PIC32_Standalone/production/iron.o
-                0x9d00c775                IronInit
+                0x9d00cbf0       0x24 build/PIC32_Standalone/production/iron.o
+                0x9d00cbf1                IronInit
 
 .text.DmaChnDisable
-                0x9d00c798       0x24
+                0x9d00cc14       0x24
  .text.DmaChnDisable
-                0x9d00c798       0x24 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_disable_lib.o)
-                0x9d00c799                DmaChnDisable
+                0x9d00cc14       0x24 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_disable_lib.o)
+                0x9d00cc15                DmaChnDisable
 
 .text.I2CAcknowledgeByte
-                0x9d00c7bc       0x24
+                0x9d00cc38       0x24
  .text.I2CAcknowledgeByte
-                0x9d00c7bc       0x24 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CAcknowledgeByte.o)
-                0x9d00c7bd                I2CAcknowledgeByte
+                0x9d00cc38       0x24 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CAcknowledgeByte.o)
+                0x9d00cc39                I2CAcknowledgeByte
 
 .text.I2CEnable
-                0x9d00c7e0       0x24
+                0x9d00cc5c       0x24
  .text.I2CEnable
-                0x9d00c7e0       0x24 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CEnable.o)
-                0x9d00c7e1                I2CEnable
+                0x9d00cc5c       0x24 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CEnable.o)
+                0x9d00cc5d                I2CEnable
 
 .text.I2CSendByte
-                0x9d00c804       0x24
+                0x9d00cc80       0x24
  .text.I2CSendByte
-                0x9d00c804       0x24 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CSendByte.o)
-                0x9d00c805                I2CSendByte
+                0x9d00cc80       0x24 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CSendByte.o)
+                0x9d00cc81                I2CSendByte
 
-.text.I2CStart  0x9d00c828       0x24
+.text.I2CStart  0x9d00cca4       0x24
  .text.I2CStart
-                0x9d00c828       0x24 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CStart.o)
-                0x9d00c829                I2CStart
+                0x9d00cca4       0x24 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CStart.o)
+                0x9d00cca5                I2CStart
 
 .text.INTSetVectorPriority
-                0x9d00c84c       0x20
+                0x9d00ccc8       0x20
  .text.INTSetVectorPriority
-                0x9d00c84c       0x20 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_tbl_lib.o)
-                0x9d00c84d                INTSetVectorPriority
+                0x9d00ccc8       0x20 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_tbl_lib.o)
+                0x9d00ccc9                INTSetVectorPriority
 
 .text.INTSetVectorSubPriority
-                0x9d00c86c       0x20
+                0x9d00cce8       0x20
  .text.INTSetVectorSubPriority
-                0x9d00c86c       0x20 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_tbl_lib.o)
-                0x9d00c86d                INTSetVectorSubPriority
+                0x9d00cce8       0x20 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_tbl_lib.o)
+                0x9d00cce9                INTSetVectorSubPriority
 
 .text.DmaChnWriteEvEnableFlags
-                0x9d00c88c       0x20
+                0x9d00cd08       0x20
  .text.DmaChnWriteEvEnableFlags
-                0x9d00c88c       0x20 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_write_ev_enable_flags_lib.o)
-                0x9d00c88d                DmaChnWriteEvEnableFlags
+                0x9d00cd08       0x20 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_write_ev_enable_flags_lib.o)
+                0x9d00cd09                DmaChnWriteEvEnableFlags
 
 .text.PORTSetPinsDigitalIn
-                0x9d00c8ac       0x20
+                0x9d00cd28       0x20
  .text.PORTSetPinsDigitalIn
-                0x9d00c8ac       0x20 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(port_set_pins_digital_in_lib.o)
-                0x9d00c8ad                PORTSetPinsDigitalIn
+                0x9d00cd28       0x20 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(port_set_pins_digital_in_lib.o)
+                0x9d00cd29                PORTSetPinsDigitalIn
 
 .text.PORTSetPinsDigitalOut
-                0x9d00c8cc       0x20
+                0x9d00cd48       0x20
  .text.PORTSetPinsDigitalOut
-                0x9d00c8cc       0x20 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(port_set_pins_digital_out_lib.o)
-                0x9d00c8cd                PORTSetPinsDigitalOut
+                0x9d00cd48       0x20 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(port_set_pins_digital_out_lib.o)
+                0x9d00cd49                PORTSetPinsDigitalOut
 
-.text.mcuSqrt   0x9d00c8ec       0x1c
- .text.mcuSqrt  0x9d00c8ec       0x1c build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00c8ed                mcuSqrt
+.text.mcuSqrt   0x9d00cd68       0x1c
+ .text.mcuSqrt  0x9d00cd68       0x1c build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00cd69                mcuSqrt
 
 .text.DelayTicks
-                0x9d00c908       0x1c
+                0x9d00cd84       0x1c
  .text.DelayTicks
-                0x9d00c908       0x1c build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00c909                DelayTicks
+                0x9d00cd84       0x1c build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00cd85                DelayTicks
 
 .text.INTRestoreInterrupts
-                0x9d00c924       0x1c
+                0x9d00cda0       0x1c
  .text.INTRestoreInterrupts
-                0x9d00c924       0x1c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_restore_interrupts_lib.o)
-                0x9d00c924                INTRestoreInterrupts
+                0x9d00cda0       0x1c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_restore_interrupts_lib.o)
+                0x9d00cda0                INTRestoreInterrupts
 
 .text.INTEnable
-                0x9d00c940       0x1c
+                0x9d00cdbc       0x1c
  .text.INTEnable
-                0x9d00c940       0x1c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_tbl_lib.o)
-                0x9d00c941                INTEnable
+                0x9d00cdbc       0x1c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_tbl_lib.o)
+                0x9d00cdbd                INTEnable
 
 .text.DmaChnWriteEventControlFlags
-                0x9d00c95c       0x1c
+                0x9d00cdd8       0x1c
  .text.DmaChnWriteEventControlFlags
-                0x9d00c95c       0x1c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_write_event_control_flags_lib.o)
-                0x9d00c95d                DmaChnWriteEventControlFlags
+                0x9d00cdd8       0x1c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_write_event_control_flags_lib.o)
+                0x9d00cdd9                DmaChnWriteEventControlFlags
 
 .text.I2CByteWasAcknowledged
-                0x9d00c978       0x1c
+                0x9d00cdf4       0x1c
  .text.I2CByteWasAcknowledged
-                0x9d00c978       0x1c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CByteWasAcknowledged.o)
-                0x9d00c979                I2CByteWasAcknowledged
+                0x9d00cdf4       0x1c c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CByteWasAcknowledged.o)
+                0x9d00cdf5                I2CByteWasAcknowledged
 
 .text.USBDriverInit
-                0x9d00c994       0x18
+                0x9d00ce10       0x18
  .text.USBDriverInit
-                0x9d00c994       0x18 build/PIC32_Standalone/production/usb/usb_driver.o
-                0x9d00c995                USBDriverInit
+                0x9d00ce10       0x18 build/PIC32_Standalone/production/usb/usb_driver.o
+                0x9d00ce11                USBDriverInit
 
 .text.mcuDCTimerReset
-                0x9d00c9ac       0x18
+                0x9d00ce28       0x18
  .text.mcuDCTimerReset
-                0x9d00c9ac       0x18 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00c9ad                mcuDCTimerReset
+                0x9d00ce28       0x18 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00ce29                mcuDCTimerReset
 
 .text.INTClearFlag
-                0x9d00c9c4       0x18
+                0x9d00ce40       0x18
  .text.INTClearFlag
-                0x9d00c9c4       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_tbl_lib.o)
-                0x9d00c9c5                INTClearFlag
+                0x9d00ce40       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_tbl_lib.o)
+                0x9d00ce41                INTClearFlag
 
 .text.INTSetFlag
-                0x9d00c9dc       0x18
+                0x9d00ce58       0x18
  .text.INTSetFlag
-                0x9d00c9dc       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_tbl_lib.o)
-                0x9d00c9dd                INTSetFlag
+                0x9d00ce58       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_tbl_lib.o)
+                0x9d00ce59                INTSetFlag
 
 .text.SpiChnIsBusy
-                0x9d00c9f4       0x18
+                0x9d00ce70       0x18
  .text.SpiChnIsBusy
-                0x9d00c9f4       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_chn_is_busy_lib.o)
-                0x9d00c9f5                SpiChnIsBusy
+                0x9d00ce70       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_chn_is_busy_lib.o)
+                0x9d00ce71                SpiChnIsBusy
 
 .text.DmaChnEnable
-                0x9d00ca0c       0x18
+                0x9d00ce88       0x18
  .text.DmaChnEnable
-                0x9d00ca0c       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_enable_lib.o)
-                0x9d00ca0d                DmaChnEnable
+                0x9d00ce88       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_enable_lib.o)
+                0x9d00ce89                DmaChnEnable
 
 .text.DmaChnGetDstPnt
-                0x9d00ca24       0x18
+                0x9d00cea0       0x18
  .text.DmaChnGetDstPnt
-                0x9d00ca24       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_get_dst_pnt_lib.o)
-                0x9d00ca25                DmaChnGetDstPnt
+                0x9d00cea0       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_chn_get_dst_pnt_lib.o)
+                0x9d00cea1                DmaChnGetDstPnt
 
 .text.PORTResetPins
-                0x9d00ca3c       0x18
+                0x9d00ceb8       0x18
  .text.PORTResetPins
-                0x9d00ca3c       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(port_reset_pins_lib.o)
-                0x9d00ca3d                PORTResetPins
+                0x9d00ceb8       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(port_reset_pins_lib.o)
+                0x9d00ceb9                PORTResetPins
 
-.text           0x9d00ca54       0x18
- .text          0x9d00ca54       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-nmi-handler.o)
-                0x9d00ca54                _nmi_handler
+.text           0x9d00ced0       0x18
+ .text          0x9d00ced0       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-nmi-handler.o)
+                0x9d00ced0                _nmi_handler
 
 .text.mcuJumpToBootLoader
-                0x9d00ca6c       0x14
+                0x9d00cee8       0x14
  .text.mcuJumpToBootLoader
-                0x9d00ca6c       0x14 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00ca6d                mcuJumpToBootLoader
+                0x9d00cee8       0x14 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00cee9                mcuJumpToBootLoader
 
-.rodata         0x9d00ca80       0x14
- .rodata        0x9d00ca80       0x14 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_map_tbl_libp.o)
-                0x9d00ca80                _SpiMapTbl
+.rodata         0x9d00cefc       0x14
+ .rodata        0x9d00cefc       0x14 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(spi_map_tbl_libp.o)
+                0x9d00cefc                _SpiMapTbl
 
 .text.I2CGetByte
-                0x9d00ca94       0x14
+                0x9d00cf10       0x14
  .text.I2CGetByte
-                0x9d00ca94       0x14 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CGetByte.o)
-                0x9d00ca95                I2CGetByte
+                0x9d00cf10       0x14 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CGetByte.o)
+                0x9d00cf11                I2CGetByte
 
-.text.I2CStop   0x9d00caa8       0x14
- .text.I2CStop  0x9d00caa8       0x14 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CStop.o)
-                0x9d00caa9                I2CStop
+.text.I2CStop   0x9d00cf24       0x14
+ .text.I2CStop  0x9d00cf24       0x14 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CStop.o)
+                0x9d00cf25                I2CStop
 
 .text.mcuSPIWait
-                0x9d00cabc       0x10
+                0x9d00cf38       0x10
  .text.mcuSPIWait
-                0x9d00cabc       0x10 build/PIC32_Standalone/production/PIC32MX564F128H.o
-                0x9d00cabd                mcuSPIWait
+                0x9d00cf38       0x10 build/PIC32_Standalone/production/PIC32MX564F128H.o
+                0x9d00cf39                mcuSPIWait
 
-.rodata         0x9d00cacc       0x10
- .rodata        0x9d00cacc       0x10 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CPrivate.o)
-                0x9d00cacc                i2cBase
+.rodata         0x9d00cf48       0x10
+ .rodata        0x9d00cf48       0x10 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(I2CPrivate.o)
+                0x9d00cf48                i2cBase
 
 .text.OpenCoreTimer
-                0x9d00cadc        0xc
+                0x9d00cf58        0xc
  .text.OpenCoreTimer
-                0x9d00cadc        0xc c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral.a(open_core_timer_lib.o)
-                0x9d00cadc                OpenCoreTimer
+                0x9d00cf58        0xc c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral.a(open_core_timer_lib.o)
+                0x9d00cf58                OpenCoreTimer
 
 .text.ReadCoreTimer
-                0x9d00cae8        0x8
+                0x9d00cf64        0x8
  .text.ReadCoreTimer
-                0x9d00cae8        0x8 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral.a(read_core_timer_lib.o)
-                0x9d00cae8                ReadCoreTimer
+                0x9d00cf64        0x8 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral.a(read_core_timer_lib.o)
+                0x9d00cf64                ReadCoreTimer
 
 .text.INTEnableInterrupts
-                0x9d00caf0        0x8
+                0x9d00cf6c        0x8
  .text.INTEnableInterrupts
-                0x9d00caf0        0x8 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_enable_interrupts_lib.o)
-                0x9d00caf0                INTEnableInterrupts
+                0x9d00cf6c        0x8 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_enable_interrupts_lib.o)
+                0x9d00cf6c                INTEnableInterrupts
 
 .text.INTDisableInterrupts
-                0x9d00caf8        0x8
+                0x9d00cf74        0x8
  .text.INTDisableInterrupts
-                0x9d00caf8        0x8 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_disable_interrupts_lib.o)
-                0x9d00caf8                INTDisableInterrupts
+                0x9d00cf74        0x8 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(int_disable_interrupts_lib.o)
+                0x9d00cf74                INTDisableInterrupts
 
-.rodata         0x9d00cb00        0x4
- .rodata        0x9d00cb00        0x4 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_reg_map_tbl_lib.o)
-                0x9d00cb00                _DmaMapTbl
+.rodata         0x9d00cf7c        0x4
+ .rodata        0x9d00cf7c        0x4 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libmchp_peripheral_32MX564F128H.a(dma_reg_map_tbl_lib.o)
+                0x9d00cf7c                _DmaMapTbl
 
 .text._on_reset
-                0x9d00cb04        0x4
+                0x9d00cf80        0x4
  .text._on_reset
-                0x9d00cb04        0x4 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-on-reset.o)
-                0x9d00cb05                _on_reset
+                0x9d00cf80        0x4 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-on-reset.o)
+                0x9d00cf81                _on_reset
 
 .text._on_bootstrap
-                0x9d00cb08        0x4
+                0x9d00cf84        0x4
  .text._on_bootstrap
-                0x9d00cb08        0x4 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-on-bootstrap.o)
-                0x9d00cb09                _on_bootstrap
+                0x9d00cf84        0x4 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/mips16\libpic32.a(default-on-bootstrap.o)
+                0x9d00cf85                _on_bootstrap

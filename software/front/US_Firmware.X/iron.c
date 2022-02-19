@@ -342,7 +342,7 @@ const t_IronPars Irons[] = {
                     0,                          //Offset
                     {                           //TPoly
                         0,                      //c0
-                        44.25,                  //c1 *
+                        42.85,                  //c1 *
                         0,                      //c2
                         0,                      //c3
                         0,                      //c4

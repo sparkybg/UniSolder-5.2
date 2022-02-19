@@ -118,60 +118,60 @@ void mcuInit1(){
 }
 
 void mcuInit2(){
-    OLEDPrintNum816(0, 0, 2, 10);
+    OLEDPrintNum68(0, 0, 2, 10);
     OLEDUpdate();
     
     OpenTimer3(T3_ON | T3_IDLE_STOP | T3_GATE_OFF | T3_PS_1_256 | T3_SOURCE_INT, 40);
-    OLEDPrintNum816(0, 0, 2, 11);
+    OLEDPrintNum68(0, 0, 2, 11);
     OLEDUpdate();
     
     OpenOC1(OC_OFF | OC_IDLE_STOP | OC_TIMER_MODE16 | OC_TIMER3_SRC | OC_PWM_FAULT_PIN_DISABLE, 0x20, 0);
-    OLEDPrintNum816(0, 0, 2, 12);
+    OLEDPrintNum68(0, 0, 2, 12);
     OLEDUpdate();
     
     DmaEnable(1);
-    OLEDPrintNum816(0, 0, 2, 13);
+    OLEDPrintNum68(0, 0, 2, 13);
     OLEDUpdate();
     
     I2CEnable(I2C4, FALSE);
-    OLEDPrintNum816(0, 0, 2, 14);
+    OLEDPrintNum68(0, 0, 2, 14);
     
     mcuI2CReset();
-    OLEDPrintNum816(0, 0, 2, 15);
+    OLEDPrintNum68(0, 0, 2, 15);
     OLEDUpdate();
     
     I2CSetFrequency(I2C4, PER_FREQ, 400000);
-    OLEDPrintNum816(0, 0, 2, 16);
+    OLEDPrintNum68(0, 0, 2, 16);
     OLEDUpdate();
     
     I2CEnable(I2C4,TRUE);
-    OLEDPrintNum816(0, 0, 2, 17);
+    OLEDPrintNum68(0, 0, 2, 17);
     OLEDUpdate();
 
     CVREFOpen(CVREF_ENABLE | CVREF_OUTPUT_DISABLE | CVREF_RANGE_HIGH | CVREF_SOURCE_VREF);
-    OLEDPrintNum816(0, 0, 2, 18);
+    OLEDPrintNum68(0, 0, 2, 18);
     OLEDUpdate();
     
     COMPREF = 2; //(3*(0.25+2/32))*6 = 5.625V on Vin
     CMP2Open(CMP_STOP_IN_IDLE | CMP_ENABLE | CMP_OUTPUT_DISABLE | CMP_OUTPUT_INVERT | CMP_EVENT_HIGH_TO_LOW | CMP_POS_INPUT_CVREF | CMP2_NEG_INPUT_C2IN_NEG);
-    OLEDPrintNum816(0, 0, 2, 19);
+    OLEDPrintNum68(0, 0, 2, 19);
     OLEDUpdate();
         
-    OLEDPrintNum816(0, 0, 2, 20);
+    OLEDPrintNum68(0, 0, 2, 20);
     OLEDUpdate();
     
     OpenTimer1(T1_ON | T1_IDLE_STOP | T1_TMWDIS_OFF | T1_GATE_OFF | T1_PS_1_256 | T1_SYNC_EXT_OFF | T1_SOURCE_INT,0xFFFF);
     ConfigIntTimer1(T1_INT_OFF | T1_INT_PRIOR_7 | T1_INT_SUB_PRIOR_3);
     _delay_ms(100);
     
-    OLEDPrintNum816(0, 0, 2, 21);
+    OLEDPrintNum68(0, 0, 2, 21);
     OLEDUpdate();
 }
 
 void mcuInit3(){
     CloseTimer1();
     OpenTimer1(T1_ON | T1_IDLE_STOP | T1_TMWDIS_OFF | T1_GATE_OFF | T1_PS_1_256 | T1_SYNC_EXT_OFF | T1_SOURCE_INT, T_PER);
-    OLEDPrintNum816(0, 0, 2, 22);
+    OLEDPrintNum68(0, 0, 2, 22);
     OLEDUpdate();
 }
 
@@ -195,18 +195,18 @@ void mcuInit4(){
     INTEnable(INT_OC2,INT_ENABLED);
     ConfigIntCapture1(IC_INT_ON | IC_INT_PRIOR_4 | IC_INT_SUB_PRIOR_3);
     ConfigIntCapture3(IC_INT_ON | IC_INT_PRIOR_4 | IC_INT_SUB_PRIOR_3);    
-    OLEDPrintNum816(0, 0, 2, 41);
+    OLEDPrintNum68(0, 0, 2, 41);
     OLEDUpdate();
 
     mcuInitISRTimer();
     
     OpenCapture1(IC_ON | IC_CAP_32BIT | IC_INT_1CAPTURE | IC_EVERY_EDGE);
     OpenCapture3(IC_ON | IC_CAP_32BIT | IC_INT_1CAPTURE | IC_EVERY_EDGE);
-    OLEDPrintNum816(0, 0, 2, 42);
+    OLEDPrintNum68(0, 0, 2, 42);
     OLEDUpdate();
     
     INTEnableSystemMultiVectoredInt();
-    OLEDPrintNum816(0, 0, 2, 43);
+    OLEDPrintNum68(0, 0, 2, 43);
     OLEDUpdate();
 }
 
