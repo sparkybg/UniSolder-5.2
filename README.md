@@ -125,11 +125,20 @@ My intention was to build the most universal soldering controller I can think of
 - 300ohm between ID and Vout1-
 - 110ohm between ID and Vout2-
 
-## How to build the firmware
+## How to build & load the firmware
 
 - Download MPLAB X IDE 4.20 (IDE)
 - Download & install XC32 v2.50 (compiler)
 - Download & install pic32 legacy peripheral libraries in C:\Program Files\Microchip\xc32\v2.50
-- Check instructions at https://github.com/cv007/XC3216/blob/master/xc32xc16-info.txt
+- Check instructions at https://github.com/cv007/XC3216/blob/master/xc32xc16-info.txt for specs file (if needed)
 - Open project from IDE
+- Build / Build Project
+- Load the produced HEX file using the Windows Unisolder application
+
+## How to build Windows tools
+
+- Install Visual Studio 2022 Community Edition with Desktop .net application workload
+- Open Solution file in /software/PC
+- Build All
+- Run UniSolder project
 

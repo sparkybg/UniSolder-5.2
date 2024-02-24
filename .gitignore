@@ -8,3 +8,5 @@ software/PC/SSComm/bin/Debug/
 software/front/US_Firmware.X/dist/PIC32_Standalone/production/
 .vs/
 *.Up2Date
+bin/
+obj/
