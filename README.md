@@ -124,3 +124,12 @@ My intention was to build the most universal soldering controller I can think of
 - Heater/PTC positive (black wire) connected to Vout1+ and SENSEA
 - 300ohm between ID and Vout1-
 - 110ohm between ID and Vout2-
+
+## How to build the firmware
+
+- Download MPLAB X IDE 4.20 (IDE)
+- Download & install XC32 v2.50 (compiler)
+- Download & install pic32 legacy peripheral libraries in C:\Program Files\Microchip\xc32\v2.50
+- Check instructions at https://github.com/cv007/XC3216/blob/master/xc32xc16-info.txt
+- Open project from IDE
+
