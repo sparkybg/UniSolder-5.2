@@ -2,6 +2,7 @@
 Control almost any low voltage soldering instrument
 
 [![Windows Unisolder application](https://github.com/PBrunot/UniSolder-5.2/actions/workflows/build-windows.yaml/badge.svg)](https://github.com/PBrunot/UniSolder-5.2/actions/workflows/build-windows.yaml)
+[![Unisolder firmware](https://github.com/PBrunot/UniSolder-5.2/actions/workflows/build-firmware.yaml/badge.svg)](https://github.com/PBrunot/UniSolder-5.2/actions/workflows/build-firmware.yaml)
 
 <img width=500 align="center" src="/img/UniSolder52_small.jpg"/>
 
@@ -127,7 +128,9 @@ My intention was to build the most universal soldering controller I can think of
 - 300ohm between ID and Vout1-
 - 110ohm between ID and Vout2-
 
-## How to build & load the firmware
+## Building instructions
+
+### How to build & load the firmware on Windows
 
 - Download MPLAB X IDE 4.20 (IDE)
 - Download & install XC32 v2.50 (compiler)
@@ -137,10 +140,14 @@ My intention was to build the most universal soldering controller I can think of
 - Build / Build Project
 - Load the produced HEX file using the Windows Unisolder application
 
-## How to build Windows tools
+### How to build Windows tools on Windows
 
 - Install Visual Studio 2022 Community Edition with Desktop .net application workload
 - Open Solution file in /software/PC
 - Build All
 - Run UniSolder project
 
+### Using github actions
+
+- Fork the repository
+- Go to Actions, run manually the workflows and download the produced artifacts
