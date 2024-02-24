@@ -1,6 +1,8 @@
 # UniSolder - The universal soldering controller  ![License CC-BY-4.0](https://img.shields.io/badge/License-CC--BY--4.0-green.svg)
 Control almost any low voltage soldering instrument
 
+[![Windows Unisolder application](https://github.com/PBrunot/UniSolder-5.2/actions/workflows/build-windows.yaml/badge.svg)](https://github.com/PBrunot/UniSolder-5.2/actions/workflows/build-windows.yaml)
+
 <img width=500 align="center" src="/img/UniSolder52_small.jpg"/>
 
 My intention was to build the most universal soldering controller I can think of. It can drive any low voltage (upto 24V) iron with thermocouple or resistive sensor, in series with the heater, or separate.

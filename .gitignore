@@ -10,3 +10,7 @@ software/front/US_Firmware.X/dist/PIC32_Standalone/production/
 *.Up2Date
 bin/
 obj/
+software/front/US_Firmware.X/build/PIC32_with_bootloader/debug/
+software/front/US_Firmware.X/dist/PIC32_with_bootloader/debug/
+*.deploy
+software/PC/UniSolder/publish/
