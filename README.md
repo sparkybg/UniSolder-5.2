@@ -151,4 +151,3 @@ My intention was to build the most universal soldering controller I can think of
 
 - Fork the repository
 - Go to Actions, run manually the workflows and download the produced artifacts
-- By default, build workflows run on new tag

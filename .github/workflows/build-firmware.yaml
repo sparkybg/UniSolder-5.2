@@ -1,10 +1,7 @@
 name: Build Unisolder firmware
-on:
+on: 
   workflow_dispatch:
-  push:
-    tags:
-      - '*'
-
+   
 jobs:
   build:
     name: Build project PIC32_with_bootloader

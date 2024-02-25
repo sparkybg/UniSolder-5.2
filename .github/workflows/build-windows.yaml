@@ -4,9 +4,6 @@ name: Windows Unisolder application
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - '*'
 
 jobs:
   build:
