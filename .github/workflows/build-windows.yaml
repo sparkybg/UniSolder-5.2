@@ -3,6 +3,7 @@
 name: Windows Unisolder application
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - '*'
@@ -20,7 +21,7 @@ jobs:
       run: msbuild /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath=bin/Release /p:DeployOnBuild=true /p:PublishProfile=Properties\PublishProfiles\UnisolderApp.pubxml /p:PublishDir=bin/Release /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:publishUrl=bin/Release /p:VisualStudioVersion=16.0 /p:DeployDefaultTarget=WebPublish
     # Archive the build
     - name: Archive build
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
-        name: UnisolderApp
+        name: Unisolder-WindowsApp
         path: software/PC/UniSolder/bin/Release
