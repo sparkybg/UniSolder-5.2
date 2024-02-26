@@ -712,7 +712,7 @@ const t_IronPars Irons[] = {
 
     {
         0, 
-        {0x1803},
+        {0x180C},
         "WELLER WSP80            ",
         {
             {
