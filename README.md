@@ -116,7 +116,7 @@ My intention was to build the most universal soldering controller I can think of
 - Outer shell, PTC negative  and heater negative (white, black and brown wires) connected to EARTH, Vout1- and SENSEB
 - Heater positive (blue wire) connected to Vout1+
 - PTC positive (red wire) connected to SENSEA
-- 120ohm between ID and Vout1-
+- 330ohm between ID and Vout1- (WARNING: in FW version <= 1.0 this R value was 120 ohms)
 - 5.6k between ID and Vout2-
 
 ### 9. ERSA RT80:
