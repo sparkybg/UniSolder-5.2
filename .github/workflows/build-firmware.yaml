@@ -1,0 +1,29 @@
+name: Build Unisolder firmware
+on: 
+  workflow_dispatch:
+   
+jobs:
+  build:
+    name: Build project PIC32_with_bootloader
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source
+        uses: actions/checkout@v4
+      - name: Dump current directory
+        run: |
+          echo ${{ github.workspace }}
+      - name: Change directory
+        run: cd software/front
+      # Currently, only PIC32_with_bootloader is building on Linux
+      - name: Build PIC32_with_bootloader
+        uses: PBrunot/ghactions-mplabx@master
+        with:
+          project: software/front/US_Firmware.X
+          configuration: PIC32_with_bootloader
+      # Archive the build output
+      - name: Archive build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: PIC32_with_bootloader
+          path: ${{ github.workspace }}/software/front/US_Firmware.X/dist/PIC32_with_bootloader/production
+          if-no-files-found: error

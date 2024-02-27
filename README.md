@@ -1,6 +1,9 @@
 # UniSolder - The universal soldering controller  ![License CC-BY-4.0](https://img.shields.io/badge/License-CC--BY--4.0-green.svg)
 Control almost any low voltage soldering instrument
 
+[![Windows Unisolder application](https://github.com/PBrunot/UniSolder-5.2/actions/workflows/build-windows.yaml/badge.svg)](https://github.com/PBrunot/UniSolder-5.2/actions/workflows/build-windows.yaml)
+[![Unisolder firmware](https://github.com/PBrunot/UniSolder-5.2/actions/workflows/build-firmware.yaml/badge.svg)](https://github.com/PBrunot/UniSolder-5.2/actions/workflows/build-firmware.yaml)
+
 <img width=500 align="center" src="/img/UniSolder52_small.jpg"/>
 
 My intention was to build the most universal soldering controller I can think of. It can drive any low voltage (upto 24V) iron with thermocouple or resistive sensor, in series with the heater, or separate.
@@ -124,3 +127,27 @@ My intention was to build the most universal soldering controller I can think of
 - Heater/PTC positive (black wire) connected to Vout1+ and SENSEA
 - 300ohm between ID and Vout1-
 - 110ohm between ID and Vout2-
+
+## Building instructions
+
+### How to build & load the firmware on Windows
+
+- Download MPLAB X IDE 4.20 (IDE)
+- Download & install XC32 v2.50 (compiler)
+- Download & install pic32 legacy peripheral libraries in C:\Program Files\Microchip\xc32\v2.50
+- Check instructions at https://github.com/cv007/XC3216/blob/master/xc32xc16-info.txt for specs file (if needed)
+- Open project from IDE
+- Build / Build Project
+- Load the produced HEX file using the Windows Unisolder application
+
+### How to build Windows tools on Windows
+
+- Install Visual Studio 2022 Community Edition with Desktop .net application workload
+- Open Solution file in /software/PC
+- Build All
+- Run UniSolder project
+
+### Using github actions
+
+- Fork the repository
+- Go to Actions, run manually the workflows and download the produced artifacts

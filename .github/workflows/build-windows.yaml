@@ -1,0 +1,24 @@
+# Build the software/PC dotnet applications
+
+name: Windows Unisolder application
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v2
+    # Build the application
+    - name: Build with MSBuild
+      working-directory: software/PC
+      run: msbuild /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath=bin/Release /p:DeployOnBuild=true /p:PublishProfile=Properties\PublishProfiles\UnisolderApp.pubxml /p:PublishDir=bin/Release /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:publishUrl=bin/Release /p:VisualStudioVersion=16.0 /p:DeployDefaultTarget=WebPublish
+    # Archive the build
+    - name: Archive build
+      uses: actions/upload-artifact@v4
+      with:
+        name: Unisolder-WindowsApp
+        path: software/PC/UniSolder/bin/Release
