@@ -37,7 +37,7 @@ My intention was to build the most universal soldering controller I can think of
 - WELLER WSP80 (PTC) (This iron was sent to me by a reader of the thread for a previous version of the controller. Thanks, Jaroslaw)
 - WELLER WMRT (2 separate heaters, each with separate TC)
 - ERSA RT80 (series PTC/heater resistance)
-- ATTEN GT-N100 hot tweezers
+- ATTEN GT-N100 hot tweezers (2 separate heaters, each with series TC)
 - various chinese cheap irons with separate TC
 
 ### Some movies:
