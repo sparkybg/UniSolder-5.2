@@ -37,6 +37,7 @@ My intention was to build the most universal soldering controller I can think of
 - WELLER WSP80 (PTC) (This iron was sent to me by a reader of the thread for a previous version of the controller. Thanks, Jaroslaw)
 - WELLER WMRT (2 separate heaters, each with separate TC)
 - ERSA RT80 (series PTC/heater resistance)
+- ATTEN GT-N100 hot tweezers
 - various chinese cheap irons with separate TC
 
 ### Some movies:
@@ -127,6 +128,15 @@ My intention was to build the most universal soldering controller I can think of
 - Heater/PTC positive (black wire) connected to Vout1+ and SENSEA
 - 300ohm between ID and Vout1-
 - 110ohm between ID and Vout2-
+
+### 10. ATTEN GT-N100:
+ - Outer shell of both tips (black wire) connected to EARTH
+ - Vout1- and Vout2- connected to each other
+ - Heater 1 negative (white wire) connected to Vout1-/Vout2-
+ - Heater 1 positive (blue wire) connected to Vout1+ and SENSEA
+ - Heater 2 negative (brown wire) connected to Vout1-/Vout2-
+ - Heater 2 positive (red wire) connected to Vout2+ and SENSEB
+ - 200 ohm between ID and Vout1-/Vout2-
 
 ## Building instructions
 
