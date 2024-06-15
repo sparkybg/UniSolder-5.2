@@ -180,7 +180,7 @@ void OLEDTasks(int powerLost){
                         ModeTicks = 100;
                         if(EncDiff){
                             int ctt = TTemp;
-                            ctt += EncDiff * pars.TempStep;;
+                            ctt += EncDiff * pars.TempStep;
                             EncDiff = 0;
                             if(ctt < MINTEMP) ctt = MINTEMP;
                             if(ctt > MAXTEMP) ctt = MAXTEMP;
@@ -254,7 +254,7 @@ void OLEDTasks(int powerLost){
                                 case 17: //Instrument info
                                     CMode=INSTRUMENT_INFO;
                                     break;
-                                case 19: //Version info
+                                case 20: //Version info
                                     CMode=VERSION_INFO;
                                     break;
                                 default:
