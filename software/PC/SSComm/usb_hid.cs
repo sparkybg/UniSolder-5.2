@@ -8,8 +8,6 @@ using Microsoft.VisualBasic;
 using Microsoft.Win32.SafeHandles;
 using System.Runtime.Remoting.Messaging;
 
-using LibUsbDotNet;
-using LibUsbDotNet.Main;
 
 namespace SSComm
 {
@@ -31,12 +29,6 @@ namespace SSComm
 
         public event EventHandler DataReceived;
 
-        private UsbDevice MyUSBDevice;
-        private UsbDeviceFinder MyUSBDeviceFinder;
-        private IUsbDevice WholeUSBDevice;
-        private UsbEndpointWriter MyUSBWriter;
-        private UsbEndpointReader MyUSBReader;
-        private UsbSetupPacket MyUSBSetupPacket;
 
         private byte[] RXFIFO = new byte[RXFIFOSIZE];
         private Int32 RXReadPos;
@@ -47,7 +39,7 @@ namespace SSComm
         private Int32 TXWritePos;
 
         private System.Threading.Thread bkThread;
-        private bool bkThExit;
+        private volatile bool bkThExit;
         private ManualResetEvent bkThInterript = new ManualResetEvent(false);
 
         private Hid MyHid = new Hid();
@@ -59,7 +51,6 @@ namespace SSComm
         private string myDevicePathName;
 
         private byte[] rxBuffer;
-        private byte[] txBuffer;
 
         private object ThisLock = new Object();
 
@@ -113,8 +104,7 @@ namespace SSComm
                     if (hidHandleR.IsInvalid || hidHandleW.IsInvalid)
                     {
                         Connected = false;
-                        hidFSR.Close();
-                        hidFSW.Close();
+                        Log.Error("USB HID: device found but cannot be opened (Win32 error " + Marshal.GetLastWin32Error() + "), path " + myDevicePathName);
                         if (!hidHandleR.IsInvalid) hidHandleR.Close();
                         if (!hidHandleW.IsInvalid) hidHandleW.Close();
                     }
@@ -130,6 +120,7 @@ namespace SSComm
                         bkThExit = false;
                         bkThread.Start();
                         Connected = true;
+                        Log.Info("USB HID: connected VID=0x" + DevVID.ToString("X4") + " PID=0x" + DevPID.ToString("X4") + " in/out report " + MyHid.Capabilities.InputReportByteLength + "/" + MyHid.Capabilities.OutputReportByteLength + " bytes, path " + myDevicePathName);
                     }
                 }
             }
@@ -165,8 +156,10 @@ namespace SSComm
                     }
                     hidFSR.BeginRead(rxBuffer, 0, rxBuffer.Length, new AsyncCallback(ReadCallback), rxBuffer);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    //an exception after a deliberate Disconnect() (stream closed) is expected, not an error
+                    if (Connected) Log.Error("USB HID: read failed, disconnecting (device removed?)", ex);
                     Disconnect();
                 }
             }
@@ -175,11 +168,16 @@ namespace SSComm
 
         public void Disconnect()
         {
+            //cleared first so the read callback failing on the closed stream knows the disconnect is deliberate
+            bool wasConnected = Connected;
+            Connected = false;
+            if (wasConnected) Log.Info("USB HID: disconnecting, " + lBytesSent + " bytes sent, " + lBytesReceived + " received");
             if (bkThread != null)
             {
                 bkThExit = true;
                 bkThInterript.Set();
-                if (bkThread.ThreadState == System.Threading.ThreadState.Running) bkThread.Join();
+                //the thread is normally blocked in WaitOne (WaitSleepJoin), wait for it to exit before closing the streams
+                if (bkThread.IsAlive && bkThread != Thread.CurrentThread) bkThread.Join(1000);
             }
             bkThread = null;
             lock (ThisLock)
@@ -322,31 +320,6 @@ namespace SSComm
             Disconnect();
         }
 
-        private void MyUSBReader_DataReceived(object sender, LibUsbDotNet.Main.EndpointDataEventArgs e)
-        {
-            Int32 i;
-            if (e.Count > 0)
-            {
-                lBytesReceived += e.Count;
-                if (RXDataCount + e.Count < RXFIFOSIZE)
-                {
-                    for (i = 0; i < e.Count; i++)
-                    {
-                        RXFIFO[RXWritePos] = e.Buffer[i];
-                        RXWritePos = (RXWritePos + 1) % RXFIFOSIZE;
-                    }
-                }
-                else
-                {
-                    throw new Exception("RX FIFO overflow");
-                }
-                if (DataReceived != null)
-                {
-                    DataReceived(this, new EventArgs());
-                }
-            }
-        }
-
         private void Th_DoWork()
         {
             Int32 lTXSize;
@@ -388,6 +361,9 @@ namespace SSComm
                 }
             }
             catch (ThreadAbortException) { }
+            //device removed or stream closed while writing: end the thread instead of crashing the process
+            catch (IOException ex) { if (!bkThExit) Log.Error("USB HID: write failed, TX thread stopped", ex); }
+            catch (ObjectDisposedException) { }
         }
     }
 }

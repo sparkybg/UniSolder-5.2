@@ -53,6 +53,9 @@
     <StartupObject>UniSolder.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
     <ManifestCertificateThumbprint>CB58969D1BAAC89BC98FD8152A9F2E9A0AF1A2F4</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
@@ -62,7 +65,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -114,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SSComm\SSComm.csproj">

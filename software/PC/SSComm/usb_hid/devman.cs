@@ -78,7 +78,7 @@ namespace SSComm
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -260,7 +260,7 @@ namespace SSComm
 
                 return deviceFound;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -372,7 +372,7 @@ namespace SSComm
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -416,7 +416,7 @@ namespace SSComm
 
                 DeviceManagement.UnregisterDeviceNotification(deviceNotificationHandle);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

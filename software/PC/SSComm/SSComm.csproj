@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="usb_generic.cs" />
     <Compile Include="common.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="usb_hid\devman.cs" />
     <Compile Include="usb_hid\devmandeclarations.cs" />

@@ -9,16 +9,33 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v2
+      uses: microsoft/setup-msbuild@v3
     # Build the application
     - name: Build with MSBuild
       working-directory: software/PC
-      run: msbuild /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath=bin/Release /p:DeployOnBuild=true /p:PublishProfile=Properties\PublishProfiles\UnisolderApp.pubxml /p:PublishDir=bin/Release /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:publishUrl=bin/Release /p:VisualStudioVersion=16.0 /p:DeployDefaultTarget=WebPublish
+      run: msbuild UniSolder.sln /t:Build /p:Configuration=Release /p:Platform="Any CPU" /p:SignManifests=false
+    - name: Publish ClickOnce package
+      working-directory: software/PC
+      run: msbuild UniSolder/UniSolder.csproj /t:Publish /p:Configuration=Release /p:Platform=AnyCPU /p:SignManifests=false /p:BootstrapperEnabled=false /p:PublishDir="${{ runner.temp }}/Unisolder-WindowsApp/ClickOnce/"
+    - name: Add portable application to package
+      shell: pwsh
+      run: |
+        $packageDir = "${{ runner.temp }}/Unisolder-WindowsApp"
+        Copy-Item software/PC/UniSolder/bin/Release/UniSolder.exe $packageDir
+        Copy-Item software/PC/UniSolder/bin/Release/UniSolder.exe.config $packageDir
+        Copy-Item software/PC/UniSolder/bin/Release/*.dll $packageDir
+        if (!(Test-Path "$packageDir/ClickOnce/UniSolder.application")) {
+          throw "ClickOnce deployment manifest is missing."
+        }
+        if (!(Get-ChildItem "$packageDir/ClickOnce" -Recurse -Filter UniSolder.exe.config.deploy)) {
+          throw "ClickOnce application configuration payload is missing."
+        }
     # Archive the build
     - name: Archive build
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: Unisolder-WindowsApp
-        path: software/PC/UniSolder/bin/Release
+        path: ${{ runner.temp }}/Unisolder-WindowsApp/
+        if-no-files-found: error

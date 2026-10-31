@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Interop structs: fields are filled by the Win32 API through marshalling
+#pragma warning disable 0649
+
+using System;
 using System.Runtime.InteropServices;
 
 namespace SSComm

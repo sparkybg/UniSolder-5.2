@@ -7,6 +7,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 public class UniSolderComm
 {
@@ -40,7 +41,8 @@ public class UniSolderComm
 
     public class T_CommandFeedback
     {
-        public bool IsEmpty;
+        public volatile bool IsEmpty;
+        public readonly ManualResetEventSlim Received = new ManualResetEventSlim(false);
         public byte Command;
         public byte Status;
         public byte[] Data = new byte[1024];
@@ -65,6 +67,7 @@ public class UniSolderComm
                 Data[i] = bb[Offset + 1 + i];
             }
             IsEmpty = false;
+            Received.Set();
             return true;
         }
 
@@ -153,7 +156,7 @@ public class UniSolderComm
             dDevID += bb[0];
             dVerMin = bb[4];
             dVerMaj = bb[5];
-            Debug.Print("Device info: ID=" + String.Format("X8", dDevID) + " Version: " + dVerMaj + "." + dVerMin);
+            SSComm.Log.Info("Device info: ID=" + dDevID.ToString("X8") +" Version: " + dVerMaj + "." + dVerMin);
         }
         return Result;
     }
@@ -165,7 +168,7 @@ public class UniSolderComm
         if (Result == 0)
         {
             dOpM = bb[0];
-            Debug.Print("Device operating mode: " + bb[0]);
+            SSComm.Log.Info("Device operating mode: " + bb[0]);
         }
         return Result;
     }
@@ -174,7 +177,7 @@ public class UniSolderComm
     {
         byte[] bb = { (byte)Commands.DEV_RESET };
         SendBINCommand(bb, 0, 1, null, 0);
-        Debug.Print("Device reset.");
+        SSComm.Log.Info("Device reset.");
     }
 
     public int AppGetInfo(ref byte aVerMin, ref byte aVerMaj)
@@ -188,7 +191,7 @@ public class UniSolderComm
         {
             aVerMin = bb[0];
             aVerMaj = bb[1];
-            Debug.Print("Device application info: Version: " + aVerMaj + "." + aVerMin);
+            SSComm.Log.Info("Device application info: Version: " + aVerMaj + "." + aVerMin);
         }
         return Result;
     }
@@ -197,16 +200,17 @@ public class UniSolderComm
     {
         byte[] bb = { (byte)Commands.APP_JUMP_TO_BOOTLOADER };
         SendBINCommand(bb, 0, 1, null, 0);
-        Debug.Print("Jump to bootloader.");
+        SSComm.Log.Info("Jump to bootloader.");
     }
 
     public void AppRestart()
     {
         byte[] bb = { (byte)Commands.APP_RESTART };
         SendBINCommand(bb, 0, 1, null, 0);
-        Debug.Print("Application restart.");
+        SSComm.Log.Info("Application restart.");
     }
 
+    /// <summary>Returns null if the device did not answer (e.g. in bootloader mode).</summary>
     public PID AppGetPIDParameters()
     {
         byte[] bb = {
@@ -224,9 +228,13 @@ public class UniSolderComm
             0,
             0
         };
-        Debug.Print("Get PID paramaters");
-        SendBINCommand(bb, 0, 1, bb, 1000);
-        return new PID
+        SSComm.Log.Info("Get PID parameters");
+        if (SendBINCommand(bb, 0, 1, bb, 1000) != 0)
+        {
+            SSComm.Log.Warn("Get PID parameters: no answer from device");
+            return null;
+        }
+        var pid = new PID
         {
             Gain = (UInt16)((UInt16)bb[0] + (UInt16)bb[1] * (UInt16)256),
             Offset = (UInt16)((UInt16)bb[2] + (UInt16)bb[3] * (UInt16)256),
@@ -235,6 +243,13 @@ public class UniSolderComm
             DGain = bb[8],
             OVSGain = bb[10]
         };
+        SSComm.Log.Info("PID parameters: " + FormatPID(pid));
+        return pid;
+    }
+
+    private static string FormatPID(PID p)
+    {
+        return "Gain=" + p.Gain + " Offset=" + p.Offset + " KP=" + p.KP + " KI=" + p.KI + " DGain=" + p.DGain + " OVSGain=" + p.OVSGain;
     }
 
     public void AppSetPIDParameters(ref PID PID)
@@ -254,6 +269,7 @@ public class UniSolderComm
             PID.OVSGain,
             0
         };
+        SSComm.Log.Info("Set PID parameters: " + FormatPID(PID));
         SendBINCommand(BB, 0, BB.Length, null, 0);
     }
 
@@ -268,12 +284,20 @@ public class UniSolderComm
         {
             blVerMin = bb[0];
             blVerMaj = bb[1];
-            Debug.Print("Bootloader information: Version=" + blVerMaj + "." + blVerMin);
+            SSComm.Log.Info("Bootloader information: Version=" + blVerMaj + "." + blVerMin);
         }
         return Result;
     }
 
-    public Int32 BlEraseFlash()
+    //64-byte packet minus 13 header bytes. The bootloader skips its address check for records of
+    //512 bytes or more (it could then overwrite itself): records must always stay small.
+    public const int MAX_FLASH_RECORD_DATA = 51;
+
+    /// <summary>
+    /// Erases the application. blStatus is the bootloader result (0 = OK, 0xFF = bad key,
+    /// other = NVM error, -1 = no answer). It is only logged for now, not acted upon.
+    /// </summary>
+    public Int32 BlEraseFlash(out int blStatus)
     {
         byte[] bb = {
             (byte)Commands.BL_ERASE_FLASH,
@@ -282,13 +306,22 @@ public class UniSolderComm
             0x21,
             0x43
         };
-        Debug.Print("BlEraseFlash");
-        return SendBINCommand(bb, 0, 5, null, 6000);
+        byte[] resp = new byte[1];
+        SSComm.Log.Info("BlEraseFlash");
+        var result = SendBINCommand(bb, 0, 5, resp, 6000);
+        blStatus = result == 0 ? resp[0] : -1;
+        return result;
     }
 
-    public Int32 BlProgramFlash(UInt32 pfAddr, ref byte[] byteBuff, int bbOffset, int bbCount)
+    /// <summary>Programs one record. blStatus: see BlEraseFlash.</summary>
+    public Int32 BlProgramFlash(UInt32 pfAddr, ref byte[] byteBuff, int bbOffset, int bbCount, out int blStatus)
     {
         byte[] bb = new byte[65];
+        blStatus = 0;
+        if (bbCount > MAX_FLASH_RECORD_DATA)
+        {
+            throw new ArgumentOutOfRangeException(nameof(bbCount), bbCount, "Flash record larger than " + MAX_FLASH_RECORD_DATA + " bytes, not sent to the bootloader");
+        }
         if (bbCount > 0)
         {
             bb[0] = (byte)Commands.BL_PROGRAM_FLASH;
@@ -308,7 +341,10 @@ public class UniSolderComm
             {
                 bb[13 + i] = byteBuff[bbOffset + i];
             }
-            return SendBINCommand(bb, 0, 13 + bbCount, null, 1000);
+            byte[] resp = new byte[1];
+            var result = SendBINCommand(bb, 0, 13 + bbCount, resp, 1000);
+            blStatus = result == 0 ? resp[0] : -1;
+            return result;
         }
         else
         {
@@ -325,7 +361,7 @@ public class UniSolderComm
             0x21,
             0x43
         };
-        Debug.Print("BlProgramComplete");
+        SSComm.Log.Info("BlProgramComplete");
         return SendBINCommand(bb, 0, 5, null, 1000);
     }
 
@@ -371,19 +407,21 @@ public class UniSolderComm
             lock (TOTimer)
             {
                 Array.Copy(OutBuffer, OB, OutCount);
-                //while (OutCount-->0) OB[OutCount] = OutBuffer[OutCount];
-                //for (int i = 0; i <= OutCount - 1; i++)
-                //{
-                //OB[i] = OutBuffer[i];
-                //}
+                //flash records are too many to trace one by one, only their failures are logged
+                bool trace = OutBuffer[0] != (byte)Commands.BL_PROGRAM_FLASH;
+                if (trace) SSComm.Log.Info("TX " + CommandName(OutBuffer[0]) + ": " + SSComm.Log.Hex(OB, 0, Math.Min(OutCount, 16)));
+                if (!Transport.Connected) SSComm.Log.Warn("TX " + CommandName(OutBuffer[0]) + " while not connected");
+                //clear feedback before sending, so a fast reply is not lost
+                CommandFeedBack.Received.Reset();
+                CommandFeedBack.IsEmpty = true;
                 Transport.Write(ref OB, 0, 64);
                 //wait for feedback
                 if (TimeOut > 0)
                 {
-                    CommandFeedBack.IsEmpty = true;
                     rv = -1;
                     TOTimer.Restart();
-                    while (TOTimer.ElapsedMilliseconds < TimeOut)
+                    long remaining;
+                    while ((remaining = TimeOut - TOTimer.ElapsedMilliseconds) > 0)
                     {
                         if (!CommandFeedBack.IsEmpty)
                         {
@@ -398,15 +436,31 @@ public class UniSolderComm
                             }
                             else
                             {
+                                SSComm.Log.Warn("RX unexpected response " + CommandName(CommandFeedBack.Command) + " while waiting for " + CommandName(OutBuffer[0]));
                                 CommandFeedBack.IsEmpty = true;
                             }
                         }
+                        CommandFeedBack.Received.Wait((int)remaining);
+                        CommandFeedBack.Received.Reset();
                     }
                     TOTimer.Stop();
+                    if (rv == -1)
+                    {
+                        SSComm.Log.Warn("Timeout (" + TimeOut + " ms) waiting for " + CommandName(OutBuffer[0]) + (trace ? "" : " at " + SSComm.Log.Hex(OB, 5, 4)));
+                    }
+                    else if (trace)
+                    {
+                        SSComm.Log.Info("RX " + CommandName(OutBuffer[0]) + " in " + TOTimer.ElapsedMilliseconds + " ms: " + SSComm.Log.Hex(CommandFeedBack.Data, 0, Math.Min((int)CommandFeedBack.DataLength, 16)));
+                    }
                 }
             }
         }
         return rv;
+    }
+
+    private static string CommandName(byte cmd)
+    {
+        return Enum.IsDefined(typeof(Commands), cmd) ? ((Commands)cmd).ToString() : "0x" + cmd.ToString("X2");
     }
 
 
@@ -427,10 +481,12 @@ public class UniSolderComm
         switch (RXB[0])
         {
             case 1:
-                InstrumentChange(this, new EventArgs());
+                SSComm.Log.Info("RX instrument change, iron ID=0x" + (RXB[1] | (RXB[2] << 8)).ToString("X4"));
+                InstrumentChange?.Invoke(this, new EventArgs());
                 break;
             case 3:
-                LiveDataReceived(this, new LiveDataReceivedEventData() { Data = RXB });
+                //copy: RXB is reused for the next packet while the UI thread processes this one
+                LiveDataReceived?.Invoke(this, new LiveDataReceivedEventData() { Data = (byte[])RXB.Clone() });
                 break;
             default:
                 CommandFeedBack.ReadFromBuffer(ref RXB, 0, 64);

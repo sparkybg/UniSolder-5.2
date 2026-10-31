@@ -29,6 +29,15 @@ namespace UniSolder
 
         public List<HexDataRecord> Records = new List<HexDataRecord>();
 
+        /// <summary>Reason of the last LoadHexFile failure.</summary>
+        public string LastError { get; private set; }
+
+        //physical addresses as found in the HEX file (see bootloader.ld / firmware.ld)
+        public const UInt32 BOOTLOADER_FLASH_START = 0x1D000000;
+        public const UInt32 APP_FLASH_START = 0x1D003000;
+        //64-byte USB packet minus 13 header bytes (command, key, address, length)
+        public const int MAX_RECORD_DATA = 51;
+
         private UInt32 PA_TO_VFA(UInt32 x)
         {
             return (x - APPLICATION_START);
@@ -41,17 +50,39 @@ namespace UniSolder
 
         public bool LoadHexFile(string filepath)
         {
+            try
+            {
+                return LoadHexFileLines(filepath);
+            }
+            catch (Exception ex) when (ex is FormatException || ex is ArgumentOutOfRangeException || ex is IOException)
+            {
+                LastError = "cannot read the file: " + ex.Message;
+                return false;
+            }
+        }
+
+        private bool LoadHexFileLines(string filepath)
+        {
             UInt32 cExtSegAddress = 0;
             UInt32 cExtLinAddress = 0;
-            var FileReader = new StreamReader(filepath);
-
+            int lineNumber = 0;
+            LastError = null;
+            Records.Clear();
+            using (var FileReader = new StreamReader(filepath))
             while (!FileReader.EndOfStream)
             {
                 var s = FileReader.ReadLine().Trim();
+                lineNumber++;
                 if (s.Length >= 11)
                 {
                     if (s[0] == ':')
                     {
+                        //declared data length must match the line length (":" + count, address, type, data, checksum)
+                        if (s.Length != 11 + 2 * Convert.ToInt32(s.Substring(1, 2), 16))
+                        {
+                            LastError = "line " + lineNumber + ": length does not match its byte count";
+                            return false;
+                        }
                         UInt32 ccs = 0;
                         for (int i = 0; i <= ((s.Length - 1) / 2) - 2; i++)
                         {
@@ -113,26 +144,41 @@ namespace UniSolder
                         }
                         else
                         {
-                            FileReader.Close();
+                            LastError = "line " + lineNumber + ": bad checksum";
                             return false;
                         }
                     }
                     else
                     {
-                        FileReader.Close();
+                        LastError = "line " + lineNumber + ": does not start with ':'";
                         return false;
                     }
                 }
             }
+            return true;
+        }
+
+        /// <summary>
+        /// Checks that the loaded file is a firmware built for the UniSolder bootloader (PIC32_with_bootloader),
+        /// before anything is sent to the device. Returns null if the file can be used, otherwise the reason.
+        /// </summary>
+        public string Validate()
+        {
+            if (Records.Count == 0) return "the file contains no data.";
+            bool hasAppStart = false;
             foreach (var r in Records)
             {
-                var s = "";
-                for (int i = 0; i < r.RecDataLen; i++) s += r.Data[i].ToString("X2");
-                //Debug.Print(Format(PA_TO_KVA0(.Address), "X8") & "(" & Format(.RecDataLen, "X2") & "): " & s)
+                UInt32 end = r.Address + r.RecDataLen; //exclusive
+                //the bootloader skips its address check for records of 512 bytes or more: never send big records
+                if (r.RecDataLen > MAX_RECORD_DATA)
+                    return "record at 0x" + r.Address.ToString("X8") + " has " + r.RecDataLen + " bytes, more than the " + MAX_RECORD_DATA + " bytes a USB packet can carry.";
+                if (r.Address < APP_FLASH_START && end > BOOTLOADER_FLASH_START)
+                    return "the file contains code in the bootloader area (0x1D000000-0x1D002FFF). It is probably a firmware built without bootloader (PIC32_Standalone): use the PIC32_with_bootloader HEX file.";
+                if (r.Address <= APP_FLASH_START && end > APP_FLASH_START) hasAppStart = true;
             }
-            FileReader.Close();
-            FileReader = null;
-            return true;
+            if (!hasAppStart)
+                return "the file contains no code at the application start address 0x1D003000: it is not a firmware built for the UniSolder bootloader (PIC32_with_bootloader).";
+            return null;
         }
     }
 }
